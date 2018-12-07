@@ -1,4 +1,4 @@
-@charset "gb2312";
+@charset "utf-8";
 /* CSS Document */
 * { margin: 0; padding: 0 }
 body { background: #DDD6CC; font: 12px "宋体", "Arial Narrow", HELVETICA; color: #3F3E3C; line-height: 1.5; }
@@ -10,8 +10,8 @@ a:hover { color: #000; }
 .blank { height: 5px; overflow: hidden; width: 100%; margin: auto; clear: both }
 /* nav */
 /* header */
-.quotes {min-height: 144px; width: 1000px; position: relative; margin: 0px auto 120px auto; padding-top: 63px;}
-.quotes p { color: #fff; width: 330px; line-height: 26px; }
+.quotes {min-height: 20px; width: 1000px; position: relative; margin: 0px auto 120px auto; padding-top: 100px;}
+.quotes p { color: #fff; width: 400px; line-height: 26px; }
 .text5 { left: 0px; top: 160px; font-family: "微软雅黑"; font-size: 30px; color: #FFF;  }
 .flower { position: absolute; right: 0; top: 60px; /*background: url(../images/flower.png) no-repeat;*/ width: 173px; height: 175px; z-index: 2 }
 .flower img {  display: block; width: 100px;height: auto;}
@@ -42,7 +42,7 @@ a{
 #nav { 
 	width: 100%; 
 	line-height: 50px; 
-	height: 50px; 
+	height: 0px; 
 	font-family: "微软雅黑"; 
 	font-size: 16px; 
 	background: rgba(56, 134, 72, 0.43); 
@@ -70,7 +70,7 @@ a{
     background: #498444;
 }
 /* mainContent */
-.mainContent { background: #E8E5DD; width: 1000px; margin: 20px auto; overflow: hidden }
+.mainContent { background: #E8E5DD; width: 1000px; margin: 5px auto; overflow: hidden }
 aside { width: 270px; float: left; }
 .avatar { margin: 20px auto; width: 160px; height: 160px; border-radius: 160px; -moz-border-radius: 160px; -webkit-border-radius: 160px; overflow: hidden; }
 .avatar a { display: block; padding-top: 97px; width: 160px; height: 63px; background: url(../images/photo.jpg) no-repeat; background-size: 160px 160px }
