@@ -12,7 +12,7 @@ a:hover { color: #000; }
 /* header */
 .quotes {min-height: 20px; width: 1000px; position: relative; margin: 0px auto 120px auto; padding-top: 100px;}
 .quotes p { color: #fff; width: 400px; line-height: 26px; }
-.text5 { left: 0px; top: 160px; font-family: "微软雅黑"; font-size: 30px; color: #FFF;  }
+.text5 { left: 0px; top: 160px; font-family: "微软雅黑"; font-size: 32px; color: #FFF;  }
 .flower { position: absolute; right: 0; top: 60px; /*background: url(../images/flower.png) no-repeat;*/ width: 173px; height: 175px; z-index: 2 }
 .flower img {  display: block; width: 100px;height: auto;}
 /*菜单栏*/
@@ -76,6 +76,12 @@ aside { width: 270px; float: left; }
 .avatar a { display: block; padding-top: 97px; width: 160px; height: 63px; background: url(../images/photo.jpg) no-repeat; background-size: 160px 160px }
 .avatar a span { display: block; margin-top: 63px; padding-top: 8px; width: 160px; height: 55px; text-align: center; font-size: 16px; line-height: 20px; color: #fff; background: rgba(0, 0, 0, .5); -webkit-transition: margin-top .2s ease-in-out; -moz-transition: margin-top .2s ease-in-out; -o-transition: margin-top .2s ease-in-out; transition: margin-top .2s ease-in-out; }
 .avatar a:hover span { display: block; margin-top: 0; }
+
+.self-avatar { margin: 20px auto; width: 160px; height: 160px;-moz-border-radius: 160px; -webkit-border-radius: 160px; overflow: hidden; }
+.self-avatar a { display: block; padding-top: 97px; width: 160px; height: 63px; background: url(../images/blog_pic.jpg) no-repeat; background-size: 160px 160px }
+.self-avatar a span { display: block; margin-top: 63px; padding-top: 8px; width: 160px; height: 55px; text-align: center; font-size: 16px; line-height: 20px; color: #fff; background: rgba(0, 0, 0, .5); -webkit-transition: margin-top .2s ease-in-out; -moz-transition: margin-top .2s ease-in-out; -o-transition: margin-top .2s ease-in-out; transition: margin-top .2s ease-in-out; }
+.self-avatar a:hover span { display: block; margin-top: 0; }
+
 .topspaceinfo { background: #3c7e42; padding: 40px 20px; color: #fff }
 .topspaceinfo h1 { font-size: 16px; line-height: 40px }
 .userinfo { padding: 20px 30px 30px; font-size: 14px; line-height: 28px; color: #666; }
