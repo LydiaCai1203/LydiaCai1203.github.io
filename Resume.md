@@ -19,7 +19,7 @@
          ·
          <span>
              <img src="assets/rss-solid.svg" width="18px">
-             <a href="https://lydiacai1203.github.io/">MyBlog</a>
+             <a href="https://lydiacai1203.github.io/blog.html">MyBlog</a>
          </span>
      </div>
  </center>
