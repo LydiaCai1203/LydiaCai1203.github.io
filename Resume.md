@@ -26,9 +26,9 @@
  ## <img src="assets/info-circle-solid.svg" width="30px"> 个人信息 
 
  - 女，1995.12.03
- - 求职意向：Python工程师
+ - 求职意向：Python工程师、数据分析师
  - 工作经验：1 年
- - 期望薪资：12k
+ - 期望薪资：13k
 
 ## <img src="assets/graduation-cap-solid.svg" width="30px"> 教育经历
 
