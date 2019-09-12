@@ -77,7 +77,12 @@
                          另外很多时候，会出现一种情况就是，明明charset是对的，但是使用decode(charset)的时候会报错。这是因为网页中含有一些这个编码不可以解析的字符，是什么原因我不知道，但是可以使用decode(charset, 'ignore')，只显示那些能编码的字符。
                     </p>
                     <p>
-                         15. 看完MySQL这一块的知识点我要去看postgres了，发现现在很多公司都在用postgres了。还要复习一下resuful规范。
+                         15. 虽然之前也遇到过supervisor装好了以后出现各种问题，今天尤其仔细地看了一下解决的方法，记录一下
+                         supervisord -c /etc/supervisor/supervisord.conf
+                         报错：Unlinking stale socket /var/run/supervisor.sock
+                         find / -name supervisor.sock                                                   # 全盘搜索这个文件名
+                         unlink /**/supervisor.sock                                                     
+                         supervisord -c /etc/supervisor/supervisord.conf                                # 再重启supervisord服务就可以了
                     </p>
                </ul>
           </article>
