@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Hugo Cactus Theme</title>
-    <link>http://LydiaCai1203.github.io/categories/</link>
+    <link>https://lydiacai1203.github.io/categories/</link>
     <description>Recent content in Categories on Hugo Cactus Theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 02 Apr 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://LydiaCai1203.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lydiacai1203.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Development</title>
-      <link>http://LydiaCai1203.github.io/categories/development/</link>
+      <link>https://lydiacai1203.github.io/categories/development/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://LydiaCai1203.github.io/categories/development/</guid>
+      <guid>https://lydiacai1203.github.io/categories/development/</guid>
       <description></description>
     </item>
     
     <item>
       <title>golang</title>
-      <link>http://LydiaCai1203.github.io/categories/golang/</link>
+      <link>https://lydiacai1203.github.io/categories/golang/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://LydiaCai1203.github.io/categories/golang/</guid>
+      <guid>https://lydiacai1203.github.io/categories/golang/</guid>
       <description></description>
     </item>
     
