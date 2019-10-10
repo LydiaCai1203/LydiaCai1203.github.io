@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>技术 on Hugo Cactus Theme</title>
+    <link>https://lydiacai1203.github.io/categories/%E6%8A%80%E6%9C%AF/</link>
+    <description>Recent content in 技术 on Hugo Cactus Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 10 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://lydiacai1203.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Study Tips(2019)</title>
+      <link>https://lydiacai1203.github.io/post/study_tips_2019/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lydiacai1203.github.io/post/study_tips_2019/</guid>
+      <description>  10:57 完成了人生中第一次服务器购买以及成功地翻出了墙. 解决了一个关于使用gunicorn打印不出日志的问题 破解了银保监的反爬，学到很多东西 将html转成pdf的简便方法，用chrome打开html，ctrl+p就可以转化成pdf了 mongodb创建联合索引create_index([(field, 1), (field2, -1)]) 原来除了有os.system()直接执行command,还有os.popen()，原理是创建一个管道，然后可以这个管道里标准输出流里的东西拿出来，拿到return的对象，fp.read()即可，用完fp.close() 遇到了一个坑，使用phantomjs的时候，比较慢，所以我希望这玩意只有一个，就弄成了全局变量，结果，发现driver.quit()失效了，根本没关闭上，这就很恶心人了。 解决方法是弄成局部变量。 假如问你：cookie和session的区别 你知道怎么回答吗 反正我是重新认识了cookie,而且最让我惊讶的是，问了好多同事，给我的回答竟然都是和我面试的时候是一样的回答。我有时候不禁会想，面试官在问我这个问题之前，自己是否也清楚cookie和session的区别呢&amp;hellip;..又放肆了，还是好好学习吧。 markdown里面如果想使用空行的话，可以使用html里面的br标签，但是要在br标签的前后都给到一个空行，在github上面显示才比较好看。 mysql5.6 的 最左前缀优先 和 mysql5.7 的 最左前缀优先不一样，比如说现在有一个联合索引(name, cid), 有一条查询语句：select * from tablename where cid=1;这条语句在5.6中就不会走索引，但是在5.7中会走索引。 今天知道一个新的markdown语法，[TOC] 可以自动按照生成目录，但是github不支持。 set里面允许放的是不可变对象, 什么是不可变对象(string, numbers, boolean), 同理dict的key也是。这个fluent-py里面有讲解。加入我现在有两堆对象，我想做一个交集。但是我不想用for循环一个一个去比对。这个对象的数据成员都是由基本类型组成的。对象显然是放不进set里面的，这时候只需要实现hash和eq，具体解释就不在这里写了，但是，但是，但是，你想要去比对，肯定是和eq有关系，所以在实现eq的时候，势必要结合具体的业务情况。这时候就可以愉快地做交集并集了。 之前研究了网页编码，一开始都是采用了resp.text，后来发现其实requests底层使用的是resp.encoding, 这个encoding的默认值取的是response.headers里的content-type中charset这个值，如果没有这个值呢，requests就会使用chardet进行编码判断(也就是get_encoding_from_headers)后来发现这个方法呢，其实并不好用，取出来的是个ISO-8859-1，这个东西解码字节数组以后也不对。又发现有一个get_encodings_from_content,这个是从html里面的meta里面取charset这个值。有些html会有多个meta标签，所以这个函数会取出多个charset，也就是一个列表。这个就要自己取取舍了。一般我认为如果是ISO-8859-1的话，就是用UTF进行编码，如果gb打头，就是用gb18030进行编码。因为gb2312&amp;lt;\gbk&amp;lt;\gb18030。另外很多时候，会出现一种情况就是，明明charset是对的，但是使用decode(charset)的时候会报错。这是因为网页中含有一些这个编码不可以解析的字符，是什么原因我不知道，但是可以使用decode(charset, &amp;lsquo;ignore&amp;rsquo;)，只显示那些能编码的字符。 虽然之前也遇到过supervisor装好了以后出现各种问题，今天尤其仔细地看了一下解决的方法，记录一下    supervisord -c /etc/supervisor/supervisord.conf 报错：Unlinking stale socket /var/run/supervisor.sock find / -name supervisor.sock # 全盘搜索这个文件名 unlink /**/supervisor.sock supervisord -c /etc/supervisor/supervisord.conf # 再重启supervisord服务    Python设计和历史常见问题 一个可以拿到访问者ip的接口   </description>
+    </item>
+    
+  </channel>
+</rss>

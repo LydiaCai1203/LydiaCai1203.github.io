@@ -21,7 +21,7 @@
   </url>
   
   <url>
-    <loc>https://lydiacai1203.github.io/post/lucky_story/</loc>
+    <loc>https://lydiacai1203.github.io/post/lucky_story_2019/</loc>
     <lastmod>2019-10-10T00:00:00+00:00</lastmod>
   </url>
   
@@ -32,7 +32,24 @@
   </url>
   
   <url>
+    <loc>https://lydiacai1203.github.io/post/study_tips_2019/</loc>
+    <lastmod>2019-10-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://lydiacai1203.github.io/tags/</loc>
+    <lastmod>2019-10-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lydiacai1203.github.io/tags/devtips/</loc>
+    <lastmod>2019-10-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lydiacai1203.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2019-10-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -52,6 +69,23 @@
   <url>
     <loc>https://lydiacai1203.github.io/about/</loc>
     <lastmod>2019-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lydiacai1203.github.io/post/movie_tlbb/</loc>
+    <lastmod>2019-05-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lydiacai1203.github.io/categories/%E9%AA%9A%E8%AF%9D/</loc>
+    <lastmod>2019-05-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lydiacai1203.github.io/tags/%E9%AA%9A%E8%AF%9D/</loc>
+    <lastmod>2019-05-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>
