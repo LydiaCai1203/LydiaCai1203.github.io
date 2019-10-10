@@ -89,15 +89,15 @@
 <li><a href="https://github.com/LydiaCai1203/leetcode-practice/blob/master/note/logging.md">解决了一个关于使用gunicorn打印不出日志的问题</a></li>
 <li><a href="https://github.com/LydiaCai1203/some_tools_for_everything/blob/master/broke__jsl_clearance/yinbaojian.py">破解了银保监的反爬，学到很多东西</a></li>
 <li>将html转成pdf的简便方法，用chrome打开html，ctrl+p就可以转化成pdf了</li>
-<li>mongodb创建联合索引create_index([(field, 1), (field2, -1)])</li>
-<li>原来除了有os.system()直接执行command,还有os.popen()，原理是创建一个管道，然后可以这个管道里标准输出流里的东西拿出来，拿到return的对象，fp.read()即可，用完fp.close()</li>
-<li>遇到了一个坑，使用phantomjs的时候，比较慢，所以我希望这玩意只有一个，就弄成了全局变量，结果，发现driver.quit()失效了，根本没关闭上，这就很恶心人了。 解决方法是弄成局部变量。</li>
-<li>假如问你：cookie和session的区别 你知道怎么回答吗 反正我是重新认识了cookie,而且最让我惊讶的是，问了好多同事，给我的回答竟然都是和我面试的时候是一样的回答。我有时候不禁会想，面试官在问我这个问题之前，自己是否也清楚cookie和session的区别呢&hellip;..又放肆了，还是好好学习吧。</li>
-<li>markdown里面如果想使用空行的话，可以使用html里面的br标签，但是要在br标签的前后都给到一个空行，在github上面显示才比较好看。</li>
-<li>mysql5.6 的 最左前缀优先 和 mysql5.7 的 最左前缀优先不一样，比如说现在有一个联合索引(name, cid), 有一条查询语句：select * from tablename where cid=1;这条语句在5.6中就不会走索引，但是在5.7中会走索引。</li>
-<li>今天知道一个新的markdown语法，[TOC] 可以自动按照生成目录，但是github不支持。</li>
-<li>set里面允许放的是不可变对象, 什么是不可变对象(string, numbers, boolean), 同理dict的key也是。这个fluent-py里面有讲解。加入我现在有两堆对象，我想做一个交集。但是我不想用for循环一个一个去比对。这个对象的数据成员都是由基本类型组成的。对象显然是放不进set里面的，这时候只需要实现<strong>hash</strong>和<strong>eq</strong>，具体解释就不在这里写了，但是，但是，但是，你想要去比对，肯定是和<strong>eq</strong>有关系，所以在实现<strong>eq</strong>的时候，势必要结合具体的业务情况。这时候就可以愉快地做交集并集了。</li>
-<li>之前研究了网页编码，一开始都是采用了resp.text，后来发现其实requests底层使用的是resp.encoding, 这个encoding的默认值取的是response.headers里的content-type中charset这个值，如果没有这个值呢，requests就会使用chardet进行编码判断(也就是get_encoding_from_headers)后来发现这个方法呢，其实并不好用，取出来的是个ISO-8859-1，这个东西解码字节数组以后也不对。又发现有一个get_encodings_from_content,这个是从html里面的meta里面取charset这个值。有些html会有多个meta标签，所以这个函数会取出多个charset，也就是一个列表。这个就要自己取取舍了。一般我认为如果是ISO-8859-1的话，就是用UTF进行编码，如果gb打头，就是用gb18030进行编码。因为gb2312&lt;\gbk&lt;\gb18030。另外很多时候，会出现一种情况就是，明明charset是对的，但是使用decode(charset)的时候会报错。这是因为网页中含有一些这个编码不可以解析的字符，是什么原因我不知道，但是可以使用decode(charset, &lsquo;ignore&rsquo;)，只显示那些能编码的字符。</li>
+<li>mongodb创建联合索引<code>create_index([(field, 1), (field2, -1)])</code></li>
+<li>原来除了有<code>os.system()</code>直接执行command,还有<code>os.popen()</code>，原理是创建一个管道，然后可以这个管道里标准输出流里的东西拿出来，拿到return的对象，<code>fp.read()</code>即可，用完<code>fp.close()</code></li>
+<li>遇到了一个坑，使用phantomjs的时候，比较慢，所以我希望这玩意只有一个，就弄成了全局变量，结果，发现<code>driver.quit()</code>失效了，根本没关闭上，这就很恶心人了。 解决方法是弄成局部变量</li>
+<li>假如问你：cookie和session的区别 你知道怎么回答吗 反正我是重新认识了cookie,而且最让我惊讶的是，问了好多同事，给我的回答竟然都是和我面试的时候是一样的回答。我有时候不禁会想，面试官在问我这个问题之前，自己是否也清楚cookie和session的区别呢&hellip;..又放肆了，还是好好学习吧</li>
+<li>markdown里面如果想使用空行的话，可以使用html里面的br标签，但是要在br标签的前后都给到一个空行，在github上面显示才比较好看</li>
+<li>mysql5.6 的 最左前缀优先 和 mysql5.7 的 最左前缀优先不一样，比如说现在有一个联合索引(name, cid), 有一条查询语句：<code>select * from tablename where cid=1;</code>这条语句在5.6中就不会走索引，但是在5.7中会走索引</li>
+<li>今天知道一个新的markdown语法，[TOC] 可以自动按照生成目录，但是github不支持</li>
+<li>set里面允许放的是不可变对象, 什么是不可变对象<code>(string, numbers, boolean)</code>, 同理dict的key也是。这个fluent-py里面有讲解。加入我现在有两堆对象，我想做一个交集。但是我不想用for循环一个一个去比对。这个对象的数据成员都是由基本类型组成的。对象显然是放不进set里面的，这时候只需要实现<code>__hash__</code>和<code>__eq__</code>，具体解释就不在这里写了，但是，但是，但是，你想要去比对，肯定是和<code>__eq__</code>有关系，所以在实现<code>__eq__</code>的时候，势必要结合具体的业务情况。这时候就可以愉快地做交集并集了。</li>
+<li>之前研究了网页编码，一开始都是采用了<code>resp.text</code>，后来发现其实requests底层使用的是<code>resp.encoding</code>, 这个encoding的默认值取的是<code>response.headers</code>里的content-type中charset这个值，如果没有这个值呢，requests就会使用chardet进行编码判断(也就是<code>get_encoding_from_headers</code>)后来发现这个方法呢，其实并不好用，取出来的是个ISO-8859-1，这个东西解码字节数组以后也不对。又发现有一个<code>get_encodings_from_content</code>,这个是从html里面的meta里面取charset这个值。有些html会有多个meta标签，所以这个函数会取出多个charset，也就是一个列表。这个就要自己取取舍了。一般我认为如果是ISO-8859-1的话，就是用UTF进行编码，如果gb打头，就是用gb18030进行编码。因为gb2312&lt;\gbk&lt;\gb18030。另外很多时候，会出现一种情况就是，明明charset是对的，但是使用<code>decode(charset)</code>的时候会报错。这是因为网页中含有一些这个编码不可以解析的字符，是什么原因我不知道，但是可以使用<code>decode(charset, 'ignore')</code>，只显示那些能编码的字符。</li>
 <li>虽然之前也遇到过supervisor装好了以后出现各种问题，今天尤其仔细地看了一下解决的方法，记录一下</li>
 </ol>
 </blockquote>
