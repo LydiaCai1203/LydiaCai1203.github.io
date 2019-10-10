@@ -3,17 +3,78 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://lydiacai1203.github.io/categories/</loc>
+    <loc>http://LydiaCai1203.github.io/</loc>
+    <lastmod>2019-10-03T22:14:08+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lydiacai1203.github.io/</loc>
+    <loc>http://LydiaCai1203.github.io/about/</loc>
+    <lastmod>2019-10-03T22:14:08+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://LydiaCai1203.github.io/post/resume/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://LydiaCai1203.github.io/categories/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lydiacai1203.github.io/tags/</loc>
+    <loc>http://LydiaCai1203.github.io/categories/development/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://LydiaCai1203.github.io/post/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://LydiaCai1203.github.io/tags/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://LydiaCai1203.github.io/tags/development/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://LydiaCai1203.github.io/tags/go/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://LydiaCai1203.github.io/categories/golang/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://LydiaCai1203.github.io/tags/golang/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://LydiaCai1203.github.io/tags/templates/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://LydiaCai1203.github.io/tags/themes/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
