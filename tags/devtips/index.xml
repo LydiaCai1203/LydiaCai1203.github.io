@@ -17,7 +17,7 @@
       <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>https://lydiacai1203.github.io/post/study_tips_2019/</guid>
-      <description> 1.10:57 完成了人生中第一次服务器购买以及成功地翻出了墙.
+      <description>1.10:57 完成了人生中第一次服务器购买以及成功地翻出了墙.
 2.解决了一个关于使用gunicorn打印不出日志的问题
 3.破解了银保监的反爬，学到很多东西
 4.将html转成pdf的简便方法，用chrome打开html，ctrl+p就可以转化成pdf了
@@ -33,7 +33,8 @@
 14.虽然之前也遇到过supervisor装好了以后出现各种问题，今天尤其仔细地看了一下解决的方法，记录一下
   supervisord -c /etc/supervisor/supervisord.conf 报错：Unlinking stale socket /var/run/supervisor.sock find / -name supervisor.sock # 全盘搜索这个文件名 unlink /**/supervisor.sock supervisord -c /etc/supervisor/supervisord.conf # 再重启supervisord服务   15.Python设计和历史常见问题
 16.一个可以拿到访问者ip的接口
- </description>
+17.what-cicd
+18.一些好用的网站？</description>
     </item>
     
   </channel>
