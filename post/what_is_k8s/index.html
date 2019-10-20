@@ -87,7 +87,8 @@
 
 <h3 id="part-one-基本结构介绍">part_one: 基本结构介绍</h3>
 
-<p>&emsp;&emsp;Node可以理解为物理资源，在K8s里面可操作的最小单元就是Pod，我们可以通过配置Pod配置文件的template字段来控制一个Pod里面有哪几种Container，但是不能控制一个Pod里面有几种container。Pod配置里面的template说明了要启动的容器是怎么样的，最重要的就是image的信息。</p>
+<p><img src="/images/k8s_structure.png" alt="" />
+&emsp;&emsp;Node可以理解为物理资源，在K8s里面可操作的最小单元就是Pod，我们可以通过配置Pod配置文件的template字段来控制一个Pod里面有哪几种Container，但是不能控制一个Pod里面有几种container。Pod配置里面的template说明了要启动的容器是怎么样的，最重要的就是image的信息。</p>
 
 <p>&emsp;&emsp;后来由于需要部署的服务越来越多，每个Pod都是人工手动启动或者是删除检查的。所以后来产生了ReplicaController，有了这个东西以后就可以指定每个服务所要启动的Pods。这里的selector就是现在RC管理的下，还有哪些Pod是存活的。然后template就是指的是要启动的Pod是什么样子的。</p>
 
