@@ -65,7 +65,7 @@
       
       <guid>https://lydiacai1203.github.io/post/analyse_image_layer/</guid>
       <description>part_one: 什么是文件挂载？ &amp;emsp;&amp;emsp;1. Unix里面的文件目录是目录树结构的形式，所有的文件目录都是基于硬盘disk逻辑抽象出来的。比如现在有一个的一个目录。
-![]()
+![](&amp;ldquo;/images/me/avatar.jpeg&amp;rdquo;)
 &amp;emsp;&amp;emsp;接1. 现在要把这些文件目录挂载到磁盘上面，在linux的文件系统里面，首先执行mount命令进行文件挂载，比如说将/(根目录)挂载到disk1里面，挂载完了以后，根目录下的进行创建操作或是写操作的时候，数据文件都会存储在disk1当中。
 &amp;emsp;&amp;emsp;重点来了。比如说现在在data目录下创建一个文件a.txt, 这时候将/data挂载到disk2下面，这时候disk2中是看不到a.txt的。
 part_two: 联合挂载 &amp;emsp;&amp;emsp;那么既然有要挂载以后再写才能看见的挂载，肯定有写完以后再挂载依旧能够看见之前已经写了的文件的挂载方式。docker layer就是属于这种。
