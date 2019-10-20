@@ -35,7 +35,7 @@
 
 <meta itemprop="datePublished" content="2019-10-10T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-10-10T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="95">
+<meta itemprop="wordCount" content="139">
 
 
 
@@ -150,6 +150,27 @@
 <p>22.put和patch的区别。首先http请求中一共有GET,POST,PUT,DELETE,HEAD,PATCH; 之前一直以为的是PUT请求做的是一个更新动作，实际上不是的，PUT做的是一个替换的动作。也就是说传的请求体的内容应该完整的一个对象里面的所有的属性。而真正做更新动作的是PATCH请求，PATCH请求的请求体里面才是局部要更新的字段值。这个其实之前我也看到过，但是还是忘记了，说到底还是，好记性不如烂笔头。以后勤奋一点记笔记吧。相信会有收获的。</p>
 
 <p>23.重新认识image，学习了什么是文件挂载，学习了hash到底是一个什么东西。前面两个东西专门放一篇学习笔记里面进行总结，然后这里简单说一下hash是什么东西，为什么会出现。这个我也觉得很有意思，10除以3我都答不出来了，被组长狠狠鄙视了一顿。好了这些都是后话了，先不说。除法得到的余数也是一种hash, 所谓的hash就是从无限域到有限域的一个转换，这里详细说一下什么叫做无限域到有限域，就是说比如固定10，作用域是被除数的话，在余数确定的情况下，作用域是无限，因为可以任意取值得到余数是1。但是对于余数来说，不管你取的是什么值，余数能取到的值总是在[0,被除数-1]，甚至可以说余数的数量是确定的。hash就是这么一个东西，无限域-&gt;hash()-&gt;有限域; 所以说，你想从hash值去反推作用域的值，是不可能的事情，因为有限是不可能推到无限的。&mdash;&mdash;&gt; 那为什么还要用hash来表示layerid的值呢？意思就是怎么从已知去找到未知里面的东西呢？这里老实说还是有点没明白，因为当时没清楚组长说的是从什么求什么。</p>
+
+<p>24.确认需求-&gt;可行性分析(粗粒度地提出大致步骤)-&gt;系统设计(细粒度地提出实现的具体步骤)-&gt;预期工期-&gt;coding。</p>
+
+<p>25.遇到域名无法解析的时候使用 nslookup domain_name 172.16.0.11                  # 第二个参数写的是域名解析服务器</p>
+
+<p>26.还有一个服务是专门同步电脑时钟的，但是为什么台式机电源没电再充电重启的时候时间还是正确的是因为几乎所有的台式机里面都会有一个内置的小电池。但是我在用mbp的时候，有时候断网就会发现系统时间不对了，所以说就有可能是我的mbp里面控制电脑时钟的小电池已经没有电了。一般的台式机这个小电池4/5年需要更换一次，所以每隔4/5年就会发现电脑的时间会变成1970-01-01这个时间。</p>
+
+<p>27.开发中需要注意的两大原则就是：1. 程序简单是最重要的(判定程序简单的原则就是看代码的人看一行代码只需要不到10S就可以理解这行代码的意思) 2. 然后就是要避免犯错，所有的不可变的值，比如说配置数据信息都应该放在enum或者是nametuple中去。
+    &gt; a. 首先从简单性来说就是比如说看到一个def get_data_list()这个函数，我们就应该要知道这个这个函数是干嘛用的，并且还能知道这个函数的返回值是什么类型的数据。这个对应的就是一看到nametuple的时候我们就会知道这个东西应该是有一个不可变的属性的。然后基于简单的原则，这里的配置文如果返回的是一个list或者是tuple或者是别的什么的话，不够清晰，我们不知道index=4是什么东西。所以返回值最好是一个字符串或者是key-value的东西。
+    &gt; b. 基于避免犯错的原则，因为不能肯定配置文件不会被修改所以这里返回了一个类，并且是一个不可以被修改的类。
+    &gt; c. 综上所述，这就是配置文件使用namedtuple的根本原因。</p>
+
+<p>28.mongodb里面还有一个upsert, 是在使用update_one()之类的update函数的时候，传入的参数为upsert=True的时候，如果根据查询条件在mongodb中查不到对应的item, 就会使用重新insert一条完整的数据。</p>
+
+<p>29.什么是Metadata：可以认为所有的东西都存在两个部分：1. 一个是不可变的部分 2. 一个是state。因为state是可变的，我们认为凡是放在metadata里面的东西都是一个对象的固有属性。也就是是一个不可变的东西。</p>
+
+<p>30.Thread.Lock 和 Thread.RLock 的区别：某个线程获取到了前者的锁以后会尝试进入阻塞状态，其它任何的线程都可以release这个锁；某个线程获取到了后者的锁以后会进入阻塞状态，只有自己，且获取了以后必须要进行一次release。</p>
+
+<p>31.在Docker.v2的版本里，Docker的组成为四部分，分别是Blobs、Image Mainifest、Mainifest List、Tags。Blobs是所有Layers的组成，Image Mainifest是一个Image所需要的Layers的有序集合。Mainifest List是这些Image Mainifest的集合。Tags可以唯一标志一个Image Mainifest 或者是 Mainifest List。</p>
+
+<p>32.</p>
 </blockquote>
 
     </section>
@@ -195,6 +216,14 @@
     
         <li>
             <a href="https://lydiacai1203.github.io/post/analyse_image_layer/">docker image的实现原理以及registry相关的一块知识<aside class="dates">May 4 2019</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/whatis_nfs/">what is NFS?<aside class="dates">May 4 2019</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/what_is_k8s/">what is k8s?<aside class="dates">May 4 2019</aside></a>
         </li>
     
         <li>
