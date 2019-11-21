@@ -6,10 +6,22 @@
     <description>Recent content on Hugo Cactus Theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 06 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 21 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://lydiacai1203.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>深夜有感</title>
+      <link>https://lydiacai1203.github.io/post/just_bbbbbbb/</link>
+      <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lydiacai1203.github.io/post/just_bbbbbbb/</guid>
+      <description>&amp;emsp;&amp;emsp;入职火币已有一周的时间。开发氛围很像那会儿还在财联社的时候。当然是王叔还在的时候。有点想念他，其实也有点怀念ztz。同事都很好，关系也蛮纯净的，喜欢这里的氛围。前段时间和春玲有了一些分歧，现在也都好了。除了党员的事情很让我糟心。咳咳咳，跑题了，回来回来。
+&amp;emsp;&amp;emsp;历史虽然总是惊人的相似，但却不会重复。坚持总结，学会反思，规避错误，就会有长足的进步。
+&amp;emsp;&amp;emsp;ztz 那句话说的很对，也许山的那头不是风景。我最感激 ztz 的时候，就是我找工作的那段时间，我曾经在他代码里学到的思想，我曾经在他质问下学会的规范，我曾经在他引导下学会的解决问题的方法。都在面试中一次次回想起来。czh 教给我的东西，也是很多。虽然脾气真的不好，可是我也是在工作中，在和人交谈中，一次次会想起他曾经对我的教导。心中的怨怼没有了，只剩下感激。我其实是很幸运的人。
+&amp;emsp;&amp;emsp;黑哥的技术似乎没有杨雅倩好。廖老板一点架子也没有，也很关心每一个人。最近好累。我想睡觉了。每次都这样，一开始有很多想说的，后来因为懒得打字所以就不了了之了。今天就先这样吧，晚一点起来怼接口。</description>
+    </item>
     
     <item>
       <title>在博泰的最后一天</title>
@@ -132,15 +144,6 @@ part_three: 磁盘阵列的好处 &amp;emsp;&amp;emsp;磁盘阵列会在你将�
 &amp;emsp;&amp;emsp;自带音响的男人乔峰（萧峰）在喝断义酒的时候我真的心里难过极了，就不说了，大英雄谁都喜欢。虽然我看不太懂他为什么会爱上阿朱。
 &amp;emsp;&amp;emsp;如果要我说我最喜欢谁，我应该最喜欢的是鸠摩智，典型的学霸，虽然有一丢丢急功近利，但是最后大彻大悟成为得道高僧也是相当有悟性有天赋的人，也是金庸没有给安排什么奇怪的感情线的人，所以我喜欢他。
 &amp;emsp;&amp;emsp;就这样吧，我感觉金庸的其它作品我短期内应该都不会再去看了。</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://lydiacai1203.github.io/post/multi_thread_practices/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://lydiacai1203.github.io/post/multi_thread_practices/</guid>
-      <description></description>
     </item>
     
   </channel>
