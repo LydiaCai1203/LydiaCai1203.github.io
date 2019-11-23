@@ -35,7 +35,7 @@
 
 <meta itemprop="datePublished" content="2019-10-10T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-10-10T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="140">
+<meta itemprop="wordCount" content="177">
 
 
 
@@ -173,7 +173,30 @@
 <p>32.<a href="https://www.techbeamers.com/python-multithreading-quiz-to-test-your-skills/">一个很有用的教程</a></p>
 
 <p>33.十一月份教会我一件事情，你以为跨过一座山以后看见的会是美景，但是也许还是跨过一座山以后还是一座山。山的那边不一定会有你想象的那么好，不要再想当然了。一切都是假的。</p>
+
+<ol>
+<li>从insight项目用的框架中学到的一种异常处理的方式：</li>
+</ol>
 </blockquote>
+
+<pre><code>    class CustomError(Exception):
+        def __init__(self, message, status):
+            super().__init__(message, status)
+            self.message = message
+            self.status = status
+
+    def bugs_hunter(func):
+        def wrapper(*args, **kwargs):
+            try:
+                return func(*args, **kwargs)
+            except CustomError as e:
+                print(e.message)
+        return wrapper
+
+    @bugs_hunter
+    def my_func():
+        raise CustomError('其实也不能说学到，但是自己之前就是没想到呀', 200)
+</code></pre>
 
     </section>
 </article>
@@ -209,7 +232,11 @@
     
     
         <li>
-            <a href="https://lydiacai1203.github.io/post/just_bbbbbbb/">深夜有感<aside class="dates">Nov 21 2019</aside></a>
+            <a href="https://lydiacai1203.github.io/post/selfie/">周六不想工作<aside class="dates">Nov 23 2019</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/just_bbbbbbb/">深夜有感<aside class="dates">Nov 23 2019</aside></a>
         </li>
     
         <li>
