@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="阿菜">
 <meta name="description" content="阿菜的骚话天地">
-<meta name="generator" content="Hugo 0.56.3" />
+<meta name="generator" content="Hugo 0.62.2" />
 <title>what is NFS?</title>
 <link rel="shortcut icon" href="https://lydiacai1203.github.io/images/favicon.ico">
 <link rel="stylesheet" href="https://lydiacai1203.github.io/css/style.css">
@@ -31,8 +31,6 @@
 
 <meta itemprop="name" content="what is NFS?">
 <meta itemprop="description" content="组长教学系列">
-
-
 <meta itemprop="datePublished" content="2019-05-04T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-05-04T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="25">
@@ -40,7 +38,6 @@
 
 
 <meta itemprop="keywords" content="2019,科技," />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="what is NFS?"/>
 <meta name="twitter:description" content="组长教学系列"/>
@@ -83,32 +80,21 @@
         </h2>
     </header>
     <section id="post-body">
-        
-
-<h3 id="part-one-一台物理机器上的文件存储">part_one：一台物理机器上的文件存储</h3>
-
-<p>&emsp;&emsp;计算机里面有很多块磁盘，计算机里面的文件系统都是逻辑树状结构的，逻辑上的概念都是物理中不会出现的。一个一百兆的文件在计算机上有几种存储方法。简单地来说有两种:</p>
-
+        <h3 id="part_one一台物理机器上的文件存储">part_one：一台物理机器上的文件存储</h3>
+<p>  计算机里面有很多块磁盘，计算机里面的文件系统都是逻辑树状结构的，逻辑上的概念都是物理中不会出现的。一个一百兆的文件在计算机上有几种存储方法。简单地来说有两种:</p>
 <h4 id="1-sequence">1. sequence</h4>
-
-<p>&emsp;&emsp;在disk中占有一段连续的存储空间。这样做的好处有几点：一是简单方便；二是命中率高，因为程序的局部性原理。命中率高会导致读的速度比较快。但是这样做也是有坏处的，坏处就是这样存储文件容易出现磁盘碎片。因为不太容易找到100M这么大的连续存储空间。</p>
-
-<h4 id="2-inode-index-data-node">2. Inode=index+data_node</h4>
-
-<p>&emsp;&emsp;这种方式会讲一个disk分成两个部分，一个部分是index表头，一个部分是很多很多的data node，这些data node的大小一都是可以设置的，一般的大小在4KB-&gt;16KB。一个100M的文件会被分成好几个部分，被存储到不同的node里面去。然后在index表头里面做一个地址的记录。这样当把这个disk挂载到某个目录上面去的时候，文件系统要显示这个disk中的所有的文件，去找的时候就会根据这个index的表头去拼出一个完整的文件。</p>
-
-<h3 id="part-two-什么是nfs">part_two：什么是NFS？</h3>
-
-<p>&emsp;&emsp;NFS的Network FileSystem，中文意思是分布式网络文件系统。这个出现的原因是因为，当目录下的文件非常多的时候，有可能会出现一个物理机里的磁盘存不下的情况。所以这种时候就出现了NFS。<br />
-<img src="/images/file_system.png" alt="" /><br />
-&emsp;&emsp;拿一个例子来讲，所有远程registry里面的images的layers都是乱序的，且不可能只是存在于一台物理机上面。<br />
-&emsp;&emsp;1. 首先layers很多很多，不够存。<br />
-&emsp;&emsp;2. 其次就是必须看见的是一个文件系统，因为layer是被image各种交叉引用的。现在有一个NFS,做了一层隔离，一个文件可能分成几块存在不同的物理机的disk上面，然后这个NFS在显示文件目录下面的挂载情况的时候会将所有的物理机磁盘里的文件拼在一起展示在挂载的文件目录里面。造成一种假象。<br />
-&emsp;&emsp;3. NFS只是一种协议规范，真正实现这种规范的有GFS, GlusterFS, MooseFS等等，其中MooseFS就是所说的MFS，也就是公司现在用的这种分布式网络文件系统。</p>
-
-<h3 id="part-three-磁盘阵列的好处">part_three: 磁盘阵列的好处</h3>
-
-<p>&emsp;&emsp;磁盘阵列会在你将数据写入一个磁盘的时候，同时同步到另一个磁盘上去。这样读写文件的速度就会变成两倍速。一个磁盘上从头开始读。另一个磁盘上从百分之五十的地方开始读数据。那可不可以说设置两个指针，一个在文件头，一个在文件尾进行读写呢，这样做会收到磁盘吞吐量的约束，所以也是一种有问题的做法。</p>
+<p>  在disk中占有一段连续的存储空间。这样做的好处有几点：一是简单方便；二是命中率高，因为程序的局部性原理。命中率高会导致读的速度比较快。但是这样做也是有坏处的，坏处就是这样存储文件容易出现磁盘碎片。因为不太容易找到100M这么大的连续存储空间。</p>
+<h4 id="2-inodeindexdata_node">2. Inode=index+data_node</h4>
+<p>  这种方式会讲一个disk分成两个部分，一个部分是index表头，一个部分是很多很多的data node，这些data node的大小一都是可以设置的，一般的大小在4KB-&gt;16KB。一个100M的文件会被分成好几个部分，被存储到不同的node里面去。然后在index表头里面做一个地址的记录。这样当把这个disk挂载到某个目录上面去的时候，文件系统要显示这个disk中的所有的文件，去找的时候就会根据这个index的表头去拼出一个完整的文件。</p>
+<h3 id="part_two什么是nfs">part_two：什么是NFS？</h3>
+<p>  NFS的Network FileSystem，中文意思是分布式网络文件系统。这个出现的原因是因为，当目录下的文件非常多的时候，有可能会出现一个物理机里的磁盘存不下的情况。所以这种时候就出现了NFS。<br>
+<img src="/images/file_system.png" alt=""><br>
+  拿一个例子来讲，所有远程registry里面的images的layers都是乱序的，且不可能只是存在于一台物理机上面。<br>
+  1. 首先layers很多很多，不够存。<br>
+  2. 其次就是必须看见的是一个文件系统，因为layer是被image各种交叉引用的。现在有一个NFS,做了一层隔离，一个文件可能分成几块存在不同的物理机的disk上面，然后这个NFS在显示文件目录下面的挂载情况的时候会将所有的物理机磁盘里的文件拼在一起展示在挂载的文件目录里面。造成一种假象。<br>
+  3. NFS只是一种协议规范，真正实现这种规范的有GFS, GlusterFS, MooseFS等等，其中MooseFS就是所说的MFS，也就是公司现在用的这种分布式网络文件系统。</p>
+<h3 id="part_three-磁盘阵列的好处">part_three: 磁盘阵列的好处</h3>
+<p>  磁盘阵列会在你将数据写入一个磁盘的时候，同时同步到另一个磁盘上去。这样读写文件的速度就会变成两倍速。一个磁盘上从头开始读。另一个磁盘上从百分之五十的地方开始读数据。那可不可以说设置两个指针，一个在文件头，一个在文件尾进行读写呢，这样做会收到磁盘吞吐量的约束，所以也是一种有问题的做法。</p>
 
     </section>
 </article>
@@ -144,11 +130,7 @@
     
     
         <li>
-            <a href="https://lydiacai1203.github.io/post/selfie/">周六不想工作<aside class="dates">Nov 23 2019</aside></a>
-        </li>
-    
-        <li>
-            <a href="https://lydiacai1203.github.io/post/just_bbbbbbb/">深夜有感<aside class="dates">Nov 23 2019</aside></a>
+            <a href="https://lydiacai1203.github.io/post/annoyement/">人生的三次成长<aside class="dates">Jan 13 2020</aside></a>
         </li>
     
         <li>
@@ -156,11 +138,11 @@
         </li>
     
         <li>
-            <a href="https://lydiacai1203.github.io/post/lucky_story_2019/">Lucky Stories(2019)<aside class="dates">Oct 10 2019</aside></a>
+            <a href="https://lydiacai1203.github.io/post/lucky_story_2019/">Lucky Stories(2019&#43;2020)<aside class="dates">Oct 10 2019</aside></a>
         </li>
     
         <li>
-            <a href="https://lydiacai1203.github.io/post/study_tips_2019/">Study Tips(2019)<aside class="dates">Oct 10 2019</aside></a>
+            <a href="https://lydiacai1203.github.io/post/study_tips_2019/">Study Tips(2019&#43;2020)<aside class="dates">Oct 10 2019</aside></a>
         </li>
     
         <li>
@@ -209,7 +191,7 @@
     
     <p class="small">
     
-        © Copyright 2019 阿菜
+        © Copyright 2020 阿菜
     
     </p>
 </footer>

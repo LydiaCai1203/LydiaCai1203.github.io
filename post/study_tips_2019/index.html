@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="阿菜">
 <meta name="description" content="阿菜的骚话天地">
-<meta name="generator" content="Hugo 0.56.3" />
-<title>Study Tips(2019)</title>
+<meta name="generator" content="Hugo 0.62.2" />
+<title>Study Tips(2019&#43;2020)</title>
 <link rel="shortcut icon" href="https://lydiacai1203.github.io/images/favicon.ico">
 <link rel="stylesheet" href="https://lydiacai1203.github.io/css/style.css">
 <link rel="stylesheet" href="https://lydiacai1203.github.io/css/highlight.css">
@@ -21,7 +21,7 @@
 <link href="https://lydiacai1203.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Hugo Cactus Theme" />
 
 
-<meta property="og:title" content="Study Tips(2019)" />
+<meta property="og:title" content="Study Tips(2019&#43;2020)" />
 <meta property="og:description" content="any confidence of dev" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lydiacai1203.github.io/post/study_tips_2019/" />
@@ -29,20 +29,17 @@
 <meta property="article:modified_time" content="2019-10-10T00:00:00+00:00" />
 
 
-<meta itemprop="name" content="Study Tips(2019)">
+<meta itemprop="name" content="Study Tips(2019&#43;2020)">
 <meta itemprop="description" content="any confidence of dev">
-
-
 <meta itemprop="datePublished" content="2019-10-10T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-10-10T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="177">
+<meta itemprop="wordCount" content="218">
 
 
 
 <meta itemprop="keywords" content="2019,devtips," />
-
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Study Tips(2019)"/>
+<meta name="twitter:title" content="Study Tips(2019&#43;2020)"/>
 <meta name="twitter:description" content="any confidence of dev"/>
 <meta name="twitter:site" content="@https://www.twitter.com/"/>
 
@@ -66,7 +63,7 @@
         
 <article class="post">
     <header>
-        <h1>Study Tips(2019)</h1>
+        <h1>Study Tips(2019&#43;2020)</h1>
         <h2 class="subtitle">any confidence of dev</h2>
         <h2 class="headline">
         October 10, 2019
@@ -85,100 +82,133 @@
     <section id="post-body">
         <blockquote>
 <p>1.10:57 完成了人生中第一次服务器购买以及成功地翻出了墙.</p>
-
+</blockquote>
+<blockquote>
 <p>2.<a href="https://github.com/LydiaCai1203/leetcode-practice/blob/master/note/logging.md">解决了一个关于使用gunicorn打印不出日志的问题</a></p>
-
+</blockquote>
+<blockquote>
 <p>3.<a href="https://github.com/LydiaCai1203/some_tools_for_everything/blob/master/broke__jsl_clearance/yinbaojian.py">破解了银保监的反爬，学到很多东西</a></p>
-
+</blockquote>
+<blockquote>
 <p>4.将html转成pdf的简便方法，用chrome打开html，ctrl+p就可以转化成pdf了</p>
-
+</blockquote>
+<blockquote>
 <p>5.mongodb创建联合索引<code>create_index([(field, 1), (field2, -1)])</code></p>
-
+</blockquote>
+<blockquote>
 <p>6.原来除了有<code>os.system()</code>直接执行command,还有<code>os.popen()</code>，原理是创建一个管道，然后可以这个管道里标准输出流里的东西拿出来，拿到return的对象，<code>fp.read()</code>即可，用完<code>fp.close()</code></p>
-
+</blockquote>
+<blockquote>
 <p>7.遇到了一个坑，使用phantomjs的时候，比较慢，所以我希望这玩意只有一个，就弄成了全局变量，结果，发现<code>driver.quit()</code>失效了，根本没关闭上，这就很恶心人了。 解决方法是弄成局部变量</p>
-
+</blockquote>
+<blockquote>
 <p>8.假如问你：cookie和session的区别 你知道怎么回答吗 反正我是重新认识了cookie,而且最让我惊讶的是，问了好多同事，给我的回答竟然都是和我面试的时候是一样的回答。我有时候不禁会想，面试官在问我这个问题之前，自己是否也清楚cookie和session的区别呢&hellip;..又放肆了，还是好好学习吧</p>
-
+</blockquote>
+<blockquote>
 <p>9.markdown里面如果想使用空行的话，可以使用html里面的br标签，但是要在br标签的前后都给到一个空行，在github上面显示才比较好看。或者使用空格+空格+换行，也可以达到一样的效果</p>
-
+</blockquote>
+<blockquote>
 <p>10.mysql5.6 的 最左前缀优先 和 mysql5.7 的 最左前缀优先不一样，比如说现在有一个联合索引(name, cid), 有一条查询语句：<code>select * from tablename where cid=1;</code>这条语句在5.6中就不会走索引，但是在5.7中会走索引</p>
-
+</blockquote>
+<blockquote>
 <p>11.今天知道一个新的markdown语法，[TOC] 可以自动按照生成目录，但是github不支持</p>
-
+</blockquote>
+<blockquote>
 <p>12.set里面允许放的是不可变对象, 什么是不可变对象<code>(string, numbers, boolean)</code>, 同理dict的key也是。这个fluent-py里面有讲解。加入我现在有两堆对象，我想做一个交集。但是我不想用for循环一个一个去比对。这个对象的数据成员都是由基本类型组成的。对象显然是放不进set里面的，这时候只需要实现<code>__hash__</code>和<code>__eq__</code>，具体解释就不在这里写了，但是，但是，但是，你想要去比对，肯定是和<code>__eq__</code>有关系，所以在实现<code>__eq__</code>的时候，势必要结合具体的业务情况。这时候就可以愉快地做交集并集了。</p>
-
+</blockquote>
+<blockquote>
 <p>13.之前研究了网页编码，一开始都是采用了<code>resp.text</code>，后来发现其实requests底层使用的是<code>resp.encoding</code>, 这个encoding的默认值取的是<code>response.headers</code>里的content-type中charset这个值，如果没有这个值呢，requests就会使用chardet进行编码判断(也就是<code>get_encoding_from_headers</code>)后来发现这个方法呢，其实并不好用，取出来的是个ISO-8859-1，这个东西解码字节数组以后也不对。又发现有一个<code>get_encodings_from_content</code>,这个是从html里面的meta里面取charset这个值。有些html会有多个meta标签，所以这个函数会取出多个charset，也就是一个列表。这个就要自己取取舍了。一般我认为如果是ISO-8859-1的话，就是用UTF进行编码，如果gb打头，就是用gb18030进行编码。因为gb2312&lt;\gbk&lt;\gb18030。另外很多时候，会出现一种情况就是，明明charset是对的，但是使用<code>decode(charset)</code>的时候会报错。这是因为网页中含有一些这个编码不可以解析的字符，是什么原因我不知道，但是可以使用<code>decode(charset, 'ignore')</code>，只显示那些能编码的字符。</p>
-
+</blockquote>
+<blockquote>
 <p>14.虽然之前也遇到过supervisor装好了以后出现各种问题，今天尤其仔细地看了一下解决的方法，记录一下</p>
 </blockquote>
-
 <pre><code>    supervisord -c /etc/supervisor/supervisord.conf
     报错：Unlinking stale socket /var/run/supervisor.sock
     find / -name supervisor.sock                        # 全盘搜索这个文件名
     unlink /**/supervisor.sock                                                     
     supervisord -c /etc/supervisor/supervisord.conf     # 再重启supervisord服务  
 </code></pre>
-
 <blockquote>
 <p>15.<a href="https://docs.python.org/zh-cn/3/faq/design.html">Python设计和历史常见问题</a></p>
-
-<p>16.<a href="http://pv.sohu.com/cityjson?ie=utf-8">一个可以拿到访问者ip的接口</a></p>
-
-<p>17.<a href="https://opensource.com/article/18/8/what-cicd">what-cicd</a></p>
-
-<p>18.一些好用的网站？<br />
-<a href="https://ps.gaoding.com/#/?hmsr=zc-cc">在线ps</a><br />
-<a href="http://www.ireadweek.com/">周读</a><br />
-<a href="http://24mail.chacuo.net/">临时邮箱</a><br />
-<a href="https://jingzhunyun.com/">工具网</a><br />
-<a href="https://www.toolfk.com/">工具网2</a><br />
-<a href="https://www.cn-ki.net/">廉价下载论文网</a></p>
-
-<p>19.<a href="https://laisky.github.io/style-guide-cn/">Python的编码规范(切记需要时常温习)</a></p>
-
-<p>20.什么是VPN详细解释<br />
-1. 首先了解VPN的含义(Virtual Private Network)，它是建立在real public network之上的。<br />
-2. 其实了解VPN出现的目的是为了保护数据的安全性才出现的。<br />
-3. 所谓的网络协议就是为了实现数据的序列化存在的，VPN也是一种协议，但是VPN不同于TCP/HTTP，它不光光是传输协议，它还包括了加密协议。<br />
-4. 通常我们在自己的机器上安装VPNClient，在所需要建立私密链接的主机上安装VPNServer。之前我们操作远程服务器的步骤基本都是，在本地使用ssh登录远程服务器，这台远程服务器是一半存在于公网，一半存在于私网当中；通过这台跳板机去访问处在私网中的同一个集群。但是其实规范的做法应该是建立VPN，也就是在本地安装VPNClient，在跳板机上面安装VPNServer。<br />
-5. 私网存在的意义是数据安全，但是两台主机要在一个私网里的必要条件就是距离要够近。所以如果我们使用的集群在外地的话，必然使用公网进行连接。使用公网就存在数据不安全性，所以这就是在本地和跳板机之间使用VPN之间的理由。</p>
-
-<p>21.进程、线程、协程的由来<br />
-    今天中午吃中饭的时候和组长讨论到owl的爬虫部分的并发的实现方式。这个留一留过两天再写。</p>
-
-<p>22.put和patch的区别。首先http请求中一共有GET,POST,PUT,DELETE,HEAD,PATCH; 之前一直以为的是PUT请求做的是一个更新动作，实际上不是的，PUT做的是一个替换的动作。也就是说传的请求体的内容应该完整的一个对象里面的所有的属性。而真正做更新动作的是PATCH请求，PATCH请求的请求体里面才是局部要更新的字段值。这个其实之前我也看到过，但是还是忘记了，说到底还是，好记性不如烂笔头。以后勤奋一点记笔记吧。相信会有收获的。</p>
-
-<p>23.重新认识image，学习了什么是文件挂载，学习了hash到底是一个什么东西。前面两个东西专门放一篇学习笔记里面进行总结，然后这里简单说一下hash是什么东西，为什么会出现。这个我也觉得很有意思，10除以3我都答不出来了，被组长狠狠鄙视了一顿。好了这些都是后话了，先不说。除法得到的余数也是一种hash, 所谓的hash就是从无限域到有限域的一个转换，这里详细说一下什么叫做无限域到有限域，就是说比如固定10，作用域是被除数的话，在余数确定的情况下，作用域是无限，因为可以任意取值得到余数是1。但是对于余数来说，不管你取的是什么值，余数能取到的值总是在[0,被除数-1]，甚至可以说余数的数量是确定的。hash就是这么一个东西，无限域-&gt;hash()-&gt;有限域; 所以说，你想从hash值去反推作用域的值，是不可能的事情，因为有限是不可能推到无限的。&mdash;&mdash;&gt; 那为什么还要用hash来表示layerid的值呢？意思就是怎么从已知去找到未知里面的东西呢？这里老实说还是有点没明白，因为当时没清楚组长说的是从什么求什么。</p>
-
-<p>24.确认需求-&gt;可行性分析(粗粒度地提出大致步骤)-&gt;系统设计(细粒度地提出实现的具体步骤)-&gt;预期工期-&gt;coding。</p>
-
-<p>25.遇到域名无法解析的时候使用 nslookup domain_name 172.16.0.11                  # 第二个参数写的是域名解析服务器</p>
-
-<p>26.还有一个服务是专门同步电脑时钟的，但是为什么台式机电源没电再充电重启的时候时间还是正确的是因为几乎所有的台式机里面都会有一个内置的小电池。但是我在用mbp的时候，有时候断网就会发现系统时间不对了，所以说就有可能是我的mbp里面控制电脑时钟的小电池已经没有电了。一般的台式机这个小电池4/5年需要更换一次，所以每隔4/5年就会发现电脑的时间会变成1970-01-01这个时间。</p>
-
-<p>27.开发中需要注意的两大原则就是：1. 程序简单是最重要的(判定程序简单的原则就是看代码的人看一行代码只需要不到10S就可以理解这行代码的意思) 2. 然后就是要避免犯错，所有的不可变的值，比如说配置数据信息都应该放在enum或者是nametuple中去。
-    &gt; a. 首先从简单性来说就是比如说看到一个def get_data_list()这个函数，我们就应该要知道这个这个函数是干嘛用的，并且还能知道这个函数的返回值是什么类型的数据。这个对应的就是一看到nametuple的时候我们就会知道这个东西应该是有一个不可变的属性的。然后基于简单的原则，这里的配置文如果返回的是一个list或者是tuple或者是别的什么的话，不够清晰，我们不知道index=4是什么东西。所以返回值最好是一个字符串或者是key-value的东西。
-    &gt; b. 基于避免犯错的原则，因为不能肯定配置文件不会被修改所以这里返回了一个类，并且是一个不可以被修改的类。
-    &gt; c. 综上所述，这就是配置文件使用namedtuple的根本原因。</p>
-
-<p>28.mongodb里面还有一个upsert, 是在使用update_one()之类的update函数的时候，传入的参数为upsert=True的时候，如果根据查询条件在mongodb中查不到对应的item, 就会使用重新insert一条完整的数据。</p>
-
-<p>29.什么是Metadata：可以认为所有的东西都存在两个部分：1. 一个是不可变的部分 2. 一个是state。因为state是可变的，我们认为凡是放在metadata里面的东西都是一个对象的固有属性。也就是是一个不可变的东西。</p>
-
-<p>30.Thread.Lock 和 Thread.RLock 的区别：某个线程获取到了前者的锁以后会尝试进入阻塞状态，其它任何的线程都可以release这个锁；某个线程获取到了后者的锁以后会进入阻塞状态，只有自己，且获取了以后必须要进行一次release。</p>
-
-<p>31.在Docker.v2的版本里，Docker的组成为四部分，分别是Blobs、Image Mainifest、Mainifest List、Tags。Blobs是所有Layers的组成，Image Mainifest是一个Image所需要的Layers的有序集合。Mainifest List是这些Image Mainifest的集合。Tags可以唯一标志一个Image Mainifest 或者是 Mainifest List。</p>
-
-<p>32.<a href="https://www.techbeamers.com/python-multithreading-quiz-to-test-your-skills/">一个很有用的教程</a></p>
-
-<p>33.十一月份教会我一件事情，你以为跨过一座山以后看见的会是美景，但是也许还是跨过一座山以后还是一座山。山的那边不一定会有你想象的那么好，不要再想当然了。一切都是假的。</p>
-
-<ol>
-<li>从insight项目用的框架中学到的一种异常处理的方式：</li>
-</ol>
 </blockquote>
-
+<blockquote>
+<p>16.<a href="http://pv.sohu.com/cityjson?ie=utf-8">一个可以拿到访问者ip的接口</a></p>
+</blockquote>
+<blockquote>
+<p>17.<a href="https://opensource.com/article/18/8/what-cicd">what-cicd</a></p>
+</blockquote>
+<blockquote>
+<p>18.一些好用的网站？<br>
+<a href="https://ps.gaoding.com/#/?hmsr=zc-cc">在线ps</a><br>
+<a href="http://www.ireadweek.com/">周读</a><br>
+<a href="http://24mail.chacuo.net/">临时邮箱</a><br>
+<a href="https://jingzhunyun.com/">工具网</a><br>
+<a href="https://www.toolfk.com/">工具网2</a><br>
+<a href="https://www.cn-ki.net/">廉价下载论文网</a></p>
+</blockquote>
+<blockquote>
+<p>19.<a href="https://laisky.github.io/style-guide-cn/">Python的编码规范(切记需要时常温习)</a></p>
+</blockquote>
+<blockquote>
+<p>20.什么是VPN详细解释</p>
+</blockquote>
+<ol>
+<li>首先了解VPN的含义(Virtual Private Network)，它是建立在real public network之上的。</li>
+<li>其实了解VPN出现的目的是为了保护数据的安全性才出现的。</li>
+<li>所谓的网络协议就是为了实现数据的序列化存在的，VPN也是一种协议，但是VPN不同于TCP/HTTP，它不光光是传输协议，它还包括了加密协议。</li>
+<li>通常我们在自己的机器上安装VPNClient，在所需要建立私密链接的主机上安装VPNServer。之前我们操作远程服务器的步骤基本都是，在本地使用ssh登录远程服务器，这台远程服务器是一半存在于公网，一半存在于私网当中；通过这台跳板机去访问处在私网中的同一个集群。但是其实规范的做法应该是建立VPN，也就是在本地安装VPNClient，在跳板机上面安装VPNServer。</li>
+<li>私网存在的意义是数据安全，但是两台主机要在一个私网里的必要条件就是距离要够近。所以如果我们使用的集群在外地的话，必然使用公网进行连接。使用公网就存在数据不安全性，所以这就是在本地和跳板机之间使用VPN之间的理由。</li>
+</ol>
+<blockquote>
+<p>21.进程、线程、协程的由来<br>
+今天中午吃中饭的时候和组长讨论到owl的爬虫部分的并发的实现方式。这个留一留过两天再写。</p>
+</blockquote>
+<blockquote>
+<p>22.put和patch的区别。首先http请求中一共有GET,POST,PUT,DELETE,HEAD,PATCH; 之前一直以为的是PUT请求做的是一个更新动作，实际上不是的，PUT做的是一个替换的动作。也就是说传的请求体的内容应该完整的一个对象里面的所有的属性。而真正做更新动作的是PATCH请求，PATCH请求的请求体里面才是局部要更新的字段值。这个其实之前我也看到过，但是还是忘记了，说到底还是，好记性不如烂笔头。以后勤奋一点记笔记吧。相信会有收获的。</p>
+</blockquote>
+<blockquote>
+<p>23.重新认识image，学习了什么是文件挂载，学习了hash到底是一个什么东西。前面两个东西专门放一篇学习笔记里面进行总结，然后这里简单说一下hash是什么东西，为什么会出现。这个我也觉得很有意思，10除以3我都答不出来了，被组长狠狠鄙视了一顿。好了这些都是后话了，先不说。除法得到的余数也是一种hash, 所谓的hash就是从无限域到有限域的一个转换，这里详细说一下什么叫做无限域到有限域，就是说比如固定10，作用域是被除数的话，在余数确定的情况下，作用域是无限，因为可以任意取值得到余数是1。但是对于余数来说，不管你取的是什么值，余数能取到的值总是在[0,被除数-1]，甚至可以说余数的数量是确定的。hash就是这么一个东西，无限域-&gt;hash()-&gt;有限域; 所以说，你想从hash值去反推作用域的值，是不可能的事情，因为有限是不可能推到无限的。&mdash;&mdash;&gt; 那为什么还要用hash来表示layerid的值呢？意思就是怎么从已知去找到未知里面的东西呢？这里老实说还是有点没明白，因为当时没清楚组长说的是从什么求什么。</p>
+</blockquote>
+<blockquote>
+<p>24.确认需求-&gt;可行性分析(粗粒度地提出大致步骤)-&gt;系统设计(细粒度地提出实现的具体步骤)-&gt;预期工期-&gt;coding。</p>
+</blockquote>
+<blockquote>
+<p>25.遇到域名无法解析的时候使用 nslookup domain_name 172.16.0.11                  # 第二个参数写的是域名解析服务器</p>
+</blockquote>
+<blockquote>
+<p>26.还有一个服务是专门同步电脑时钟的，但是为什么台式机电源没电再充电重启的时候时间还是正确的是因为几乎所有的台式机里面都会有一个内置的小电池。但是我在用mbp的时候，有时候断网就会发现系统时间不对了，所以说就有可能是我的mbp里面控制电脑时钟的小电池已经没有电了。一般的台式机这个小电池4/5年需要更换一次，所以每隔4/5年就会发现电脑的时间会变成1970-01-01这个时间。</p>
+</blockquote>
+<blockquote>
+<p>27.开发中需要注意的两大原则就是：
+1. 程序简单是最重要的(判定程序简单的原则就是看代码的人看一行代码只需要不到10S就可以理解这行代码的意思)
+2. 然后就是要避免犯错，所有的不可变的值，比如说配置数据信息都应该放在enum或者是nametuple中去。</p>
+<blockquote>
+<p>a. 首先从简单性来说就是比如说看到一个def get_data_list()这个函数，我们就应该要知道这个这个函数是干嘛用的，并且还能知道这个函数的返回值是什么类型的数据。这个对应的就是一看到nametuple的时候我们就会知道这个东西应该是有一个不可变的属性的。然后基于简单的原则，这里的配置文如果返回的是一个list或者是tuple或者是别的什么的话，不够清晰，我们不知道index=4是什么东西。所以返回值最好是一个字符串或者是key-value的东西。
+b. 基于避免犯错的原则，因为不能肯定配置文件不会被修改所以这里返回了一个类，并且是一个不可以被修改的类。
+c. 综上所述，这就是配置文件使用namedtuple的根本原因。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>28.mongodb里面还有一个upsert, 是在使用update_one()之类的update函数的时候，传入的参数为upsert=True的时候，如果根据查询条件在mongodb中查不到对应的item, 就会使用重新insert一条完整的数据。</p>
+</blockquote>
+<blockquote>
+<p>29.什么是Metadata：可以认为所有的东西都存在两个部分：1. 一个是不可变的部分 2. 一个是state。因为state是可变的，我们认为凡是放在metadata里面的东西都是一个对象的固有属性。也就是是一个不可变的东西。</p>
+</blockquote>
+<blockquote>
+<p>30.Thread.Lock 和 Thread.RLock 的区别：某个线程获取到了前者的锁以后会尝试进入阻塞状态，其它任何的线程都可以release这个锁；某个线程获取到了后者的锁以后会进入阻塞状态，只有自己，且获取了以后必须要进行一次release。</p>
+</blockquote>
+<blockquote>
+<p>31.在Docker.v2的版本里，Docker的组成为四部分，分别是Blobs、Image Mainifest、Mainifest List、Tags。Blobs是所有Layers的组成，Image Mainifest是一个Image所需要的Layers的有序集合。Mainifest List是这些Image Mainifest的集合。Tags可以唯一标志一个Image Mainifest 或者是 Mainifest List。</p>
+</blockquote>
+<blockquote>
+<p>32.<a href="https://www.techbeamers.com/python-multithreading-quiz-to-test-your-skills/">一个很有用的教程</a></p>
+</blockquote>
+<blockquote>
+<p>33.十一月份教会我一件事情，你以为跨过一座山以后看见的会是美景，但是也许还是跨过一座山以后还是一座山。山的那边不一定会有你想象的那么好，不要再想当然了。一切都是假的。</p>
+</blockquote>
+<blockquote>
+<p>34.从insight项目用的框架中学到的一种异常处理的方式：</p>
+</blockquote>
 <pre><code>    class CustomError(Exception):
         def __init__(self, message, status):
             super().__init__(message, status)
@@ -197,6 +227,12 @@
     def my_func():
         raise CustomError('其实也不能说学到，但是自己之前就是没想到呀', 200)
 </code></pre>
+<blockquote>
+<p>35.MySQL 中一个concat()，比如concat(student.name, &lsquo;/', student.no), student 当然是数据表名，name 和 no 当然是字段名。name 字段 allow null, 这就会出现一个很尴尬的问题了。当 name 为 null 的时候，concat 会过滤掉这条数据。要解决这个问题，只要用 coalesce(), 你可以这样使用，coalesce(student.name, &lsquo;')，指定好当 name 为 null 的时候，返回的默认值。在 coalesce() 外面再使用 concat(), 就不会出现上面的问题了。</p>
+</blockquote>
+<blockquote>
+<p>36.假如现在有一个浮点数 0.0000001234567890, print 结果就是科学计数法。但是这显然不是我们想要的，一种可以用 decimal.Decimal 里面的 prec 进行有效数字的控制，然后再使用 to_eng_string()。还有一种就是直接使用 fstring 进行精度控制。在实践过程中发现，使用 decimal，面对 30000000 这样大于 1 的数字时，prec 就不好用了。所以最好还是使用 fstring 进行精度控制。</p>
+</blockquote>
 
     </section>
 </article>
@@ -210,7 +246,7 @@
     </div>
     </a>
     <section id="sharing">
-        <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2flydiacai1203.github.io%2fpost%2fstudy_tips_2019%2f - Study%20Tips%282019%29 by @Your%20Twitter%20account"><span class="icon-twitter"> tweet</span></a>
+        <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2flydiacai1203.github.io%2fpost%2fstudy_tips_2019%2f - Study%20Tips%282019%2b2020%29 by @Your%20Twitter%20account"><span class="icon-twitter"> tweet</span></a>
 
 <a class="facebook" href="#" onclick="
     window.open(
@@ -232,11 +268,7 @@
     
     
         <li>
-            <a href="https://lydiacai1203.github.io/post/selfie/">周六不想工作<aside class="dates">Nov 23 2019</aside></a>
-        </li>
-    
-        <li>
-            <a href="https://lydiacai1203.github.io/post/just_bbbbbbb/">深夜有感<aside class="dates">Nov 23 2019</aside></a>
+            <a href="https://lydiacai1203.github.io/post/annoyement/">人生的三次成长<aside class="dates">Jan 13 2020</aside></a>
         </li>
     
         <li>
@@ -244,7 +276,7 @@
         </li>
     
         <li>
-            <a href="https://lydiacai1203.github.io/post/lucky_story_2019/">Lucky Stories(2019)<aside class="dates">Oct 10 2019</aside></a>
+            <a href="https://lydiacai1203.github.io/post/lucky_story_2019/">Lucky Stories(2019&#43;2020)<aside class="dates">Oct 10 2019</aside></a>
         </li>
     
         <li>
@@ -252,11 +284,11 @@
         </li>
     
         <li>
-            <a href="https://lydiacai1203.github.io/post/whatis_nfs/">what is NFS?<aside class="dates">May 4 2019</aside></a>
+            <a href="https://lydiacai1203.github.io/post/what_is_k8s/">what is k8s?<aside class="dates">May 4 2019</aside></a>
         </li>
     
         <li>
-            <a href="https://lydiacai1203.github.io/post/what_is_k8s/">what is k8s?<aside class="dates">May 4 2019</aside></a>
+            <a href="https://lydiacai1203.github.io/post/whatis_nfs/">what is NFS?<aside class="dates">May 4 2019</aside></a>
         </li>
     
         <li>
@@ -297,7 +329,7 @@
     
     <p class="small">
     
-        © Copyright 2019 阿菜
+        © Copyright 2020 阿菜
     
     </p>
 </footer>

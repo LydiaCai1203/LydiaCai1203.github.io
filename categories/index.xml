@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Hugo Cactus Theme</title>
@@ -6,24 +6,15 @@
     <description>Recent content in Categories on Hugo Cactus Theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 23 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://lydiacai1203.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>自拍</title>
-      <link>https://lydiacai1203.github.io/categories/%E8%87%AA%E6%8B%8D/</link>
-      <pubDate>Sat, 23 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://lydiacai1203.github.io/categories/%E8%87%AA%E6%8B%8D/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>骚话</title>
       <link>https://lydiacai1203.github.io/categories/%E9%AA%9A%E8%AF%9D/</link>
-      <pubDate>Sat, 23 Nov 2019 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lydiacai1203.github.io/categories/%E9%AA%9A%E8%AF%9D/</guid>
       <description></description>
