@@ -6,10 +6,21 @@
     <description>Recent content in 2020 on Hugo Cactus Theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 22 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://lydiacai1203.github.io/tags/2020/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>两种权限系统，还有对之前半年的大量吐槽</title>
+      <link>https://lydiacai1203.github.io/post/record_of_a_destroy/</link>
+      <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lydiacai1203.github.io/post/record_of_a_destroy/</guid>
+      <description>过年那段时间真的太难受了。这期间遭受了很多事情。 但是我现在记不住太多东西了。朋友圈里多了很多人，三家公司，三家公司的同事。我不能和以前一样在里面抱怨什么了。赖哥的骚操作积累的太多，我都写不完。
+ 安全运营平台当时设计权限系统的时候，权限上分了两部分，一个是功能权限，一个是数据权限。功能权限控制是否能访问接口，数据权限控制返回的数据，不具有完全的数据权限的只会返回部分数据。考虑到用户配置的方便性，还有工时等限制，最后采用了参数控制的方式。这样说不是很直观，下面简单说明一下权限表的设计。
+   id perm_name perm_key perm_args created updated     1 地址标签库 - 黑地址标签 - 读 black_address_tags_read category=1, 2, 3&amp;amp;status=1 2020-01-01 00:00:00 2020-01-01 00:00:00       id role_name created updated     1 super_user 2020-01-01 00:00:00 2020-01-01 00:00:00       id role_id perm_id created updated     1 1 1 2020-01-01 00:00:00 2020-01-01 00:00:00       id user_name created updated     1 caiqingjing 2020-01-01 00:00:00 2020-01-01 00:00:00       id user_id role_id created updated     1 1 1 2020-01-01 00:00:00 2020-01-01 00:00:00       id user_id perm_id created updated     1 1 2 2020-01-01 00:00:00 2020-01-01 00:00:00    应用场景：</description>
+    </item>
     
     <item>
       <title>不要太认真</title>
@@ -37,17 +48,6 @@
  其实我自己并非不能换个角度思考。
  审计系统 整个运行流程我还不熟悉，我可以趁这段时间把它搞透。 运维就意味着我有更多的时间学习，我可以先把 shell 编程学习起来，毕竟这个我还不会。 踏踏实实地做好自己的工作，也许就够了。其它的优点我暂时没有想到，不去想了。   我知道自己对一个人的看法很难改变，特别是和黑哥已经到了这种互看不顺的地步，就觉得很烦。这大哥和别人说我 bug 多，却不说自己。老说我的代码如何如何，在他眼里我重构似乎是一件不好的事情，总记得别人的缺点，看不到别人的优点，还有很多很多，真的无力吐槽了。我不想花一个上午的时间说这些破事，但是这些是我不得不说的，我要总结，总结才会成长。把我的不开心留在这里，我精心去学习那些我还不会的知识，总有一天，选择权会在我手上。
  平稳好自己的心态，就开始努力学习吧。阿菜，加油。</description>
-    </item>
-    
-    <item>
-      <title>两种权限系统，还有对之前半年的大量吐槽</title>
-      <link>https://lydiacai1203.github.io/post/record_of_a_destroy/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://lydiacai1203.github.io/post/record_of_a_destroy/</guid>
-      <description>过年那段时间真的太难受了。这期间遭受了很多事情。 但是我现在记不住太多东西了。朋友圈里多了很多人，三家公司，三家公司的同事。我不能和以前一样在里面抱怨什么了。赖哥的骚操作积累的太多，我都写不完。
- 安全运营平台当时设计权限系统的时候，权限上分了两部分，一个是功能权限，一个是数据权限。功能权限控制是否能访问接口，数据权限控制返回的数据，不具有完全的数据权限的只会返回部分数据。考虑到用户配置的方便性，还有工时等限制，最后采用了参数控制的方式。这样说不是很直观，下面简单说明一下权限表的设计。
-   id perm_name perm_key perm_args created updated     1 地址标签库 - 黑地址标签 - 读 black_address_tags_read category=1, 2, 3&amp;amp;status=1 2020-01-01 00:00:00 2020-01-01 00:00:00       id role_name created updated     1 super_user 2020-01-01 00:00:00 2020-01-01 00:00:00       id role_id perm_id created updated     1 1 1 2020-01-01 00:00:00 2020-01-01 00:00:00       id user_name created updated     1 caiqingjing 2020-01-01 00:00:00 2020-01-01 00:00:00       id user_id role_id created updated     1 1 1 2020-01-01 00:00:00 2020-01-01 00:00:00       id user_id perm_id created updated     1 1 2 2020-01-01 00:00:00 2020-01-01 00:00:00    应用场景：</description>
     </item>
     
   </channel>
