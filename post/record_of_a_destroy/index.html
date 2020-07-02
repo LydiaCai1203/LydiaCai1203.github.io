@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="阿菜">
+<meta name="description" content="阿菜的骚话天地">
+<meta name="generator" content="Hugo 0.62.2" />
+<title>两种权限系统，还有对之前半年的大量吐槽</title>
+<link rel="shortcut icon" href="https://lydiacai1203.github.io/images/favicon.ico">
+<link rel="stylesheet" href="https://lydiacai1203.github.io/css/style.css">
+<link rel="stylesheet" href="https://lydiacai1203.github.io/css/highlight.css">
+
+
+
+<link rel="stylesheet" href="https://lydiacai1203.github.io/css/monosocialiconsfont.css">
+
+
+
+<link href="https://lydiacai1203.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Hugo Cactus Theme" />
+
+
+<meta property="og:title" content="两种权限系统，还有对之前半年的大量吐槽" />
+<meta property="og:description" content="丧" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lydiacai1203.github.io/post/record_of_a_destroy/" />
+<meta property="article:published_time" content="2019-07-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-07-01T00:00:00+00:00" />
+
+
+<meta itemprop="name" content="两种权限系统，还有对之前半年的大量吐槽">
+<meta itemprop="description" content="丧">
+<meta itemprop="datePublished" content="2019-07-01T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-07-01T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="123">
+
+
+
+<meta itemprop="keywords" content="2020,丧," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="两种权限系统，还有对之前半年的大量吐槽"/>
+<meta name="twitter:description" content="丧"/>
+<meta name="twitter:site" content="@https://www.twitter.com/"/>
+
+
+    </head>
+<body>
+    <nav class="main-nav">
+	
+		<a href='https://lydiacai1203.github.io/'> <span class="arrow">←</span>Home</a>
+	
+
+	
+
+	
+		<a class="cta" href="https://lydiacai1203.github.io/index.xml">myresume</a>
+	
+</nav>
+
+    <section id="wrapper">
+        
+        
+<article class="post">
+    <header>
+        <h1>两种权限系统，还有对之前半年的大量吐槽</h1>
+        <h2 class="subtitle">丧</h2>
+        <h2 class="headline">
+        July 1, 2019
+        <br>
+        
+        
+            
+                <a href="https://lydiacai1203.github.io/tags/2020">2020</a>
+            
+                <a href="https://lydiacai1203.github.io/tags/%E4%B8%A7">丧</a>
+            
+        
+        
+        </h2>
+    </header>
+    <section id="post-body">
+        <p>  过年那段时间真的太难受了。这期间遭受了很多事情。 但是我现在记不住太多东西了。朋友圈里多了很多人，三家公司，三家公司的同事。我不能和以前一样在里面抱怨什么了。赖哥的骚操作积累的太多，我都写不完。</p>
+<p>        安全运营平台当时设计权限系统的时候，权限上分了两部分，一个是功能权限，一个是数据权限。功能权限控制是否能访问接口，数据权限控制返回的数据，不具有完全的数据权限的只会返回部分数据。考虑到用户配置的方便性，还有工时等限制，最后采用了参数控制的方式。这样说不是很直观，下面简单说明一下权限表的设计。</p>
+<table>
+<thead>
+<tr>
+<th align="center">id</th>
+<th align="center">perm_name</th>
+<th align="center">perm_key</th>
+<th>perm_args</th>
+<th>created</th>
+<th>updated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td align="center">地址标签库 - 黑地址标签 - 读</td>
+<td align="center">black_address_tags_read</td>
+<td>category=1, 2, 3&amp;status=1</td>
+<td>2020-01-01 00:00:00</td>
+<td>2020-01-01 00:00:00</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="center">id</th>
+<th align="center">role_name</th>
+<th align="center">created</th>
+<th align="center">updated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td align="center">super_user</td>
+<td align="center">2020-01-01 00:00:00</td>
+<td align="center">2020-01-01 00:00:00</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="center">id</th>
+<th align="center">role_id</th>
+<th align="center">perm_id</th>
+<th align="center">created</th>
+<th align="center">updated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">2020-01-01 00:00:00</td>
+<td align="center">2020-01-01 00:00:00</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="center">id</th>
+<th align="center">user_name</th>
+<th align="center">created</th>
+<th align="center">updated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td align="center">caiqingjing</td>
+<td align="center">2020-01-01 00:00:00</td>
+<td align="center">2020-01-01 00:00:00</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="center">id</th>
+<th align="center">user_id</th>
+<th align="center">role_id</th>
+<th align="center">created</th>
+<th align="center">updated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">2020-01-01 00:00:00</td>
+<td align="center">2020-01-01 00:00:00</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="center">id</th>
+<th align="center">user_id</th>
+<th align="center">perm_id</th>
+<th align="center">created</th>
+<th align="center">updated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">2020-01-01 00:00:00</td>
+<td align="center">2020-01-01 00:00:00</td>
+</tr>
+</tbody>
+</table>
+<p>应用场景：</p>
+<p>        上面6张表里我们可以看出，caiqingjing 是 super_user, super_user 现在有 地址标签库-黑地址标签-读 的权限，虽然 caiqingjing 有读权限，但是只能访问 &lsquo;category in (1, 2) and</p>
+<p>status=1&rsquo; 条件的数据。</p>
+<p>        这个权限系统几乎可以解决所有的权限需求的问题了，但是要达到控制数据权限级别的，不可避免地就要去在接口里面写具体的权限逻辑。另外还有一个问题就是，由于现在配置的权限不是原子化的，配置权限的时候不够灵活。如果要加在考虑之外的权限，权限就会变得多，且乱。所谓的不是原子化，就是 category=1, 2, 3&amp;status=1 如果原子化表示的话，应该是写成四条权限，(black_address_tags_read, category=1), (black_address_tags_read, category=2), (black_address_tags_read, category=3), (black_address_tags_read, status=1) 这样存。</p>
+<p>        但是要灵活，就要牺牲掉一些便利性。并且在整理权限的时候也会麻烦很多。当一个用户拥有很多权限的时候，配置权限也就变成了一个麻烦的工作。</p>
+<p>        这是两种配置方式，有各自的优缺点。</p>
+<p>        骚的是什么，骚的是有一个紧急的需求，但是赖哥非要大改，搞得原本半天可以做完的事情，现在要花三天做。而且非常执着要做，仿佛是知道自己快要被干掉了，极力想要证明自己还是有价值的。我们都不方便说什么，只能说陪着做陪着改。</p>
+<hr>
+<p>        赖哥不止一次开会说我能力不行如何如何，他并不想反思自己的问题。到后来大家就变成互相甩锅，不要让锅落到自己的头上。渐渐的我对这里已经失去了想要学习，想要展示个人价值，想要和公司共成长的想法了。</p>
+<hr>
+<p>        后来又出现了工期压缩一半的情况，我觉得我更讨厌这里了&hellip;</p>
+<hr>
+<p>        再后来我就知道了之前很信任的一位朋友在背后对我的评价，这位朋友之前没有写过代码，当了两年的产品经理，他和另一个人说我现在进步就膨胀了，觉得离开 huobi 能轻松找到一份工资更高的工作。(事实上我从来没有说过这句话，我也不知道为什么他会这样觉得)  说我现在有什么问题都是某人帮着解决（这真的是离谱，他真以为他什么问题都有人帮忙，我也是么）又说我根本干不了他能干的活，说我连数据库设计估计都玩不转。</p>
+<p>        当时听完这些话就哭了，没想到一个被我真心当作朋友的人会在背后说这些并不客观而且刻薄的话。这也是导致我在北京心态改变的一个原因之一。我不再真诚对待他。其实还知道了一些其他的事情，但是不方便写。于是那之后我就把所有的同事都屏蔽朋友圈了。不能再看到我的任何动态。</p>
+<p>        有一个人并没有对我有任何的维护。</p>
+<hr>
+<p>        我知道上面的这些很消极，我知道写出来让人看见，别人反而会想是不是我这个人真的有什么问题才会得到这样的评价。我觉得挺累的。真的挺累的。原本这件事情我以为我已经过去了，但是写到这里我还是觉得很伤心，还是觉得想逃离北京。这里让我对人不再坦诚相待。还有好多事情，都想说，都想写，可是一边写就会一边回忆，回忆细节，回忆痛苦，很难承受。我希望我今天写完这些东西以后再也不会来看这篇sb文章了。再写下去也都是一些主观的东西了，我怕我就要开始说脏话了。</p>
+<hr>
+<p>88</p>
+<p>反正我的人生肯定要过的比张博精彩，反正我的能力绝对不会比你差。</p>
+
+    </section>
+</article>
+
+<footer id="post-meta" class="clearfix">
+    <a href="https://twitter.com/Your%20Twitter%20account">
+    <img class="avatar" src="https://lydiacai1203.github.io/images/avatar.png">
+    <div>
+        <span class="dark">阿菜</span>
+        <span>一个 间歇性混吃等死 持续性踌躇满志的 激萌少女</span>
+    </div>
+    </a>
+    <section id="sharing">
+        <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2flydiacai1203.github.io%2fpost%2frecord_of_a_destroy%2f - %e4%b8%a4%e7%a7%8d%e6%9d%83%e9%99%90%e7%b3%bb%e7%bb%9f%ef%bc%8c%e8%bf%98%e6%9c%89%e5%af%b9%e4%b9%8b%e5%89%8d%e5%8d%8a%e5%b9%b4%e7%9a%84%e5%a4%a7%e9%87%8f%e5%90%90%e6%a7%bd by @Your%20Twitter%20account"><span class="icon-twitter"> tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+    </section>
+</footer>
+
+
+
+<ul id="post-list" class="archive readmore">
+    <h3>Read more</h3>
+
+    
+    
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/is_not_true/">不要太认真<aside class="dates">Jan 22 2020</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/annoyement/">人生的三次成长<aside class="dates">Jan 13 2020</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/last_day_in_pateo/">在博泰的最后一天<aside class="dates">Nov 6 2019</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/lucky_story_2019/">Lucky Stories(2019&#43;2020)<aside class="dates">Oct 10 2019</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/study_tips_2019/">Study Tips(2019&#43;2020)<aside class="dates">Oct 10 2019</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/analyse_image_layer/">docker image的实现原理以及registry相关的一块知识<aside class="dates">May 4 2019</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/what_is_k8s/">what is k8s?<aside class="dates">May 4 2019</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/whatis_nfs/">what is NFS?<aside class="dates">May 4 2019</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/movie_tlbb/">看完 天龙八部 以后，有一点骚话想说<aside class="dates">May 4 2019</aside></a>
+        </li>
+    
+</ul>
+
+
+
+        <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    
+    <a class="symbol" href="https://www.dribbble.com/">
+        circledribble
+    </a>
+    
+    <a class="symbol" href="https://www.facebook.com/">
+        circlefacebook
+    </a>
+    
+    <a class="symbol" href="https://github.com/LydiaCai1203">
+        circlegithub
+    </a>
+    
+    <a class="symbol" href="https://www.twitter.com/">
+        circletwitterbird
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+        © Copyright 2020 阿菜
+    
+    </p>
+</footer>
+
+    </section>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://lydiacai1203.github.io/js/main.js"></script>
+<script src="https://lydiacai1203.github.io/js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+</body>
+</html>
