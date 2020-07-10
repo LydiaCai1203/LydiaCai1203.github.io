@@ -7,7 +7,7 @@
 <meta name="author" content="阿菜">
 <meta name="description" content="阿菜的骚话天地">
 <meta name="generator" content="Hugo 0.62.2" />
-<title>两种权限系统，还有对之前半年的大量吐槽</title>
+<title>两种权限系统，主要是吐槽三哥的设计</title>
 <link rel="shortcut icon" href="https://lydiacai1203.github.io/images/favicon.ico">
 <link rel="stylesheet" href="https://lydiacai1203.github.io/css/style.css">
 <link rel="stylesheet" href="https://lydiacai1203.github.io/css/highlight.css">
@@ -21,7 +21,7 @@
 <link href="https://lydiacai1203.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Hugo Cactus Theme" />
 
 
-<meta property="og:title" content="两种权限系统，还有对之前半年的大量吐槽" />
+<meta property="og:title" content="两种权限系统，主要是吐槽三哥的设计" />
 <meta property="og:description" content="丧" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lydiacai1203.github.io/post/record_of_a_destroy/" />
@@ -29,17 +29,17 @@
 <meta property="article:modified_time" content="2020-07-01T00:00:00+00:00" />
 
 
-<meta itemprop="name" content="两种权限系统，还有对之前半年的大量吐槽">
+<meta itemprop="name" content="两种权限系统，主要是吐槽三哥的设计">
 <meta itemprop="description" content="丧">
 <meta itemprop="datePublished" content="2020-07-01T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-07-01T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="123">
+<meta itemprop="wordCount" content="203">
 
 
 
-<meta itemprop="keywords" content="2020,丧," />
+<meta itemprop="keywords" content="2020,垃圾活," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="两种权限系统，还有对之前半年的大量吐槽"/>
+<meta name="twitter:title" content="两种权限系统，主要是吐槽三哥的设计"/>
 <meta name="twitter:description" content="丧"/>
 <meta name="twitter:site" content="@https://www.twitter.com/"/>
 
@@ -63,7 +63,7 @@
         
 <article class="post">
     <header>
-        <h1>两种权限系统，还有对之前半年的大量吐槽</h1>
+        <h1>两种权限系统，主要是吐槽三哥的设计</h1>
         <h2 class="subtitle">丧</h2>
         <h2 class="headline">
         July 1, 2020
@@ -73,7 +73,7 @@
             
                 <a href="https://lydiacai1203.github.io/tags/2020">2020</a>
             
-                <a href="https://lydiacai1203.github.io/tags/%E4%B8%A7">丧</a>
+                <a href="https://lydiacai1203.github.io/tags/%E5%9E%83%E5%9C%BE%E6%B4%BB">垃圾活</a>
             
         
         
@@ -91,6 +91,7 @@
 <th>perm_args</th>
 <th>created</th>
 <th>updated</th>
+<th>status</th>
 </tr>
 </thead>
 <tbody>
@@ -101,6 +102,7 @@
 <td>category=1, 2, 3&amp;status=1</td>
 <td>2020-01-01 00:00:00</td>
 <td>2020-01-01 00:00:00</td>
+<td>1</td>
 </tr>
 </tbody>
 </table>
@@ -111,6 +113,7 @@
 <th align="center">role_name</th>
 <th align="center">created</th>
 <th align="center">updated</th>
+<th>status</th>
 </tr>
 </thead>
 <tbody>
@@ -119,6 +122,7 @@
 <td align="center">super_user</td>
 <td align="center">2020-01-01 00:00:00</td>
 <td align="center">2020-01-01 00:00:00</td>
+<td>1</td>
 </tr>
 </tbody>
 </table>
@@ -130,6 +134,7 @@
 <th align="center">perm_id</th>
 <th align="center">created</th>
 <th align="center">updated</th>
+<th>status</th>
 </tr>
 </thead>
 <tbody>
@@ -139,6 +144,7 @@
 <td align="center">1</td>
 <td align="center">2020-01-01 00:00:00</td>
 <td align="center">2020-01-01 00:00:00</td>
+<td>1</td>
 </tr>
 </tbody>
 </table>
@@ -206,20 +212,20 @@
 <p>        这个权限系统几乎可以解决所有的权限需求的问题了，但是要达到控制数据权限级别的，不可避免地就要去在接口里面写具体的权限逻辑。另外还有一个问题就是，由于现在配置的权限不是原子化的，配置权限的时候不够灵活。如果要加在考虑之外的权限，权限就会变得多，且乱。所谓的不是原子化，就是 category=1, 2, 3&amp;status=1 如果原子化表示的话，应该是写成四条权限，(black_address_tags_read, category=1), (black_address_tags_read, category=2), (black_address_tags_read, category=3), (black_address_tags_read, status=1) 这样存。</p>
 <p>        但是要灵活，就要牺牲掉一些便利性。并且在整理权限的时候也会麻烦很多。当一个用户拥有很多权限的时候，配置权限也就变成了一个麻烦的工作。</p>
 <p>        这是两种配置方式，有各自的优缺点。</p>
-<p>        骚的是什么，骚的是有一个紧急的需求，但是赖哥非要大改，搞得原本半天可以做完的事情，现在要花三天做。而且非常执着要做，仿佛是知道自己快要被干掉了，极力想要证明自己还是有价值的。我们都不方便说什么，只能说陪着做陪着改。</p>
-<hr>
-<p>        赖哥不止一次开会说我能力不行如何如何，他并不想反思自己的问题。到后来大家就变成互相甩锅，不要让锅落到自己的头上。渐渐的我对这里已经失去了想要学习，想要展示个人价值，想要和公司共成长的想法了。</p>
-<hr>
-<p>        后来又出现了工期压缩一半的情况，我觉得我更讨厌这里了&hellip;</p>
-<hr>
-<p>        再后来我就知道了之前很信任的一位朋友在背后对我的评价，这位朋友之前没有写过代码，当了两年的产品经理，他和另一个人说我现在进步就膨胀了，觉得离开 huobi 能轻松找到一份工资更高的工作。(事实上我从来没有说过这句话，我也不知道为什么他会这样觉得)  说我现在有什么问题都是某人帮着解决（这真的是离谱，他真以为他什么问题都有人帮忙，我也是么）又说我根本干不了他能干的活，说我连数据库设计估计都玩不转。</p>
-<p>        当时听完这些话就哭了，没想到一个被我真心当作朋友的人会在背后说这些并不客观而且刻薄的话。这也是导致我在北京心态改变的一个原因之一。我不再真诚对待他。其实还知道了一些其他的事情，但是不方便写。于是那之后我就把所有的同事都屏蔽朋友圈了。不能再看到我的任何动态。</p>
-<p>        有一个人并没有对我有任何的维护。</p>
-<hr>
-<p>        我知道上面的这些很消极，我知道写出来让人看见，别人反而会想是不是我这个人真的有什么问题才会得到这样的评价。我觉得挺累的。真的挺累的。原本这件事情我以为我已经过去了，但是写到这里我还是觉得很伤心，还是觉得想逃离北京。这里让我对人不再坦诚相待。还有好多事情，都想说，都想写，可是一边写就会一边回忆，回忆细节，回忆痛苦，很难承受。我希望我今天写完这些东西以后再也不会来看这篇sb文章了。再写下去也都是一些主观的东西了，我怕我就要开始说脏话了。</p>
-<hr>
-<p>88</p>
-<p>反正我的人生肯定要过的比张博精彩，反正我的能力绝对不会比你差。</p>
+<p>三哥的优化方案：</p>
+<p>       抛弃掉 perm_args, 只保留 key, 也就是说, 将所有的权限拆分成最小权限，原本key='black_address_tags_read&rsquo;, perm_args='category=1&rsquo;。然后被他合并成 key='black_address_tags_read:category=1&rsquo;。写一个自动按照数据库字段生成权限的脚本来实现权限自动化，推广权限系统，让公司其他部门的同事都用上我们这套系统，增加我们团队的核心竞争力。</p>
+<h6 id="接下来是我的疯狂输出不一定对">接下来是我的疯狂输出。不一定对。</h6>
+<p>        <strong>从需求上来看</strong>，安全运营平台目前只有两个模块涉及到数据权限。领导的需求也只是想要在某一个模块上加数据权限的需求，这个需求原本是只需要花半天就可以修改完，上线了。三哥为了用上他的新方案，和我们犟了三天。我们仨轮翻上阵，对他设计的新系统提出疑问。</p>
+<p>        <strong>对于能解决的问题</strong>，他采用了极其迂回的道路解决。比如说某一个判断，如果从正向判断，你就需要加 20 条权限，但是如果你反向判断，你只需要加一条权限。但是代价就是你可能无法用统一的代码，需要在程序里面做特殊的处理。可是那又怎么样呢，哪有这么通用的权限系统呢，要是真的有的话，这样的模型早就有人搞出来了。</p>
+<p>        <strong>对于不能解决的问题</strong>，他就开始打太极，装听不懂你在说什么，或这就直接拿&quot;你说的这种情况根本不会出现，你不要过度设计，系统设计的越简单就越稳定，越复杂就越不稳定&quot;类似这样的话来堵你。<strong>我举个例子</strong>：假如给一个人分配了 admin 和 superuser 的权限，这个人是不是该有 admin 的权限？</p>
+<p>       <strong>从他设计的权限上来看</strong>，假如这个系统现在开设的账号有 20 个，就要在数据库里面存 20 条权限。假如说现在有一个字段 business(业务类型, value=1, 2, 3, 4, 5) 和 一个字段 type(告警类型 value=1, 2, 3, 4, 5)，假如说权限需要细分到这俩参数，三哥要我们把权限写成 business 和 type 的全排列，也就是说要写成 perm_name: business=1&amp;type=1 这样的形式，那么就要存 25 条权限。</p>
+<p>        我们说你这样配权限的人太麻烦了，他说，那我写个脚本搞成权限生成自动化。你这样生成权限是可以了，可是给什么人分配什么权限，给什么角色分配什么权限，这个怎么自动化脚本做？</p>
+<p>        我们说你这样设计不太行啊，不要把数据库的值直接和权限值耦合在一起，万一你这时候又新增一个用户，不就又要新增一条权限，还要新增一条用户权限/角色权限关系。他说，没关系啊，我写个 crontab, 每五分钟跑自动生成权限的脚本不行吗？我问，那就是说，如果新增了一个用户，给他分配了相应的权限，他还要五分钟以后才能看见数据是么？他说，不用五分钟啊，我一分钟跑一次不就完了吗？</p>
+<p>        他统一了权限 key 的名字，所有的模块都只有四种 key, 分别是 module_name_read/add/change/delete。比如说现在一个人有这个模块的 change 权限，一个是在审批上，一个是在更新上。审批的话这人是个法务，他可以审批所有申请。一个是更新上，他只能修改自己的申请。那么现在就要给 module_name_change 这个 key 配上权限, 一种是 module_name_change: create_user=self, 一种是 module_name_change: create_user=all （这里只是表达意思，create_user=all 这种， 配成权限的话要看当前系统的用户有几个），上述情况不就冲突了吗？是该用那个呢？</p>
+<p>        三哥说，这种情况我们不考虑！如果你非要解决的话就放一个无关的字段到参数里面，比如说普通更新的话就加一个 type 进来，写成 module_name_change: create_user=all&amp;type=1 这样用来区分。</p>
+<p>        我们就说，你无关的字段你不应该放到权限里面来，这样时间久了，文档又没有，你还记得当初这个 type 放进来的目的是什么吗？人家不听。</p>
+<p>       <strong>从推广角度来说</strong>，假如说我今天是要准备用他权限的人，我还要去理解他设计的系统，我要熟悉脚本的使用，我还要理解他写的那个三四百行的装饰器。我自己实现一个简单的权限系统也不难，我的成本也不大，我为什么要用他那个贼麻烦，而且也不能做到完全通用的脚本。</p>
+<p>        无语了&hellip;. 反正就是觉得烦的很。</p>
 
     </section>
 </article>
@@ -233,7 +239,7 @@
     </div>
     </a>
     <section id="sharing">
-        <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2flydiacai1203.github.io%2fpost%2frecord_of_a_destroy%2f - %e4%b8%a4%e7%a7%8d%e6%9d%83%e9%99%90%e7%b3%bb%e7%bb%9f%ef%bc%8c%e8%bf%98%e6%9c%89%e5%af%b9%e4%b9%8b%e5%89%8d%e5%8d%8a%e5%b9%b4%e7%9a%84%e5%a4%a7%e9%87%8f%e5%90%90%e6%a7%bd by @Your%20Twitter%20account"><span class="icon-twitter"> tweet</span></a>
+        <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2flydiacai1203.github.io%2fpost%2frecord_of_a_destroy%2f - %e4%b8%a4%e7%a7%8d%e6%9d%83%e9%99%90%e7%b3%bb%e7%bb%9f%ef%bc%8c%e4%b8%bb%e8%a6%81%e6%98%af%e5%90%90%e6%a7%bd%e4%b8%89%e5%93%a5%e7%9a%84%e8%ae%be%e8%ae%a1 by @Your%20Twitter%20account"><span class="icon-twitter"> tweet</span></a>
 
 <a class="facebook" href="#" onclick="
     window.open(
@@ -253,10 +259,6 @@
 
     
     
-    
-        <li>
-            <a href="https://lydiacai1203.github.io/post/is_not_true/">不要太认真<aside class="dates">Jan 22 2020</aside></a>
-        </li>
     
         <li>
             <a href="https://lydiacai1203.github.io/post/annoyement/">人生的三次成长<aside class="dates">Jan 13 2020</aside></a>

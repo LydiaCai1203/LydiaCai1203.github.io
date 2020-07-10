@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>垃圾活 on Hugo Cactus Theme</title>
+    <link>https://lydiacai1203.github.io/categories/%E5%9E%83%E5%9C%BE%E6%B4%BB/</link>
+    <description>Recent content in 垃圾活 on Hugo Cactus Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 01 Jul 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://lydiacai1203.github.io/categories/%E5%9E%83%E5%9C%BE%E6%B4%BB/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>两种权限系统，主要是吐槽三哥的设计</title>
+      <link>https://lydiacai1203.github.io/post/record_of_a_destroy/</link>
+      <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lydiacai1203.github.io/post/record_of_a_destroy/</guid>
+      <description>过年那段时间真的太难受了。这期间遭受了很多事情。 但是我现在记不住太多东西了。朋友圈里多了很多人，三家公司，三家公司的同事。我不能和以前一样在里面抱怨什么了。赖哥的骚操作积累的太多，我都写不完。
+ 安全运营平台当时设计权限系统的时候，权限上分了两部分，一个是功能权限，一个是数据权限。功能权限控制是否能访问接口，数据权限控制返回的数据，不具有完全的数据权限的只会返回部分数据。考虑到用户配置的方便性，还有工时等限制，最后采用了参数控制的方式。这样说不是很直观，下面简单说明一下权限表的设计。
+   id perm_name perm_key perm_args created updated status     1 地址标签库 - 黑地址标签 - 读 black_address_tags_read category=1, 2, 3&amp;amp;status=1 2020-01-01 00:00:00 2020-01-01 00:00:00 1       id role_name created updated status     1 super_user 2020-01-01 00:00:00 2020-01-01 00:00:00 1       id role_id perm_id created updated status     1 1 1 2020-01-01 00:00:00 2020-01-01 00:00:00 1       id user_name created updated     1 caiqingjing 2020-01-01 00:00:00 2020-01-01 00:00:00       id user_id role_id created updated     1 1 1 2020-01-01 00:00:00 2020-01-01 00:00:00       id user_id perm_id created updated     1 1 2 2020-01-01 00:00:00 2020-01-01 00:00:00    应用场景：</description>
+    </item>
+    
+  </channel>
+</rss>
