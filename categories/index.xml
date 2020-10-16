@@ -6,10 +6,19 @@
     <description>Recent content in Categories on Hugo Cactus Theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 01 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://lydiacai1203.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>骚话</title>
+      <link>https://lydiacai1203.github.io/categories/%E9%AA%9A%E8%AF%9D/</link>
+      <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lydiacai1203.github.io/categories/%E9%AA%9A%E8%AF%9D/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>垃圾活</title>
@@ -17,15 +26,6 @@
       <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lydiacai1203.github.io/categories/%E5%9E%83%E5%9C%BE%E6%B4%BB/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>骚话</title>
-      <link>https://lydiacai1203.github.io/categories/%E9%AA%9A%E8%AF%9D/</link>
-      <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://lydiacai1203.github.io/categories/%E9%AA%9A%E8%AF%9D/</guid>
       <description></description>
     </item>
     
