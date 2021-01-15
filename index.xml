@@ -6,10 +6,19 @@
     <description>Recent content on Hugo Cactus Theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 08 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 15 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://lydiacai1203.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>千万不要点进来看</title>
+      <link>https://lydiacai1203.github.io/post/little_nervous/</link>
+      <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lydiacai1203.github.io/post/little_nervous/</guid>
+      <description>都叫你不要点进来，你还要点进来，你是不是喜欢我？  唉，永远赶不上你的脚步。</description>
+    </item>
     
     <item>
       <title>记录复习进度</title>
@@ -19,7 +28,7 @@
       <guid>https://lydiacai1203.github.io/post/made_me_blue/</guid>
       <description> 这一年技术上的成长不多，社会教做人了。千言万语都可以总结成一句话，只有利益是永恒的。
  可能真的是在财联社的时候，环境太融洽了，导致我以为所有的公司都是这样。永远不要指望别人来为你解决问题，除非真的用的到你。明年五月份之前我必须要走了，在这里也不过是浪费光阴，没有意思。何必和这样的人一起腐烂呢？
- MySQL 第一轮复习结束 Redis 和 MongoDB 第一轮复习(未复习) RabbitMQ 和 Kafka 第一轮复习结束 Docker 第一轮复习结束 算法 - 动态规划(正在攻克) 算法 - 基础排序(未复习) Elasticsearch 第一轮复习(未复习) Tornado 和 Flask 还有 Django 框架基础第一轮复习(未复习) Git 基础通关结束  每日基础计划  一道动态规划 一章基础组件使用复习  </description>
+ MySQL 第一轮复习结束 Redis 和 MongoDB 第一轮复习(未复习) RabbitMQ 和 Kafka 第一轮复习结束 Docker 第一轮复习结束 算法 - 动态规划(正在攻克) 算法 - 基础排序(未复习) Elasticsearch 第一轮复习(2.x 快要结束，巩固一遍内部原理然后看 7.x) Tornado 和 Flask 还有 Django 框架基础第一轮复习(未复习) Git 基础通关结束  每日基础计划  一道动态规划 一章基础组件使用复习  </description>
     </item>
     
     <item>
