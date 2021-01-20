@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>blue on Hugo Cactus Theme</title>
+    <link>https://lydiacai1203.github.io/tags/blue/</link>
+    <description>Recent content in blue on Hugo Cactus Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 20 Jan 2021 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://lydiacai1203.github.io/tags/blue/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>吃一堑长一智</title>
+      <link>https://lydiacai1203.github.io/post/sick_sth/</link>
+      <pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lydiacai1203.github.io/post/sick_sth/</guid>
+      <description>最近发生了一些非常不好的事情，y老师，前有网络拓扑，后有mgt新增权限，让我对人性有了新的认识。
+ 老实说，我以前总觉得，做人要有底线，有风骨。但是我还是忍不住为一些人的所作所为而感到震惊。
+ 之前我意味她专心专研技术，意味她瞧不上黑子，就不会做和黑子一样的事情，没想到在快走的时候，面对真正的利益的时候，一切都不一样了。不过即使这样，我也不屑。以后分配工作的时候，一定要一开始就分配好，免得时候耍阴招。过年我要更抓紧复习，早点离开这里，这些烂摊子，就留给她黑子吧。</description>
+    </item>
+    
+  </channel>
+</rss>

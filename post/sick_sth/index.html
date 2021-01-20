@@ -7,7 +7,7 @@
 <meta name="author" content="阿菜">
 <meta name="description" content="阿菜的骚话天地">
 <meta name="generator" content="Hugo 0.62.2" />
-<title>what is k8s?</title>
+<title>年味</title>
 <link rel="shortcut icon" href="https://lydiacai1203.github.io/images/favicon.ico">
 <link rel="stylesheet" href="https://lydiacai1203.github.io/css/style.css">
 <link rel="stylesheet" href="https://lydiacai1203.github.io/css/highlight.css">
@@ -21,26 +21,26 @@
 <link href="https://lydiacai1203.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Hugo Cactus Theme" />
 
 
-<meta property="og:title" content="what is k8s?" />
-<meta property="og:description" content="组长教学系列" />
+<meta property="og:title" content="年味" />
+<meta property="og:description" content="热闹是别人的" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lydiacai1203.github.io/post/what_is_k8s/" />
-<meta property="article:published_time" content="2019-05-04T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-05-04T00:00:00+00:00" />
+<meta property="og:url" content="https://lydiacai1203.github.io/post/sick_sth/" />
+<meta property="article:published_time" content="2021-01-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-01-20T00:00:00+00:00" />
 
 
-<meta itemprop="name" content="what is k8s?">
-<meta itemprop="description" content="组长教学系列">
-<meta itemprop="datePublished" content="2019-05-04T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-05-04T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="13">
+<meta itemprop="name" content="年味">
+<meta itemprop="description" content="热闹是别人的">
+<meta itemprop="datePublished" content="2021-01-20T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-01-20T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="36">
 
 
 
-<meta itemprop="keywords" content="2019,科技," />
+<meta itemprop="keywords" content="2021,过年," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="what is k8s?"/>
-<meta name="twitter:description" content="组长教学系列"/>
+<meta name="twitter:title" content="年味"/>
+<meta name="twitter:description" content="热闹是别人的"/>
 <meta name="twitter:site" content="@https://www.twitter.com/"/>
 
 
@@ -63,33 +63,31 @@
         
 <article class="post">
     <header>
-        <h1>what is k8s?</h1>
-        <h2 class="subtitle">组长教学系列</h2>
+        <h1>年味</h1>
+        <h2 class="subtitle">热闹是别人的</h2>
         <h2 class="headline">
-        May 4, 2019
+        January 20, 2021
         <br>
         
         
             
-                <a href="https://lydiacai1203.github.io/tags/2019">2019</a>
+                <a href="https://lydiacai1203.github.io/tags/2021">2021</a>
             
-                <a href="https://lydiacai1203.github.io/tags/%E7%A7%91%E6%8A%80">科技</a>
+                <a href="https://lydiacai1203.github.io/tags/%E8%BF%87%E5%B9%B4">过年</a>
             
         
         
         </h2>
     </header>
     <section id="post-body">
-        <h3 id="part_one-基本结构介绍">part_one: 基本结构介绍</h3>
-<p><img src="/images/k8s_structure.png" alt="">
-  Node可以理解为物理资源，在K8s里面可操作的最小单元就是Pod，我们可以通过配置Pod配置文件的template字段来控制一个Pod里面有哪几种Container，但是不能控制一个Pod里面有几种container。Pod配置里面的template说明了要启动的容器是怎么样的，最重要的就是image的信息。</p>
-<p>  后来由于需要部署的服务越来越多，每个Pod都是人工手动启动或者是删除检查的。所以后来产生了ReplicaController，有了这个东西以后就可以指定每个服务所要启动的Pods。这里的selector就是现在RC管理的下，还有哪些Pod是存活的。然后template就是指的是要启动的Pod是什么样子的。</p>
-<p>  但是后来又遇到了滚动升级的问题(滚动升级：比如现在一个服务要从v1升级到v2，当时人工的处理方法就是将v1的Replica:3-&gt;Replica:2, 然后将v2的配置文件里面配上Replica:1，后续的动作依次类推)。这样也耗费了大量的人力。</p>
-<p>  所以这时候Deployment就出现了，但是由于ReplicaController还有一些涉及的不好的地方，所以为了更好地与Deployment进行配合，于是就出现了ReplicaSet。</p>
-<p>  <strong>所以Deployment就是控制ReplicaSet的，Deployment里面可以看见RS和Pod两个东西的内容。</strong></p>
-<p>  Pod在K8s里面，这是一个不稳定的东西，每次死掉以后再挂起来，Pod的IP都会发生变化。那怎么去准确地找到哪一个Pod呢？(这个和endpoint也有一点关系)但是一个服务起了多个Pod，这时候如果有流量过来应该分配给哪个Pod呢？于是就出现了Service，这个Service起到了一个所谓的负载均衡的作用。每一个Service在这个集群里都有唯一确定的IP，这样就可以找到一群Pods，然后每个Pod都由endpoint进行标识。</p>
-<p>  但是Service还是在这个虚拟网络里面的，外面用户来的流量应该怎么对应到指定的Service上面呢。之前说到外网想要连到百度云的服务器所在的私网的时候，使用的是VPN。但是我们不可能让用户都装上一个VPN Client。都进行验证。都建立一个虚拟专用网络。所以就出现了IngressController。这个东西可以简单地理解为是Nginx，可以实现反向代理。</p>
-<p>  外部的流量会直接访问域名通过ip查询会命中Nginx中配置当中的public ip，这时候会把流量导向Service。但是这个对应的实现就是，Ingress实际上就是一种映射机制，定义了映射规则。在IngressController里面存在这一份vhost,这个里面存在service_ip和port的映射。这样就可以实现外部网络访问内部对应的pod了。</p>
+        <p>​		本来，该开心的，因为今天终于可以专心复习了。</p>
+<p>​		周一的时候被 YYQ 算计了，一开始说好一起先补数据，结果数据还没补完，她就去做了 MGT 新增权限规则-修改旧规则 的任务。还叫我不要做补数据了，说补数据那个不着急。我说那既然你都选了这个权限的了，那我去做 敏感用户(另一个模块) 的吧。然后她说，敏感用户的简单，新增权限的难，排了两天可能来不及做了，你去做另外一个 新系统新增权限 的任务吧。好家伙，我直呼好家伙。她做的需求数据是扁平化的，而且不需要修改逻辑，只需要改变数据获取方式，把旧数据源 替换为 新数据源 即可。分给我的这个，不仅仅要了解之前规则的逻辑，熟悉新的权限系统，梳理新的数据表关系，要将树形数据全部扁平化处理，获得所有的分支的父子路径。</p>
+<p>​		前有网络拓扑，后有新增权限，她让我刷新了对人性的认知。我只觉得世界好喧嚣，人好复杂。虽然她把难的分给了我，我也在两天内做完了。不过她分给自己的那个呢？一天内就做完了。以前我还以为我和她是同仇敌忾，一起抵抗黑子的暴权统治，原来并非如此。她只是一只披着羊皮的狼。我恨自己愚蠢，为什么还能第二次被坑。第一次我其实心里一清二楚了，只是当时想自己会不会有点太小心眼了，想吃吃亏就算了，反正也就这一次。我现在明白了，她只要一遇到难的需求，还是会丢给我的，真正的利益面前，同事只是同事，不会成为朋友。</p>
+<p>​		而现在的利益，就是 复习的时间。</p>
+<p>​		很悲哀，我真的很不愿意这样想，我总想问一句，为什么我真心待人，真心却换不来真心。她明明深受黑子其害，对黑子的不公平的做法深恶痛绝，为什么自己要做一样的事情，己所不欲，为什么还要施加于人。老实说，我现在只想快点离开这里，狼的世界，我好像并不适合&hellip;&hellip;.</p>
+<p>​		这就是一个 失败者 的自白&hellip;</p>
+<p>​		跑题了&hellip;. 过年，依旧是一个悲伤的话题。和春玲讨论的过年的风俗，我回想起自己过去的几年，似乎我不知道 “年味” 到底是什么意思。我一直在奶奶家长大，我的年夜饭都比所有人早一天吃，等到我吃年夜饭的时候，只有我和奶奶。我不愿意和老蔡去后妈家过年，看人眼色。也不想丢下奶奶一个人去太后家里，太后总是有很多生气的事情，很多唠叨的事情，应对之间让我身心俱疲。</p>
+<p>​		我很不愿意这样悲观，毕竟我从大三就是靠自己一个人走到现在。今年过年借着疫情的借口不回家了。在家里七天专心复习，寻找另一个&hellip;. 存在真善美的地方，适合我的地方。无论如何&hellip; 我也要当一个有底线，有道德，善良正义的人。绝不与他们一样。绝不可能。</p>
 
     </section>
 </article>
@@ -103,7 +101,7 @@
     </div>
     </a>
     <section id="sharing">
-        <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2flydiacai1203.github.io%2fpost%2fwhat_is_k8s%2f - what%20is%20k8s%3f by @Your%20Twitter%20account"><span class="icon-twitter"> tweet</span></a>
+        <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2flydiacai1203.github.io%2fpost%2fsick_sth%2f - %e5%b9%b4%e5%91%b3 by @Your%20Twitter%20account"><span class="icon-twitter"> tweet</span></a>
 
 <a class="facebook" href="#" onclick="
     window.open(
@@ -123,10 +121,6 @@
 
     
     
-    
-        <li>
-            <a href="https://lydiacai1203.github.io/post/sick_sth/">年味<aside class="dates">Jan 20 2021</aside></a>
-        </li>
     
         <li>
             <a href="https://lydiacai1203.github.io/post/es_quickstart/">Elasticsearch2.x 权威文档 （摘抄）<aside class="dates">Jan 15 2021</aside></a>
@@ -154,6 +148,10 @@
     
         <li>
             <a href="https://lydiacai1203.github.io/post/analyse_image_layer/">docker image的实现原理以及registry相关的一块知识<aside class="dates">May 4 2019</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/what_is_k8s/">what is k8s?<aside class="dates">May 4 2019</aside></a>
         </li>
     
         <li>

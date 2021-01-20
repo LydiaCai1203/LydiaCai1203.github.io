@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>2021 on Hugo Cactus Theme</title>
-    <link>https://lydiacai1203.github.io/tags/2021/</link>
-    <description>Recent content in 2021 on Hugo Cactus Theme</description>
+    <title>过年 on Hugo Cactus Theme</title>
+    <link>https://lydiacai1203.github.io/categories/%E8%BF%87%E5%B9%B4/</link>
+    <description>Recent content in 过年 on Hugo Cactus Theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 20 Jan 2021 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://lydiacai1203.github.io/tags/2021/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lydiacai1203.github.io/categories/%E8%BF%87%E5%B9%B4/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -25,18 +25,6 @@
 ​	这就是一个 失败者 的自白&amp;hellip;
 ​	跑题了&amp;hellip;. 过年，依旧是一个悲伤的话题。和春玲讨论的过年的风俗，我回想起自己过去的几年，似乎我不知道 “年味” 到底是什么意思。我一直在奶奶家长大，我的年夜饭都比所有人早一天吃，等到我吃年夜饭的时候，只有我和奶奶。我不愿意和老蔡去后妈家过年，看人眼色。也不想丢下奶奶一个人去太后家里，太后总是有很多生气的事情，很多唠叨的事情，应对之间让我身心俱疲。
 ​	我很不愿意这样悲观，毕竟我从大三就是靠自己一个人走到现在。今年过年借着疫情的借口不回家了。在家里七天专心复习，寻找另一个&amp;hellip;. 存在真善美的地方，适合我的地方。无论如何&amp;hellip; 我也要当一个有底线，有道德，善良正义的人。绝不与他们一样。绝不可能。</description>
-    </item>
-    
-    <item>
-      <title>Elasticsearch2.x 权威文档 （摘抄）</title>
-      <link>https://lydiacai1203.github.io/post/es_quickstart/</link>
-      <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://lydiacai1203.github.io/post/es_quickstart/</guid>
-      <description>Elasticsearch2.x 权威文档 （摘抄） 很多用法都已经过时，看完这个我打算再看一下 7.x。仅作为快速查阅的工具文档使用，可能不会和原文一致。希望尽量做到精简。 有一些模块因为暂时使用不到所以选择不看，毕竟没有应用的情况下是很容易忘记的。
-面向文档 Elasticsearch 是 面向文档 的，意味着它存储整个对象或文档，Elasticsearch 不仅存储文档，而且 索引 每个文档的内容，使之可以被检索。在 Elasticsearch 中，我们对文档(而不是对行列数据)进行索引、检索、排序、过滤，这也是 Elasticsearch 能支持复杂全文检索的原因。
-JSON Elasticsearch 使用 JavaScript Object Notation (JSON) 作为文档的序列化格式。具体可以看 serialization 和 marshalling 两个处理模块。
-几个名词  索引 .n  一个索引类似于一个数据库，是一个存储文档的地方。   索引 .v  索引一个文档就是存储一个文档到一个索引中以便于被检索或是被查询。类似于 insert, 当文档已存在时(_id已有) 会进行更新。   倒排索引  倒排索引被作用在文档上，以便于提升数据的检索速度。默认的，文档中的每一列都有倒排索引，没有倒排索引的属性是不可能被搜索到的。    检索文档  GET - /index/mapping/id 即可检索出 ID 对应的对象   GET - /index/mapping/_search 用于检索所有的对象(一个搜索默认返回十条结果, 放在 hits 中)    GET - /index/mapping/_search?</description>
     </item>
     
   </channel>
