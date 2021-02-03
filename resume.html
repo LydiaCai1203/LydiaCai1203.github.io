@@ -2,20 +2,22 @@
 <html>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>Resume</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
+<title>Resume</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit inherit; background-repeat: inherit inherit; }
 iframe { margin: auto; }
 a.url { word-break: break-all; }
 a:active, a:hover { outline: 0px; }
 .in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
 #write.first-line-indent p { text-indent: 2em; }
 #write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
 #write.first-line-indent li { margin-left: 2em; }
 .for-image #write { padding-left: 8px; padding-right: 8px; }
 body.typora-export { padding-left: 30px; padding-right: 30px; }
 .typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
 @media screen and (max-width: 500px) { 
   body.typora-export { padding-left: 0px; padding-right: 0px; }
   #write { padding-left: 20px; padding-right: 20px; }
@@ -31,7 +33,7 @@ input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px;
 #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
 #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
 p { line-height: inherit; }
-h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
 p { orphans: 4; }
 h1 { font-size: 2rem; }
 h2 { font-size: 1.8rem; }
@@ -47,7 +49,7 @@ sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7019
 sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
 #write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
 figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
-figure > table { margin: 0px !important; }
+figure > table { margin: 0px; }
 tr { break-inside: avoid; break-after: auto; }
 thead { display: table-header-group; }
 table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
@@ -76,28 +78,31 @@ div.hr:focus { cursor: none; }
 li div { padding-top: 0px; }
 blockquote { margin: 1rem 0px; }
 li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
 li { margin: 0px; position: relative; }
 blockquote > :last-child { margin-bottom: 0px; }
 blockquote > :first-child, li > :first-child { margin-top: 0px; }
 .footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
 #write .footnote-line { white-space: pre-wrap; }
 @media print { 
-  body, html { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; }
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; font-variant-ligatures: no-common-ligatures; }
   #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
   .typora-export * { -webkit-print-color-adjust: exact; }
-  html.blink-to-pdf { font-size: 13px; }
-  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid-page; }
+  .typora-export #write { break-after: avoid-page; }
   .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
 }
 .footnote-line { margin-top: 0.714em; font-size: 0.7em; }
 a img, img a { cursor: pointer; }
 pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
 p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
 p > .md-image:only-child { display: inline-block; width: 100%; }
 #write .MathJax_Display { margin: 0.8em 0px 0px; }
 .md-math-block { width: 100%; }
 .md-math-block:not(:empty)::after { display: none; }
-[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
 .md-task-list-item { position: relative; list-style-type: none; }
 .task-list-item.md-task-list-item { padding-left: 0px; }
 .md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
@@ -141,12 +146,22 @@ a.md-print-anchor { white-space: pre !important; border: none !important; displa
 .MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
 .os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
 .md-diagram-panel > svg { max-width: 100%; }
-[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; height: auto; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
 [lang="mermaid"] .node text { font-size: 1rem; }
 table tr th { border-bottom-width: 0px; }
 video { max-width: 100%; display: block; margin: 0px auto; }
 iframe { max-width: 100%; width: 100%; border: none; }
 .highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); background-position: initial initial; background-repeat: initial initial; }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print { 
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-require-zoom-fix foreignObject { font-size: var(--mermaid-font-zoom); }
 
 
 :root {
@@ -156,12 +171,16 @@ iframe { max-width: 100%; width: 100%; border: none; }
 
 @include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
 
-html {
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
     font-size: 16px;
 }
 
 body {
-    font-family: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: rgb(51, 51, 51);
     line-height: 1.6;
 }
@@ -172,6 +191,19 @@ body {
   	padding: 30px;
     padding-bottom: 100px;
 }
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
 #write > ul:first-child,
 #write > ol:first-child{
     margin-top: 30px;
@@ -226,17 +258,33 @@ h6 code {
     font-size: inherit;
 }
 h1 {
-    padding-bottom: .3em;
     font-size: 2.25em;
     line-height: 1.2;
     border-bottom: 1px solid #eee;
 }
 h2 {
-   padding-bottom: .3em;
     font-size: 1.75em;
     line-height: 1.225;
     border-bottom: 1px solid #eee;
 }
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
 h3 {
     font-size: 1.5em;
     line-height: 1.43;
@@ -309,26 +357,24 @@ table tr:nth-child(2n),
 thead {
     background-color: #f8f8f8;
 }
-table tr th {
+table th {
     font-weight: bold;
     border: 1px solid #dfe2e5;
     border-bottom: 0;
-    text-align: left;
     margin: 0;
     padding: 6px 13px;
 }
-table tr td {
+table td {
     border: 1px solid #dfe2e5;
-    text-align: left;
     margin: 0;
     padding: 6px 13px;
 }
-table tr th:first-child,
-table tr td:first-child {
+table th:first-child,
+table td:first-child {
     margin-top: 0;
 }
-table tr th:last-child,
-table tr td:last-child {
+table th:last-child,
+table td:last-child {
     margin-bottom: 0;
 }
 
@@ -489,41 +535,48 @@ header, .context-menu, .megamenu-content, footer{
     border-color: #e5e5e5;
 }
 
- .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+ :root {--mermaid-font-zoom:1em ;} 
 </style>
 </head>
-<body class='typora-export' >
-<div  id='write'  class = 'is-mac'> <center>
+<body class='typora-export'>
+<div id='write'  class=''> <center>
      <h1>蔡箐菁</h1>
-     <!-- <img src="assets/photo.jpg" width="120px"> -->
      <div>
          <span>
-             <img src="assets/phone-solid.svg" width="18px" onerror="this.style.display = 'none';">
+             <img src="assets/phone-solid.svg" width="18px">
              18222558817
          </span>
          ·
          <span>
-             <img src="assets/envelope-solid.svg" width="18px" onerror="this.style.display = 'none';">
+             <img src="assets/envelope-solid.svg" width="18px">
              caiqj1203@gmail.com
          </span>
          ·
          <span>
-             <img src="assets/github-brands.svg" width="18px" onerror="this.style.display = 'none';">
+             <img src="assets/github-brands.svg" width="18px">
              <a href="https://github.com/LydiaCai1203">LydiaCai1203</a>
          </span>
          ·
          <span>
-             <img src="assets/rss-solid.svg" width="18px" onerror="this.style.display = 'none';">
-             <a href="https://lydiacai1203.github.io/blog.html">MyBlog</a>
+             <img src="assets/rss-solid.svg" width="18px">
+             <a href="#">My Blog</a>
          </span>
-         
-         <span style="display:none;">
-            <img src="assets/rss-solid.svg" width="18px" onerror="this.style.display = 'none';">
-            <a href="fengkaiqi19970711">如果你看到了隐藏的标签，就加我的微信吧。很高兴认识你</a>
-        </span>
      </div>
- </center><h2><a name="%3Cimg-src=%22assets/info-circle-solid.svg%22-width=%2230px%22%3E-%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF" class="md-header-anchor"></a><img src="assets/info-circle-solid.svg" width="30px"><span> 个人信息 </span></h2><ul><li><span>女，1995.12.03</span></li><li><span>求职意向：Python工程师、数据分析师</span></li><li><span>工作经验：1 年</span></li><li><span>期望薪资：15k</span></li></ul><h2><a name="%3Cimg-src=%22assets/graduation-cap-solid.svg%22-width=%2230px%22%3E-%E6%95%99%E8%82%B2%E7%BB%8F%E5%8E%86" class="md-header-anchor"></a><img src="assets/graduation-cap-solid.svg" width="30px"><span> 教育经历</span></h2><ul><li><span>学士，南开大学滨海学院，数字媒体技术专业，2015.9~2019.6</span></li><li><span>学分绩：85.085，专业前 5%</span></li><li><span>通过了 CET6英语等级考试，具有良好的英文文档阅读能力</span></li><li><span>通过了 全国计算机等级考试 二级(C++)</span></li><li><span>获得 第八届蓝桥杯全国软件和信息技术专业人才大赛天津赛区 C/C++程序设计大学B组 二等奖</span></li></ul><h2><a name="%3Cimg-src=%22assets/briefcase-solid.svg%22-width=%2230px%22%3E-%E5%B7%A5%E4%BD%9C%E7%BB%8F%E5%8E%86" class="md-header-anchor"></a><img src="assets/briefcase-solid.svg" width="30px"><span> 工作经历</span></h2><ul><li><strong><span>上海财联社金融科技有限公司（财联社作为金融垂直领域排名第一的APP，为用户提供快速精准的咨询服务），技术部项目一组，Python工程师，2018.8~至今</span></strong></li></ul><h2><a name="%3Cimg-src=%22assets/project-diagram-solid.svg%22-width=%2230px%22%3E-%E9%A1%B9%E7%9B%AE%E7%BB%8F%E5%8E%86" class="md-header-anchor"></a><img src="assets/project-diagram-solid.svg" width="30px"><span> 项目经历</span></h2><ul><li><p><strong><span>智能信息抓取后端系统</span></strong></p><ul><li><p><span>项目简介：</span></p><ul><li><span>作为财联社的核心系统，对2万+的数据源头进行爬取, 其中web源达到1.5万+，微博源在2k+，微信源在3k+。每个数据源的更新频率控制在3s左右，每天爬取到10万+的有效网页。在爬虫系统的支撑下，财联社保持金融媒体资讯最快速的APP，行业排名第一。</span></li></ul></li><li><p><span>使用了以下相关的技术：</span></p><ul><li><em><span>后端web框架：Django、Flask</span></em></li><li><em><span>数据库：MySQL、Redis、MongoDB</span></em></li><li><em><span>任务分发工具以及进程管理工具：Celery、Supervisor、Crontab</span></em></li><li><em><span>部署：Docker、k8s</span></em></li></ul></li><li><p><span>主要功能：</span></p><ul><li><span>爬取用户期望监控的网站列表页的内容 以及 特定微信公众号发布的内容 以及 微博用户发布的内容，将数据整理成统一的格式存进数据库中。提供相应接口，供用户对数据进行基础的增删改查操作，得到快速准确的数据。</span></li></ul></li><li><p><span>我负责的部分：</span></p><ul><li><p><span>web爬虫的设计与开发</span>
-<span>该通用爬虫系统满足多种形式的的内容爬取，采用分布式任务队列Celery，每小时的爬取次数达50万+次，保证1.5万+的数据源，每个数据源在一分钟内至少能被抓取1-3次。</span></p></li><li><p><span>微信爬虫的设计与开发</span>
-<span>微信爬虫系统可以同时容纳5个微信爬虫同时进行数据爬取，即能同时监控5000个公众号，实时地获取公众号推送。</span></p></li><li><p><span>正文爬虫的设计与开发以及优化</span></p><ul><li><span>第一版本借助的是第三方开源库newspaper进行的正文获取，爬取率在百分之五十左右。</span></li><li><span>第二版本通过结合XPath与JS动态渲染引擎，完成多种形式内容的抓取。支持预定义和自定义的正文标签，有效实现精准正文提取与广告过滤的功能，与开源库newspaper相比准确率提升30%，达到85%。</span></li></ul></li><li><p><span>独立爬虫的开发</span></p><ul><li><span>独立完成深交所网站、银保监等反爬措施做的较好的网站的爬虫开发。</span></li></ul></li><li><p><span>后续小组人员变动主动接管智能信息抓取后端系统，承担主要开发责任，以及负责项目维护和优化，掌握整个智能信息爬取后端系   统的运作流程，以及技术开发难点。</span></p></li></ul></li></ul></li><li><p><strong><span>智能文章拼接系统</span></strong></p></li><li><p><span>使用了以下相关的技术：</span></p><ul><li><p><em><span>后端web框架：Django</span></em></p><ul><li><em><span>自动化测试工具：Selenium</span></em></li><li><em><span>数据库：MySQL、MongoDB</span></em></li><li><em><span>进程管理工具：Supervisor、Crontab</span></em></li></ul></li><li><p><span>主要功能：</span></p><ul><li><span>将用户填入的信息、以及携带特定信息请求其它接口获得指定数据整合成一篇文章供用户阅览。</span></li></ul></li><li><p><span>我负责的部分：</span></p><ul><li><span>与产品确认需求。</span></li><li><span>与前端开发人员以及其他的后端开发人员确认接口的数据格式，以便进行准确、快速项目开发。</span></li><li><span>负责基础增删改查接口的开发以及文章页面结构的开发和数据处理拼接。</span></li><li><span>负责接口文档的开发。</span></li><li><span>负责项目的运维工作。</span></li></ul></li></ul></li><li><p><strong><span>原创文章转载监控系统</span></strong></p><ul><li><p><span>使用了以下相关的技术：</span></p><ul><li><em><span>后端web框架：Django</span></em></li><li><em><span>数据库：MySQL</span></em></li><li><em><span>进程管理工具：Supervisor、Crontab</span></em></li></ul></li><li><p><span>主要功能：</span></p><ul><li><span>监控财联社原创文章被转载且被百度收录的情况。</span></li></ul></li><li><p><span>我负责的部分：</span></p><ul><li><span>与产品确认需求。</span></li><li><span>文章监控显示页面的开发。</span></li><li><span>原创文章爬虫 以及 监控爬虫的开发。</span></li><li><span>原创文章转载监控后台系统的开发。</span></li><li><span>负责项目的运维工作。</span></li></ul></li></ul></li></ul><h2><a name="%3Cimg-src=%22assets/tools-solid.svg%22-width=%2230px%22%3E-%E6%8A%80%E8%83%BD%E6%B8%85%E5%8D%95" class="md-header-anchor"></a><img src="assets/tools-solid.svg" width="30px"><span> 技能清单</span></h2><ul><li><span>★★★ Python</span></li><li><span>★★☆ C++、Java</span></li><li><span>★★★ MySQL</span></li><li><span>★★☆ Redis</span></li><li><span>★★☆ MongoDB</span></li><li><span>★★☆ Celery、Crontab、Supervisor</span></li><li><span>★☆☆ RabbitMQ、Kafka</span></li><li><span>★☆☆ Docker</span></li><li><span>★☆☆ Git</span></li></ul></div>
+   	 <div>
+       <a href="https://github.com/LydiaCai1203/Felix">我基于 Tornado 写的一个非常简单的后端框架</a>
+     </div>
+ </center><p>&nbsp;</p><h2><a name="img-srcassetsinfo-circle-solidsvg-width30px-个人信息" class="md-header-anchor"></a><img src="assets/info-circle-solid.svg" width="30px"><span> 个人信息 </span></h2><ul><li><span>女，1995.12.03</span></li><li><span>求职意向：Python 高级开发工程师</span></li><li><span>工作经验：3 年</span></li><li><span>期望薪资：22k</span></li></ul><h2><a name="img-srcassetsgraduation-cap-solidsvg-width30px-教育经历" class="md-header-anchor"></a><img src="assets/graduation-cap-solid.svg" width="30px"><span> 教育经历</span></h2><ul><li><span>学士，南开大学滨海学院(全日制本科, 学信网可查)，数字媒体技术专业，2015.9~2019.6</span></li><li><span>英语 CET6 ，具有良好的英文文档阅读能力</span></li><li><span>第八届蓝桥杯全国软件和信息技术专业人才大赛天津赛区 C/C++程序设计大学B组 二等奖</span></li></ul><h2><a name="img-srcassetsbriefcase-solidsvg-width30px-工作经历" class="md-header-anchor"></a><img src="assets/briefcase-solid.svg" width="30px"><span> 工作经历</span></h2><ul><li><strong><span>海南新软软件有限公司(火币中国)，现北京总部，平台治理部门，Python开发工程师，2019.11~至今</span></strong></li><li><strong><span>上海正见文化传播有限公司(财联社)，技术部项目一组，Python开发工程师，2018.8~2019.10</span></strong></li></ul><h2><a name="img-srcassetsproject-diagram-solidsvg-width30px-项目经历" class="md-header-anchor"></a><img src="assets/project-diagram-solid.svg" width="30px"><span> 项目经历</span></h2><ul><li><p><strong><span>安全运营平台(5人)</span></strong></p><ul><li><p><span>涉及相关的技术：</span></p><ul><li><em><span>后端 web 框架：Tornado、Flask</span></em></li><li><em><span>消息队列：RabbitMQ, Kafka</span></em></li><li><em><span>数据库：MySQL、Hive、Redis、ElasticSearch</span></em></li><li><em><span>任务分发工具以及进程管理工具：Supervisor、Crontab</span></em></li><li><em><span>部署：Nginx、Docker、GitLab CI/CD</span></em></li></ul></li><li><p><span>主要功能：</span></p><ul><li><span>平台主要由 </span><strong><span>调证工具</span></strong><span> 和 </span><strong><span>安全监控及分析工具</span></strong><span> 两大模块组成。调证工具的主要职责是调证过程规范自动化</span><strong><span>。</span></strong><span>安全监控及分析工具的主要职责是围绕安全监控产生的告警，通过使用平台内的各种分析工具，对告警进行分析和及时处置。</span></li></ul></li><li><p><span>我负责的部分：</span></p><ul><li><p><strong><span>平台权限模块开发</span></strong></p><p><span>基于传统的 RBAC 模式，引入权限组概念代替角色，支持模块级别和数据级别的权限划分。更好保证数据安全。</span></p></li><li><p><strong><span>调证任务数据采集模块 + 调证后端开发</span></strong></p><p><span>根据用户基础信息，调取信息为警方提供证据。保证调证合规规范高效地进行。</span></p></li><li><p><strong><span>部分告警监控开发</span></strong></p><p><span>异常盘面监控、OTC 绑卡交易监控、高频充提监控、混币交易监控</span></p></li><li><p><strong><span>告警事件模块开发</span></strong>
+<span>采用生产者消费者设计模式录入告警，重复告警去重、关联告警合并，方便进行告警回溯，帮助安全人员分析攻击行为。</span></p></li><li><p><strong><span>部分分析工具接口开发 以及 open-api 校验模式设计</span></strong><span>：</span></p><ul><li><p><span>用户信息查询、用户处置工具</span></p><p><span>查询用户的基础信息、登录信息、充提/划转、成交记录、OTC 订单等信息。对可疑账号使用用户处置工具进行处置。</span></p></li><li><p><span>资产查询</span></p><p><span>可以查询到用户所持资产信息 和 所持终端安装软件信息。</span></p></li><li><p><span>地址标签库接口开发（不包含扩展部分）</span></p><p><span>根据已知披露的黑地址，扩展出向其充币的地址，或由该黑地址流出资金所指向的其它地址，旨在找到涉嫌黑地址记录，保护用户资产。</span></p></li><li><p><span>网里拓扑 - 云上拓扑通路开发</span></p><p><span>图形化展示公司网络拓扑结构，支持网络通路查询，旨在发生攻击时，迅速确定可能受影响范围。</span></p></li></ul></li></ul></li></ul></li></ul><ul><li><p><strong><span>外部平台资产监控（3人）</span></strong></p><ul><li><p><span>涉及相关的技术：</span></p><ul><li><em><span>后端 web 框架：Tornado</span></em></li><li><em><span>数据库：MySQL、Redis、ElasticSearch</span></em></li><li><em><span>任务分发工具以及进程管理工具：Supervisor、Crontab</span></em></li><li><em><span>部署：Nginx、Docker、GitLab CI/CD</span></em></li></ul></li><li><p><span>主要功能：</span></p><ul><li><span>旨在监控对有公司资产部分支配行为的员工进行违规行为检测，追溯其资产流向。此外抽象统一了38个外平台查询、操作的接口，供部门/用户进行使用，统一管理 AK/SK, 区分账户和用户，记录操作历史，细化告警粒度。</span></li></ul></li><li><p><span>我负责的部分：</span></p><ul><li><p><strong><span>后端服务架构设计及开发</span></strong></p><ul><li><span>用户权限模块设计和实现，实现 用户 和 AK 的分离。</span></li><li><span>对 okex、币安、bhex 等 35 个外部平台的 余额、充值、提现 接口进行统一封装。</span></li><li><span>解决不同平台接口限频不同的问题，使之在使用资产监控服务的时候是无感知的。</span></li><li><span>操作日志存储模块的设计开发。</span></li><li><span>告警列表处置模块的设计开发。</span></li></ul></li><li><p><strong><span>资产监控</span></strong></p><ul><li><span>自交易行为监控、余额监控、异常 OTC 卖出、异常提币、净值最大回撤高、修改密码GA邮箱、休眠账号监控的开发，产生的告警录库以及钉钉群进行告警，由专门的运营人员在平台进行告警处置。</span></li></ul></li></ul></li></ul></li></ul><ul><li><p><strong><span>内部审计系统（天眼 5人）</span></strong></p><ul><li><p><span>涉及相关的技术：</span></p><ul><li><em><span>后端 web 框架：Tornado</span></em></li><li><em><span>数据库：MySQL、Hive、Redis、ElasticSearch</span></em></li><li><em><span>任务分发工具以及进程管理工具：Supervisor、Crontab</span></em></li><li><em><span>部署：Nginx、Docker、GitLab CI/CD</span></em></li></ul></li><li><p><span>主要功能：</span></p><ul><li><span>旨在监控内部员工是否存在违规行为，平台由监控和后端服务组成，监控触发规则产生告警，告警数据会在前端页面上以图形式友好地量化展示，帮助内审同事清晰了然地查看告警，辅以平台的分析工具，判断告警是否正确有效，以便在平台进行处置。</span></li></ul></li><li><p><span>我负责的部分：</span></p><ul><li><p><strong><span>内审监控规则的开发</span></strong></p><ul><li><span>项目放和内部员工异常划转、充币预警；内部员工异常大额充值、频繁充值预警；内部员工异常收到同一钱包地址多次充币行为预警 等等。</span></li></ul></li><li><p><strong><span>内审后端的开发</span></strong></p><ul><li><span>部分核心权限变动情况；运营发奖活动羊毛筛选；代码仓库授权与操作；盘面分析工具。帮助内审人员结合告警使用分析工具判断其合法性，以便做出后续处置。</span></li></ul><p>&nbsp;</p></li></ul></li></ul></li></ul><ul><li><p><strong><span>智能信息抓取后端系统（猫头鹰 4人）</span></strong></p><ul><li><p><span>涉及相关的技术：</span></p><ul><li><em><span>后端 web 框架：Django、Flask</span></em></li><li><em><span>爬虫框架：Scrapy</span></em></li><li><em><span>数据库：MySQL、Redis、MongoDB</span></em></li><li><em><span>任务分发工具以及进程管理工具：Celery、Supervisor、Crontab</span></em></li></ul></li><li><p><em><span>部署：Docker、k8s</span></em></p></li><li><p><span>主要功能：</span></p><ul><li><span>爬取 </span><strong><span>用户期望监控的网站列表页的内容</span></strong><span> 以及 </span><strong><span>特定微信公众号发布的内容</span></strong><span> 以及 </span><strong><span>微博用户发布的内容</span></strong><span>，将数据整理成统一的格式存进数据库中。提供相应接口，供用户对数据进行基础的增删改查操作，得到快速准确的数据。</span></li></ul></li><li><p><span>我负责的部分：</span></p><ul><li><p><strong><span>微信爬虫的设计与开发</span></strong>
+<span>寻找第三方开源库itchat，本质是利用网页版的微信协议进行二次开发的接口，来实现微信爬虫。</span></p></li><li><p><strong><span>微信爬虫后端管理系统的设计与开发</span></strong>
+<span>使用了Flask搭建的一个小型的微信管理后端，方便用户查看上一次登录时间，该后端系统最多可以同时容纳5个微信爬虫同时进行数据爬取，即能同时监控5000个公众号。</span></p></li><li><p><strong><span>正文爬虫的设计与开发以及优化</span></strong></p><ul><li><span>第一版本借助的是第三方开源库newspaper进行的正文获取，爬取率在百分之五十左右。</span></li><li><span>第二版本改为使用xpath规则对正文内容进行精确匹配爬取，增加js爬虫，使用的是第三方开源库Mercury。此外增加了一个是否爬取正文的字段，爬取率达到百分之八十五左右。</span></li></ul></li><li><p><strong><span>独立爬虫的开发</span></strong></p><ul><li><span>独立完成深交所网站、银保监等反爬措施做的较好的网站的爬虫开发。</span></li><li><span>后续小组人员变动主动接管智能信息抓取后端系统，承担主要开发责任，以及负责项目维护和优化，掌握整个智能信息爬取后端系统的运作流程，以及技术开发难点。</span></li></ul></li></ul></li></ul></li></ul><h2><a name="img-srcassetstools-solidsvg-width30px-技能清单" class="md-header-anchor"></a><img src="assets/tools-solid.svg" width="30px"><span> 技能清单</span></h2><ul><li><p><span>语言、后端框架                                                                             </span></p><ul><li><span>★★★☆ Python</span></li><li><span>★★★☆ Tornado</span></li><li><span>★★☆☆ Flask</span></li><li><span>★☆☆☆ Django</span></li></ul></li><li><p><span>数据库</span></p><ul><li><span>★★★☆ MySQL</span></li><li><span>★★☆☆ Redis</span></li><li><span>★★☆☆ Elasticsearch Search</span></li><li><span>★★☆☆ MongoDB</span></li><li><span>★☆☆ hive</span></li></ul></li><li><p><span>消息队列</span></p><ul><li><span>★★☆☆ RabbitMQ</span></li><li><span>★★☆☆ Kafka</span></li></ul></li><li><p><span>任务调度、容器部署</span></p><ul><li><span>★★☆☆ Celery</span></li><li><span>★★☆☆ Crontab</span></li><li><span>★★☆☆ Supervisor</span></li><li><span>★★☆☆ Docker</span></li></ul></li><li><p><span>代码仓库管理</span></p><ul><li><span>★★☆☆ Git</span></li></ul></li></ul><p>&nbsp;</p></div>
 </body>
 </html>
