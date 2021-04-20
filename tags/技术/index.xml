@@ -6,10 +6,20 @@
     <description>Recent content in 技术 on Hugo Cactus Theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 15 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Apr 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://lydiacai1203.github.io/tags/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>断点续传的原理</title>
+      <link>https://lydiacai1203.github.io/post/range_download/</link>
+      <pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lydiacai1203.github.io/post/range_download/</guid>
+      <description>参考文档
+1. 什么是断点续传？ 可以让用户从上一次下载中断的位置接着下载的机制。 2. 断点续传的原理 1. `curl -I {url}` 查看响应头部是否有 `content-range` 字样，有则代表服务端支持断点续传功能。 2. HTTP HEADERS 1.1 Range(在有 If-Range 的时候才会生效) * Range: bytes=0-1023 请求资源的前 1024 个字节 * Range: bytes=-1023 请求资源的倒数 1023 个字节 * Range: bytes=1023- 请求资源第 1024 字节开始及以后的资源 * Range: bytes=0-50, 100-150 请求资源的多个部分 1.2 If-Range(必传两个中的一个，但不能同时传) 1.2.1 Etag * 675af34563dc-tr34 * 文件资源的唯一标示，一个字符串 1.2.2 Last-Modified * If-Range: Wed, 21 Oct 2015 07:28:00 GMT * 上一次文件资源修改时间 3. RESP HTTP STATUS CODE 3.1 206 - Partial Content（此次请求成功） 3.</description>
+    </item>
     
     <item>
       <title>Elasticsearch2.x 权威文档 （摘抄）</title>

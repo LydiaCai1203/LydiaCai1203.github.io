@@ -6,20 +6,10 @@
     <description>Recent content in 2020 on Hugo Cactus Theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 08 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 07 Dec 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://lydiacai1203.github.io/tags/2020/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>记录复习进度</title>
-      <link>https://lydiacai1203.github.io/post/made_me_blue/</link>
-      <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://lydiacai1203.github.io/post/made_me_blue/</guid>
-      <description> 这一年技术上的成长不多，社会教做人了。总之要记住，做一个善良的人，这是最重要的。
- 计算机网络 第一轮复习结束 MySQL 第一轮复习结束 Redis 和 MongoDB (Redis 结束，MongoDB 没开始) RabbitMQ 和 Kafka 第一轮复习结束 Docker 第一轮复习结束 算法 - 动态规划(正在攻克) 算法 - 基础排序(未复习) Elasticsearch 第一轮复习(2.x 结束，巩固一遍内部原理然后看 7.x) Tornado 和 Flask 还有 Django 框架基础第一轮复习(未复习) Git 基础通关结束  每日基础计划  一道动态规划 一章基础组件使用复习  </description>
-    </item>
     
     <item>
       <title>GIT 常用命令查阅手册</title>
@@ -37,7 +27,7 @@ git commit 将当前版本和仓库的上一版本进行对比，将所有的差
       <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lydiacai1203.github.io/post/record_of_a_destroy/</guid>
-      <description>过年那段时间真的太难受了。这期间遭受了很多事情。 但是我现在记不住太多东西了。朋友圈里多了很多人，三家公司，三家公司的同事。我不能和以前一样在里面抱怨什么了。赖哥的骚操作积累的太多，我都写不完。
+      <description>过年那段时间真的太难受了。这期间遭受了很多事情。 但是我现在记不住太多东西了。朋友圈里多了很多人，我不能和以前一样在里面抱怨什么了。赖哥的骚操作积累的太多，我都写不完。
  安全运营平台当时设计权限系统的时候，权限上分了两部分，一个是功能权限，一个是数据权限。功能权限控制是否能访问接口，数据权限控制返回的数据，不具有完全的数据权限的只会返回部分数据。考虑到用户配置的方便性，还有工时等限制，最后采用了参数控制的方式。这样说不是很直观，下面简单说明一下权限表的设计。
    id perm_name perm_key perm_args created updated status     1 地址标签库 - 黑地址标签 - 读 black_address_tags_read category=1, 2, 3&amp;amp;status=1 2020-01-01 00:00:00 2020-01-01 00:00:00 1       id role_name created updated status     1 super_user 2020-01-01 00:00:00 2020-01-01 00:00:00 1       id role_id perm_id created updated status     1 1 1 2020-01-01 00:00:00 2020-01-01 00:00:00 1       id user_name created updated     1 caiqingjing 2020-01-01 00:00:00 2020-01-01 00:00:00       id user_id role_id created updated     1 1 1 2020-01-01 00:00:00 2020-01-01 00:00:00       id user_id perm_id created updated     1 1 2 2020-01-01 00:00:00 2020-01-01 00:00:00    应用场景：</description>
     </item>
