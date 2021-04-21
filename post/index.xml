@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Linux lsof 命令使用</title>
+      <link>https://lydiacai1203.github.io/post/linus_lsof/</link>
+      <pubDate>Wed, 21 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lydiacai1203.github.io/post/linus_lsof/</guid>
+      <description>为了以后查阅方便所做。 ------- 菜大头 lsof 简介 `lsof` 是 `list open files` 的简称。意思是 列出系统中打开的文件。由于 Linux 中 `everything is file`。所有的对象都可以看作是文件，`lsof` 就可以知道用户和进程都操作了哪些文件，也可以查看系统中网络的使用情况、设备信息。  lsof | head -n 20  会列出系统中所有打开的前20个文件，每个文件一行 FD  cwd: 当前工作目录 txt: 应用文本(代码、数据) mem: 内存映射文件 mmap: 内存映射设备   TYPE  REG: 普通文件 DIR: 文件夹     lsof -p 1190  打开 1190 进程打开的所有文件   lsof -u caiqingjing or lsof -u ^caiqingjing  打开某个用户打开的文件 or 除了某个用户..   lsof file_path  查看某个 文件/目录 被哪些进程打开   lsof +d dir_path  列出访问某个目录的所有进程   lsof -c nginx  列出某个命令使用的文件信息    使用 lsof 查看网络信息  lsof -i  列出所有的网络连接信息   lsof -i TCP  -i 后面跟协议类型，只显示 TCP 网络协议的连接信息   lsof -i :80  查看 80 端口被哪个进程使用   lsof -i @172.</description>
+    </item>
+    
+    <item>
       <title>Linux 内存管理</title>
       <link>https://lydiacai1203.github.io/post/linux_memory_manage/</link>
       <pubDate>Wed, 21 Apr 2021 00:00:00 +0000</pubDate>
