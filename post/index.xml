@@ -6,29 +6,99 @@
     <description>Recent content in Posts on Hugo Cactus Theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 15 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 28 Jan 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://lydiacai1203.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>千万不要点进来看</title>
-      <link>https://lydiacai1203.github.io/post/little_nervous/</link>
-      <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
+      <title>君主论 - 概要</title>
+      <link>https://lydiacai1203.github.io/post/the_prince/</link>
+      <pubDate>Fri, 28 Jan 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://lydiacai1203.github.io/post/little_nervous/</guid>
-      <description>都叫你不要点进来，你还要点进来，你是不是喜欢我？  唉，永远赶不上你的脚步。</description>
+      <guid>https://lydiacai1203.github.io/post/the_prince/</guid>
+      <description>Chapter One - 君主国的种类和获得方法 1. 种类 + 君主国 + 世袭 + 新建（混合君主国） + 依靠武力获得 + 人民习惯于被统治 + 政策开明，是自由国家，人民不愿起来反抗 + 其它（幸运 或 能力） + 共和国 Chapter Two - 世袭君主国 1. 世袭国容易维持政权 2. 原因 + 人民习惯于被统治 + 世袭的君主很少得罪人民也无必要，自然受到爱戴 + 变革的反面 + 每次变革总会让一部分人满意，一部分人不满意，如此便为下次变革留下引子 Chapter Three - 混合君主国 1. 混合君主国不容易维持政权 2. 原因 + 困难来自于人民 新君主国出现往往是为了推翻旧的让人民不满意的制度。但是建立国家、军队、战争，会对人民的利益造成损害。当人民成为敌人，政权很容易被再次推翻，推翻后想再夺权将更困难，因为夺权者会严惩罪犯，加强自己薄弱的地方。当然，凡是曾经叛变的地方被再度征服，就不会很容易失去。 + 所征服的国家在语言、习惯、各种制度上均有所不同 3. 维持政权 + 需要获得人民的好感和支持 </description>
     </item>
     
     <item>
-      <title>记录复习进度</title>
-      <link>https://lydiacai1203.github.io/post/made_me_blue/</link>
-      <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
+      <title>安全开发指南（持续更新）</title>
+      <link>https://lydiacai1203.github.io/post/sec_guide/</link>
+      <pubDate>Sat, 09 Oct 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://lydiacai1203.github.io/post/made_me_blue/</guid>
-      <description> 这一年技术上的成长不多，社会教做人了。千言万语都可以总结成一句话，只有利益是永恒的。
- 可能真的是在财联社的时候，环境太融洽了，导致我以为所有的公司都是这样。永远不要指望别人来为你解决问题，除非真的用的到你。明年五月份之前我必须要走了，在这里也不过是浪费光阴，没有意思。何必和这样的人一起腐烂呢？
- MySQL 第一轮复习结束 Redis 和 MongoDB 第一轮复习(未复习) RabbitMQ 和 Kafka 第一轮复习结束 Docker 第一轮复习结束 算法 - 动态规划(正在攻克) 算法 - 基础排序(未复习) Elasticsearch 第一轮复习(2.x 快要结束，巩固一遍内部原理然后看 7.x) Tornado 和 Flask 还有 Django 框架基础第一轮复习(未复习) Git 基础通关结束  每日基础计划  一道动态规划 一章基础组件使用复习  </description>
+      <guid>https://lydiacai1203.github.io/post/sec_guide/</guid>
+      <description>开发规范
+腾讯 Python 安全指南
+1. 代码实现 1. 避免使用不安全的对称加密算法（避免 DES/3DES，建议 AES） 2. 确保重要行为都记录在日志上，且可靠保存 6 个月以上 3. 禁止将未经验证的用户输入直接记录日志（防止注入漏洞：恶意用户插入伪造的日志数据，从而让系统管理员以为是系统行为） 4. 避免在日志中保存敏感信息（明文密码、密文密码 等等） 2. 系统口令 1. 禁止使用 空口令、弱口令、已泄漏口令 2. 口令强度需满足 + 密码长度大于 14 位 + 包含：大小写英文字母、数字、特殊字符 + 不得使用默认的初始密码 + 不能与最近 6 次使用过的密码重复 + 不得与其它外部系统使用相同的密码 3. 口令存储安全 + 禁止明文存储口令 + 禁止使用弱密码学算法加密存储口令 + 使用 不可逆算法 和 随机 salt 对口令进行加密存储 + 禁止传递明文口令 + 禁止在不安全的信道中传输口令 3. 配置 / 环境 1. 建议使用 Python 3.6+ 版本，因为 Python3 在 2020 年就停止维护了，相关漏洞不能得到及时修复和维护 2.</description>
+    </item>
+    
+    <item>
+      <title>Python 原生 SQL 如何预防 SQL 注入</title>
+      <link>https://lydiacai1203.github.io/post/raw_sql_q/</link>
+      <pubDate>Fri, 08 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lydiacai1203.github.io/post/raw_sql_q/</guid>
+      <description>什么是 SQL 注入 腾讯云博客  SQL 注入攻击是一种常见的Web攻击方法，攻击者通过把 SQL 命令注入到 Web 后台数据库的查询字符串中，最终达到欺骗服务器执行恶意 SQL 命令的目的。例如可以从数据库获取敏感信息，或者利用数据库的特性执行添加用户、导出文件等一系列恶意操作，甚至有可能获取数据库乃至系统用户最高权限。 2. SQL 注入例子 SQL 注入只会发生在字符串拼接的例子中，常见的攻击有拖库、拖表、篡改网页内容、收集数据库信息为其它攻击做准备等等。
+假设代码中是这样一段代码 username = input(&amp;ldquo;enter in username&amp;rdquo;) sql = f&amp;rdquo;&amp;rdquo;&amp;rdquo; select * from content where create_user = &amp;ldquo;{username}&amp;rdquo; &amp;quot;&amp;rdquo;&amp;rdquo;
+用户输入 username = &amp;lsquo;testc&amp;rdquo; or 1 = &amp;ldquo;1&amp;rsquo;, SQL 就会变成 sql = f&amp;rdquo;&amp;rdquo;&amp;rdquo; select * from content where create_user = &amp;ldquo;testc&amp;rdquo; or 1 = &amp;ldquo;1&amp;rdquo; &amp;quot;&amp;rdquo;&amp;rdquo; 3. SQL 注入预防通用方法
+ 外部参数动态拼接 [&amp;quot;\&amp;quot;&amp;quot;, &amp;quot;\\&amp;quot;, &amp;quot;/&amp;quot;, &amp;quot;*&amp;quot;, &amp;quot;&#39;&amp;quot;, &amp;quot;=&amp;quot;, &amp;quot;-&amp;quot;, &amp;quot;#&amp;quot;, &amp;quot;;&amp;quot;, &amp;quot;&amp;lt;&amp;quot;, &amp;quot;&amp;gt;&amp;quot;, &amp;quot;+&amp;quot;, &amp;quot;&amp;amp;&amp;quot;, &amp;quot;$&amp;quot;, &amp;quot;(&amp;quot;, &amp;quot;)&amp;quot;, &amp;quot;%&amp;quot;, &amp;quot;@&amp;quot;, &amp;quot;,&amp;quot;]   过滤特殊符号 遇到固定格式的变量，在 SQL 执行前严格按照固定格式检查 特殊符号转义使用（SQL 中的转义字符是单引号）   参数化查询  绑定变量使用预编译语句（预防 SQL 注入的最佳方式）   ORM  使用 ORM 避免 SQL 注入   存储  敏感信息加密存储  将 username = &amp;lsquo;testc&amp;rdquo; or 1 = &amp;ldquo;1&amp;rsquo; 中的特殊符号转译，除了左右两侧的单引号 这样 &amp;ldquo;testc&amp;rsquo;&amp;rdquo; or 1 = &amp;lsquo;&amp;ldquo;1&amp;rdquo; 就变成了一个值，而非表达式的一部分 sql = f&amp;rdquo;&amp;rdquo;&amp;rdquo; select * from content where create_user = &amp;ldquo;testc&amp;rsquo;&amp;rdquo; or 1 = &amp;lsquo;&amp;ldquo;1&amp;rdquo; &amp;quot;&amp;rdquo;&amp;rdquo; 4.</description>
+    </item>
+    
+    <item>
+      <title>骚渣一体 --《圆月弯刀》</title>
+      <link>https://lydiacai1203.github.io/post/movie_szyt/</link>
+      <pubDate>Mon, 16 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lydiacai1203.github.io/post/movie_szyt/</guid>
+      <description>老实说是冲 古天乐 和 梁小冰 的脸才去看的。看之前没想到味儿会这么冲。
+ 看完这部电视剧我又去看了小说（不过没看完）。我想到以前还看过古龙的《陆小凤传奇》，貌似不是这么个味道啊。看的时候甚至一度让我以为古龙写这部小说的时候得了痔疮。直到后来去请教度娘，才知道古龙只写了 1/10，剩下的都是 司马紫烟 代笔的。淦，浪费我的感情。
+ 电视剧改编了很多。讲的是男主丁鹏从小就特别崇拜在镖局打工的爸爸，觉得自己老爸的武功天下第一，谁知道有一次和小伙伴出去玩，半路正好遇到老爹在押镖，好家伙，说时迟那时快来了几个强盗，老爹啪一下就给跪了，不光跪了还尿了。小伙伴都笑话丁鹏。小丁鹏又羞又气回家了，从此以后拿着他爹捡来的 天外流星 的剑谱，在深山里刻苦练习。
+ 要知道武侠小说里的男主要想出人头地，必须先父母双亡。丁鹏老爹坟头草都三米高的时候，丁鹏的 天外流星 也练的出神入化了。他决心要 出 人 投 地！于是就出山了，挑战这个挑战那个，都赢了。到了挑战万松山庄的 柳若松，谁知道这人是个阴险小人，派出自己的妻子秦可情去勾引丁鹏，用那一夜换取了那一页。柳若松得到天外流星的剑谱以后，破解了剑谱，打败了丁鹏。并说天外流星是自己自创的剑法，是丁鹏抄袭了。丁鹏百口莫辩，被逼的跳下了海。流落到了小岛，遇见了魔教公主，青青。两人互生情愫，丁鹏不仅入赘，还学习了魔教刀法 圆月弯刀，于是带着青青回中原找柳若松报仇。
+ 再说秦可情和柳若松越过越憋屈，越过越觉得丁鹏才是真男人。于是当她再次见到丁鹏，她马上投怀送抱，答应里应外合，协助丁鹏复仇，把六大门派的武功心法秘籍全都刻到柳若松的密室里面。那边青青化身为蓝蓝，接近柳若松。让他四处杀人，然后教了他一套小学生剑法，骗其一定能打败丁鹏。最后？最后柳若松被废全身武功，当乞丐去了。
+ 丁鹏心里一直想要雄霸天下，想要打败 剑神谢晓峰，成为天下第一。他把 姬无命 关了起来，假装自己是一直写诗给 谢小玉，勾搭上了谢小玉，继承了谢晓峰的武功，成为了神剑山庄的庄主。青青这边为了化解姬无命和丁鹏的矛盾，被柳若松害得瞎了眼睛。等她再见到丁鹏，已经是在丁鹏和谢小玉的婚礼上了。圣母心泛滥的女主当然是选择成全丁鹏啦。
+ 丁鹏顺理成章成为武林盟主以后，青青老爸魔教教主出现了，一系列套路把丁鹏的命门捏得死死的，上演了一出无间道。鹏鹏子失去了一切，不干了，他发现自己心里唯爱青青，于是又去找青青。两人开了一个客栈，叫无命客栈，从此过上了隐居的生活。
+ 本来写到这里真的可以了，但是魔教教主的结局还没写呀。说青青他爹来找丁鹏，让他交出弯刀。青青直到两人必有一死，于是易容成自己老爹去找丁鹏，被丁鹏干死了。丁鹏一看是自己老婆，不行啊，气的和他爹干了一架，俩人一起失踪了。留下一个儿子，丢给姬无命抚养。
+ 写在最后，看完这部剧我最大的收获就是，原来 平平无奇的梗 是出自这部剧。之前我还一直以为是神雕侠侣里的。如果不是馋古天乐的颜，真的很不建议看，除非你想洗眼睛。</description>
+    </item>
+    
+    <item>
+      <title>Linux lsof 命令使用</title>
+      <link>https://lydiacai1203.github.io/post/linux_lsof_usage/</link>
+      <pubDate>Wed, 21 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lydiacai1203.github.io/post/linux_lsof_usage/</guid>
+      <description>为了以后查阅方便所做。 ------- 菜大头 lsof 简介 `lsof` 是 `list open files` 的简称。意思是 列出系统中打开的文件。由于 Linux 中 `everything is file`。所有的对象都可以看作是文件，`lsof` 就可以知道用户和进程都操作了哪些文件，也可以查看系统中网络的使用情况、设备信息。  lsof | head -n 20  会列出系统中所有打开的前20个文件，每个文件一行 FD  cwd: 当前工作目录 txt: 应用文本(代码、数据) mem: 内存映射文件 mmap: 内存映射设备   TYPE  REG: 普通文件 DIR: 文件夹     lsof -p 1190  打开 1190 进程打开的所有文件   lsof -u caiqingjing or lsof -u ^caiqingjing  打开某个用户打开的文件 or 除了某个用户..   lsof file_path  查看某个 文件/目录 被哪些进程打开   lsof +d dir_path  列出访问某个目录的所有进程   lsof -c nginx  列出某个命令使用的文件信息    使用 lsof 查看网络信息  lsof -i  列出所有的网络连接信息   lsof -i TCP  -i 后面跟协议类型，只显示 TCP 网络协议的连接信息   lsof -i :80  查看 80 端口被哪个进程使用   lsof -i @172.</description>
+    </item>
+    
+    <item>
+      <title>Linux 内存管理</title>
+      <link>https://lydiacai1203.github.io/post/linux_memory_manage/</link>
+      <pubDate>Wed, 21 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lydiacai1203.github.io/post/linux_memory_manage/</guid>
+      <description>free usage (venv367) caiqingjing@ip-127.0.0.1:~$ free -h 总计 已用 空闲 共享 缓冲/缓存 可用 内存： 31G 7.1G 2.7G 105M 21G 23G交换： 0B 0B 0B 1. 关注 可用 列，估计有多少内存可用于启动新的程序而无须交换。 2. 理论上，used - buffers/cache 表示应用程序实际使用的内存？；free+buffers/cache 表示理论上可以被使用的内存。free 仅仅表示未被使用的内存大小。仅仅看 free 来判断是不够准确的。 3. 当可用内存接近 0 或 非常小时，已用内存接近总容量 时，意味这需要使用到交换磁盘了。可以使用 `grep -i kill /var/log/messages *` 或 `dmesg | grep oom-killer` 检查内存溢出日志消息。 缓存（cache） read_cache:读文件时，通常需要将硬盘里的数据读入内存，但是硬盘和内存的读取速度相差太多，因此 linux 会将数据读入 cache 中，然后从 cache 中读取需要的数据。当一个缓存中的数据被多次读取，实际上就减少了该数据从慢速设备中读取的次数。因此 cache 中的数据是随机访问的特性。write_cache:与 read_cache 对应，它的目标应该是减少写入慢速设备的次数。使用 cache 的话，可以多次写入 cache, 但是只写入一次硬盘。 缓冲（buffer） read_buffer: 每当 buffer 满或者主动 `flush` 时会触发一次读取，对于小数据可以减少读取次数，对于大数据可以控制单次读取的数据量。通常来说，先入 buffer 的数据会被先读取，所有的 buffer 数据几乎一定会被读取，拥有顺序访问的特性。write_buffer:同上，也是需要 buffer 满或者主动 `flush` 时才会触发写入。如果每次写入的数据量相对固定。因为如果一次写入 4k 对与某个设备来说效率最高的话，buffer 一定是 4k。小数据积攒到 4k 写入，大数据分割成 4k 的碎片写入，这是 write_buffer 的用处。 交换内存（swapping） 当主存(RAM) 不足以临时存储多个程序时，我们从 RAM 中取出一些程序，通过 swap out 的机制将它们存储到硬盘中。当 RAM 可用时，我们再次将程序从硬盘交换到 RAM, 这就是 swap in。Linux 中的交换空间是物理内存的两倍。优点： 1.</description>
+    </item>
+    
+    <item>
+      <title>断点续传的原理</title>
+      <link>https://lydiacai1203.github.io/post/download_file/</link>
+      <pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lydiacai1203.github.io/post/download_file/</guid>
+      <description>参考文档
+1. 什么是断点续传？ 可以让用户从上一次下载中断的位置接着下载的机制。 2. 断点续传的原理 1. `curl -I {url}` 查看响应头部是否有 `content-range` 字样，有则代表服务端支持断点续传功能。 2. HTTP HEADERS 1.1 Range(在有 If-Range 的时候才会生效) * Range: bytes=0-1023 请求资源的前 1024 个字节 * Range: bytes=-1023 请求资源的倒数 1023 个字节 * Range: bytes=1023- 请求资源第 1024 字节开始及以后的资源 * Range: bytes=0-50, 100-150 请求资源的多个部分 1.2 If-Range(必传两个中的一个，但不能同时传) 1.2.1 Etag * 675af34563dc-tr34 * 文件资源的唯一标示，一个字符串 1.2.2 Last-Modified * If-Range: Wed, 21 Oct 2015 07:28:00 GMT * 上一次文件资源修改时间 3. RESP HTTP STATUS CODE 3.1 206 - Partial Content（此次请求成功） 3.</description>
+    </item>
+    
+    <item>
+      <title>Elasticsearch2.x 权威文档 （摘抄）</title>
+      <link>https://lydiacai1203.github.io/post/es_doc_readingnote/</link>
+      <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lydiacai1203.github.io/post/es_doc_readingnote/</guid>
+      <description>Elasticsearch2.x 权威文档 （摘抄） 很多用法都已经过时，看完这个我打算再看一下 7.x。仅作为快速查阅的工具文档使用，可能不会和原文一致。希望尽量做到精简。 有一些模块因为暂时使用不到所以选择不看，毕竟没有应用的情况下是很容易忘记的。
+面向文档 Elasticsearch 是 面向文档 的，意味着它存储整个对象或文档，Elasticsearch 不仅存储文档，而且 索引 每个文档的内容，使之可以被检索。在 Elasticsearch 中，我们对文档(而不是对行列数据)进行索引、检索、排序、过滤，这也是 Elasticsearch 能支持复杂全文检索的原因。
+JSON Elasticsearch 使用 JavaScript Object Notation (JSON) 作为文档的序列化格式。具体可以看 serialization 和 marshalling 两个处理模块。
+几个名词  索引 .n  一个索引类似于一个数据库，是一个存储文档的地方。   索引 .v  索引一个文档就是存储一个文档到一个索引中以便于被检索或是被查询。类似于 insert, 当文档已存在时(_id已有) 会进行更新。   倒排索引  倒排索引被作用在文档上，以便于提升数据的检索速度。默认的，文档中的每一列都有倒排索引，没有倒排索引的属性是不可能被搜索到的。    检索文档   GET - /index/mapping/id 即可检索出 ID 对应的对象
+  GET - /index/mapping/_search 用于检索所有的对象(一个搜索默认返回十条结果, 放在 hits 中)</description>
     </item>
     
     <item>
@@ -50,15 +120,6 @@ git commit 将当前版本和仓库的上一版本进行对比，将所有的差
       <description>过年那段时间真的太难受了。这期间遭受了很多事情。 但是我现在记不住太多东西了。朋友圈里多了很多人，三家公司，三家公司的同事。我不能和以前一样在里面抱怨什么了。赖哥的骚操作积累的太多，我都写不完。
  安全运营平台当时设计权限系统的时候，权限上分了两部分，一个是功能权限，一个是数据权限。功能权限控制是否能访问接口，数据权限控制返回的数据，不具有完全的数据权限的只会返回部分数据。考虑到用户配置的方便性，还有工时等限制，最后采用了参数控制的方式。这样说不是很直观，下面简单说明一下权限表的设计。
    id perm_name perm_key perm_args created updated status     1 地址标签库 - 黑地址标签 - 读 black_address_tags_read category=1, 2, 3&amp;amp;status=1 2020-01-01 00:00:00 2020-01-01 00:00:00 1       id role_name created updated status     1 super_user 2020-01-01 00:00:00 2020-01-01 00:00:00 1       id role_id perm_id created updated status     1 1 1 2020-01-01 00:00:00 2020-01-01 00:00:00 1       id user_name created updated     1 caiqingjing 2020-01-01 00:00:00 2020-01-01 00:00:00       id user_id role_id created updated     1 1 1 2020-01-01 00:00:00 2020-01-01 00:00:00       id user_id perm_id created updated     1 1 2 2020-01-01 00:00:00 2020-01-01 00:00:00    应用场景：</description>
-    </item>
-    
-    <item>
-      <title>Lucky Stories(2019&#43;2020)</title>
-      <link>https://lydiacai1203.github.io/post/lucky_story_2019/</link>
-      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://lydiacai1203.github.io/post/lucky_story_2019/</guid>
-      <description>四月   ztz 和 xy 离职，黄老师进组成为组长，吴奇加入。好在我已经自己写过一遍owl，不得不学会独立了。我犹记得，ztz在画系统图的时候，王叔说打算把owl交给黄老师，ztz说了一句“阿菜也可以的”。 回校进行答辩，因为艺璇没有考上研究生，所以我们大家都没有去毕业旅行。我也没去秦皇岛，一结束就回公司工作了。   五月   五一加了三天的班，为了优化正文爬虫，没有奖金。心里憋着委屈(某人走的最后一天说了太多伤人的话)，因为进度有点慢，我老出错，王叔又着急，所以就不争气哭了。哈哈哈哈，把王叔吓的一批。 吴奇把位置搬到我和王叔中间，我则是坐在了ztz之前坐的位置，这月没记错的话王叔已经开始在做之前ztz负责的二部的项目了。这个月他问了我和吴奇很多Python相关的。 24号预备党员转正啦。   六月   王叔离职。 欧阳老师知道我所有的不愉快，一直安慰和鼓励我。这个月依旧是消沉至极。他说我其实也是能好好健康长大的。面试了几家公司，面试官说我很聪明，但是他需要的是更加有经验的。大部分都是，面试过了的，然后在HR或者是总经理那一关挂了的。   七月   七月份最幸运的事情就是王叔的鼓励和支持，帮我修改简历，帮我寻找合适的机会。王叔说帮我把简历推给微软，于是我刷了一段时间的leetcode，虽然后来石沉大海，王叔说大概是因为我太应届了。王叔还与我说了一件事情，他说张天照还在的时候，他好几次向ztz问过我的水平。ztz给他的回答是，我是最聪明的。最聪明这三个字，没加上范围限定词，就很有趣。我想大概张天照说的是我比向阳聪明一点吧。然后王叔为了鼓励我，所以说成我是最聪明的。王叔说过，我是财联社唯一一个会自己解决问题的人。也说过，现在我就是财联社最聪明的。其实我不知道他说的是什么意思，但是我相信他的判断。我是最聪明的。我可以。 前两天在车站，遇到一个人和我说钱包被偷了，要借150买车票，然后我就借了。他还煞有其事地加了我的微信，然后就没有然后了。还好损失不大，希望以后自己能长一个教训。不要因为别人借的钱不多就借给别人，如果要借的数目比较大的话，他们也借不成功。有时候觉得自己好蠢&amp;hellip;.. 没有意义的善良。   八月   吴奇走了。牛逼，一年半的简历包装以后，工资基本就翻番了。 拿到了一份offer，但是还是做爬虫的，我只要了11k，但是要求试用期工资不打折。因为已经不想做爬虫了，所以拒绝了。 拒绝了王叔的一个活儿，但是我知道王叔不会小心眼的。   九月   拿到一份offer，13k，试用期9折。不过这都不重要，重要的是，面试官是个很厉害的人，或许选择这份offer会给我带来更大的成长？ 看了一部很老很老的电影，[罗生门]，可以看下这篇影评这也是一个平时判断别人说话真伪中的一个技巧点吧，就是每个人都会为了维护自己的利益中去美化一些事情，看了很多的影评，但是觉得这篇影评分析地到位。其实杀死武士的人是女人，首先樵夫站在一个第三方的角度，所说的大部分都比较可信。但是因为他拿走了价格不菲的短刀。所以所有和短刀有关的部分都是假的。因为叙事者描述事实的时候肯定是希望事情与自己无关的方向去引导别人。所有人的描述中，妻子和武士描述的都是短刀是武器。但是强盗和樵夫的描述是强盗用剑刺死了武士。武士自杀可以排除，因为樵夫的描述里，武士是软弱的，他在妻子被侮辱了以后都没有想着要报仇。妻子说自己拿着短刀就晕倒了，晕倒了两次，强盗早就走了，丈夫用鄙夷的眼神看着她，她醒来以后丈夫就死了。所以很大可能就是她是杀死的丈夫，但是不想当凶手，所以就说自己晕倒了，因为丈夫自杀是不可能的, 当时强盗已经走了。根据后来樵夫的描述，是妻子挑唆，让两个人进行厮杀的。后来两个人的武器均被打落在地，当时妻子短刀在手，两人之间必须死一个，所以极大可能是妻子拿着短刀杀了丈夫。 九月的最后一天，我离开财联社了。这次辞职学习到了很多的东西，其实我离开财联社的最主要原因，并不是因为提前转正受到阻碍。其实我知道，这中间并没有人尽力帮我。等到我真的要离开了，叶周才说可以给我提前转正，甚至把工资调到13k。非等到我要走了，才这样说，结果就是我还在试用期，说明任何一个人都没有真心想我留下来做过努力。我也见识到了大家互相甩锅的样子，叶周说是黄老师没努力，人事说是叶周不给我过。一出好戏。王叔在群里说我要离职了，ztz发了一个大拇指。我相信他这个表情是真心的。   十月   我拒绝了ws的要求。有几个原因：1. 我已经离职了，就是因为厌恶了所以不想再碰owl的东西了。2. 我现在也没那么缺钱，我不想做一些没有意义的事情，我想把时间花在有意义的事情上面。3. 每天要学要巩固的东西太多了，真的不想再花精力去搞owl的东西。   十一月   博泰已成为过去，来到火币。看了廖老板还有大壮哥写的后端框架，学到了一种异常处理的方法，嘿嘿，开心。   十二月   审计系统一版结束，要说学到了什么，学会了Sqlalchemy，有很多想吐槽的地方，暂时也都不提罢了。 对所谓的 简洁接口 有了一个新的认识，可我不能确定，是对的还是不对的。迷茫。    2020 我要健康 我要努力 我要买房！！！！！ 一月 ～ 五月   过年 奶奶摔跤了 疫情严重 在家办公 写代码越来越规范了，bug 不会老出了，对 sqlalchemy 也有了新的认识，其它技术上的提升就真的没什么了。   六月   没有什么好事。还很挫败。积累吧。   七月 ～ 十月   我不喜欢北京，难怪王叔说一定要待够一年半，出来以后才会珍惜以前的象牙塔日子。自私的人很多，更有甚者甚至是也不想让别人好，我吃了好多亏，有时候我经常在想，经常在犹豫，是否要变成他/她这样的人，我想以牙还牙，却又觉得&amp;hellip;不愿与之沦为一样的人。   </description>
     </item>
     
     <item>

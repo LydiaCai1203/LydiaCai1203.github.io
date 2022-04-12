@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="阿菜">
 <meta name="description" content="阿菜的骚话天地">
-<meta name="generator" content="Hugo 0.62.2" />
+<meta name="generator" content="Hugo 0.74.2" />
 <title>Study Tips(2019&#43;2020)</title>
 <link rel="shortcut icon" href="https://lydiacai1203.github.io/images/favicon.ico">
 <link rel="stylesheet" href="https://lydiacai1203.github.io/css/style.css">
@@ -228,7 +228,7 @@ c. 综上所述，这就是配置文件使用namedtuple的根本原因。</p>
         raise CustomError('其实也不能说学到，但是自己之前就是没想到呀', 200)
 </code></pre>
 <blockquote>
-<p>35.MySQL 中一个concat()，比如concat(student.name, &lsquo;/', student.no), student 当然是数据表名，name 和 no 当然是字段名。name 字段 allow null, 这就会出现一个很尴尬的问题了。当 name 为 null 的时候，concat 会过滤掉这条数据。要解决这个问题，只要用 coalesce(), 你可以这样使用，coalesce(student.name, &lsquo;')，指定好当 name 为 null 的时候，返回的默认值。在 coalesce() 外面再使用 concat(), 就不会出现上面的问题了。</p>
+<p>35.MySQL 中一个concat()，比如concat(student.name, &lsquo;/&rsquo;, student.no), student 当然是数据表名，name 和 no 当然是字段名。name 字段 allow null, 这就会出现一个很尴尬的问题了。当 name 为 null 的时候，concat 会过滤掉这条数据。要解决这个问题，只要用 coalesce(), 你可以这样使用，coalesce(student.name, &lsquo;')，指定好当 name 为 null 的时候，返回的默认值。在 coalesce() 外面再使用 concat(), 就不会出现上面的问题了。</p>
 </blockquote>
 <blockquote>
 <p>36.假如现在有一个浮点数 0.0000001234567890, print 结果就是科学计数法。但是这显然不是我们想要的，一种可以用 decimal.Decimal 里面的 prec 进行有效数字的控制，然后再使用 to_eng_string()。还有一种就是直接使用 fstring 进行精度控制。在实践过程中发现，使用 decimal，面对 30000000 这样大于 1 的数字时，prec 就不好用了。所以最好还是使用 fstring 进行精度控制。</p>
@@ -268,11 +268,35 @@ c. 综上所述，这就是配置文件使用namedtuple的根本原因。</p>
     
     
         <li>
-            <a href="https://lydiacai1203.github.io/post/little_nervous/">千万不要点进来看<aside class="dates">Jan 15 2021</aside></a>
+            <a href="https://lydiacai1203.github.io/post/the_prince/">君主论 - 概要<aside class="dates">Jan 28 2022</aside></a>
         </li>
     
         <li>
-            <a href="https://lydiacai1203.github.io/post/made_me_blue/">记录复习进度<aside class="dates">Dec 8 2020</aside></a>
+            <a href="https://lydiacai1203.github.io/post/sec_guide/">安全开发指南（持续更新）<aside class="dates">Oct 9 2021</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/raw_sql_q/">Python 原生 SQL 如何预防 SQL 注入<aside class="dates">Oct 8 2021</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/movie_szyt/">骚渣一体 --《圆月弯刀》<aside class="dates">Aug 16 2021</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/linux_lsof_usage/">Linux lsof 命令使用<aside class="dates">Apr 21 2021</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/linux_memory_manage/">Linux 内存管理<aside class="dates">Apr 21 2021</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/download_file/">断点续传的原理<aside class="dates">Apr 20 2021</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/es_doc_readingnote/">Elasticsearch2.x 权威文档 （摘抄）<aside class="dates">Jan 15 2021</aside></a>
         </li>
     
         <li>
@@ -281,26 +305,6 @@ c. 综上所述，这就是配置文件使用namedtuple的根本原因。</p>
     
         <li>
             <a href="https://lydiacai1203.github.io/post/record_of_a_destroy/">两种权限系统，主要是吐槽设计<aside class="dates">Jul 1 2020</aside></a>
-        </li>
-    
-        <li>
-            <a href="https://lydiacai1203.github.io/post/lucky_story_2019/">Lucky Stories(2019&#43;2020)<aside class="dates">Oct 10 2019</aside></a>
-        </li>
-    
-        <li>
-            <a href="https://lydiacai1203.github.io/post/analyse_image_layer/">docker image的实现原理以及registry相关的一块知识<aside class="dates">May 4 2019</aside></a>
-        </li>
-    
-        <li>
-            <a href="https://lydiacai1203.github.io/post/what_is_k8s/">what is k8s?<aside class="dates">May 4 2019</aside></a>
-        </li>
-    
-        <li>
-            <a href="https://lydiacai1203.github.io/post/whatis_nfs/">what is NFS?<aside class="dates">May 4 2019</aside></a>
-        </li>
-    
-        <li>
-            <a href="https://lydiacai1203.github.io/post/movie_tlbb/">看完 天龙八部 以后，有一点骚话想说<aside class="dates">May 4 2019</aside></a>
         </li>
     
 </ul>
@@ -337,7 +341,7 @@ c. 综上所述，这就是配置文件使用namedtuple的根本原因。</p>
     
     <p class="small">
     
-        © Copyright 2021 阿菜
+        © Copyright 2022 阿菜
     
     </p>
 </footer>

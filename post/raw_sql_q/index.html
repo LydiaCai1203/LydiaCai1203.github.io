@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="阿菜">
+<meta name="description" content="阿菜的骚话天地">
+<meta name="generator" content="Hugo 0.74.2" />
+<title>Python 原生 SQL 如何预防 SQL 注入</title>
+<link rel="shortcut icon" href="https://lydiacai1203.github.io/images/favicon.ico">
+<link rel="stylesheet" href="https://lydiacai1203.github.io/css/style.css">
+<link rel="stylesheet" href="https://lydiacai1203.github.io/css/highlight.css">
+
+
+
+<link rel="stylesheet" href="https://lydiacai1203.github.io/css/monosocialiconsfont.css">
+
+
+
+<link href="https://lydiacai1203.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Hugo Cactus Theme" />
+
+
+<meta property="og:title" content="Python 原生 SQL 如何预防 SQL 注入" />
+<meta property="og:description" content="技术" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lydiacai1203.github.io/post/raw_sql_q/" />
+<meta property="article:published_time" content="2021-10-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-08T00:00:00+00:00" />
+
+
+<meta itemprop="name" content="Python 原生 SQL 如何预防 SQL 注入">
+<meta itemprop="description" content="技术">
+<meta itemprop="datePublished" content="2021-10-08T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-10-08T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="319">
+
+
+
+<meta itemprop="keywords" content="2021,技术," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Python 原生 SQL 如何预防 SQL 注入"/>
+<meta name="twitter:description" content="技术"/>
+<meta name="twitter:site" content="@https://www.twitter.com/"/>
+
+
+    </head>
+<body>
+    <nav class="main-nav">
+	
+		<a href='https://lydiacai1203.github.io/'> <span class="arrow">←</span>Home</a>
+	
+
+	
+
+	
+		<a class="cta" href="https://lydiacai1203.github.io/index.xml">myresume</a>
+	
+</nav>
+
+    <section id="wrapper">
+        
+        
+<article class="post">
+    <header>
+        <h1>Python 原生 SQL 如何预防 SQL 注入</h1>
+        <h2 class="subtitle">技术</h2>
+        <h2 class="headline">
+        October 8, 2021
+        <br>
+        
+        
+            
+                <a href="https://lydiacai1203.github.io/tags/2021">2021</a>
+            
+                <a href="https://lydiacai1203.github.io/tags/%E6%8A%80%E6%9C%AF">技术</a>
+            
+        
+        
+        </h2>
+    </header>
+    <section id="post-body">
+        <ol>
+<li>什么是 SQL 注入
+腾讯云博客</li>
+</ol>
+<p>SQL 注入攻击是一种常见的Web攻击方法，攻击者通过把 SQL 命令注入到 Web 后台数据库的查询字符串中，最终达到欺骗服务器执行恶意 SQL 命令的目的。例如可以从数据库获取敏感信息，或者利用数据库的特性执行添加用户、导出文件等一系列恶意操作，甚至有可能获取数据库乃至系统用户最高权限。
+2. SQL 注入例子
+SQL 注入只会发生在字符串拼接的例子中，常见的攻击有拖库、拖表、篡改网页内容、收集数据库信息为其它攻击做准备等等。</p>
+<h1 id="假设代码中是这样一段代码">假设代码中是这样一段代码</h1>
+<p>username = input(&ldquo;enter in username&rdquo;)
+sql = f&rdquo;&rdquo;&rdquo;
+select *
+from <code>content</code>
+where <code>create_user</code> = &ldquo;{username}&rdquo;
+&quot;&rdquo;&rdquo;</p>
+<h1 id="用户输入-username--testc-or-1--1-sql-就会变成">用户输入 username = &lsquo;testc&rdquo; or 1 = &ldquo;1&rsquo;, SQL 就会变成</h1>
+<p>sql = f&rdquo;&rdquo;&rdquo;
+select *
+from <code>content</code>
+where <code>create_user</code> = &ldquo;testc&rdquo; or 1 = &ldquo;1&rdquo;
+&quot;&rdquo;&rdquo;
+3. SQL 注入预防通用方法</p>
+<ul>
+<li>外部参数动态拼接
+<code>[&quot;\&quot;&quot;, &quot;\\&quot;, &quot;/&quot;, &quot;*&quot;, &quot;'&quot;, &quot;=&quot;, &quot;-&quot;, &quot;#&quot;, &quot;;&quot;, &quot;&lt;&quot;, &quot;&gt;&quot;, &quot;+&quot;, &quot;&amp;&quot;, &quot;$&quot;, &quot;(&quot;, &quot;)&quot;, &quot;%&quot;, &quot;@&quot;, &quot;,&quot;]</code></li>
+</ul>
+<ol>
+<li>过滤特殊符号</li>
+<li>遇到固定格式的变量，在 SQL 执行前严格按照固定格式检查</li>
+<li>特殊符号转义使用（SQL 中的转义字符是单引号）</li>
+</ol>
+<ul>
+<li>参数化查询</li>
+</ul>
+<ol start="4">
+<li>绑定变量使用预编译语句（预防 SQL 注入的最佳方式）</li>
+</ol>
+<ul>
+<li>ORM</li>
+</ul>
+<ol start="5">
+<li>使用 ORM 避免 SQL 注入</li>
+</ol>
+<ul>
+<li>存储</li>
+</ul>
+<ol start="6">
+<li>敏感信息加密存储</li>
+</ol>
+<h1 id="将-username--testc-or-1--1-中的特殊符号转译除了左右两侧的单引号">将 username = &lsquo;testc&rdquo; or 1 = &ldquo;1&rsquo; 中的特殊符号转译，除了左右两侧的单引号</h1>
+<h1 id="这样-testc-or-1--1-就变成了一个值而非表达式的一部分">这样 &ldquo;testc&rsquo;&rdquo; or 1 = &lsquo;&ldquo;1&rdquo; 就变成了一个值，而非表达式的一部分</h1>
+<p>sql = f&rdquo;&rdquo;&rdquo;
+select *
+from <code>content</code>
+where <code>create_user</code> = &ldquo;testc&rsquo;&rdquo; or 1 = &lsquo;&ldquo;1&rdquo;
+&quot;&rdquo;&rdquo;
+4. Sqlalchemy / PyMySQL
+Sqlalchemy-Doc</p>
+<p>本文中的 mysql_conn 实例使用的是 Git Repo Felix <code>/app/db/mysql.py</code> 文件中的内容
+4.1 SELECT</p>
+<p>from sqlalchemy import text</p>
+<p>select_params = {&ldquo;event_id&rdquo;: event_id}
+pre_sql = &quot;&rdquo;&rdquo;
+select user_id, user_name, nickname
+from xxx_tbl
+where event_id = :event_id
+&quot;&rdquo;&rdquo;
+bind_sql = text(pre_sql)
+ret = mysql_conn.connect().execute(bind_sql, select_params).fetchall()
+4.2 INSERT</p>
+<p>from sqlalchemy import text</p>
+<p>insert_params = {
+&ldquo;user_id&rdquo;: user_id,
+&ldquo;user_name&rdquo;: user_name,
+&ldquo;nickname&rdquo;: nickname
+}
+pre_sql = &quot;&rdquo;&rdquo;
+insert into
+from xxx_tbl (user_id, user_name, nickname) values (:user_id, :user_name, :nickname)
+&quot;&rdquo;&rdquo;</p>
+<p>stmt = text(pre_sql)
+stmt = stmt.bindparams(**insert_params)
+row_id = mysql_conn.connect().execute(stmt).lastrowid
+4.3 ORM</p>
+<p>import pymysql</p>
+<h1 id="数据库连接">数据库连接</h1>
+<p>conn = pymysql.connect(**MYSQL_CONF)
+cursor = conn.cursor()</p>
+<h1 id="orm-对象">ORM 对象</h1>
+<p>expr = Session().query(&hellip;)
+expr = expr.statement.compile(compile_kwargs={&ldquo;literal_binds&rdquo;: True})
+raw_sql = str(expr)</p>
+<h1 id="commit">commit</h1>
+<p>cursor.execute(raw_sql)
+row_1 = cursor.fetchone()
+conn.commit()</p>
+<h1 id="关闭连接">关闭连接</h1>
+<p>cursor.close()
+conn.close()
+4.5 PyMySQL</p>
+<p>import pymysql</p>
+<p>conn = pymysql.connect(**MYSQL_CONF)
+cursor = conn.cursor()</p>
+<h1 id="内部执行参数化生成的sql语句对特殊字符进行了加转义避免注入语句生成">内部执行参数化生成的SQL语句，对特殊字符进行了加\转义，避免注入语句生成</h1>
+<p>pre_sql = &ldquo;select user,pwd from User where user=&rsquo;%s&rsquo; and pwd=&rsquo;%s&rsquo;&rdquo;
+raw_sql = cursor.mogrify( pre_sql, (username, password))</p>
+<h1 id="commit-1">commit</h1>
+<p>cursor.execute(raw_sql)
+row_1 = cursor.fetchone()
+conn.commit()</p>
+<h1 id="关闭连接-1">关闭连接</h1>
+<p>cursor.close()
+conn.close()
+5. 题外话
+拿了四份 offer 以后，很奇怪为什么没有公司使用 Tornado 做 To C 的产品的。</p>
+<p>当然大部分公司不会选择使用 Python 来做 To C 产品的开发语言，这里只说使用 Python 的。</p>
+<p>后来我想了几个方面的原因：</p>
+<ol>
+<li>开发难度
+少数人掌握 Python asyncio，能进行无错的高并发编程，Flask 的多进程部署或许更适合大部分开发人员的水平，且同步开发更容易维护。</li>
+<li>没有完善的 异步组件库 支持
+比如异步的 orm 库就没有，但是只要能转换为 HTTP 请求的都能使用异步库</li>
+<li>避免重复造轮子</li>
+</ol>
+
+    </section>
+</article>
+
+<footer id="post-meta" class="clearfix">
+    <a href="https://twitter.com/Your%20Twitter%20account">
+    <img class="avatar" src="https://lydiacai1203.github.io/images/avatar.png">
+    <div>
+        <span class="dark">阿菜</span>
+        <span>一个 间歇性混吃等死 持续性踌躇满志的 激萌少女</span>
+    </div>
+    </a>
+    <section id="sharing">
+        <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2flydiacai1203.github.io%2fpost%2fraw_sql_q%2f - Python%20%e5%8e%9f%e7%94%9f%20SQL%20%e5%a6%82%e4%bd%95%e9%a2%84%e9%98%b2%20SQL%20%e6%b3%a8%e5%85%a5 by @Your%20Twitter%20account"><span class="icon-twitter"> tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+    </section>
+</footer>
+
+
+
+<ul id="post-list" class="archive readmore">
+    <h3>Read more</h3>
+
+    
+    
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/the_prince/">君主论 - 概要<aside class="dates">Jan 28 2022</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/sec_guide/">安全开发指南（持续更新）<aside class="dates">Oct 9 2021</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/movie_szyt/">骚渣一体 --《圆月弯刀》<aside class="dates">Aug 16 2021</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/linux_lsof_usage/">Linux lsof 命令使用<aside class="dates">Apr 21 2021</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/linux_memory_manage/">Linux 内存管理<aside class="dates">Apr 21 2021</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/download_file/">断点续传的原理<aside class="dates">Apr 20 2021</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/es_doc_readingnote/">Elasticsearch2.x 权威文档 （摘抄）<aside class="dates">Jan 15 2021</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/git_command/">GIT 常用命令查阅手册<aside class="dates">Dec 7 2020</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/record_of_a_destroy/">两种权限系统，主要是吐槽设计<aside class="dates">Jul 1 2020</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/study_tips_2019/">Study Tips(2019&#43;2020)<aside class="dates">Oct 10 2019</aside></a>
+        </li>
+    
+</ul>
+
+
+
+        <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    
+    <a class="symbol" href="https://www.dribbble.com/">
+        circledribble
+    </a>
+    
+    <a class="symbol" href="https://www.facebook.com/">
+        circlefacebook
+    </a>
+    
+    <a class="symbol" href="https://github.com/LydiaCai1203">
+        circlegithub
+    </a>
+    
+    <a class="symbol" href="https://www.twitter.com/">
+        circletwitterbird
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+        © Copyright 2022 阿菜
+    
+    </p>
+</footer>
+
+    </section>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://lydiacai1203.github.io/js/main.js"></script>
+<script src="https://lydiacai1203.github.io/js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+</body>
+</html>

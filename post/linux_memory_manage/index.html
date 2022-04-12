@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="阿菜">
+<meta name="description" content="阿菜的骚话天地">
+<meta name="generator" content="Hugo 0.74.2" />
+<title>Linux 内存管理</title>
+<link rel="shortcut icon" href="https://lydiacai1203.github.io/images/favicon.ico">
+<link rel="stylesheet" href="https://lydiacai1203.github.io/css/style.css">
+<link rel="stylesheet" href="https://lydiacai1203.github.io/css/highlight.css">
+
+
+
+<link rel="stylesheet" href="https://lydiacai1203.github.io/css/monosocialiconsfont.css">
+
+
+
+<link href="https://lydiacai1203.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Hugo Cactus Theme" />
+
+
+<meta property="og:title" content="Linux 内存管理" />
+<meta property="og:description" content="技术" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lydiacai1203.github.io/post/linux_memory_manage/" />
+<meta property="article:published_time" content="2021-04-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-21T00:00:00+00:00" />
+
+
+<meta itemprop="name" content="Linux 内存管理">
+<meta itemprop="description" content="技术">
+<meta itemprop="datePublished" content="2021-04-21T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-04-21T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="132">
+
+
+
+<meta itemprop="keywords" content="2021,技术," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux 内存管理"/>
+<meta name="twitter:description" content="技术"/>
+<meta name="twitter:site" content="@https://www.twitter.com/"/>
+
+
+    </head>
+<body>
+    <nav class="main-nav">
+	
+		<a href='https://lydiacai1203.github.io/'> <span class="arrow">←</span>Home</a>
+	
+
+	
+
+	
+		<a class="cta" href="https://lydiacai1203.github.io/index.xml">myresume</a>
+	
+</nav>
+
+    <section id="wrapper">
+        
+        
+<article class="post">
+    <header>
+        <h1>Linux 内存管理</h1>
+        <h2 class="subtitle">技术</h2>
+        <h2 class="headline">
+        April 21, 2021
+        <br>
+        
+        
+            
+                <a href="https://lydiacai1203.github.io/tags/2021">2021</a>
+            
+                <a href="https://lydiacai1203.github.io/tags/%E6%8A%80%E6%9C%AF">技术</a>
+            
+        
+        
+        </h2>
+    </header>
+    <section id="post-body">
+        <h4 id="free-usage">free usage</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">(venv367) caiqingjing@ip-127.0.0.1:~$ free -h
+              总计         已用        空闲        共享         缓冲/缓存     可用
+内存：         31G        7.1G        2.7G        105M         21G         23G交换：          0B          0B          0B
+
+<span style="color:#66d9ef">1.</span> 关注 可用 列，估计有多少内存可用于启动新的程序而无须交换。
+<span style="color:#66d9ef">2.</span> 理论上，used - buffers/cache 表示应用程序实际使用的内存？；free+buffers/cache 表示理论上可以被使用的内存。free 仅仅表示未被使用的内存大小。仅仅看 free 来判断是不够准确的。
+<span style="color:#66d9ef">3.</span> 当可用内存接近 0 或 非常小时，已用内存接近总容量 时，意味这需要使用到交换磁盘了。可以使用 <span style="color:#e6db74">`grep -i kill /var/log/messages *`</span> 或 <span style="color:#e6db74">`dmesg | grep oom-killer`</span> 检查内存溢出日志消息。
+</code></pre></div><h4 id="缓存cache">缓存（cache）</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">read_cache:读文件时，通常需要将硬盘里的数据读入内存，但是硬盘和内存的读取速度相差太多，因此 linux 会将数据读入 cache 中，然后从 cache 中读取需要的数据。当一个缓存中的数据被多次读取，实际上就减少了该数据从慢速设备中读取的次数。因此 cache 中的数据是随机访问的特性。write_cache:与 read_cache 对应，它的目标应该是减少写入慢速设备的次数。使用 cache 的话，可以多次写入 cache, 但是只写入一次硬盘。
+</code></pre></div><h4 id="缓冲buffer">缓冲（buffer）</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">read_buffer: 每当 buffer 满或者主动 <span style="color:#e6db74">`flush`</span> 时会触发一次读取，对于小数据可以减少读取次数，对于大数据可以控制单次读取的数据量。通常来说，先入 buffer 的数据会被先读取，所有的 buffer 数据几乎一定会被读取，拥有顺序访问的特性。write_buffer:同上，也是需要 buffer 满或者主动 <span style="color:#e6db74">`flush`</span> 时才会触发写入。如果每次写入的数据量相对固定。因为如果一次写入 4k 对与某个设备来说效率最高的话，buffer 一定是 4k。小数据积攒到 4k 写入，大数据分割成 4k 的碎片写入，这是 write_buffer 的用处。
+</code></pre></div><h4 id="交换内存swapping">交换内存（swapping）</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">当主存(RAM) 不足以临时存储多个程序时，我们从 RAM 中取出一些程序，通过 swap out 的机制将它们存储到硬盘中。当 RAM 可用时，我们再次将程序从硬盘交换到 RAM, 这就是 swap in。Linux 中的交换空间是物理内存的两倍。优点：
+<span style="color:#66d9ef">1.</span> 借助交换空间，我们可以在同一 RAM 中管理许多进程.
+<span style="color:#66d9ef">2.</span> 交换空间帮助我们创建虚拟内存。
+<span style="color:#66d9ef">3.</span> 交换空间是经济实惠的。硬盘的加个比主存要便宜。
+</code></pre></div><p><a href="https://cizixs.com/2015/10/01/linux-memory-management-through-free/">通过 free 命令理解 linux 内存管理</a></p>
+<p><a href="https://www.redhat.com/sysadmin/dissecting-free-command">Dissecting the free command: What the Linux sysadmin needs to know</a></p>
+
+    </section>
+</article>
+
+<footer id="post-meta" class="clearfix">
+    <a href="https://twitter.com/Your%20Twitter%20account">
+    <img class="avatar" src="https://lydiacai1203.github.io/images/avatar.png">
+    <div>
+        <span class="dark">阿菜</span>
+        <span>一个 间歇性混吃等死 持续性踌躇满志的 激萌少女</span>
+    </div>
+    </a>
+    <section id="sharing">
+        <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2flydiacai1203.github.io%2fpost%2flinux_memory_manage%2f - Linux%20%e5%86%85%e5%ad%98%e7%ae%a1%e7%90%86 by @Your%20Twitter%20account"><span class="icon-twitter"> tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+    </section>
+</footer>
+
+
+
+<ul id="post-list" class="archive readmore">
+    <h3>Read more</h3>
+
+    
+    
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/the_prince/">君主论 - 概要<aside class="dates">Jan 28 2022</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/sec_guide/">安全开发指南（持续更新）<aside class="dates">Oct 9 2021</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/raw_sql_q/">Python 原生 SQL 如何预防 SQL 注入<aside class="dates">Oct 8 2021</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/movie_szyt/">骚渣一体 --《圆月弯刀》<aside class="dates">Aug 16 2021</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/linux_lsof_usage/">Linux lsof 命令使用<aside class="dates">Apr 21 2021</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/download_file/">断点续传的原理<aside class="dates">Apr 20 2021</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/es_doc_readingnote/">Elasticsearch2.x 权威文档 （摘抄）<aside class="dates">Jan 15 2021</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/git_command/">GIT 常用命令查阅手册<aside class="dates">Dec 7 2020</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/record_of_a_destroy/">两种权限系统，主要是吐槽设计<aside class="dates">Jul 1 2020</aside></a>
+        </li>
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/study_tips_2019/">Study Tips(2019&#43;2020)<aside class="dates">Oct 10 2019</aside></a>
+        </li>
+    
+</ul>
+
+
+
+        <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    
+    <a class="symbol" href="https://www.dribbble.com/">
+        circledribble
+    </a>
+    
+    <a class="symbol" href="https://www.facebook.com/">
+        circlefacebook
+    </a>
+    
+    <a class="symbol" href="https://github.com/LydiaCai1203">
+        circlegithub
+    </a>
+    
+    <a class="symbol" href="https://www.twitter.com/">
+        circletwitterbird
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+        © Copyright 2022 阿菜
+    
+    </p>
+</footer>
+
+    </section>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://lydiacai1203.github.io/js/main.js"></script>
+<script src="https://lydiacai1203.github.io/js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+</body>
+</html>

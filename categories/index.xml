@@ -6,26 +6,35 @@
     <description>Recent content in Categories on Hugo Cactus Theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 15 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 28 Jan 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://lydiacai1203.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>骚话</title>
-      <link>https://lydiacai1203.github.io/categories/%E9%AA%9A%E8%AF%9D/</link>
-      <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
+      <title>闲书</title>
+      <link>https://lydiacai1203.github.io/categories/%E9%97%B2%E4%B9%A6/</link>
+      <pubDate>Fri, 28 Jan 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://lydiacai1203.github.io/categories/%E9%AA%9A%E8%AF%9D/</guid>
+      <guid>https://lydiacai1203.github.io/categories/%E9%97%B2%E4%B9%A6/</guid>
       <description></description>
     </item>
     
     <item>
       <title>技术</title>
       <link>https://lydiacai1203.github.io/categories/%E6%8A%80%E6%9C%AF/</link>
-      <pubDate>Mon, 07 Dec 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 09 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lydiacai1203.github.io/categories/%E6%8A%80%E6%9C%AF/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>骚话</title>
+      <link>https://lydiacai1203.github.io/categories/%E9%AA%9A%E8%AF%9D/</link>
+      <pubDate>Mon, 16 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lydiacai1203.github.io/categories/%E9%AA%9A%E8%AF%9D/</guid>
       <description></description>
     </item>
     
@@ -35,15 +44,6 @@
       <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lydiacai1203.github.io/categories/%E5%9E%83%E5%9C%BE%E6%B4%BB/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>随笔</title>
-      <link>https://lydiacai1203.github.io/categories/%E9%9A%8F%E7%AC%94/</link>
-      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://lydiacai1203.github.io/categories/%E9%9A%8F%E7%AC%94/</guid>
       <description></description>
     </item>
     
