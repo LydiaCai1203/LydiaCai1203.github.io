@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="阿菜">
 <meta name="description" content="阿菜的骚话天地">
-<meta name="generator" content="Hugo 0.74.2" />
+<meta name="generator" content="Hugo 0.100.1" />
 <title>安全开发指南（持续更新）</title>
 <link rel="shortcut icon" href="https://lydiacai1203.github.io/images/favicon.ico">
 <link rel="stylesheet" href="https://lydiacai1203.github.io/css/style.css">
@@ -24,19 +24,16 @@
 <meta property="og:title" content="安全开发指南（持续更新）" />
 <meta property="og:description" content="开发规范" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lydiacai1203.github.io/post/sec_guide/" />
+<meta property="og:url" content="https://lydiacai1203.github.io/post/sec_guide/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-10-09T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-10-09T00:00:00+00:00" />
 
 
+
 <meta itemprop="name" content="安全开发指南（持续更新）">
-<meta itemprop="description" content="开发规范">
-<meta itemprop="datePublished" content="2021-10-09T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-10-09T00:00:00&#43;00:00" />
+<meta itemprop="description" content="开发规范"><meta itemprop="datePublished" content="2021-10-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-10-09T00:00:00+00:00" />
 <meta itemprop="wordCount" content="594">
-
-
-
 <meta itemprop="keywords" content="2021,技术," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="安全开发指南（持续更新）"/>
@@ -83,219 +80,219 @@
         <p><a href="https://lydiacai1203.github.io/tags/%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83">开发规范</a></p>
 <p><a href="https://github.com/Tencent/secguide/blob/main/Python%E5%AE%89%E5%85%A8%E6%8C%87%E5%8D%97.md">腾讯 Python 安全指南</a></p>
 <h2 id="1-代码实现">1. 代码实现</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> 避免使用不安全的对称加密算法（避免 DES/3DES，建议 AES）
-
-<span style="color:#66d9ef">2.</span> 确保重要行为都记录在日志上，且可靠保存 6 个月以上
-
-<span style="color:#66d9ef">3.</span> 禁止将未经验证的用户输入直接记录日志（防止注入漏洞：恶意用户插入伪造的日志数据，从而让系统管理员以为是系统行为）
-
-<span style="color:#66d9ef">4.</span> 避免在日志中保存敏感信息（明文密码、密文密码 等等）
-</code></pre></div><h2 id="2-系统口令">2. 系统口令</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> 禁止使用 空口令、弱口令、已泄漏口令
-
-<span style="color:#66d9ef">2.</span> 口令强度需满足
-    + 密码长度大于 14 位
-    + 包含：大小写英文字母、数字、特殊字符
-    + 不得使用默认的初始密码
-    + 不能与最近 6 次使用过的密码重复
-    + 不得与其它外部系统使用相同的密码
-
-<span style="color:#66d9ef">3.</span> 口令存储安全
-    + 禁止明文存储口令
-    + 禁止使用弱密码学算法加密存储口令
-    + 使用 不可逆算法 和 随机 salt 对口令进行加密存储
-    + 禁止传递明文口令
-    + 禁止在不安全的信道中传输口令
-</code></pre></div><h2 id="3-配置--环境">3. 配置 / 环境</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> 建议使用 Python 3.6+ 版本，因为 Python3 在 2020 年就停止维护了，相关漏洞不能得到及时修复和维护
-
-<span style="color:#66d9ef">2.</span> 禁止使用不安全的第三方包组件
-
-<span style="color:#66d9ef">3.</span> 密钥存储安全（使用对称加密算法时，需要保护好加密密钥）
-
-<span style="color:#66d9ef">4.</span> 禁止硬编码敏感配置（源码中硬编码 AK/SK、IP、DB 账密 等配置信息）
-
-<span style="color:#66d9ef">5.</span> 应使用配置系统或 KMS 密钥管理系统
-</code></pre></div><h2 id="4-接口开发类">4. 接口开发类</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 避免使用不安全的对称加密算法（避免 DES/3DES，建议 AES）
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 确保重要行为都记录在日志上，且可靠保存 6 个月以上
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> 禁止将未经验证的用户输入直接记录日志（防止注入漏洞：恶意用户插入伪造的日志数据，从而让系统管理员以为是系统行为）
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">4.</span> 避免在日志中保存敏感信息（明文密码、密文密码 等等）
+</span></span></code></pre></div><h2 id="2-系统口令">2. 系统口令</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 禁止使用 空口令、弱口令、已泄漏口令
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 口令强度需满足
+</span></span><span style="display:flex;"><span>    + 密码长度大于 14 位
+</span></span><span style="display:flex;"><span>    + 包含：大小写英文字母、数字、特殊字符
+</span></span><span style="display:flex;"><span>    + 不得使用默认的初始密码
+</span></span><span style="display:flex;"><span>    + 不能与最近 6 次使用过的密码重复
+</span></span><span style="display:flex;"><span>    + 不得与其它外部系统使用相同的密码
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> 口令存储安全
+</span></span><span style="display:flex;"><span>    + 禁止明文存储口令
+</span></span><span style="display:flex;"><span>    + 禁止使用弱密码学算法加密存储口令
+</span></span><span style="display:flex;"><span>    + 使用 不可逆算法 和 随机 salt 对口令进行加密存储
+</span></span><span style="display:flex;"><span>    + 禁止传递明文口令
+</span></span><span style="display:flex;"><span>    + 禁止在不安全的信道中传输口令
+</span></span></code></pre></div><h2 id="3-配置--环境">3. 配置 / 环境</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 建议使用 Python 3.6+ 版本，因为 Python3 在 2020 年就停止维护了，相关漏洞不能得到及时修复和维护
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 禁止使用不安全的第三方包组件
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> 密钥存储安全（使用对称加密算法时，需要保护好加密密钥）
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">4.</span> 禁止硬编码敏感配置（源码中硬编码 AK/SK、IP、DB 账密 等配置信息）
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">5.</span> 应使用配置系统或 KMS 密钥管理系统
+</span></span></code></pre></div><h2 id="4-接口开发类">4. 接口开发类</h2>
 <h3 id="41-输入验证">4.1 输入验证</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> 必须按照类型进行数据校验，校验内容包括但不限于：数据长度、数据范围、数据类型、数据格式
-
-<span style="color:#66d9ef">2.</span> 推荐使用组件 Cerberus、jsonschema、Django-Validators
-</code></pre></div><h3 id="42-sql-操作">4.2 SQL 操作</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> 使用参数化查询，强制区分数据和命令，避免产生 SQL 注入漏洞
-<span style="color:#e6db74">`cur.execute(&#34;SELECT id, password FROM auth_user WHERE id=%s&#34;, (userid, ))`</span>
-
-<span style="color:#66d9ef">2.</span> 推荐使用 ORM 框架来操作数据库，如使用 SQLAlchemy
-
-<span style="color:#66d9ef">3.</span> 如果使用动态拼接 SQL 方式，必须对参数进行安全过滤，过滤不安全字符
-</code></pre></div><h3 id="43-执行命令">4.3 执行命令</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> 避免直接调用函数执行系统命令，如 <span style="color:#e6db74">`os.system()`</span>、`os.popen()`、`subprocess.call()` 等
-
-<span style="color:#66d9ef">2.</span> 如评估无法避免，执行命令时应避免拼接外部命令，且进行执行命令的白名单限制
-
-<span style="color:#66d9ef">3.</span> 必须过滤传入命令执行函数的字符
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os
-<span style="color:#f92672">import</span> sys
-<span style="color:#f92672">import</span> shlexdomain <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>]
-<span style="color:#75715e"># 替换可以用来注入命令的字符为空</span>
-badchars <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&amp;;|&#39;</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">$()`-&#34;</span>
-<span style="color:#66d9ef">for</span> char <span style="color:#f92672">in</span> badchars:    domain <span style="color:#f92672">=</span> domain<span style="color:#f92672">.</span>replace(char, <span style="color:#e6db74">&#34; &#34;</span>)result <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>system(<span style="color:#e6db74">&#34;nslookup &#34;</span> <span style="color:#f92672">+</span> shlex<span style="color:#f92672">.</span>quote(domain))
-</code></pre></div><h3 id="44-xml-的读写">4.4 XML 的读写</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> 必须禁用外部实体的方法，防止 XXE 攻击
-<span style="color:#e6db74">`from lxml import etree`</span>
-<span style="color:#e6db74">`xmlData = etree.parse(xmlSource,etree.XMLParser(resolve_entities=False))`</span>
-</code></pre></div><h3 id="45-文件操作">4.5 文件操作</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> 必须对文件类型限制，比如通过白名单对上传、下载的文件类型、大小 进行严格校验。仅允许业务所需的文件类型上传。避免上传木马、WebShell 等文件
-
-<span style="color:#66d9ef">2.</span> 必须禁止外部文件存储于可执行目录，建议使用 <span style="color:#e6db74">`tempfile`</span> 库来处理临时文件和临时目录
-
-<span style="color:#66d9ef">3.</span> 必须避免路径穿越，保存在本地文件系统时，必须对路径进行合法校验，避免目录穿越漏洞
-
-<span style="color:#66d9ef">4.</span> 文件目录避免外部参数拼接。保存文件目录建议后台写死并对文件名进行校验
-
-<span style="color:#66d9ef">5.</span> 文件名 hash 化处理（建议文件保存时，将文件名替换为随机字符串）
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 文件类型校验</span>
-<span style="color:#f92672">import</span> os  ALLOWED_EXTENSIONS <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;txt&#39;</span>,<span style="color:#e6db74">&#39;jpg&#39;</span>,<span style="color:#e6db74">&#39;png&#39;</span>]  
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">allowed_file</span>(filename):
-    <span style="color:#66d9ef">if</span> (<span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#f92672">in</span> filename <span style="color:#f92672">and</span>         <span style="color:#e6db74">&#39;..&#39;</span> <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> filename <span style="color:#f92672">and</span>         os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>splitext(filename)[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>lower() <span style="color:#f92672">in</span> ALLOWED_EXTENSIONS):                <span style="color:#66d9ef">return</span> filename    <span style="color:#66d9ef">return</span> None
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 文件存储路径校验</span>
-<span style="color:#f92672">import</span> osupload_dir <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/tmp/upload/&#39;</span> <span style="color:#75715e"># 预期的上传目录</span>
-file_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;../../etc/hosts&#39;</span> <span style="color:#75715e"># 用户传入的文件名</span>
-
-absolute_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(upload_dir, file_name) <span style="color:#75715e"># /tmp/upload/../../etc/hosts</span>
-normalized_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>normpath(absolute_path) <span style="color:#75715e"># /etc/hosts</span>
-
-<span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> normalized_path<span style="color:#f92672">.</span>startswith(upload_dir): <span style="color:#75715e"># 检查最终路径是否在预期的上传目录中</span>
-    <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">IOError</span>()
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 替换文件名</span>
-<span style="color:#f92672">import</span> uuid
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">random_filename</span>(filename):
-    ext <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>splitext(filename)[<span style="color:#ae81ff">1</span>]    new_filename <span style="color:#f92672">=</span> uuid<span style="color:#f92672">.</span>uuid4()<span style="color:#f92672">.</span>hex <span style="color:#f92672">+</span> ext    <span style="color:#66d9ef">return</span> new_filename
-</code></pre></div><h3 id="46-网络请求">4.6 网络请求</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> 必须限定访问网络资源地址范围，当程序需要从用户指定的 URL 地址获取网页文本内容、加载指定地址的图片、下载 等操作时，需要对 URL 进行安全校验。
-    + 只允许 HTTP / HTTPS
-    + 解析目标 URL，获取 host，解析 host 获取 IP，将 IP 转成 long 型
-    + 检查 IP 是否为内网 IP
-        + 10.0.0.0/8
-        + 172.16.0.0/12
-        + 192.168.0.0/16
-        + 127.0.0.0/8
-    + 请求 URL，检查是否有跳转，有就重新执行一遍校验步骤
-</code></pre></div><h3 id="47-响应输出">4.7 响应输出</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> 必须设置正确的 HTTP 响应包类型（Content-Type）
-    + 禁止非 HTML 类型的响应包设置为 “text/html”
-
-<span style="color:#66d9ef">2.</span> 必须设置安全的 HTTP 响应头
-    + X-Content-Type-Options: nosniff
-    + HttpOnly 控制用户登鉴权的 Cookie 字段 应当设置 HttpOnly 属性以防止被 XSS 漏洞 / JavaScript 操纵泄漏
-    + X-Frame-Options
-
-        该头用于指示浏览器禁止当前页面在frame、 iframe、embed等标签中展现。从而避免点击劫持问题。它有三个可选的值: DENY: 浏览器会拒绝当前页面加 载任何frame页面; SAMEORIGIN:则frame页面的地址只能为同源域名下的页面 ALLOW-FROM origin:可以定 义允许frame加载的页面地址
-
-<span style="color:#66d9ef">3.</span> 必须对外输出页面包含第三方数据时进行编码处理
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 推荐使用 mozilla 维护的 bleach 库来进行过滤</span>
-<span style="color:#f92672">import</span> bleachbleach.clean(<span style="color:#e6db74">&#39;an &lt;script&gt;evil()&lt;/script&gt; example&#39;</span>)
-<span style="color:#75715e"># u&#39;an &amp;lt;script&amp;gt;evil()&amp;lt;/script&amp;gt; example&#39;</span>
-</code></pre></div><h3 id="48-数据输出">4.8 数据输出</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> 敏感数据加密存储
-    + 敏感数据应使用SHA2、RSA等算法进行加密存储
-    + 敏感数据应使用独立的存储层，并在访问层开启访问控制
-    + 包含敏感信息的临时文件或缓存一旦不再需要应立刻删除
-
-<span style="color:#66d9ef">2.</span> 敏感信息须再后台进行脱敏后返回，禁止接口返回敏感信息交由前端/客户端进行脱敏处理
-
-<span style="color:#66d9ef">3.</span> 高敏感信息禁止存储、展示
-    + 口令、密保答案、生理标识等鉴权信息禁止展示
-    + 非金融类业务，信用卡cvv码及日志禁止存储
-
-<span style="color:#66d9ef">4.</span> 个人敏感信息脱敏展示
-    + 身份证只显示第一位和最后一位字符，如3****************1
-    + 移动电话号码隐藏中间6位字符，如134******48
-    + 工作地址/家庭地址最多显示到 “区” 一级
-    + 银行卡号仅显示最后4位字符，如************8639
-
-<span style="color:#66d9ef">5.</span> 隐藏后台地址
-    + 若程序对外提供了登录后台地址，应使用随机字符串隐藏地址（&#34;xxxx/login&#34; -&gt; &#34;xxxx/ranD0Str&#34;）
-</code></pre></div><h3 id="49-权限管理">4.9 权限管理</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> 默认鉴权
-    + 除非资源完全可对外开放，否则系统默认进行身份认证（使用白名单的方式放开不需要认证的接口或页面）
-
-<span style="color:#66d9ef">2.</span> 授权遵循最小权限原则
-    + 程序默认用户应不具备任何操作权限
-
-<span style="color:#66d9ef">3.</span> 避免越权访问
-    + 对于非公共操作，应当校验当前访问账号进行 操作权限（常见于CMS）和 数据权限校验
-    + 验证当前用户的登录态
-    + 从可信结构中获取经过校验的当前请求账号的身份信息（如：session），禁止从用户请求参数或 Cookie 中获取外部传入不可信用户身份直接进行查询
-    + 校验当前用户是否具备该操作权限
-    + 校验当前用户是否具备所操作数据的权限
-    + 校验当前操作是否账户是否预期账户
-
-<span style="color:#66d9ef">4.</span> 及时清理不需要的权限
-    + 程序应定期清理非必需用户的权限
-</code></pre></div><h3 id="410-异常处理">4.10 异常处理</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> 应合理使用 try/except/finally 处理系统异常，避免出错信息输出到前端
-<span style="color:#66d9ef">2.</span> 对外环境禁止开启 debug 模式，或将程序运行日志输出到前端
-</code></pre></div><h3 id="411-flask-安全">4.11 Flask 安全</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> XSS 跨站脚本攻击略
-
-<span style="color:#66d9ef">2.</span> CSRF 跨站请求伪造对于修改服务器上的内容的每个请求，必须使用一次性令牌并将其存储在 cookie 中，并将其与表单一起传输。再次收到服务器上的数据后，比较两个令牌，并确保它们相等。Flask 并没有提供 CSRF 解决方案，因为使用 Flask-WTF 可以解决。
-
-<span style="color:#66d9ef">3.</span> JSON 安全性使用 <span style="color:#e6db74">`return jsonify({&#39;code&#39;: 200, &#39;data&#39;: None, &#39;msg&#39;: &#39;&#39;})`</span>
-在 Flask 0.10- 中，jsonify 没有将顶级数组序列化为 json。现在已支持序列化数组。
-
-<span style="color:#66d9ef">4.</span> 安全 HTTP/HTTPS Headers
-    + <span style="color:#e6db74">`response.headers[&#39;Strict-Transport-Security&#39;] = &#39;max-age=31536000; includeSubDomains&#39;`</span> 
-    告诉浏览器将所有的 HTTP 请求转换为 HTTPS，防止中间人攻击
-
-    + <span style="color:#e6db74">`response.headers[&#39;Content-Security-Policy&#39;] = &#34;default-src &#39;self&#39;&#34;`</span>
-    告诉浏览器它可以从哪里加载各种类型的资源。尽可能使用此标头
-
-    + <span style="color:#e6db74">`response.headers[&#39;X-Content-Type-Options&#39;] = &#39;nosniff&#39;`</span>
-    强制浏览器接受响应内容类型，而不是尝试检测它，这可能会被滥用导致 XSS 攻击
-
-    + <span style="color:#e6db74">`response.headers[&#39;X-Frame-Options&#39;] = &#39;SAMEORIGIN&#39;`</span>
-    防止外部网站将您的网站嵌入到iframe. 这可以防止一类攻击，其中外框的点击可以无形地转换为对页面元素的点击。这也称为“点击劫持”。
-
-    + <span style="color:#e6db74">`response.headers[&#39;X-XSS-Protection&#39;] = &#39;1; mode=block&#39;`</span>
-    如果请求包含类似 JavaScript 的内容并且响应包含相同的数据，浏览器将尝试通过不加载页面来防止反射型 XSS 攻击。
-
-<span style="color:#66d9ef">5.</span> 设置 Cookie 选项
-# 全局设置 cookie config
-app.config.update(
-    # Secure 将 cookie 限制为仅 HTTPS 流量
-    SESSION_COOKIE_SECURE=True,
-
-    # HttpOnly 保护 cookie 的内容不被 JavaScript 读取
-    SESSION_COOKIE_HTTPONLY=True,
-
-    # SameSite限制 cookie 与来自外部站点的请求一起发送的方式
-    # Lax防止从外部站点发送带有 CSRF 倾向请求的 cookie，例如提交表单
-    # Strict阻止发送带有所有外部请求的 cookie，包括遵循常规链接
-    SESSION_COOKIE_SAMESITE=&#39;Lax&#39;,
-)
-
-# 局部设置 cookie config
-response.set_cookie(&#39;username&#39;, &#39;flask&#39;, secure=True, httponly=True, samesite=&#39;Lax&#39;)
-
-# 局部设置 cookie 过期时间
-response.set_cookie(&#39;snakes&#39;, &#39;3&#39;, max_age=600)
-
-# 全局设置 cookie 过期时间
-app.config.update(
-    PERMANENT_SESSION_LIFETIME=600
-)@app.route(&#39;/login&#39;, methods=[&#39;POST&#39;])def login():
-    ...
-    session.clear()
-    session[&#39;user_id&#39;] = user.id
-    session.permanent = True
-    ...
-
-# 使用itsdangerous.TimedSerializer签名和验证等cookie值（或需要安全签名的任何值）！！！！！
-
-<span style="color:#66d9ef">6.</span> 复制/粘贴 到终端某些隐藏字符如 &#34;\b&#34;、&#34;^H&#34; 会导致文本在 HTML 中的呈现方式与 粘贴到终端 时的解释方式不同。如果希望保持一致，考虑应用额外的过滤，替换掉所有的隐藏特殊字符。
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 必须按照类型进行数据校验，校验内容包括但不限于：数据长度、数据范围、数据类型、数据格式
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 推荐使用组件 Cerberus、jsonschema、Django-Validators
+</span></span></code></pre></div><h3 id="42-sql-操作">4.2 SQL 操作</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 使用参数化查询，强制区分数据和命令，避免产生 SQL 注入漏洞
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">`cur.execute(&#34;SELECT id, password FROM auth_user WHERE id=%s&#34;, (userid, ))`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 推荐使用 ORM 框架来操作数据库，如使用 SQLAlchemy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> 如果使用动态拼接 SQL 方式，必须对参数进行安全过滤，过滤不安全字符
+</span></span></code></pre></div><h3 id="43-执行命令">4.3 执行命令</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 避免直接调用函数执行系统命令，如 <span style="color:#e6db74">`os.system()`</span>、`os.popen()`、`subprocess.call()` 等
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 如评估无法避免，执行命令时应避免拼接外部命令，且进行执行命令的白名单限制
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> 必须过滤传入命令执行函数的字符
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> shlexdomain <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 替换可以用来注入命令的字符为空</span>
+</span></span><span style="display:flex;"><span>badchars <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&amp;;|&#39;</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">$()`-&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> char <span style="color:#f92672">in</span> badchars:    domain <span style="color:#f92672">=</span> domain<span style="color:#f92672">.</span>replace(char, <span style="color:#e6db74">&#34; &#34;</span>)result <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>system(<span style="color:#e6db74">&#34;nslookup &#34;</span> <span style="color:#f92672">+</span> shlex<span style="color:#f92672">.</span>quote(domain))
+</span></span></code></pre></div><h3 id="44-xml-的读写">4.4 XML 的读写</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 必须禁用外部实体的方法，防止 XXE 攻击
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">`from lxml import etree`</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">`xmlData = etree.parse(xmlSource,etree.XMLParser(resolve_entities=False))`</span>
+</span></span></code></pre></div><h3 id="45-文件操作">4.5 文件操作</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 必须对文件类型限制，比如通过白名单对上传、下载的文件类型、大小 进行严格校验。仅允许业务所需的文件类型上传。避免上传木马、WebShell 等文件
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 必须禁止外部文件存储于可执行目录，建议使用 <span style="color:#e6db74">`tempfile`</span> 库来处理临时文件和临时目录
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> 必须避免路径穿越，保存在本地文件系统时，必须对路径进行合法校验，避免目录穿越漏洞
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">4.</span> 文件目录避免外部参数拼接。保存文件目录建议后台写死并对文件名进行校验
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">5.</span> 文件名 hash 化处理（建议文件保存时，将文件名替换为随机字符串）
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 文件类型校验</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os  ALLOWED_EXTENSIONS <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;txt&#39;</span>,<span style="color:#e6db74">&#39;jpg&#39;</span>,<span style="color:#e6db74">&#39;png&#39;</span>]  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">allowed_file</span>(filename):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#f92672">in</span> filename <span style="color:#f92672">and</span>         <span style="color:#e6db74">&#39;..&#39;</span> <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> filename <span style="color:#f92672">and</span>         os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>splitext(filename)[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>lower() <span style="color:#f92672">in</span> ALLOWED_EXTENSIONS):                <span style="color:#66d9ef">return</span> filename    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 文件存储路径校验</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> osupload_dir <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/tmp/upload/&#39;</span> <span style="color:#75715e"># 预期的上传目录</span>
+</span></span><span style="display:flex;"><span>file_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;../../etc/hosts&#39;</span> <span style="color:#75715e"># 用户传入的文件名</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>absolute_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(upload_dir, file_name) <span style="color:#75715e"># /tmp/upload/../../etc/hosts</span>
+</span></span><span style="display:flex;"><span>normalized_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>normpath(absolute_path) <span style="color:#75715e"># /etc/hosts</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> normalized_path<span style="color:#f92672">.</span>startswith(upload_dir): <span style="color:#75715e"># 检查最终路径是否在预期的上传目录中</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">IOError</span>()
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 替换文件名</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> uuid
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">random_filename</span>(filename):
+</span></span><span style="display:flex;"><span>    ext <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>splitext(filename)[<span style="color:#ae81ff">1</span>]    new_filename <span style="color:#f92672">=</span> uuid<span style="color:#f92672">.</span>uuid4()<span style="color:#f92672">.</span>hex <span style="color:#f92672">+</span> ext    <span style="color:#66d9ef">return</span> new_filename
+</span></span></code></pre></div><h3 id="46-网络请求">4.6 网络请求</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 必须限定访问网络资源地址范围，当程序需要从用户指定的 URL 地址获取网页文本内容、加载指定地址的图片、下载 等操作时，需要对 URL 进行安全校验。
+</span></span><span style="display:flex;"><span>    + 只允许 HTTP / HTTPS
+</span></span><span style="display:flex;"><span>    + 解析目标 URL，获取 host，解析 host 获取 IP，将 IP 转成 long 型
+</span></span><span style="display:flex;"><span>    + 检查 IP 是否为内网 IP
+</span></span><span style="display:flex;"><span>        + 10.0.0.0/8
+</span></span><span style="display:flex;"><span>        + 172.16.0.0/12
+</span></span><span style="display:flex;"><span>        + 192.168.0.0/16
+</span></span><span style="display:flex;"><span>        + 127.0.0.0/8
+</span></span><span style="display:flex;"><span>    + 请求 URL，检查是否有跳转，有就重新执行一遍校验步骤
+</span></span></code></pre></div><h3 id="47-响应输出">4.7 响应输出</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 必须设置正确的 HTTP 响应包类型（Content-Type）
+</span></span><span style="display:flex;"><span>    + 禁止非 HTML 类型的响应包设置为 “text/html”
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 必须设置安全的 HTTP 响应头
+</span></span><span style="display:flex;"><span>    + X-Content-Type-Options: nosniff
+</span></span><span style="display:flex;"><span>    + HttpOnly 控制用户登鉴权的 Cookie 字段 应当设置 HttpOnly 属性以防止被 XSS 漏洞 / JavaScript 操纵泄漏
+</span></span><span style="display:flex;"><span>    + X-Frame-Options
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        该头用于指示浏览器禁止当前页面在frame、 iframe、embed等标签中展现。从而避免点击劫持问题。它有三个可选的值: DENY: 浏览器会拒绝当前页面加 载任何frame页面; SAMEORIGIN:则frame页面的地址只能为同源域名下的页面 ALLOW-FROM origin:可以定 义允许frame加载的页面地址
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> 必须对外输出页面包含第三方数据时进行编码处理
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 推荐使用 mozilla 维护的 bleach 库来进行过滤</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> bleachbleach.clean(<span style="color:#e6db74">&#39;an &lt;script&gt;evil()&lt;/script&gt; example&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># u&#39;an &amp;lt;script&amp;gt;evil()&amp;lt;/script&amp;gt; example&#39;</span>
+</span></span></code></pre></div><h3 id="48-数据输出">4.8 数据输出</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 敏感数据加密存储
+</span></span><span style="display:flex;"><span>    + 敏感数据应使用SHA2、RSA等算法进行加密存储
+</span></span><span style="display:flex;"><span>    + 敏感数据应使用独立的存储层，并在访问层开启访问控制
+</span></span><span style="display:flex;"><span>    + 包含敏感信息的临时文件或缓存一旦不再需要应立刻删除
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 敏感信息须再后台进行脱敏后返回，禁止接口返回敏感信息交由前端/客户端进行脱敏处理
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> 高敏感信息禁止存储、展示
+</span></span><span style="display:flex;"><span>    + 口令、密保答案、生理标识等鉴权信息禁止展示
+</span></span><span style="display:flex;"><span>    + 非金融类业务，信用卡cvv码及日志禁止存储
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">4.</span> 个人敏感信息脱敏展示
+</span></span><span style="display:flex;"><span>    + 身份证只显示第一位和最后一位字符，如3****************1
+</span></span><span style="display:flex;"><span>    + 移动电话号码隐藏中间6位字符，如134******48
+</span></span><span style="display:flex;"><span>    + 工作地址/家庭地址最多显示到 “区” 一级
+</span></span><span style="display:flex;"><span>    + 银行卡号仅显示最后4位字符，如************8639
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">5.</span> 隐藏后台地址
+</span></span><span style="display:flex;"><span>    + 若程序对外提供了登录后台地址，应使用随机字符串隐藏地址（&#34;xxxx/login&#34; -&gt; &#34;xxxx/ranD0Str&#34;）
+</span></span></code></pre></div><h3 id="49-权限管理">4.9 权限管理</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 默认鉴权
+</span></span><span style="display:flex;"><span>    + 除非资源完全可对外开放，否则系统默认进行身份认证（使用白名单的方式放开不需要认证的接口或页面）
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 授权遵循最小权限原则
+</span></span><span style="display:flex;"><span>    + 程序默认用户应不具备任何操作权限
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> 避免越权访问
+</span></span><span style="display:flex;"><span>    + 对于非公共操作，应当校验当前访问账号进行 操作权限（常见于CMS）和 数据权限校验
+</span></span><span style="display:flex;"><span>    + 验证当前用户的登录态
+</span></span><span style="display:flex;"><span>    + 从可信结构中获取经过校验的当前请求账号的身份信息（如：session），禁止从用户请求参数或 Cookie 中获取外部传入不可信用户身份直接进行查询
+</span></span><span style="display:flex;"><span>    + 校验当前用户是否具备该操作权限
+</span></span><span style="display:flex;"><span>    + 校验当前用户是否具备所操作数据的权限
+</span></span><span style="display:flex;"><span>    + 校验当前操作是否账户是否预期账户
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">4.</span> 及时清理不需要的权限
+</span></span><span style="display:flex;"><span>    + 程序应定期清理非必需用户的权限
+</span></span></code></pre></div><h3 id="410-异常处理">4.10 异常处理</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 应合理使用 try/except/finally 处理系统异常，避免出错信息输出到前端
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 对外环境禁止开启 debug 模式，或将程序运行日志输出到前端
+</span></span></code></pre></div><h3 id="411-flask-安全">4.11 Flask 安全</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> XSS 跨站脚本攻击略
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> CSRF 跨站请求伪造对于修改服务器上的内容的每个请求，必须使用一次性令牌并将其存储在 cookie 中，并将其与表单一起传输。再次收到服务器上的数据后，比较两个令牌，并确保它们相等。Flask 并没有提供 CSRF 解决方案，因为使用 Flask-WTF 可以解决。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> JSON 安全性使用 <span style="color:#e6db74">`return jsonify({&#39;code&#39;: 200, &#39;data&#39;: None, &#39;msg&#39;: &#39;&#39;})`</span>
+</span></span><span style="display:flex;"><span>在 Flask 0.10- 中，jsonify 没有将顶级数组序列化为 json。现在已支持序列化数组。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">4.</span> 安全 HTTP/HTTPS Headers
+</span></span><span style="display:flex;"><span>    + <span style="color:#e6db74">`response.headers[&#39;Strict-Transport-Security&#39;] = &#39;max-age=31536000; includeSubDomains&#39;`</span> 
+</span></span><span style="display:flex;"><span>    告诉浏览器将所有的 HTTP 请求转换为 HTTPS，防止中间人攻击
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    + <span style="color:#e6db74">`response.headers[&#39;Content-Security-Policy&#39;] = &#34;default-src &#39;self&#39;&#34;`</span>
+</span></span><span style="display:flex;"><span>    告诉浏览器它可以从哪里加载各种类型的资源。尽可能使用此标头
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    + <span style="color:#e6db74">`response.headers[&#39;X-Content-Type-Options&#39;] = &#39;nosniff&#39;`</span>
+</span></span><span style="display:flex;"><span>    强制浏览器接受响应内容类型，而不是尝试检测它，这可能会被滥用导致 XSS 攻击
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    + <span style="color:#e6db74">`response.headers[&#39;X-Frame-Options&#39;] = &#39;SAMEORIGIN&#39;`</span>
+</span></span><span style="display:flex;"><span>    防止外部网站将您的网站嵌入到iframe. 这可以防止一类攻击，其中外框的点击可以无形地转换为对页面元素的点击。这也称为“点击劫持”。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    + <span style="color:#e6db74">`response.headers[&#39;X-XSS-Protection&#39;] = &#39;1; mode=block&#39;`</span>
+</span></span><span style="display:flex;"><span>    如果请求包含类似 JavaScript 的内容并且响应包含相同的数据，浏览器将尝试通过不加载页面来防止反射型 XSS 攻击。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">5.</span> 设置 Cookie 选项
+</span></span><span style="display:flex;"><span># 全局设置 cookie config
+</span></span><span style="display:flex;"><span>app.config.update(
+</span></span><span style="display:flex;"><span>    # Secure 将 cookie 限制为仅 HTTPS 流量
+</span></span><span style="display:flex;"><span>    SESSION_COOKIE_SECURE=True,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    # HttpOnly 保护 cookie 的内容不被 JavaScript 读取
+</span></span><span style="display:flex;"><span>    SESSION_COOKIE_HTTPONLY=True,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    # SameSite限制 cookie 与来自外部站点的请求一起发送的方式
+</span></span><span style="display:flex;"><span>    # Lax防止从外部站点发送带有 CSRF 倾向请求的 cookie，例如提交表单
+</span></span><span style="display:flex;"><span>    # Strict阻止发送带有所有外部请求的 cookie，包括遵循常规链接
+</span></span><span style="display:flex;"><span>    SESSION_COOKIE_SAMESITE=&#39;Lax&#39;,
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 局部设置 cookie config
+</span></span><span style="display:flex;"><span>response.set_cookie(&#39;username&#39;, &#39;flask&#39;, secure=True, httponly=True, samesite=&#39;Lax&#39;)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 局部设置 cookie 过期时间
+</span></span><span style="display:flex;"><span>response.set_cookie(&#39;snakes&#39;, &#39;3&#39;, max_age=600)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 全局设置 cookie 过期时间
+</span></span><span style="display:flex;"><span>app.config.update(
+</span></span><span style="display:flex;"><span>    PERMANENT_SESSION_LIFETIME=600
+</span></span><span style="display:flex;"><span>)@app.route(&#39;/login&#39;, methods=[&#39;POST&#39;])def login():
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>    session.clear()
+</span></span><span style="display:flex;"><span>    session[&#39;user_id&#39;] = user.id
+</span></span><span style="display:flex;"><span>    session.permanent = True
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 使用itsdangerous.TimedSerializer签名和验证等cookie值（或需要安全签名的任何值）！！！！！
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">6.</span> 复制/粘贴 到终端某些隐藏字符如 &#34;\b&#34;、&#34;^H&#34; 会导致文本在 HTML 中的呈现方式与 粘贴到终端 时的解释方式不同。如果希望保持一致，考虑应用额外的过滤，替换掉所有的隐藏特殊字符。
+</span></span></code></pre></div>
     </section>
 </article>
 
@@ -328,6 +325,10 @@ app.config.update(
 
     
     
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/the_prince_three/">君主论 - 论依靠他人的武力或者由于幸运而取得得新君主国<aside class="dates">Oct 16 2022</aside></a>
+        </li>
     
         <li>
             <a href="https://lydiacai1203.github.io/post/thinking_1/">不能完全相信大脑<aside class="dates">Jun 20 2022</aside></a>
@@ -363,10 +364,6 @@ app.config.update(
     
         <li>
             <a href="https://lydiacai1203.github.io/post/es_doc_readingnote/">Elasticsearch2.x 权威文档 （摘抄）<aside class="dates">Jan 15 2021</aside></a>
-        </li>
-    
-        <li>
-            <a href="https://lydiacai1203.github.io/post/git_command/">GIT 常用命令查阅手册<aside class="dates">Dec 7 2020</aside></a>
         </li>
     
 </ul>

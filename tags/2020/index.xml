@@ -6,11 +6,7 @@
     <description>Recent content in 2020 on Hugo Cactus Theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 07 Dec 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://lydiacai1203.github.io/tags/2020/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 07 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://lydiacai1203.github.io/tags/2020/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GIT 常用命令查阅手册</title>
       <link>https://lydiacai1203.github.io/post/git_command/</link>
@@ -18,7 +14,7 @@
       
       <guid>https://lydiacai1203.github.io/post/git_command/</guid>
       <description>练习平台 - 强烈建议新手通关
-git commit 将当前版本和仓库的上一版本进行对比，将所有的差异打包到一起作为一个提交记录。 git branch &amp;lt;branch_name&amp;gt; 创建分支 git merge &amp;lt;branch_name&amp;gt; git rebase master 将 bugFix 里面的 commit 按照顺序复制到 master 下。也就是说 bugFix 在 master 分支的最顶端了。 git checkout master git rebase bugFix # 相当于将 master 的 commit 复制到 fixBug 下，master 会在 bugFix 的顶端，所以 master 只会往下移一格。 HEAD 总是指向当前分支上最近一次的提交记录。 HEAD 通常情况下指向分支名的。 也就是说 master 分支其实是 master 指针，head 指针是单独的 head 指针。 `git checkout &amp;lt;commit-sha&amp;gt;` 便可以移动 head 指针。 cat .git/HEAD git symbolic-ref HEAD 这两句可以查看当前的 HEAD 指针指向 ^ 相对引用，n 个 ^ 或者 ~n 就是向上 n 个 commit git checkout master^ 或者 git checkout HEAD~4 git branch -f master HEAD~3 强制修改分支位置，将 master 分支强制指向 HEAD 的第三个父级提交。 git reset HEAD~1 通过分支记录回退几个提交记录来实现撤销改动。 git revert HEAD 通过在要撤销的提交记录后面新增一个提交，然后在新提交里面引入一些更改，这些更改便是用于撤销记录的。 git cherry-pick  将一些提交复制到 HEAD 下。 交互式的 rebase 如果你不知道要提交的 sha 值，就可以使用交互式的 rebase.</description>
+git commit 将当前版本和仓库的上一版本进行对比，将所有的差异打包到一起作为一个提交记录。 git branch &amp;lt;branch_name&amp;gt; 创建分支 git merge &amp;lt;branch_name&amp;gt; git rebase master 将 bugFix 里面的 commit 按照顺序复制到 master 下。也就是说 bugFix 在 master 分支的最顶端了。 git checkout master git rebase bugFix # 相当于将 master 的 commit 复制到 fixBug 下，master 会在 bugFix 的顶端，所以 master 只会往下移一格。 HEAD 总是指向当前分支上最近一次的提交记录。 HEAD 通常情况下指向分支名的。 也就是说 master 分支其实是 master 指针，head 指针是单独的 head 指针。 `git checkout &amp;lt;commit-sha&amp;gt;` 便可以移动 head 指针。 cat .git/HEAD git symbolic-ref HEAD 这两句可以查看当前的 HEAD 指针指向 ^ 相对引用，n 个 ^ 或者 ~n 就是向上 n 个 commit git checkout master^ 或者 git checkout HEAD~4 git branch -f master HEAD~3 强制修改分支位置，将 master 分支强制指向 HEAD 的第三个父级提交。 git reset HEAD~1 通过分支记录回退几个提交记录来实现撤销改动。 git revert HEAD 通过在要撤销的提交记录后面新增一个提交，然后在新提交里面引入一些更改，这些更改便是用于撤销记录的。 git cherry-pick 将一些提交复制到 HEAD 下。 交互式的 rebase 如果你不知道要提交的 sha 值，就可以使用交互式的 rebase.</description>
     </item>
     
     <item>
@@ -28,8 +24,8 @@ git commit 将当前版本和仓库的上一版本进行对比，将所有的差
       
       <guid>https://lydiacai1203.github.io/post/record_of_a_destroy/</guid>
       <description>过年那段时间真的太难受了。这期间遭受了很多事情。 但是我现在记不住太多东西了。朋友圈里多了很多人，三家公司，三家公司的同事。我不能和以前一样在里面抱怨什么了。赖哥的骚操作积累的太多，我都写不完。
- 安全运营平台当时设计权限系统的时候，权限上分了两部分，一个是功能权限，一个是数据权限。功能权限控制是否能访问接口，数据权限控制返回的数据，不具有完全的数据权限的只会返回部分数据。考虑到用户配置的方便性，还有工时等限制，最后采用了参数控制的方式。这样说不是很直观，下面简单说明一下权限表的设计。
-   id perm_name perm_key perm_args created updated status     1 地址标签库 - 黑地址标签 - 读 black_address_tags_read category=1, 2, 3&amp;amp;status=1 2020-01-01 00:00:00 2020-01-01 00:00:00 1       id role_name created updated status     1 super_user 2020-01-01 00:00:00 2020-01-01 00:00:00 1       id role_id perm_id created updated status     1 1 1 2020-01-01 00:00:00 2020-01-01 00:00:00 1       id user_name created updated     1 caiqingjing 2020-01-01 00:00:00 2020-01-01 00:00:00       id user_id role_id created updated     1 1 1 2020-01-01 00:00:00 2020-01-01 00:00:00       id user_id perm_id created updated     1 1 2 2020-01-01 00:00:00 2020-01-01 00:00:00    应用场景：</description>
+安全运营平台当时设计权限系统的时候，权限上分了两部分，一个是功能权限，一个是数据权限。功能权限控制是否能访问接口，数据权限控制返回的数据，不具有完全的数据权限的只会返回部分数据。考虑到用户配置的方便性，还有工时等限制，最后采用了参数控制的方式。这样说不是很直观，下面简单说明一下权限表的设计。
+id perm_name perm_key perm_args created updated status 1 地址标签库 - 黑地址标签 - 读 black_address_tags_read category=1, 2, 3&amp;amp;status=1 2020-01-01 00:00:00 2020-01-01 00:00:00 1 id role_name created updated status 1 super_user 2020-01-01 00:00:00 2020-01-01 00:00:00 1 id role_id perm_id created updated status 1 1 1 2020-01-01 00:00:00 2020-01-01 00:00:00 1 id user_name created updated 1 caiqingjing 2020-01-01 00:00:00 2020-01-01 00:00:00 id user_id role_id created updated 1 1 1 2020-01-01 00:00:00 2020-01-01 00:00:00 id user_id perm_id created updated 1 1 2 2020-01-01 00:00:00 2020-01-01 00:00:00 应用场景：</description>
     </item>
     
   </channel>

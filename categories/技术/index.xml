@@ -6,11 +6,7 @@
     <description>Recent content in 技术 on Hugo Cactus Theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 09 Oct 2021 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://lydiacai1203.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 09 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lydiacai1203.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>安全开发指南（持续更新）</title>
       <link>https://lydiacai1203.github.io/post/sec_guide/</link>
@@ -28,10 +24,10 @@
       <pubDate>Fri, 08 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lydiacai1203.github.io/post/raw_sql_q/</guid>
-      <description>什么是 SQL 注入 腾讯云博客  SQL 注入攻击是一种常见的Web攻击方法，攻击者通过把 SQL 命令注入到 Web 后台数据库的查询字符串中，最终达到欺骗服务器执行恶意 SQL 命令的目的。例如可以从数据库获取敏感信息，或者利用数据库的特性执行添加用户、导出文件等一系列恶意操作，甚至有可能获取数据库乃至系统用户最高权限。 2. SQL 注入例子 SQL 注入只会发生在字符串拼接的例子中，常见的攻击有拖库、拖表、篡改网页内容、收集数据库信息为其它攻击做准备等等。
-假设代码中是这样一段代码 username = input(&amp;ldquo;enter in username&amp;rdquo;) sql = f&amp;rdquo;&amp;rdquo;&amp;rdquo; select * from content where create_user = &amp;ldquo;{username}&amp;rdquo; &amp;quot;&amp;rdquo;&amp;rdquo;
-用户输入 username = &amp;lsquo;testc&amp;rdquo; or 1 = &amp;ldquo;1&amp;rsquo;, SQL 就会变成 sql = f&amp;rdquo;&amp;rdquo;&amp;rdquo; select * from content where create_user = &amp;ldquo;testc&amp;rdquo; or 1 = &amp;ldquo;1&amp;rdquo; &amp;quot;&amp;rdquo;&amp;rdquo; 3. SQL 注入预防通用方法
- 外部参数动态拼接 [&amp;quot;\&amp;quot;&amp;quot;, &amp;quot;\\&amp;quot;, &amp;quot;/&amp;quot;, &amp;quot;*&amp;quot;, &amp;quot;&#39;&amp;quot;, &amp;quot;=&amp;quot;, &amp;quot;-&amp;quot;, &amp;quot;#&amp;quot;, &amp;quot;;&amp;quot;, &amp;quot;&amp;lt;&amp;quot;, &amp;quot;&amp;gt;&amp;quot;, &amp;quot;+&amp;quot;, &amp;quot;&amp;amp;&amp;quot;, &amp;quot;$&amp;quot;, &amp;quot;(&amp;quot;, &amp;quot;)&amp;quot;, &amp;quot;%&amp;quot;, &amp;quot;@&amp;quot;, &amp;quot;,&amp;quot;]   过滤特殊符号 遇到固定格式的变量，在 SQL 执行前严格按照固定格式检查 特殊符号转义使用（SQL 中的转义字符是单引号）   参数化查询  绑定变量使用预编译语句（预防 SQL 注入的最佳方式）   ORM  使用 ORM 避免 SQL 注入   存储  敏感信息加密存储  将 username = &amp;lsquo;testc&amp;rdquo; or 1 = &amp;ldquo;1&amp;rsquo; 中的特殊符号转译，除了左右两侧的单引号 这样 &amp;ldquo;testc&amp;rsquo;&amp;rdquo; or 1 = &amp;lsquo;&amp;ldquo;1&amp;rdquo; 就变成了一个值，而非表达式的一部分 sql = f&amp;rdquo;&amp;rdquo;&amp;rdquo; select * from content where create_user = &amp;ldquo;testc&amp;rsquo;&amp;rdquo; or 1 = &amp;lsquo;&amp;ldquo;1&amp;rdquo; &amp;quot;&amp;rdquo;&amp;rdquo; 4.</description>
+      <description>什么是 SQL 注入 腾讯云博客 SQL 注入攻击是一种常见的Web攻击方法，攻击者通过把 SQL 命令注入到 Web 后台数据库的查询字符串中，最终达到欺骗服务器执行恶意 SQL 命令的目的。例如可以从数据库获取敏感信息，或者利用数据库的特性执行添加用户、导出文件等一系列恶意操作，甚至有可能获取数据库乃至系统用户最高权限。 2. SQL 注入例子 SQL 注入只会发生在字符串拼接的例子中，常见的攻击有拖库、拖表、篡改网页内容、收集数据库信息为其它攻击做准备等等。
+假设代码中是这样一段代码 username = input(&amp;ldquo;enter in username&amp;rdquo;) sql = f&amp;quot;&amp;quot;&amp;quot; select * from content where create_user = &amp;ldquo;{username}&amp;rdquo; &amp;quot;&amp;quot;&amp;quot;
+用户输入 username = &amp;rsquo;testc&amp;quot; or 1 = &amp;ldquo;1&amp;rsquo;, SQL 就会变成 sql = f&amp;rdquo;&amp;quot;&amp;quot; select * from content where create_user = &amp;ldquo;testc&amp;rdquo; or 1 = &amp;ldquo;1&amp;rdquo; &amp;quot;&amp;quot;&amp;quot; 3. SQL 注入预防通用方法
+外部参数动态拼接 [&amp;quot;\&amp;quot;&amp;quot;, &amp;quot;\\&amp;quot;, &amp;quot;/&amp;quot;, &amp;quot;*&amp;quot;, &amp;quot;&#39;&amp;quot;, &amp;quot;=&amp;quot;, &amp;quot;-&amp;quot;, &amp;quot;#&amp;quot;, &amp;quot;;&amp;quot;, &amp;quot;&amp;lt;&amp;quot;, &amp;quot;&amp;gt;&amp;quot;, &amp;quot;+&amp;quot;, &amp;quot;&amp;amp;&amp;quot;, &amp;quot;$&amp;quot;, &amp;quot;(&amp;quot;, &amp;quot;)&amp;quot;, &amp;quot;%&amp;quot;, &amp;quot;@&amp;quot;, &amp;quot;,&amp;quot;] 过滤特殊符号 遇到固定格式的变量，在 SQL 执行前严格按照固定格式检查 特殊符号转义使用（SQL 中的转义字符是单引号） 参数化查询 绑定变量使用预编译语句（预防 SQL 注入的最佳方式） ORM 使用 ORM 避免 SQL 注入 存储 敏感信息加密存储 将 username = &amp;rsquo;testc&amp;quot; or 1 = &amp;ldquo;1&amp;rsquo; 中的特殊符号转译，除了左右两侧的单引号 这样 &amp;ldquo;testc&amp;rsquo;&amp;rdquo; or 1 = &amp;lsquo;&amp;ldquo;1&amp;rdquo; 就变成了一个值，而非表达式的一部分 sql = f&amp;rdquo;&amp;quot;&amp;quot; select * from content where create_user = &amp;ldquo;testc&amp;rsquo;&amp;rdquo; or 1 = &amp;lsquo;&amp;ldquo;1&amp;rdquo; &amp;quot;&amp;quot;&amp;quot; 4.</description>
     </item>
     
     <item>
@@ -40,7 +36,7 @@
       <pubDate>Wed, 21 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lydiacai1203.github.io/post/linux_lsof_usage/</guid>
-      <description>为了以后查阅方便所做。 ------- 菜大头 lsof 简介 `lsof` 是 `list open files` 的简称。意思是 列出系统中打开的文件。由于 Linux 中 `everything is file`。所有的对象都可以看作是文件，`lsof` 就可以知道用户和进程都操作了哪些文件，也可以查看系统中网络的使用情况、设备信息。  lsof | head -n 20  会列出系统中所有打开的前20个文件，每个文件一行 FD  cwd: 当前工作目录 txt: 应用文本(代码、数据) mem: 内存映射文件 mmap: 内存映射设备   TYPE  REG: 普通文件 DIR: 文件夹     lsof -p 1190  打开 1190 进程打开的所有文件   lsof -u caiqingjing or lsof -u ^caiqingjing  打开某个用户打开的文件 or 除了某个用户..   lsof file_path  查看某个 文件/目录 被哪些进程打开   lsof +d dir_path  列出访问某个目录的所有进程   lsof -c nginx  列出某个命令使用的文件信息    使用 lsof 查看网络信息  lsof -i  列出所有的网络连接信息   lsof -i TCP  -i 后面跟协议类型，只显示 TCP 网络协议的连接信息   lsof -i :80  查看 80 端口被哪个进程使用   lsof -i @172.</description>
+      <description>为了以后查阅方便所做。 ------- 菜大头 lsof 简介 `lsof` 是 `list open files` 的简称。意思是 列出系统中打开的文件。由于 Linux 中 `everything is file`。所有的对象都可以看作是文件，`lsof` 就可以知道用户和进程都操作了哪些文件，也可以查看系统中网络的使用情况、设备信息。 lsof | head -n 20 会列出系统中所有打开的前20个文件，每个文件一行 FD cwd: 当前工作目录 txt: 应用文本(代码、数据) mem: 内存映射文件 mmap: 内存映射设备 TYPE REG: 普通文件 DIR: 文件夹 lsof -p 1190 打开 1190 进程打开的所有文件 lsof -u caiqingjing or lsof -u ^caiqingjing 打开某个用户打开的文件 or 除了某个用户.. lsof file_path 查看某个 文件/目录 被哪些进程打开 lsof +d dir_path 列出访问某个目录的所有进程 lsof -c nginx 列出某个命令使用的文件信息 使用 lsof 查看网络信息 lsof -i 列出所有的网络连接信息 lsof -i TCP -i 后面跟协议类型，只显示 TCP 网络协议的连接信息 lsof -i :80 查看 80 端口被哪个进程使用 lsof -i @172.</description>
     </item>
     
     <item>
@@ -71,8 +67,11 @@
       <description>Elasticsearch2.x 权威文档 （摘抄） 很多用法都已经过时，看完这个我打算再看一下 7.x。仅作为快速查阅的工具文档使用，可能不会和原文一致。希望尽量做到精简。 有一些模块因为暂时使用不到所以选择不看，毕竟没有应用的情况下是很容易忘记的。
 面向文档 Elasticsearch 是 面向文档 的，意味着它存储整个对象或文档，Elasticsearch 不仅存储文档，而且 索引 每个文档的内容，使之可以被检索。在 Elasticsearch 中，我们对文档(而不是对行列数据)进行索引、检索、排序、过滤，这也是 Elasticsearch 能支持复杂全文检索的原因。
 JSON Elasticsearch 使用 JavaScript Object Notation (JSON) 作为文档的序列化格式。具体可以看 serialization 和 marshalling 两个处理模块。
-几个名词  索引 .n  一个索引类似于一个数据库，是一个存储文档的地方。   索引 .v  索引一个文档就是存储一个文档到一个索引中以便于被检索或是被查询。类似于 insert, 当文档已存在时(_id已有) 会进行更新。   倒排索引  倒排索引被作用在文档上，以便于提升数据的检索速度。默认的，文档中的每一列都有倒排索引，没有倒排索引的属性是不可能被搜索到的。    检索文档   GET - /index/mapping/id 即可检索出 ID 对应的对象
-  GET - /index/mapping/_search 用于检索所有的对象(一个搜索默认返回十条结果, 放在 hits 中)</description>
+几个名词 索引 .n 一个索引类似于一个数据库，是一个存储文档的地方。 索引 .v 索引一个文档就是存储一个文档到一个索引中以便于被检索或是被查询。类似于 insert, 当文档已存在时(_id已有) 会进行更新。 倒排索引 倒排索引被作用在文档上，以便于提升数据的检索速度。默认的，文档中的每一列都有倒排索引，没有倒排索引的属性是不可能被搜索到的。 检索文档 GET - /index/mapping/id 即可检索出 ID 对应的对象
+GET - /index/mapping/_search 用于检索所有的对象(一个搜索默认返回十条结果, 放在 hits 中)
+GET - /index/mapping/_search?q=alst_name:Smith – URL 查询参数查询
+GET - /index/mapping/_search – 进行查询表达式搜索(部分匹配)
+{ &amp;#34;query&amp;#34;: { &amp;#34;match&amp;#34;: { &amp;#34;last_name&amp;#34;: &amp;#34;Smith&amp;#34; } } } GET - /index/mapping/_search – 组合过滤查询 { &amp;#34;query&amp;#34;: { &amp;#34;bool&amp;#34;: { &amp;#34;must&amp;#34;: { &amp;#34;match&amp;#34;: { &amp;#34;last_name&amp;#34;: &amp;#34;smith&amp;#34; } }, &amp;#34;filter&amp;#34;: { &amp;#34;range&amp;#34;: { &amp;#34;age&amp;#34;: {&amp;#34;gt&amp;#34;: 30} } } } } } GET - /index/mapping/_search – 全文搜索 { &amp;#34;query&amp;#34;: { &amp;#34;match&amp;#34;: { &amp;#34;about&amp;#34;: &amp;#34;rock climbing&amp;#34; } } } Elasticsearch 默认按照相关性得分来进行排序，即每个文档跟查询的匹配程度。而且上面这个查询甚至会把只有 rock, 没有 climbing 的也匹配出来。这是完全区别于传统关系型数据库的一个概念，一条记录并不是要么全匹配，要么全不匹配，es 是部分匹配。</description>
     </item>
     
     <item>
@@ -82,7 +81,7 @@ JSON Elasticsearch 使用 JavaScript Object Notation (JSON) 作为文档的序�
       
       <guid>https://lydiacai1203.github.io/post/git_command/</guid>
       <description>练习平台 - 强烈建议新手通关
-git commit 将当前版本和仓库的上一版本进行对比，将所有的差异打包到一起作为一个提交记录。 git branch &amp;lt;branch_name&amp;gt; 创建分支 git merge &amp;lt;branch_name&amp;gt; git rebase master 将 bugFix 里面的 commit 按照顺序复制到 master 下。也就是说 bugFix 在 master 分支的最顶端了。 git checkout master git rebase bugFix # 相当于将 master 的 commit 复制到 fixBug 下，master 会在 bugFix 的顶端，所以 master 只会往下移一格。 HEAD 总是指向当前分支上最近一次的提交记录。 HEAD 通常情况下指向分支名的。 也就是说 master 分支其实是 master 指针，head 指针是单独的 head 指针。 `git checkout &amp;lt;commit-sha&amp;gt;` 便可以移动 head 指针。 cat .git/HEAD git symbolic-ref HEAD 这两句可以查看当前的 HEAD 指针指向 ^ 相对引用，n 个 ^ 或者 ~n 就是向上 n 个 commit git checkout master^ 或者 git checkout HEAD~4 git branch -f master HEAD~3 强制修改分支位置，将 master 分支强制指向 HEAD 的第三个父级提交。 git reset HEAD~1 通过分支记录回退几个提交记录来实现撤销改动。 git revert HEAD 通过在要撤销的提交记录后面新增一个提交，然后在新提交里面引入一些更改，这些更改便是用于撤销记录的。 git cherry-pick  将一些提交复制到 HEAD 下。 交互式的 rebase 如果你不知道要提交的 sha 值，就可以使用交互式的 rebase.</description>
+git commit 将当前版本和仓库的上一版本进行对比，将所有的差异打包到一起作为一个提交记录。 git branch &amp;lt;branch_name&amp;gt; 创建分支 git merge &amp;lt;branch_name&amp;gt; git rebase master 将 bugFix 里面的 commit 按照顺序复制到 master 下。也就是说 bugFix 在 master 分支的最顶端了。 git checkout master git rebase bugFix # 相当于将 master 的 commit 复制到 fixBug 下，master 会在 bugFix 的顶端，所以 master 只会往下移一格。 HEAD 总是指向当前分支上最近一次的提交记录。 HEAD 通常情况下指向分支名的。 也就是说 master 分支其实是 master 指针，head 指针是单独的 head 指针。 `git checkout &amp;lt;commit-sha&amp;gt;` 便可以移动 head 指针。 cat .git/HEAD git symbolic-ref HEAD 这两句可以查看当前的 HEAD 指针指向 ^ 相对引用，n 个 ^ 或者 ~n 就是向上 n 个 commit git checkout master^ 或者 git checkout HEAD~4 git branch -f master HEAD~3 强制修改分支位置，将 master 分支强制指向 HEAD 的第三个父级提交。 git reset HEAD~1 通过分支记录回退几个提交记录来实现撤销改动。 git revert HEAD 通过在要撤销的提交记录后面新增一个提交，然后在新提交里面引入一些更改，这些更改便是用于撤销记录的。 git cherry-pick 将一些提交复制到 HEAD 下。 交互式的 rebase 如果你不知道要提交的 sha 值，就可以使用交互式的 rebase.</description>
     </item>
     
     <item>
@@ -92,20 +91,27 @@ git commit 将当前版本和仓库的上一版本进行对比，将所有的差
       
       <guid>https://lydiacai1203.github.io/post/study_tips_2019/</guid>
       <description>1.10:57 完成了人生中第一次服务器购买以及成功地翻出了墙.
-  2.解决了一个关于使用gunicorn打印不出日志的问题
-  3.破解了银保监的反爬，学到很多东西
-  4.将html转成pdf的简便方法，用chrome打开html，ctrl+p就可以转化成pdf了
-  5.mongodb创建联合索引create_index([(field, 1), (field2, -1)])
-  6.原来除了有os.system()直接执行command,还有os.popen()，原理是创建一个管道，然后可以这个管道里标准输出流里的东西拿出来，拿到return的对象，fp.read()即可，用完fp.close()
-  7.遇到了一个坑，使用phantomjs的时候，比较慢，所以我希望这玩意只有一个，就弄成了全局变量，结果，发现driver.quit()失效了，根本没关闭上，这就很恶心人了。 解决方法是弄成局部变量
-  8.假如问你：cookie和session的区别 你知道怎么回答吗 反正我是重新认识了cookie,而且最让我惊讶的是，问了好多同事，给我的回答竟然都是和我面试的时候是一样的回答。我有时候不禁会想，面试官在问我这个问题之前，自己是否也清楚cookie和session的区别呢&amp;hellip;..又放肆了，还是好好学习吧
-  9.markdown里面如果想使用空行的话，可以使用html里面的br标签，但是要在br标签的前后都给到一个空行，在github上面显示才比较好看。或者使用空格+空格+换行，也可以达到一样的效果
-  10.mysql5.6 的 最左前缀优先 和 mysql5.7 的 最左前缀优先不一样，比如说现在有一个联合索引(name, cid), 有一条查询语句：select * from tablename where cid=1;这条语句在5.6中就不会走索引，但是在5.7中会走索引
-  11.今天知道一个新的markdown语法，[TOC] 可以自动按照生成目录，但是github不支持
-  12.set里面允许放的是不可变对象, 什么是不可变对象(string, numbers, boolean), 同理dict的key也是。这个fluent-py里面有讲解。加入我现在有两堆对象，我想做一个交集。但是我不想用for循环一个一个去比对。这个对象的数据成员都是由基本类型组成的。对象显然是放不进set里面的，这时候只需要实现__hash__和__eq__，具体解释就不在这里写了，但是，但是，但是，你想要去比对，肯定是和__eq__有关系，所以在实现__eq__的时候，势必要结合具体的业务情况。这时候就可以愉快地做交集并集了。
-  13.之前研究了网页编码，一开始都是采用了resp.text，后来发现其实requests底层使用的是resp.encoding, 这个encoding的默认值取的是response.headers里的content-type中charset这个值，如果没有这个值呢，requests就会使用chardet进行编码判断(也就是get_encoding_from_headers)后来发现这个方法呢，其实并不好用，取出来的是个ISO-8859-1，这个东西解码字节数组以后也不对。又发现有一个get_encodings_from_content,这个是从html里面的meta里面取charset这个值。有些html会有多个meta标签，所以这个函数会取出多个charset，也就是一个列表。这个就要自己取取舍了。一般我认为如果是ISO-8859-1的话，就是用UTF进行编码，如果gb打头，就是用gb18030进行编码。因为gb2312&amp;lt;\gbk&amp;lt;\gb18030。另外很多时候，会出现一种情况就是，明明charset是对的，但是使用decode(charset)的时候会报错。这是因为网页中含有一些这个编码不可以解析的字符，是什么原因我不知道，但是可以使用decode(charset, &#39;ignore&#39;)，只显示那些能编码的字符。
-  14.虽然之前也遇到过supervisor装好了以后出现各种问题，今天尤其仔细地看了一下解决的方法，记录一下
-  supervisord -c /etc/supervisor/supervisord.</description>
+2.解决了一个关于使用gunicorn打印不出日志的问题
+3.破解了银保监的反爬，学到很多东西
+4.将html转成pdf的简便方法，用chrome打开html，ctrl+p就可以转化成pdf了
+5.mongodb创建联合索引create_index([(field, 1), (field2, -1)])
+6.原来除了有os.system()直接执行command,还有os.popen()，原理是创建一个管道，然后可以这个管道里标准输出流里的东西拿出来，拿到return的对象，fp.read()即可，用完fp.close()
+7.遇到了一个坑，使用phantomjs的时候，比较慢，所以我希望这玩意只有一个，就弄成了全局变量，结果，发现driver.quit()失效了，根本没关闭上，这就很恶心人了。 解决方法是弄成局部变量
+8.假如问你：cookie和session的区别 你知道怎么回答吗 反正我是重新认识了cookie,而且最让我惊讶的是，问了好多同事，给我的回答竟然都是和我面试的时候是一样的回答。我有时候不禁会想，面试官在问我这个问题之前，自己是否也清楚cookie和session的区别呢&amp;hellip;..又放肆了，还是好好学习吧
+9.markdown里面如果想使用空行的话，可以使用html里面的br标签，但是要在br标签的前后都给到一个空行，在github上面显示才比较好看。或者使用空格+空格+换行，也可以达到一样的效果
+10.mysql5.6 的 最左前缀优先 和 mysql5.7 的 最左前缀优先不一样，比如说现在有一个联合索引(name, cid), 有一条查询语句：select * from tablename where cid=1;这条语句在5.6中就不会走索引，但是在5.7中会走索引
+11.今天知道一个新的markdown语法，[TOC] 可以自动按照生成目录，但是github不支持
+12.set里面允许放的是不可变对象, 什么是不可变对象(string, numbers, boolean), 同理dict的key也是。这个fluent-py里面有讲解。加入我现在有两堆对象，我想做一个交集。但是我不想用for循环一个一个去比对。这个对象的数据成员都是由基本类型组成的。对象显然是放不进set里面的，这时候只需要实现__hash__和__eq__，具体解释就不在这里写了，但是，但是，但是，你想要去比对，肯定是和__eq__有关系，所以在实现__eq__的时候，势必要结合具体的业务情况。这时候就可以愉快地做交集并集了。
+13.之前研究了网页编码，一开始都是采用了resp.text，后来发现其实requests底层使用的是resp.encoding, 这个encoding的默认值取的是response.headers里的content-type中charset这个值，如果没有这个值呢，requests就会使用chardet进行编码判断(也就是get_encoding_from_headers)后来发现这个方法呢，其实并不好用，取出来的是个ISO-8859-1，这个东西解码字节数组以后也不对。又发现有一个get_encodings_from_content,这个是从html里面的meta里面取charset这个值。有些html会有多个meta标签，所以这个函数会取出多个charset，也就是一个列表。这个就要自己取取舍了。一般我认为如果是ISO-8859-1的话，就是用UTF进行编码，如果gb打头，就是用gb18030进行编码。因为gb2312&amp;lt;\gbk&amp;lt;\gb18030。另外很多时候，会出现一种情况就是，明明charset是对的，但是使用decode(charset)的时候会报错。这是因为网页中含有一些这个编码不可以解析的字符，是什么原因我不知道，但是可以使用decode(charset, &#39;ignore&#39;)，只显示那些能编码的字符。
+14.虽然之前也遇到过supervisor装好了以后出现各种问题，今天尤其仔细地看了一下解决的方法，记录一下
+supervisord -c /etc/supervisor/supervisord.conf 报错：Unlinking stale socket /var/run/supervisor.sock find / -name supervisor.sock # 全盘搜索这个文件名 unlink /**/supervisor.sock supervisord -c /etc/supervisor/supervisord.conf # 再重启supervisord服务 15.Python设计和历史常见问题
+16.一个可以拿到访问者ip的接口
+17.what-cicd
+18.一些好用的网站？
+在线ps
+周读
+临时邮箱
+工具网</description>
     </item>
     
   </channel>

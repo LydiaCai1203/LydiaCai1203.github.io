@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="阿菜">
 <meta name="description" content="阿菜的骚话天地">
-<meta name="generator" content="Hugo 0.74.2" />
+<meta name="generator" content="Hugo 0.100.1" />
 <title>断点续传的原理</title>
 <link rel="shortcut icon" href="https://lydiacai1203.github.io/images/favicon.ico">
 <link rel="stylesheet" href="https://lydiacai1203.github.io/css/style.css">
@@ -24,19 +24,16 @@
 <meta property="og:title" content="断点续传的原理" />
 <meta property="og:description" content="工具文档" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lydiacai1203.github.io/post/download_file/" />
+<meta property="og:url" content="https://lydiacai1203.github.io/post/download_file/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-04-20T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-04-20T00:00:00+00:00" />
 
 
+
 <meta itemprop="name" content="断点续传的原理">
-<meta itemprop="description" content="工具文档">
-<meta itemprop="datePublished" content="2021-04-20T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-04-20T00:00:00&#43;00:00" />
+<meta itemprop="description" content="工具文档"><meta itemprop="datePublished" content="2021-04-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-04-20T00:00:00+00:00" />
 <meta itemprop="wordCount" content="238">
-
-
-
 <meta itemprop="keywords" content="2021,技术," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="断点续传的原理"/>
@@ -82,56 +79,56 @@
     <section id="post-body">
         <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Range_requests">参考文档</a></p>
 <h4 id="1-什么是断点续传">1. 什么是断点续传？</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">可以让用户从上一次下载中断的位置接着下载的机制。
-</code></pre></div><h4 id="2-断点续传的原理">2. 断点续传的原理</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> <span style="color:#e6db74">`curl -I {url}`</span> 查看响应头部是否有 <span style="color:#e6db74">`content-range`</span> 字样，有则代表服务端支持断点续传功能。
-<span style="color:#66d9ef">2.</span> HTTP HEADERS
-    1.1 Range(在有 If-Range 的时候才会生效)
-        <span style="color:#66d9ef">*</span> Range: bytes=0-1023  请求资源的前 1024 个字节
-        <span style="color:#66d9ef">*</span> Range: bytes=-1023   请求资源的倒数 1023 个字节
-        <span style="color:#66d9ef">*</span> Range: bytes=1023-   请求资源第 1024 字节开始及以后的资源
-        <span style="color:#66d9ef">*</span> Range: bytes=0-50, 100-150  请求资源的多个部分
-
-    1.2 If-Range(必传两个中的一个，但不能同时传)
-        1.2.1 Etag
-            <span style="color:#66d9ef">*</span> 675af34563dc-tr34
-            <span style="color:#66d9ef">*</span> 文件资源的唯一标示，一个字符串
-        1.2.2 Last-Modified
-            <span style="color:#66d9ef">*</span> If-Range: Wed, 21 Oct 2015 07:28:00 GMT
-            <span style="color:#66d9ef">*</span> 上一次文件资源修改时间
-<span style="color:#66d9ef">3.</span> RESP HTTP STATUS CODE
-    3.1 206 - Partial Content（此次请求成功）
-    3.1 416 - Requested Range Not Satisfiable（请求的范围无法满足）
-
-<span style="color:#66d9ef">4.</span> RESP HTTP HEADERS
-    4.1 Content-Range
-        <span style="color:#66d9ef">*</span> Content-Range: bytes 0-1023/146515
-        <span style="color:#66d9ef">*</span> 表示这一部分内容在整个资源中所处的位置
-</code></pre></div><h4 id="3-实现一个文件上传和断点续传的文件下载功能">3. 实现一个文件上传和断点续传的文件下载功能</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os
-<span style="color:#f92672">import</span> sys
-
-<span style="color:#f92672">import</span> requests
-<span style="color:#f92672">from</span> requests.exceptions <span style="color:#f92672">import</span> Timeout
-
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">filesize</span>(file_path: str):
-    <span style="color:#66d9ef">return</span> os<span style="color:#f92672">.</span>stat(file_path)<span style="color:#f92672">.</span>st_size
-
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">download</span>(url: str, chunk_size<span style="color:#f92672">=</span><span style="color:#ae81ff">65535</span>):
-    mod <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;wb+&#34;</span>
-    downloaded <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-    home_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>environ[<span style="color:#e6db74">&#39;HOME&#39;</span>]    filename <span style="color:#f92672">=</span> url<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;/&#34;</span>)[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]    file_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(f<span style="color:#e6db74">&#34;{home_dir}/Desktop&#34;</span>, filename)    <span style="color:#66d9ef">if</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>isfile(file_path):        downloaded <span style="color:#f92672">=</span> filesize(file_path)        <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;{filename} existed, download from {downloaded + 1} byte ...&#34;</span>)    resp <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(        url,        headers<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;Range&#34;</span>: f<span style="color:#e6db74">&#34;bytes={downloaded}-&#34;</span>},        stream<span style="color:#f92672">=</span>True,        timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">15</span>
-    )    total_size <span style="color:#f92672">=</span> int(resp<span style="color:#f92672">.</span>headers<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;Content-Length&#34;</span>, <span style="color:#ae81ff">0</span>))    <span style="color:#66d9ef">if</span> resp<span style="color:#f92672">.</span>status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">416</span>:        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;requested range not satisfiable...&#34;</span>)        <span style="color:#66d9ef">return</span>     <span style="color:#66d9ef">elif</span> resp<span style="color:#f92672">.</span>status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">206</span>:        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;file start downloading...&#34;</span>)        <span style="color:#75715e"># bytes 0-43971447/43971448</span>
-        content_range <span style="color:#f92672">=</span> resp<span style="color:#f92672">.</span>headers<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;Content-Range&#34;</span>)        <span style="color:#75715e"># 如果服务端支持断点续传，则追加方式写入文件，否则重新写文件</span>
-        <span style="color:#66d9ef">if</span> content_range <span style="color:#f92672">and</span> int(content_range<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34; &#34;</span>)[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;-&#34;</span>)[<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">==</span> downloaded:            mod <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ab+&#34;</span>
-            total_size <span style="color:#f92672">=</span> int(content_range<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34; &#34;</span>)[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;/&#34;</span>)[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])        <span style="color:#66d9ef">with</span> open(file_path, mod) <span style="color:#66d9ef">as</span> f:            <span style="color:#66d9ef">for</span> chunk <span style="color:#f92672">in</span> resp<span style="color:#f92672">.</span>iter_content(chunk_size):                f<span style="color:#f92672">.</span>write(chunk)                downloaded <span style="color:#f92672">+=</span> len(chunk)                process <span style="color:#f92672">=</span> round((downloaded<span style="color:#f92672">/</span>total_size) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">2</span>)                <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">{process}% bytes has downloaded...&#34;</span>, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>)        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;file downloaded finished...&#34;</span>)
-
-
-<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:    url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://dldir1.qq.com/qqfile/QQforMac/QQ_V4.0.4.dmg&#39;</span>
-    url <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>] <span style="color:#66d9ef">if</span> len(sys<span style="color:#f92672">.</span>argv) <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span> <span style="color:#66d9ef">else</span> url    download(url)
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>可以让用户从上一次下载中断的位置接着下载的机制。
+</span></span></code></pre></div><h4 id="2-断点续传的原理">2. 断点续传的原理</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> <span style="color:#e6db74">`curl -I {url}`</span> 查看响应头部是否有 <span style="color:#e6db74">`content-range`</span> 字样，有则代表服务端支持断点续传功能。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> HTTP HEADERS
+</span></span><span style="display:flex;"><span>    1.1 Range(在有 If-Range 的时候才会生效)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">*</span> Range: bytes=0-1023  请求资源的前 1024 个字节
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">*</span> Range: bytes=-1023   请求资源的倒数 1023 个字节
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">*</span> Range: bytes=1023-   请求资源第 1024 字节开始及以后的资源
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">*</span> Range: bytes=0-50, 100-150  请求资源的多个部分
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    1.2 If-Range(必传两个中的一个，但不能同时传)
+</span></span><span style="display:flex;"><span>        1.2.1 Etag
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">*</span> 675af34563dc-tr34
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">*</span> 文件资源的唯一标示，一个字符串
+</span></span><span style="display:flex;"><span>        1.2.2 Last-Modified
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">*</span> If-Range: Wed, 21 Oct 2015 07:28:00 GMT
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">*</span> 上一次文件资源修改时间
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> RESP HTTP STATUS CODE
+</span></span><span style="display:flex;"><span>    3.1 206 - Partial Content（此次请求成功）
+</span></span><span style="display:flex;"><span>    3.1 416 - Requested Range Not Satisfiable（请求的范围无法满足）
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">4.</span> RESP HTTP HEADERS
+</span></span><span style="display:flex;"><span>    4.1 Content-Range
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">*</span> Content-Range: bytes 0-1023/146515
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">*</span> 表示这一部分内容在整个资源中所处的位置
+</span></span></code></pre></div><h4 id="3-实现一个文件上传和断点续传的文件下载功能">3. 实现一个文件上传和断点续传的文件下载功能</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> requests.exceptions <span style="color:#f92672">import</span> Timeout
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">filesize</span>(file_path: str):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> os<span style="color:#f92672">.</span>stat(file_path)<span style="color:#f92672">.</span>st_size
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">download</span>(url: str, chunk_size<span style="color:#f92672">=</span><span style="color:#ae81ff">65535</span>):
+</span></span><span style="display:flex;"><span>    mod <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;wb+&#34;</span>
+</span></span><span style="display:flex;"><span>    downloaded <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    home_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>environ[<span style="color:#e6db74">&#39;HOME&#39;</span>]    filename <span style="color:#f92672">=</span> url<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;/&#34;</span>)[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]    file_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>home_dir<span style="color:#e6db74">}</span><span style="color:#e6db74">/Desktop&#34;</span>, filename)    <span style="color:#66d9ef">if</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>isfile(file_path):        downloaded <span style="color:#f92672">=</span> filesize(file_path)        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>filename<span style="color:#e6db74">}</span><span style="color:#e6db74"> existed, download from </span><span style="color:#e6db74">{</span>downloaded <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> byte ...&#34;</span>)    resp <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(        url,        headers<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;Range&#34;</span>: <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;bytes=</span><span style="color:#e6db74">{</span>downloaded<span style="color:#e6db74">}</span><span style="color:#e6db74">-&#34;</span>},        stream<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,        timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">15</span>
+</span></span><span style="display:flex;"><span>    )    total_size <span style="color:#f92672">=</span> int(resp<span style="color:#f92672">.</span>headers<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;Content-Length&#34;</span>, <span style="color:#ae81ff">0</span>))    <span style="color:#66d9ef">if</span> resp<span style="color:#f92672">.</span>status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">416</span>:        print(<span style="color:#e6db74">&#34;requested range not satisfiable...&#34;</span>)        <span style="color:#66d9ef">return</span>     <span style="color:#66d9ef">elif</span> resp<span style="color:#f92672">.</span>status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">206</span>:        print(<span style="color:#e6db74">&#34;file start downloading...&#34;</span>)        <span style="color:#75715e"># bytes 0-43971447/43971448</span>
+</span></span><span style="display:flex;"><span>        content_range <span style="color:#f92672">=</span> resp<span style="color:#f92672">.</span>headers<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;Content-Range&#34;</span>)        <span style="color:#75715e"># 如果服务端支持断点续传，则追加方式写入文件，否则重新写文件</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> content_range <span style="color:#f92672">and</span> int(content_range<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34; &#34;</span>)[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;-&#34;</span>)[<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">==</span> downloaded:            mod <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ab+&#34;</span>
+</span></span><span style="display:flex;"><span>            total_size <span style="color:#f92672">=</span> int(content_range<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34; &#34;</span>)[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;/&#34;</span>)[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])        <span style="color:#66d9ef">with</span> open(file_path, mod) <span style="color:#66d9ef">as</span> f:            <span style="color:#66d9ef">for</span> chunk <span style="color:#f92672">in</span> resp<span style="color:#f92672">.</span>iter_content(chunk_size):                f<span style="color:#f92672">.</span>write(chunk)                downloaded <span style="color:#f92672">+=</span> len(chunk)                process <span style="color:#f92672">=</span> round((downloaded<span style="color:#f92672">/</span>total_size) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">2</span>)                print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">{</span>process<span style="color:#e6db74">}</span><span style="color:#e6db74">% bytes has downloaded...&#34;</span>, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>)        print(<span style="color:#e6db74">&#34;file downloaded finished...&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:    url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://dldir1.qq.com/qqfile/QQforMac/QQ_V4.0.4.dmg&#39;</span>
+</span></span><span style="display:flex;"><span>    url <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>] <span style="color:#66d9ef">if</span> len(sys<span style="color:#f92672">.</span>argv) <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span> <span style="color:#66d9ef">else</span> url    download(url)
+</span></span></code></pre></div>
     </section>
 </article>
 
@@ -164,6 +161,10 @@
 
     
     
+    
+        <li>
+            <a href="https://lydiacai1203.github.io/post/the_prince_three/">君主论 - 论依靠他人的武力或者由于幸运而取得得新君主国<aside class="dates">Oct 16 2022</aside></a>
+        </li>
     
         <li>
             <a href="https://lydiacai1203.github.io/post/thinking_1/">不能完全相信大脑<aside class="dates">Jun 20 2022</aside></a>
@@ -199,10 +200,6 @@
     
         <li>
             <a href="https://lydiacai1203.github.io/post/es_doc_readingnote/">Elasticsearch2.x 权威文档 （摘抄）<aside class="dates">Jan 15 2021</aside></a>
-        </li>
-    
-        <li>
-            <a href="https://lydiacai1203.github.io/post/git_command/">GIT 常用命令查阅手册<aside class="dates">Dec 7 2020</aside></a>
         </li>
     
 </ul>

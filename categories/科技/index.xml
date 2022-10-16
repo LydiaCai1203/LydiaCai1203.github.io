@@ -6,29 +6,25 @@
     <description>Recent content in 科技 on Hugo Cactus Theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 04 May 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://lydiacai1203.github.io/categories/%E7%A7%91%E6%8A%80/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 04 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://lydiacai1203.github.io/categories/%E7%A7%91%E6%8A%80/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>docker image的实现原理以及registry相关的一块知识</title>
       <link>https://lydiacai1203.github.io/post/analyse_image_layer/</link>
       <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://lydiacai1203.github.io/post/analyse_image_layer/</guid>
-      <description>part_one: 什么是文件挂载？  1. Unix里面的文件目录是目录树结构的形式，所有的文件目录都是基于硬盘disk逻辑抽象出来的。比如现在有一个的一个目录。
+      <description>part_one: 什么是文件挂载？ 1. Unix里面的文件目录是目录树结构的形式，所有的文件目录都是基于硬盘disk逻辑抽象出来的。比如现在有一个的一个目录。
 接1. 现在要把这些文件目录挂载到磁盘上面，在linux的文件系统里面，首先执行mount命令进行文件挂载，比如说将/(根目录)挂载到disk1里面，挂载完了以后，根目录下的进行创建操作或是写操作的时候，数据文件都会存储在disk1当中。
 重点来了。比如说现在在data目录下创建一个文件a.txt, 这时候将/data挂载到disk2下面，这时候disk2中是看不到a.txt的。
-part_two: 联合挂载  那么既然有要挂载以后再写才能看见的挂载，肯定有写完以后再挂载依旧能够看见之前已经写了的文件的挂载方式。docker layer就是属于这种。
-part_three: docker 的layer和image的关系就有点像联合目录以及挂载点  也就是说，一个image代表的就是layer中的一个挂载点，而所有的layers就像是一个联合目录。
+part_two: 联合挂载 那么既然有要挂载以后再写才能看见的挂载，肯定有写完以后再挂载依旧能够看见之前已经写了的文件的挂载方式。docker layer就是属于这种。
+part_three: docker 的layer和image的关系就有点像联合目录以及挂载点 也就是说，一个image代表的就是layer中的一个挂载点，而所有的layers就像是一个联合目录。
 最先进行build的layer层就在栈底，同样最后build的layer层就在栈顶。比如说现在在layer1层进行touch a.txt和touch b.txt两个动作(要注意现在图中所示的所有layer层都是read-only)。layer2层进行touch a.txt。那么这个时候整个docker image build以后，使用这个image生成的实例以后，这个实例里面存在的是哪一层的a.txt。
 这就涉及到所谓的联合挂载了。也就是说当前的docker image 看得到之前的 docker image创建的全部的layers。现在请注意，接下来是重中之重，涉及image实现原理。课代表请记笔记。(我真的是个戏精)
-part_three: docker image 实际上是怎么实现的  上个部分说到docker image是由很多个layer组成的，且这些layer是read-only的。每当生成一个新的实例以后，就会在栈顶增加一个writable-layer层。实际上是复制了一份read-only-layer中的数据到writable-layer中, 在container中修改的是这一层writable-layer中的数据。
+part_three: docker image 实际上是怎么实现的 上个部分说到docker image是由很多个layer组成的，且这些layer是read-only的。每当生成一个新的实例以后，就会在栈顶增加一个writable-layer层。实际上是复制了一份read-only-layer中的数据到writable-layer中, 在container中修改的是这一层writable-layer中的数据。
 好了，现在已经扯远了，回到问题上来，实际上一个docker image是由两部分组成的，分别是Manifest(layer_name list)和image_name(image_name: name:tag)
 layer list中的每一个item，都是一个由hash(layer_content)=sha-256的这样一个hash值组成的。这样的hash有三个优点：1. 分布均匀；2. 碰撞少；3. 容易出现雪崩效应(所谓的雪崩效应输入值稍微改动一点点，hash值就会产生巨大的变化，这也是导致分布均匀的原因之一)。ps:Manifest也可以理解为是文件清单的意思。register(docker中的仓库)中其实存放了很多很多很多很多无序的layers。
-part_four: 如何实现的layer不重复下载？  当我们build Dockerfile的时候, 首先会根据Dockerfile生成一张Manifest的表。里面存的是一堆的hash值。会根据这张表从栈顶开始查，查到栈底，这个hash值实际上可以理解为是digest, 通过和本地layer的sha-256值进行比对判断有没有必要再创建一个。
-part_five: 回到一开始的问题，生成的contianer里面到底是那个layer的里的a.txt  再回到文件系统来说，启动一个容器的时候，可以看到容器里面是有一个完整的文件系统的，容器里面的所有文件都来自构成镜像的层。每个层里面都有文件。Docker通过aufs的技术，把所有的层都挂载到了同一个目录上(所以现在知道，所谓digest其实就是，把所有layer里面的文件打包压缩求hash)。 也就是这时候container会从栈顶往下开始找文件，走到layer2的时候找到了a.txt, 这时候就不会用到layer3中的a.txt, 而是加载b.txt。所以说container里面的其实是a,txt文件。</description>
+part_four: 如何实现的layer不重复下载？ 当我们build Dockerfile的时候, 首先会根据Dockerfile生成一张Manifest的表。里面存的是一堆的hash值。会根据这张表从栈顶开始查，查到栈底，这个hash值实际上可以理解为是digest, 通过和本地layer的sha-256值进行比对判断有没有必要再创建一个。
+part_five: 回到一开始的问题，生成的contianer里面到底是那个layer的里的a.txt 再回到文件系统来说，启动一个容器的时候，可以看到容器里面是有一个完整的文件系统的，容器里面的所有文件都来自构成镜像的层。每个层里面都有文件。Docker通过aufs的技术，把所有的层都挂载到了同一个目录上(所以现在知道，所谓digest其实就是，把所有layer里面的文件打包压缩求hash)。 也就是这时候container会从栈顶往下开始找文件，走到layer2的时候找到了a.txt, 这时候就不会用到layer3中的a.txt, 而是加载b.txt。所以说container里面的其实是a,txt文件。</description>
     </item>
     
     <item>
@@ -38,13 +34,13 @@ part_five: 回到一开始的问题，生成的contianer里面到底是那个lay
       
       <guid>https://lydiacai1203.github.io/post/what_is_k8s/</guid>
       <description>part_one: 基本结构介绍 Node可以理解为物理资源，在K8s里面可操作的最小单元就是Pod，我们可以通过配置Pod配置文件的template字段来控制一个Pod里面有哪几种Container，但是不能控制一个Pod里面有几种container。Pod配置里面的template说明了要启动的容器是怎么样的，最重要的就是image的信息。
- 后来由于需要部署的服务越来越多，每个Pod都是人工手动启动或者是删除检查的。所以后来产生了ReplicaController，有了这个东西以后就可以指定每个服务所要启动的Pods。这里的selector就是现在RC管理的下，还有哪些Pod是存活的。然后template就是指的是要启动的Pod是什么样子的。
- 但是后来又遇到了滚动升级的问题(滚动升级：比如现在一个服务要从v1升级到v2，当时人工的处理方法就是将v1的Replica:3-&amp;gt;Replica:2, 然后将v2的配置文件里面配上Replica:1，后续的动作依次类推)。这样也耗费了大量的人力。
- 所以这时候Deployment就出现了，但是由于ReplicaController还有一些涉及的不好的地方，所以为了更好地与Deployment进行配合，于是就出现了ReplicaSet。
- 所以Deployment就是控制ReplicaSet的，Deployment里面可以看见RS和Pod两个东西的内容。
- Pod在K8s里面，这是一个不稳定的东西，每次死掉以后再挂起来，Pod的IP都会发生变化。那怎么去准确地找到哪一个Pod呢？(这个和endpoint也有一点关系)但是一个服务起了多个Pod，这时候如果有流量过来应该分配给哪个Pod呢？于是就出现了Service，这个Service起到了一个所谓的负载均衡的作用。每一个Service在这个集群里都有唯一确定的IP，这样就可以找到一群Pods，然后每个Pod都由endpoint进行标识。
- 但是Service还是在这个虚拟网络里面的，外面用户来的流量应该怎么对应到指定的Service上面呢。之前说到外网想要连到百度云的服务器所在的私网的时候，使用的是VPN。但是我们不可能让用户都装上一个VPN Client。都进行验证。都建立一个虚拟专用网络。所以就出现了IngressController。这个东西可以简单地理解为是Nginx，可以实现反向代理。
- 外部的流量会直接访问域名通过ip查询会命中Nginx中配置当中的public ip，这时候会把流量导向Service。但是这个对应的实现就是，Ingress实际上就是一种映射机制，定义了映射规则。在IngressController里面存在这一份vhost,这个里面存在service_ip和port的映射。这样就可以实现外部网络访问内部对应的pod了。</description>
+后来由于需要部署的服务越来越多，每个Pod都是人工手动启动或者是删除检查的。所以后来产生了ReplicaController，有了这个东西以后就可以指定每个服务所要启动的Pods。这里的selector就是现在RC管理的下，还有哪些Pod是存活的。然后template就是指的是要启动的Pod是什么样子的。
+但是后来又遇到了滚动升级的问题(滚动升级：比如现在一个服务要从v1升级到v2，当时人工的处理方法就是将v1的Replica:3-&amp;gt;Replica:2, 然后将v2的配置文件里面配上Replica:1，后续的动作依次类推)。这样也耗费了大量的人力。
+所以这时候Deployment就出现了，但是由于ReplicaController还有一些涉及的不好的地方，所以为了更好地与Deployment进行配合，于是就出现了ReplicaSet。
+所以Deployment就是控制ReplicaSet的，Deployment里面可以看见RS和Pod两个东西的内容。
+Pod在K8s里面，这是一个不稳定的东西，每次死掉以后再挂起来，Pod的IP都会发生变化。那怎么去准确地找到哪一个Pod呢？(这个和endpoint也有一点关系)但是一个服务起了多个Pod，这时候如果有流量过来应该分配给哪个Pod呢？于是就出现了Service，这个Service起到了一个所谓的负载均衡的作用。每一个Service在这个集群里都有唯一确定的IP，这样就可以找到一群Pods，然后每个Pod都由endpoint进行标识。
+但是Service还是在这个虚拟网络里面的，外面用户来的流量应该怎么对应到指定的Service上面呢。之前说到外网想要连到百度云的服务器所在的私网的时候，使用的是VPN。但是我们不可能让用户都装上一个VPN Client。都进行验证。都建立一个虚拟专用网络。所以就出现了IngressController。这个东西可以简单地理解为是Nginx，可以实现反向代理。
+外部的流量会直接访问域名通过ip查询会命中Nginx中配置当中的public ip，这时候会把流量导向Service。但是这个对应的实现就是，Ingress实际上就是一种映射机制，定义了映射规则。在IngressController里面存在这一份vhost,这个里面存在service_ip和port的映射。这样就可以实现外部网络访问内部对应的pod了。</description>
     </item>
     
     <item>
@@ -53,15 +49,15 @@ part_five: 回到一开始的问题，生成的contianer里面到底是那个lay
       <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://lydiacai1203.github.io/post/whatis_nfs/</guid>
-      <description>part_one：一台物理机器上的文件存储  计算机里面有很多块磁盘，计算机里面的文件系统都是逻辑树状结构的，逻辑上的概念都是物理中不会出现的。一个一百兆的文件在计算机上有几种存储方法。简单地来说有两种:
-1. sequence  在disk中占有一段连续的存储空间。这样做的好处有几点：一是简单方便；二是命中率高，因为程序的局部性原理。命中率高会导致读的速度比较快。但是这样做也是有坏处的，坏处就是这样存储文件容易出现磁盘碎片。因为不太容易找到100M这么大的连续存储空间。
-2. Inode=index+data_node  这种方式会讲一个disk分成两个部分，一个部分是index表头，一个部分是很多很多的data node，这些data node的大小一都是可以设置的，一般的大小在4KB-&amp;gt;16KB。一个100M的文件会被分成好几个部分，被存储到不同的node里面去。然后在index表头里面做一个地址的记录。这样当把这个disk挂载到某个目录上面去的时候，文件系统要显示这个disk中的所有的文件，去找的时候就会根据这个index的表头去拼出一个完整的文件。
-part_two：什么是NFS？  NFS的Network FileSystem，中文意思是分布式网络文件系统。这个出现的原因是因为，当目录下的文件非常多的时候，有可能会出现一个物理机里的磁盘存不下的情况。所以这种时候就出现了NFS。
+      <description>part_one：一台物理机器上的文件存储 计算机里面有很多块磁盘，计算机里面的文件系统都是逻辑树状结构的，逻辑上的概念都是物理中不会出现的。一个一百兆的文件在计算机上有几种存储方法。简单地来说有两种:
+1. sequence 在disk中占有一段连续的存储空间。这样做的好处有几点：一是简单方便；二是命中率高，因为程序的局部性原理。命中率高会导致读的速度比较快。但是这样做也是有坏处的，坏处就是这样存储文件容易出现磁盘碎片。因为不太容易找到100M这么大的连续存储空间。
+2. Inode=index+data_node 这种方式会讲一个disk分成两个部分，一个部分是index表头，一个部分是很多很多的data node，这些data node的大小一都是可以设置的，一般的大小在4KB-&amp;gt;16KB。一个100M的文件会被分成好几个部分，被存储到不同的node里面去。然后在index表头里面做一个地址的记录。这样当把这个disk挂载到某个目录上面去的时候，文件系统要显示这个disk中的所有的文件，去找的时候就会根据这个index的表头去拼出一个完整的文件。
+part_two：什么是NFS？ NFS的Network FileSystem，中文意思是分布式网络文件系统。这个出现的原因是因为，当目录下的文件非常多的时候，有可能会出现一个物理机里的磁盘存不下的情况。所以这种时候就出现了NFS。
 拿一个例子来讲，所有远程registry里面的images的layers都是乱序的，且不可能只是存在于一台物理机上面。
 1. 首先layers很多很多，不够存。
 2. 其次就是必须看见的是一个文件系统，因为layer是被image各种交叉引用的。现在有一个NFS,做了一层隔离，一个文件可能分成几块存在不同的物理机的disk上面，然后这个NFS在显示文件目录下面的挂载情况的时候会将所有的物理机磁盘里的文件拼在一起展示在挂载的文件目录里面。造成一种假象。
 3. NFS只是一种协议规范，真正实现这种规范的有GFS, GlusterFS, MooseFS等等，其中MooseFS就是所说的MFS，也就是公司现在用的这种分布式网络文件系统。
-part_three: 磁盘阵列的好处  磁盘阵列会在你将数据写入一个磁盘的时候，同时同步到另一个磁盘上去。这样读写文件的速度就会变成两倍速。一个磁盘上从头开始读。另一个磁盘上从百分之五十的地方开始读数据。那可不可以说设置两个指针，一个在文件头，一个在文件尾进行读写呢，这样做会收到磁盘吞吐量的约束，所以也是一种有问题的做法。</description>
+part_three: 磁盘阵列的好处 磁盘阵列会在你将数据写入一个磁盘的时候，同时同步到另一个磁盘上去。这样读写文件的速度就会变成两倍速。一个磁盘上从头开始读。另一个磁盘上从百分之五十的地方开始读数据。那可不可以说设置两个指针，一个在文件头，一个在文件尾进行读写呢，这样做会收到磁盘吞吐量的约束，所以也是一种有问题的做法。</description>
     </item>
     
   </channel>
