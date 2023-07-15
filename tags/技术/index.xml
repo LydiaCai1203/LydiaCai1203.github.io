@@ -6,7 +6,16 @@
     <description>Recent content in 技术 on Hugo Cactus Theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 09 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lydiacai1203.github.io/tags/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lydiacai1203.github.io/tags/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FastAPI Depend 实现原理(个人猜测&#43;粗略代码实现)</title>
+      <link>https://lydiacai1203.github.io/post/fastapi_depend/</link>
+      <pubDate>Sat, 15 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lydiacai1203.github.io/post/fastapi_depend/</guid>
+      <description>0. 依赖注入 from fastapi import Depends, FastAPI, HTTPException from sqlalchemy.orm import Session from . import crud, models, schemas from .database import SessionLocal, engine models.Base.metadata.create_all(bind=engine) app = FastAPI() # Dependency def get_db(): db = SessionLocal() try: yield db finally: db.close() @app.post(&amp;#34;/users/&amp;#34;, response_model=schemas.User) def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)): pass 1. 猜测原理 线索 1. 依赖注入的参数是作为参数从函数传入的，因此排除装饰器实现 2. 表现行为是 handler 开始执行前 db 被实例化好, handler 结束后 db 被 close；表现类似 contextmanager 3. 不结合装饰器 @app.post 使用，发现 db 无法倍正确实例化，而是一个 Depend 类的对象 结论 1.</description>
+    </item>
+    
     <item>
       <title>安全开发指南（持续更新）</title>
       <link>https://lydiacai1203.github.io/post/sec_guide/</link>
