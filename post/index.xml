@@ -194,13 +194,12 @@
       
       <guid>https://lydiacai1203.github.io/post/es_doc_readingnote/</guid>
       <description>Elasticsearch2.x 权威文档 （摘抄） 很多用法都已经过时，看完这个我打算再看一下 7.x。仅作为快速查阅的工具文档使用，可能不会和原文一致。希望尽量做到精简。 有一些模块因为暂时使用不到所以选择不看，毕竟没有应用的情况下是很容易忘记的。
-面向文档 Elasticsearch 是 面向文档 的，意味着它存储整个对象或文档，Elasticsearch 不仅存储文档，而且 索引 每个文档的内容，使之可以被检索。在 Elasticsearch 中，我们对文档(而不是对行列数据)进行索引、检索、排序、过滤，这也是 Elasticsearch 能支持复杂全文检索的原因。
-JSON Elasticsearch 使用 JavaScript Object Notation (JSON) 作为文档的序列化格式。具体可以看 serialization 和 marshalling 两个处理模块。
-几个名词 索引 .n 一个索引类似于一个数据库，是一个存储文档的地方。 索引 .v 索引一个文档就是存储一个文档到一个索引中以便于被检索或是被查询。类似于 insert, 当文档已存在时(_id已有) 会进行更新。 倒排索引 倒排索引被作用在文档上，以便于提升数据的检索速度。默认的，文档中的每一列都有倒排索引，没有倒排索引的属性是不可能被搜索到的。 检索文档 GET - /index/mapping/id 即可检索出 ID 对应的对象
+1. 面向文档 Elasticsearch 是 面向文档 的，意味着它存储整个对象或文档，Elasticsearch 不仅存储文档，而且 索引 每个文档的内容，使之可以被检索。在 Elasticsearch 中，我们对文档(而不是对行列数据)进行索引、检索、排序、过滤，这也是 Elasticsearch 能支持复杂全文检索的原因。
+2. JSON Elasticsearch 使用 JavaScript Object Notation (JSON) 作为文档的序列化格式。具体可以看 serialization 和 marshalling 两个处理模块。
+3. 几个名词 索引 .n 一个索引类似于一个数据库，是一个存储文档的地方。 索引 .v 索引一个文档就是存储一个文档到一个索引中以便于被检索或是被查询。类似于 insert, 当文档已存在时(_id已有) 会进行更新。 倒排索引 倒排索引被作用在文档上，以便于提升数据的检索速度。默认的，文档中的每一列都有倒排索引，没有倒排索引的属性是不可能被搜索到的。 4. 检索文档 GET - /index/mapping/id 即可检索出 ID 对应的对象
 GET - /index/mapping/_search 用于检索所有的对象(一个搜索默认返回十条结果, 放在 hits 中)
 GET - /index/mapping/_search?q=alst_name:Smith – URL 查询参数查询
-GET - /index/mapping/_search – 进行查询表达式搜索(部分匹配)
-{ &amp;#34;query&amp;#34;: { &amp;#34;match&amp;#34;: { &amp;#34;last_name&amp;#34;: &amp;#34;Smith&amp;#34; } } } GET - /index/mapping/_search – 组合过滤查询 { &amp;#34;query&amp;#34;: { &amp;#34;bool&amp;#34;: { &amp;#34;must&amp;#34;: { &amp;#34;match&amp;#34;: { &amp;#34;last_name&amp;#34;: &amp;#34;smith&amp;#34; } }, &amp;#34;filter&amp;#34;: { &amp;#34;range&amp;#34;: { &amp;#34;age&amp;#34;: {&amp;#34;gt&amp;#34;: 30} } } } } } GET - /index/mapping/_search – 全文搜索 { &amp;#34;query&amp;#34;: { &amp;#34;match&amp;#34;: { &amp;#34;about&amp;#34;: &amp;#34;rock climbing&amp;#34; } } } Elasticsearch 默认按照相关性得分来进行排序，即每个文档跟查询的匹配程度。而且上面这个查询甚至会把只有 rock, 没有 climbing 的也匹配出来。这是完全区别于传统关系型数据库的一个概念，一条记录并不是要么全匹配，要么全不匹配，es 是部分匹配。</description>
+GET - /index/mapping/_search – 进行查询表达式搜索(部分匹配)</description>
     </item>
     
     <item>

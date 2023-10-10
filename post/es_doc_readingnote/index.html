@@ -33,7 +33,7 @@
 <meta itemprop="name" content="Elasticsearch2.x 权威文档 （摘抄）">
 <meta itemprop="description" content="工具文档"><meta itemprop="datePublished" content="2021-01-15T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-01-15T00:00:00+00:00" />
-<meta itemprop="wordCount" content="11089">
+<meta itemprop="wordCount" content="11083">
 <meta itemprop="keywords" content="2021,技术," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Elasticsearch2.x 权威文档 （摘抄）"/>
@@ -79,11 +79,11 @@
     <section id="post-body">
         <h1 id="elasticsearch2x-权威文档-摘抄">Elasticsearch2.x 权威文档 （摘抄）</h1>
 <p>很多用法都已经过时，看完这个我打算再看一下 7.x。仅作为快速查阅的工具文档使用，可能不会和原文一致。希望尽量做到精简。 有一些模块因为暂时使用不到所以选择不看，毕竟没有应用的情况下是很容易忘记的。</p>
-<h2 id="面向文档">面向文档</h2>
+<h2 id="1-面向文档">1. 面向文档</h2>
 <p>Elasticsearch 是 <em>面向文档</em> 的，意味着它存储整个对象或文档，Elasticsearch 不仅存储文档，而且 <em>索引</em> 每个文档的内容，使之可以被检索。在 Elasticsearch 中，我们对文档(而不是对行列数据)进行索引、检索、排序、过滤，这也是 Elasticsearch 能支持复杂全文检索的原因。</p>
-<h2 id="json">JSON</h2>
+<h2 id="2-json">2. JSON</h2>
 <p>Elasticsearch 使用 JavaScript Object Notation (JSON) 作为文档的序列化格式。具体可以看 serialization 和 marshalling 两个处理模块。</p>
-<h2 id="几个名词">几个名词</h2>
+<h2 id="3-几个名词">3. 几个名词</h2>
 <ul>
 <li>索引 .n
 <ul>
@@ -101,7 +101,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="检索文档">检索文档</h2>
+<h2 id="4-检索文档">4. 检索文档</h2>
 <ul>
 <li>
 <p><em>GET</em> - <strong>/index/mapping/id</strong> 即可检索出 ID 对应的对象</p>
@@ -116,50 +116,105 @@
 <p><em>GET</em> - <strong>/index/mapping/_search</strong> – 进行查询表达式搜索(部分匹配)</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{  <span style="color:#f92672">&#34;query&#34;</span>: {    <span style="color:#f92672">&#34;match&#34;</span>: {      <span style="color:#f92672">&#34;last_name&#34;</span>: <span style="color:#e6db74">&#34;Smith&#34;</span>
-</span></span><span style="display:flex;"><span>    }  }
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{ 
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;query&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;match&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;last_name&#34;</span>: <span style="color:#e6db74">&#34;Smith&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ul>
 <li><em>GET</em> - <strong>/index/mapping/_search</strong> – 组合过滤查询</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{  <span style="color:#f92672">&#34;query&#34;</span>: {    <span style="color:#f92672">&#34;bool&#34;</span>: {      <span style="color:#f92672">&#34;must&#34;</span>: {        <span style="color:#f92672">&#34;match&#34;</span>: {          <span style="color:#f92672">&#34;last_name&#34;</span>: <span style="color:#e6db74">&#34;smith&#34;</span>
-</span></span><span style="display:flex;"><span>        }      },      <span style="color:#f92672">&#34;filter&#34;</span>: {        <span style="color:#f92672">&#34;range&#34;</span>: {          <span style="color:#f92672">&#34;age&#34;</span>: {<span style="color:#f92672">&#34;gt&#34;</span>: <span style="color:#ae81ff">30</span>}        }      }    }  }
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;query&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;bool&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;must&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;match&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;last_name&#34;</span>: <span style="color:#e6db74">&#34;smith&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;filter&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;range&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;age&#34;</span>: {<span style="color:#f92672">&#34;gt&#34;</span>: <span style="color:#ae81ff">30</span>}
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ul>
 <li><em>GET</em> - <strong>/index/mapping/_search</strong> – 全文搜索</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{  <span style="color:#f92672">&#34;query&#34;</span>: {    <span style="color:#f92672">&#34;match&#34;</span>: {      <span style="color:#f92672">&#34;about&#34;</span>: <span style="color:#e6db74">&#34;rock climbing&#34;</span>
-</span></span><span style="display:flex;"><span>    }  }
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{ 
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;query&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;match&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;about&#34;</span>: <span style="color:#e6db74">&#34;rock climbing&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Elasticsearch 默认按照相关性得分来进行排序，即每个文档跟查询的匹配程度。而且上面这个查询甚至会把只有 rock, 没有 climbing 的也匹配出来。<strong>这是完全区别于传统关系型数据库的一个概念，一条记录并不是要么全匹配，要么全不匹配，es 是部分匹配。</strong></p>
 <ul>
 <li><em>GET</em> - <strong>/index/mapping/_search</strong> – 短语搜索</li>
 </ul>
 <p><strong>精确匹配一系列的单词或者短语</strong>，可以使用 <strong>match_phrase</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{  <span style="color:#f92672">&#34;query&#34;</span>: {    <span style="color:#f92672">&#34;match_phrase&#34;</span>: {      <span style="color:#f92672">&#34;about&#34;</span>: <span style="color:#e6db74">&#34;rock climbing&#34;</span>
-</span></span><span style="display:flex;"><span>    }  }
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{  
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;query&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;match_phrase&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;about&#34;</span>: <span style="color:#e6db74">&#34;rock climbing&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ul>
 <li><em>GET</em> - <strong>/index/mapping/_search</strong> – 高亮搜索</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{  <span style="color:#f92672">&#34;query&#34;</span>: {    <span style="color:#f92672">&#34;match_phrase&#34;</span>: {      <span style="color:#f92672">&#34;about&#34;</span>: <span style="color:#e6db74">&#34;rock climbing
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    },
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;</span><span style="color:#960050;background-color:#1e0010">highlight</span><span style="color:#e6db74">&#34;: {
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;</span><span style="color:#960050;background-color:#1e0010">fields</span><span style="color:#e6db74">&#34;: {
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;</span><span style="color:#960050;background-color:#1e0010">about&#34;</span>: {}         }    }  }
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;query&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;match_phrase&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;about&#34;</span>: <span style="color:#e6db74">&#34;rock climbing&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;highlight&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;fields&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;about&#34;</span>: {}
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>返回的结果 hits 里会包含一个 highlight 的部分，这个部分包含了 about 属性匹配的文本片段，并且会以 <code>&lt;em&gt;&lt;/em&gt;</code>标签进行封装。</p>
 <ul>
 <li><em>GET</em> - <strong>/index/mapping/_search</strong> – 分析聚合</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">--</span> <span style="color:#960050;background-color:#1e0010">结果返回所有人中受欢迎的兴趣爱好排行</span>
-</span></span><span style="display:flex;"><span>{  <span style="color:#f92672">&#34;aggs&#34;</span>: {    <span style="color:#f92672">&#34;all_interests&#34;</span>: {      <span style="color:#f92672">&#34;terms&#34;</span>: {<span style="color:#f92672">&#34;field&#34;</span>: <span style="color:#e6db74">&#34;interests&#34;</span>}    }  }
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;aggs&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;all_interests&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;terms&#34;</span>: {<span style="color:#f92672">&#34;field&#34;</span>: <span style="color:#e6db74">&#34;interests&#34;</span>}
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">--</span> <span style="color:#960050;background-color:#1e0010">支持</span> <span style="color:#960050;background-color:#1e0010">last_name</span> <span style="color:#960050;background-color:#1e0010">是</span> <span style="color:#960050;background-color:#1e0010">smith</span> <span style="color:#960050;background-color:#1e0010">的人中，排出最受欢迎的兴趣</span>
-</span></span><span style="display:flex;"><span>{  <span style="color:#f92672">&#34;query&#34;</span>: {    <span style="color:#f92672">&#34;match&#34;</span>: {      <span style="color:#f92672">&#34;last_name&#34;</span>: <span style="color:#e6db74">&#34;smith&#34;</span>
-</span></span><span style="display:flex;"><span>    }  },  <span style="color:#f92672">&#34;aggs&#34;</span>: {    <span style="color:#f92672">&#34;all_interests&#34;</span>: {      <span style="color:#f92672">&#34;terms&#34;</span>: {<span style="color:#f92672">&#34;field&#34;</span>: <span style="color:#e6db74">&#34;interests&#34;</span>}    }  }
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;query&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;match&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;last_name&#34;</span>: <span style="color:#e6db74">&#34;smith&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;aggs&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;all_interests&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;terms&#34;</span>: {<span style="color:#f92672">&#34;field&#34;</span>: <span style="color:#e6db74">&#34;interests&#34;</span>}
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{  <span style="color:#f92672">&#34;aggs&#34;</span>: {    <span style="color:#f92672">&#34;all_interests&#34;</span>: {      <span style="color:#f92672">&#34;terms&#34;</span>: {<span style="color:#f92672">&#34;field&#34;</span>: <span style="color:#e6db74">&#34;interests&#34;</span>},      <span style="color:#f92672">&#34;aggs&#34;</span>: {        <span style="color:#f92672">&#34;avg_age&#34;</span>: {          <span style="color:#f92672">&#34;avg&#34;</span>: {<span style="color:#f92672">&#34;field&#34;</span>: <span style="color:#e6db74">&#34;age&#34;</span>}        }      }    }  }
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;aggs&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;all_interests&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;terms&#34;</span>: {<span style="color:#f92672">&#34;field&#34;</span>: <span style="color:#e6db74">&#34;interests&#34;</span>},
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;aggs&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;avg_age&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;avg&#34;</span>: {<span style="color:#f92672">&#34;field&#34;</span>: <span style="color:#e6db74">&#34;age&#34;</span>}
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>输出的依旧是一个兴趣及数量的列表，只不过每个兴趣都有了一个附加的 avg_age 的属性，代表了有这个兴趣爱好的所有员工的平均年龄。</p>
 <h2 id="分布式特性">分布式特性</h2>
@@ -181,7 +236,17 @@
 <h3 id="集群健康">集群健康</h3>
 <p><em>GET</em> - <strong>_cluster/health</strong></p>
 <p>Elasticsearch 的集群监控信息中包含了许多的统计数据，其中最重要的一项就是 <strong>集群健康</strong>。它在 status 字段中展示为 <code>green</code> <code>yellow</code> <code>red</code>。内容类似于。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{   <span style="color:#f92672">&#34;cluster_name&#34;</span>:          <span style="color:#e6db74">&#34;elasticsearch&#34;</span>,   <span style="color:#f92672">&#34;status&#34;</span>:                <span style="color:#e6db74">&#34;green&#34;</span>,    <span style="color:#f92672">&#34;timed_out&#34;</span>:             <span style="color:#66d9ef">false</span>,   <span style="color:#f92672">&#34;number_of_nodes&#34;</span>:       <span style="color:#ae81ff">1</span>,   <span style="color:#f92672">&#34;number_of_data_nodes&#34;</span>:  <span style="color:#ae81ff">1</span>,   <span style="color:#f92672">&#34;active_primary_shards&#34;</span>: <span style="color:#ae81ff">0</span>,   <span style="color:#f92672">&#34;active_shards&#34;</span>:         <span style="color:#ae81ff">0</span>,   <span style="color:#f92672">&#34;relocating_shards&#34;</span>:     <span style="color:#ae81ff">0</span>,   <span style="color:#f92672">&#34;initializing_shards&#34;</span>:   <span style="color:#ae81ff">0</span>,   <span style="color:#f92672">&#34;unassigned_shards&#34;</span>:     <span style="color:#ae81ff">0</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;cluster_name&#34;</span>: <span style="color:#e6db74">&#34;elasticsearch&#34;</span>,   
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;green&#34;</span>,    
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;timed_out&#34;</span>: <span style="color:#66d9ef">false</span>,   
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;number_of_nodes&#34;</span>: <span style="color:#ae81ff">1</span>,   
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;number_of_data_nodes&#34;</span>: <span style="color:#ae81ff">1</span>,   
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;active_primary_shards&#34;</span>: <span style="color:#ae81ff">0</span>,   
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;active_shards&#34;</span>: <span style="color:#ae81ff">0</span>,   
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;relocating_shards&#34;</span>: <span style="color:#ae81ff">0</span>,   
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;initializing_shards&#34;</span>: <span style="color:#ae81ff">0</span>,   
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;unassigned_shards&#34;</span>: <span style="color:#ae81ff">0</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ul>
 <li><strong>green</strong> 所有的主分片和副本分片都正常运行</li>
@@ -784,35 +849,58 @@ Quick   |       |  XThe     |   X   |brown   |   X   |  Xdog     |   X   |dogs  
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="内部对象是如何索引的">内部对象是如何索引的</h4>
 <p>内部对象会被扁平化处理，内部对象数组扁平化数据会 <strong>丢失相关性，丢失有序性。</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{    <span style="color:#f92672">&#34;followers&#34;</span>: [        { <span style="color:#f92672">&#34;age&#34;</span>: <span style="color:#ae81ff">35</span>, <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Mary White&#34;</span>},        { <span style="color:#f92672">&#34;age&#34;</span>: <span style="color:#ae81ff">26</span>, <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Alex Jones&#34;</span>},        { <span style="color:#f92672">&#34;age&#34;</span>: <span style="color:#ae81ff">19</span>, <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Lisa Smith&#34;</span>}    ]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;followers&#34;</span>: [
+</span></span><span style="display:flex;"><span>    { <span style="color:#f92672">&#34;age&#34;</span>: <span style="color:#ae81ff">35</span>, <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Mary White&#34;</span>},
+</span></span><span style="display:flex;"><span>    { <span style="color:#f92672">&#34;age&#34;</span>: <span style="color:#ae81ff">26</span>, <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Alex Jones&#34;</span>},
+</span></span><span style="display:flex;"><span>    { <span style="color:#f92672">&#34;age&#34;</span>: <span style="color:#ae81ff">19</span>, <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Lisa Smith&#34;</span>}    
+</span></span><span style="display:flex;"><span>  ]
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{    <span style="color:#f92672">&#34;followers.age&#34;</span>:    [<span style="color:#ae81ff">19</span>, <span style="color:#ae81ff">26</span>, <span style="color:#ae81ff">35</span>],    <span style="color:#f92672">&#34;followers.name&#34;</span>:   [<span style="color:#960050;background-color:#1e0010">alex</span>, <span style="color:#960050;background-color:#1e0010">jones</span>, <span style="color:#960050;background-color:#1e0010">lisa</span>, <span style="color:#960050;background-color:#1e0010">smith</span>, <span style="color:#960050;background-color:#1e0010">mary</span>, <span style="color:#960050;background-color:#1e0010">white</span>]
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;followers.age&#34;</span>: [<span style="color:#ae81ff">19</span>, <span style="color:#ae81ff">26</span>, <span style="color:#ae81ff">35</span>],    
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;followers.name&#34;</span>: [<span style="color:#960050;background-color:#1e0010">alex</span>, <span style="color:#960050;background-color:#1e0010">jones</span>, <span style="color:#960050;background-color:#1e0010">lisa</span>, <span style="color:#960050;background-color:#1e0010">smith</span>, <span style="color:#960050;background-color:#1e0010">mary</span>, <span style="color:#960050;background-color:#1e0010">white</span>]
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="请求体查询">请求体查询</h2>
 <h3 id="空查询">空查询</h3>
 <p><code>{}</code> 空查询将返回索引库中的所有文档。</p>
 <p><code>GET /index_2014*/type1,type2/_search</code> 可以在 前缀是 index_2014 的索引中，在 type1 和 type2 中查询。如果想要在所有的索引中查询可以使用 <code>_all</code> 索引库。带上下列请求体，则可以对返回数据进行分页。<em>RFC 7231 文档中并没有规定一个带有请求体的 GET 请求应该如何处理，所以是某一些 HTTP 服务器允许这样使用，一些用于缓存和代理的服务器则不允许这样使用。</em></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{  <span style="color:#f92672">&#34;from&#34;</span>: <span style="color:#ae81ff">30</span>,  <span style="color:#f92672">&#34;size&#34;</span>: <span style="color:#ae81ff">10</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;from&#34;</span>: <span style="color:#ae81ff">30</span>,  
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;size&#34;</span>: <span style="color:#ae81ff">10</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="查询表达式query-dsl">查询表达式（query DSL）</h3>
 <p>要是用这种表达式先要把查询语句传递给 <code>query</code> 参数。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#75715e">// DSL 基本结构
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{  <span style="color:#960050;background-color:#1e0010">query_name:</span> <span style="color:#960050;background-color:#1e0010">{</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{ 
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">query_name:</span> <span style="color:#960050;background-color:#1e0010">{</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">field_name:</span> <span style="color:#960050;background-color:#1e0010">{</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">argument:</span> <span style="color:#960050;background-color:#1e0010">value,</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">argument:</span> <span style="color:#960050;background-color:#1e0010">value</span>
-</span></span><span style="display:flex;"><span>    }  <span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#75715e">// 查询所有
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{                                               <span style="color:#960050;background-color:#1e0010">{</span>}  <span style="color:#e6db74">&#34;query&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {    <span style="color:#f92672">&#34;match_all&#34;</span>: {}              <span style="color:#960050;background-color:#1e0010">&lt;==&gt;</span>              }
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;query&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;match_all&#34;</span>: {}
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#75715e">// 查询某个具体字段的值
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{  <span style="color:#f92672">&#34;query&#34;</span>: {        <span style="color:#f92672">&#34;match&#34;</span>: {<span style="color:#f92672">&#34;tweet&#34;</span>: <span style="color:#e6db74">&#34;elasticsearch&#34;</span>}      }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;query&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;match&#34;</span>: {<span style="color:#f92672">&#34;tweet&#34;</span>: <span style="color:#e6db74">&#34;elasticsearch&#34;</span>}      
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="合并查询语句">合并查询语句</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#75715e">// 这是一条复合语句，复合语句可以包含其它任何查询语句，包括复合语句
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{  <span style="color:#f92672">&#34;bool&#34;</span>: {                                               <span style="color:#75715e">// bool 允许在你需要的时候组合其它语句
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">&#34;must&#34;</span>: {<span style="color:#f92672">&#34;match&#34;</span>: {<span style="color:#f92672">&#34;tweet&#34;</span>: <span style="color:#e6db74">&#34;elasticsearch&#34;</span>}},            <span style="color:#f92672">&#34;must_not&#34;</span>: {<span style="color:#f92672">&#34;match&#34;</span>: {<span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;mary&#34;</span>}},    <span style="color:#f92672">&#34;should&#34;</span>: {<span style="color:#f92672">&#34;match&#34;</span>: {<span style="color:#f92672">&#34;tweet&#34;</span>: <span style="color:#e6db74">&#34;full text&#34;</span>}},    <span style="color:#f92672">&#34;filter&#34;</span>: {<span style="color:#f92672">&#34;range&#34;</span>: {<span style="color:#f92672">&#34;age&#34;</span>: {<span style="color:#f92672">&#34;gt&#34;</span>: <span style="color:#ae81ff">30</span>}}}  }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{  
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;bool&#34;</span>: {                                               
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// bool 允许在你需要的时候组合其它语句
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#f92672">&#34;must&#34;</span>: {<span style="color:#f92672">&#34;match&#34;</span>: {<span style="color:#f92672">&#34;tweet&#34;</span>: <span style="color:#e6db74">&#34;elasticsearch&#34;</span>}},
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;must_not&#34;</span>: {<span style="color:#f92672">&#34;match&#34;</span>: {<span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;mary&#34;</span>}},    
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;should&#34;</span>: {<span style="color:#f92672">&#34;match&#34;</span>: {<span style="color:#f92672">&#34;tweet&#34;</span>: <span style="color:#e6db74">&#34;full text&#34;</span>}},    
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;filter&#34;</span>: {<span style="color:#f92672">&#34;range&#34;</span>: {<span style="color:#f92672">&#34;age&#34;</span>: {<span style="color:#f92672">&#34;gt&#34;</span>: <span style="color:#ae81ff">30</span>}}}  
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="查询与过滤">查询与过滤</h2>
 <p><strong>过滤查询</strong>：</p>
@@ -822,81 +910,150 @@ Quick   |       |  XThe     |   X   |brown   |   X   |  Xdog     |   X   |dogs  
 <p><em>不过由于倒排索引的缘故，简单的评分查询在匹配少量的文档时的性能可能比一个涵盖百万文档的 filter 表现的一样好，升至更好</em>。</p>
 <p><strong>不过，过滤的目标始终是减少那些需要通过评分查询进行检查的文档。</strong></p>
 <h2 id="最重要的查询">最重要的查询</h2>
-<p><strong>match_all</strong></p>
-<p>简单匹配所有的文档，没有指定查询方式时，它是默认的查询，经常与 filter 结合使用。</p>
-<p><code>{&quot;match_all&quot;: {}}</code></p>
-<p><strong>match</strong></p>
-<p>无论你在任何字段上进行全文搜索还是精确查询，match 是你可用的标准查询，取决你是在全文字段还是精确字段上使用。</p>
-<p><code>{&quot;match&quot;: {&quot;tweet&quot;: &quot;about search&quot;}}</code></p>
-<p><strong>multi_match</strong></p>
-<p>可以在多个字段上执行相同的 match 查询</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{  <span style="color:#f92672">&#34;multi_match&#34;</span>: {    <span style="color:#f92672">&#34;query&#34;</span>: <span style="color:#e6db74">&#34;full text search&#34;</span>,    <span style="color:#f92672">&#34;fields&#34;</span>: [<span style="color:#e6db74">&#34;title&#34;</span>, <span style="color:#e6db74">&#34;body&#34;</span>]  }
+<h3 id="match_all">match_all</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>简单匹配所有的文档，没有指定查询方式时，它是默认的查询，经常与 filter 结合使用。
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{<span style="color:#f92672">&#34;match_all&#34;</span>: {}}
+</span></span></code></pre></div><h3 id="match">match</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>无论你在任何字段上进行全文搜索还是精确查询，match 是你可用的标准查询，取决你是在全文字段还是精确字段上使用。
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;match&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tweet&#34;</span>: <span style="color:#e6db74">&#34;about search&#34;</span>
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><strong>range</strong></p>
-<p>range 查询找出那些落定在指定区间内的数字或时间</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{  <span style="color:#f92672">&#34;range&#34;</span>: {    <span style="color:#f92672">&#34;age&#34;</span>: {      <span style="color:#f92672">&#34;gte&#34;</span>: <span style="color:#ae81ff">20</span>,       <span style="color:#f92672">&#34;lt&#34;</span>: <span style="color:#ae81ff">30</span>
-</span></span><span style="display:flex;"><span>    }  }
+</span></span></code></pre></div><h3 id="multi_match">multi_match</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>可以在多个字段上执行相同的 match 查询
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;multi_match&#34;</span>: {    
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;query&#34;</span>: <span style="color:#e6db74">&#34;full text search&#34;</span>,    
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;fields&#34;</span>: [<span style="color:#e6db74">&#34;title&#34;</span>, <span style="color:#e6db74">&#34;body&#34;</span>]  
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><strong>term</strong></p>
-<p>被用于 <em>精确匹配</em>，<code>term</code> 查询对于输入的文本 <em>不分析</em>，所以它将给定的值用于精确查询。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{<span style="color:#f92672">&#34;term&#34;</span>: {<span style="color:#f92672">&#34;age&#34;</span>: <span style="color:#ae81ff">26</span>}}{<span style="color:#f92672">&#34;term&#34;</span>: {<span style="color:#f92672">&#34;tag&#34;</span>: <span style="color:#e6db74">&#34;full text&#34;</span>}}
-</span></span></code></pre></div><p><strong>terms</strong></p>
-<p><code>terms</code> 查询和 <code>term</code> 查询一样，但是允许多值匹配，<em>如果这个字段包含了指定值中的任何一个值</em>，那么这个文档满足条件。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{  <span style="color:#f92672">&#34;terms&#34;</span>: {    <span style="color:#f92672">&#34;tag&#34;</span>: [<span style="color:#e6db74">&#34;search&#34;</span>, <span style="color:#e6db74">&#34;full_text&#34;</span>, <span style="color:#e6db74">&#34;nosql&#34;</span>]  }
+</span></span></code></pre></div><h3 id="range">range</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>range 查询找出那些落定在指定区间内的数字或时间
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;range&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;age&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;gte&#34;</span>: <span style="color:#ae81ff">20</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;lt&#34;</span>: <span style="color:#ae81ff">30</span>
+</span></span><span style="display:flex;"><span>    }  
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><strong>exists 和 missing</strong></p>
-<p>相当于 sql 中的 <code>IS NOT NULL</code> 和 <code>IS NULL</code></p>
-<p><code>{&quot;exists&quot;: {&quot;field&quot;: &quot;title&quot;}}</code></p>
-<h2 id="组合多查询">组合多查询</h2>
-<p><code>bool</code> 查询可以将多种查询组合在一起，接受 <code>must</code>、<code>must_not</code>、<code>should</code>、<code>filter</code> 参数。</p>
-<ul>
-<li><strong>must</strong>
-<ul>
-<li>文档 <strong>必须包含</strong> 这些条件才能被包含进来</li>
-</ul>
-</li>
-<li><strong>must_not</strong>
-<ul>
-<li>文档 <strong>必须不包含</strong> 这些条件才能被包含进来</li>
-</ul>
-</li>
-<li><strong>should</strong>
-<ul>
-<li>文档 <strong>包含这些条件中的任意条件</strong> 将增加 <code>_score</code>，否则无任何影响，主要用于修正文档的相关性得分。</li>
-<li><strong>important:</strong> 如果没有 <code>must</code> 语句，至少需要匹配一条 <code>should</code> 语句，如果存在至少一条 <code>must</code> 语句，则对 <code>should</code> 语句的匹配<strong>无要求</strong>。 &lt;————-</li>
-</ul>
-</li>
-<li><strong>filter</strong>
-<ul>
-<li><strong>必须匹配</strong>，但它以部评分、过滤模式来进行，对评分没有贡献，只是根据过滤标准来排除或包含文档。</li>
-</ul>
-</li>
-</ul>
-<p>每个字查询都独自地计算文档的相关性得分，一旦他们的得分被计算出来，bool 查询将这些得分进行合并并且返回一个代表整个布尔操作的得分。所有的查询都可以将 <code>查询放到 filter 中</code> 这样会自动转成一个不评分的。如果 <code>filter</code> 逻辑比较复杂的话，在 <code>filter</code> 内部构造 <code>bool</code> 查询即可。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#75715e">// 查找 title 包含 &#34;how to make millions&#34; 且 tag 不包含 &#34;spam&#34; 的
+</span></span></code></pre></div><h3 id="term">term</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>被用于 精确匹配，term 查询对于输入的文本&lt;<span style="color:#f92672">不分析</span>&gt;，所以它将给定的值用于精确查询。
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{<span style="color:#f92672">&#34;term&#34;</span>: {<span style="color:#f92672">&#34;age&#34;</span>: <span style="color:#ae81ff">26</span>}}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 或
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{<span style="color:#f92672">&#34;term&#34;</span>: {<span style="color:#f92672">&#34;tag&#34;</span>: <span style="color:#e6db74">&#34;full text&#34;</span>}}
+</span></span></code></pre></div><h3 id="terms">terms</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>terms 查询和 term 查询一样，但是允许多值匹配。
+</span></span><span style="display:flex;"><span>如果这个字段包含了指定值中的任何一个值，那么这个文档满足条件。
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;terms&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tag&#34;</span>: [<span style="color:#e6db74">&#34;search&#34;</span>, <span style="color:#e6db74">&#34;full_text&#34;</span>, <span style="color:#e6db74">&#34;nosql&#34;</span>]  
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="exists-和-missing">exists 和 missing</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>相当于 sql 中的 <span style="color:#e6db74">`IS NOT NULL`</span> 和 <span style="color:#e6db74">`IS NULL`</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;exists&#34;</span>: {<span style="color:#f92672">&#34;field&#34;</span>: <span style="color:#e6db74">&#34;title&#34;</span>}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="组合多查询">组合多查询</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>bool 查询可以将多种查询组合在一起，接受 must、must_not、should、filter 参数。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>+ must
+</span></span><span style="display:flex;"><span>文档 必须包含 这些条件才能被包含进来
+</span></span><span style="display:flex;"><span>+ must_not
+</span></span><span style="display:flex;"><span>文档 必须不包含 这些条件才能被包含进来
+</span></span><span style="display:flex;"><span>+ should
+</span></span><span style="display:flex;"><span>文档 包含这些条件中的任意条件 将增加 <span style="color:#e6db74">`_score`</span>，否则无任何影响，主要用于修正文档的相关性得分
+</span></span><span style="display:flex;"><span>+ filter
+</span></span><span style="display:flex;"><span>必须匹配，但它以部评分、过滤模式来进行，对评分没有贡献，只是根据过滤标准来排除或包含文档
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>important: 
+</span></span><span style="display:flex;"><span>如果没有 must 语句，至少需要匹配一条 should 语句;
+</span></span><span style="display:flex;"><span>如果存在至少一条 must 语句，则对 should 语句的匹配无要求;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>每个字查询都独自地计算文档的相关性得分，一旦他们的得分被计算出来，bool 查询将这些得分进行合并并且返回一个代表整个布尔操作的得分。所有的查询都可以将查询放到 filter 中, 这样会自动转成一个不评分的。如果 filter 逻辑比较复杂的话，在 filter 内部构造 bool 查询即可。
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#75715e">// 查找 title 包含 &#34;how to make millions&#34; 且 tag 不包含 &#34;spam&#34; 的
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 那些被标识为 starred 的 或 date 大于等于 2014-01-01 的文档评分会更高，两者都满足的话评分自然更更高
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{  <span style="color:#f92672">&#34;bool&#34;</span>: {    <span style="color:#f92672">&#34;must&#34;</span>: {<span style="color:#f92672">&#34;match&#34;</span>: {<span style="color:#f92672">&#34;title&#34;</span>: <span style="color:#e6db74">&#34;how to make millions&#34;</span>}},    <span style="color:#f92672">&#34;must_not&#34;</span>: {<span style="color:#f92672">&#34;match&#34;</span>: {<span style="color:#f92672">&#34;tag&#34;</span>: <span style="color:#e6db74">&#34;spam&#34;</span>}},    <span style="color:#f92672">&#34;should&#34;</span>: [      {<span style="color:#f92672">&#34;match&#34;</span>: {<span style="color:#f92672">&#34;tag&#34;</span>: <span style="color:#e6db74">&#34;starred&#34;</span>}}    ],    <span style="color:#f92672">&#34;filter&#34;</span>: {      <span style="color:#f92672">&#34;range&#34;</span>: {<span style="color:#f92672">&#34;date&#34;</span>: {<span style="color:#f92672">&#34;gte&#34;</span>: <span style="color:#e6db74">&#34;2014-01-01&#34;</span>}}    }  }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;bool&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;must&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;match&#34;</span>: {<span style="color:#f92672">&#34;title&#34;</span>: <span style="color:#e6db74">&#34;how to make millions&#34;</span>}
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;must_not&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;match&#34;</span>: {<span style="color:#f92672">&#34;tag&#34;</span>: <span style="color:#e6db74">&#34;spam&#34;</span>}
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;should&#34;</span>: [
+</span></span><span style="display:flex;"><span>      {<span style="color:#f92672">&#34;match&#34;</span>: {<span style="color:#f92672">&#34;tag&#34;</span>: <span style="color:#e6db74">&#34;starred&#34;</span>}}
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;filter&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;range&#34;</span>: {<span style="color:#f92672">&#34;date&#34;</span>: {<span style="color:#f92672">&#34;gte&#34;</span>: <span style="color:#e6db74">&#34;2014-01-01&#34;</span>}}
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#75715e">// 牛逼，奇技淫巧啊
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{    <span style="color:#f92672">&#34;bool&#34;</span>: {        <span style="color:#f92672">&#34;must&#34;</span>:     { <span style="color:#f92672">&#34;match&#34;</span>: { <span style="color:#f92672">&#34;title&#34;</span>: <span style="color:#e6db74">&#34;how to make millions&#34;</span> }},        <span style="color:#f92672">&#34;must_not&#34;</span>: { <span style="color:#f92672">&#34;match&#34;</span>: { <span style="color:#f92672">&#34;tag&#34;</span>:   <span style="color:#e6db74">&#34;spam&#34;</span> }},        <span style="color:#f92672">&#34;should&#34;</span>: [            { <span style="color:#f92672">&#34;match&#34;</span>: { <span style="color:#f92672">&#34;tag&#34;</span>: <span style="color:#e6db74">&#34;starred&#34;</span> }}        ],        <span style="color:#f92672">&#34;filter&#34;</span>: {          <span style="color:#f92672">&#34;bool&#34;</span>: {               <span style="color:#f92672">&#34;must&#34;</span>: [                  { <span style="color:#f92672">&#34;range&#34;</span>: { <span style="color:#f92672">&#34;date&#34;</span>: { <span style="color:#f92672">&#34;gte&#34;</span>: <span style="color:#e6db74">&#34;2014-01-01&#34;</span> }}},                  { <span style="color:#f92672">&#34;range&#34;</span>: { <span style="color:#f92672">&#34;price&#34;</span>: { <span style="color:#f92672">&#34;lte&#34;</span>: <span style="color:#ae81ff">29.99</span> }}}              ],              <span style="color:#f92672">&#34;must_not&#34;</span>: [                  { <span style="color:#f92672">&#34;term&#34;</span>: { <span style="color:#f92672">&#34;category&#34;</span>: <span style="color:#e6db74">&#34;ebooks&#34;</span> }}              ]          }        }    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;bool&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;must&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;match&#34;</span>: {<span style="color:#f92672">&#34;title&#34;</span>: <span style="color:#e6db74">&#34;how to make millions&#34;</span>}
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;must_not&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;match&#34;</span>: {<span style="color:#f92672">&#34;tag&#34;</span>: <span style="color:#e6db74">&#34;spam&#34;</span>}
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;should&#34;</span>: [{<span style="color:#f92672">&#34;match&#34;</span>: { <span style="color:#f92672">&#34;tag&#34;</span>: <span style="color:#e6db74">&#34;starred&#34;</span> }}],
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;filter&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;bool&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;must&#34;</span>: [
+</span></span><span style="display:flex;"><span>          {<span style="color:#f92672">&#34;range&#34;</span>: {<span style="color:#f92672">&#34;date&#34;</span>: { <span style="color:#f92672">&#34;gte&#34;</span>: <span style="color:#e6db74">&#34;2014-01-01&#34;</span> }}},
+</span></span><span style="display:flex;"><span>          {<span style="color:#f92672">&#34;range&#34;</span>: {<span style="color:#f92672">&#34;price&#34;</span>: { <span style="color:#f92672">&#34;lte&#34;</span>: <span style="color:#ae81ff">29.99</span> }}}
+</span></span><span style="display:flex;"><span>        ],
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;must_not&#34;</span>: [
+</span></span><span style="display:flex;"><span>          {<span style="color:#f92672">&#34;term&#34;</span>: { <span style="color:#f92672">&#34;category&#34;</span>: <span style="color:#e6db74">&#34;ebooks&#34;</span> }}
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="constant_score">*constant_score</h3>
-<p>它将一个不变的常量评分应用于所有匹配的文档，它被经常用于，你只需要一个 <code>filter</code> 而没有其它查询的情况下，<strong>用于取代只有 <code>filter</code> 语句的 <code>bool</code> 查询，在性能上是完全相同的</strong>，但是对于提高简洁性和清晰度上有很大的帮助。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{    <span style="color:#f92672">&#34;query&#34;</span> : {        <span style="color:#f92672">&#34;constant_score&#34;</span> : {             <span style="color:#f92672">&#34;filter&#34;</span> : {                <span style="color:#f92672">&#34;term&#34;</span> : {<span style="color:#f92672">&#34;price&#34;</span> : <span style="color:#ae81ff">20</span>}            }        }    }
+</span></span></code></pre></div><h3 id="constant_score">constant_score</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>它将一个不变的常量评分应用于所有匹配的文档，它被经常用于，你只需要一个 filter 而没有其它查询的情况下，用于取代只有 filter 语句的 bool 查询，在性能上是完全相同的，但是对于提高简洁性和清晰度上有很大的帮助。
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;query&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;constant_score&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;filter&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;term&#34;</span>: {<span style="color:#f92672">&#34;price&#34;</span>: <span style="color:#ae81ff">20</span>}
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="验证查询">验证查询</h2>
 <p><code>GET /gb/tweet/_validate/query</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#75715e">// 用于验证查询是否合法
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{  <span style="color:#f92672">&#34;query&#34;</span>: {    <span style="color:#f92672">&#34;tweet&#34;</span>: {<span style="color:#f92672">&#34;match&#34;</span>: <span style="color:#e6db74">&#34;really powerful&#34;</span>}  }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{  
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;query&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tweet&#34;</span>: {<span style="color:#f92672">&#34;match&#34;</span>: <span style="color:#e6db74">&#34;really powerful&#34;</span>}
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{  <span style="color:#f92672">&#34;valid&#34;</span> :         <span style="color:#66d9ef">false</span>,  <span style="color:#f92672">&#34;_shards&#34;</span> : {    <span style="color:#f92672">&#34;total&#34;</span> :       <span style="color:#ae81ff">1</span>,    <span style="color:#f92672">&#34;successful&#34;</span> :  <span style="color:#ae81ff">1</span>,    <span style="color:#f92672">&#34;failed&#34;</span> :      <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{  
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;valid&#34;</span>: <span style="color:#66d9ef">false</span>,  
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;_shards&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;total&#34;</span>: <span style="color:#ae81ff">1</span>,    
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;successful&#34;</span>: <span style="color:#ae81ff">1</span>,    
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;failed&#34;</span>: <span style="color:#ae81ff">0</span>
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="理解错误信息">理解错误信息</h3>
-<p><code>GET /gb/tweet/_validate/query?explain</code> 请求体和上面一样，这样返回结果会带有 <em>查询不合法的原因</em>。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{  <span style="color:#f92672">&#34;valid&#34;</span> :     <span style="color:#66d9ef">false</span>,  <span style="color:#f92672">&#34;_shards&#34;</span> :   { <span style="color:#960050;background-color:#1e0010">...</span> },  <span style="color:#f92672">&#34;explanations&#34;</span> : [ {    <span style="color:#f92672">&#34;index&#34;</span> :   <span style="color:#e6db74">&#34;gb&#34;</span>,    <span style="color:#f92672">&#34;valid&#34;</span> :   <span style="color:#66d9ef">false</span>,    <span style="color:#f92672">&#34;error&#34;</span> :   <span style="color:#e6db74">&#34;org.elasticsearch.index.query.QueryParsingException:
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                 [gb] No query registered for [tweet]&#34;</span>
-</span></span><span style="display:flex;"><span>  } ]
+<p><code>GET /gb/tweet/_validate/query?explain</code> 请求体和上面一样，这样返回结果会带有 查询不合法的原因。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{  
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;valid&#34;</span>: <span style="color:#66d9ef">false</span>,  
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;_shards&#34;</span>: { <span style="color:#960050;background-color:#1e0010">...</span> },  
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;explanations&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;index&#34;</span>: <span style="color:#e6db74">&#34;gb&#34;</span>,    
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;valid&#34;</span> : <span style="color:#66d9ef">false</span>,    
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;error&#34;</span> : <span style="color:#e6db74">&#34;org.elasticsearch.index.query.QueryParsingException: [gb] No query registered for [tweet]&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="理解查询语句">理解查询语句</h3>
 <p><code>GET /_validate/query?explain</code></p>
