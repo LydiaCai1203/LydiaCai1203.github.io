@@ -4,105 +4,44 @@
     <title>2019 on Hugo Cactus Theme</title>
     <link>https://lydiacai1203.github.io/tags/2019/</link>
     <description>Recent content in 2019 on Hugo Cactus Theme</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 10 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://lydiacai1203.github.io/tags/2019/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 10 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://lydiacai1203.github.io/tags/2019/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Study Tips(2019&#43;2020)</title>
       <link>https://lydiacai1203.github.io/post/study_tips_2019/</link>
       <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://lydiacai1203.github.io/post/study_tips_2019/</guid>
-      <description>1.10:57 完成了人生中第一次服务器购买以及成功地翻出了墙.
-2.解决了一个关于使用gunicorn打印不出日志的问题
-3.破解了银保监的反爬，学到很多东西
-4.将html转成pdf的简便方法，用chrome打开html，ctrl+p就可以转化成pdf了
-5.mongodb创建联合索引create_index([(field, 1), (field2, -1)])
-6.原来除了有os.system()直接执行command,还有os.popen()，原理是创建一个管道，然后可以这个管道里标准输出流里的东西拿出来，拿到return的对象，fp.read()即可，用完fp.close()
-7.遇到了一个坑，使用phantomjs的时候，比较慢，所以我希望这玩意只有一个，就弄成了全局变量，结果，发现driver.quit()失效了，根本没关闭上，这就很恶心人了。 解决方法是弄成局部变量
-8.假如问你：cookie和session的区别 你知道怎么回答吗 反正我是重新认识了cookie,而且最让我惊讶的是，问了好多同事，给我的回答竟然都是和我面试的时候是一样的回答。我有时候不禁会想，面试官在问我这个问题之前，自己是否也清楚cookie和session的区别呢&amp;hellip;..又放肆了，还是好好学习吧
-9.markdown里面如果想使用空行的话，可以使用html里面的br标签，但是要在br标签的前后都给到一个空行，在github上面显示才比较好看。或者使用空格+空格+换行，也可以达到一样的效果
-10.mysql5.6 的 最左前缀优先 和 mysql5.7 的 最左前缀优先不一样，比如说现在有一个联合索引(name, cid), 有一条查询语句：select * from tablename where cid=1;这条语句在5.6中就不会走索引，但是在5.7中会走索引
-11.今天知道一个新的markdown语法，[TOC] 可以自动按照生成目录，但是github不支持
-12.set里面允许放的是不可变对象, 什么是不可变对象(string, numbers, boolean), 同理dict的key也是。这个fluent-py里面有讲解。加入我现在有两堆对象，我想做一个交集。但是我不想用for循环一个一个去比对。这个对象的数据成员都是由基本类型组成的。对象显然是放不进set里面的，这时候只需要实现__hash__和__eq__，具体解释就不在这里写了，但是，但是，但是，你想要去比对，肯定是和__eq__有关系，所以在实现__eq__的时候，势必要结合具体的业务情况。这时候就可以愉快地做交集并集了。
-13.之前研究了网页编码，一开始都是采用了resp.text，后来发现其实requests底层使用的是resp.encoding, 这个encoding的默认值取的是response.headers里的content-type中charset这个值，如果没有这个值呢，requests就会使用chardet进行编码判断(也就是get_encoding_from_headers)后来发现这个方法呢，其实并不好用，取出来的是个ISO-8859-1，这个东西解码字节数组以后也不对。又发现有一个get_encodings_from_content,这个是从html里面的meta里面取charset这个值。有些html会有多个meta标签，所以这个函数会取出多个charset，也就是一个列表。这个就要自己取取舍了。一般我认为如果是ISO-8859-1的话，就是用UTF进行编码，如果gb打头，就是用gb18030进行编码。因为gb2312&amp;lt;\gbk&amp;lt;\gb18030。另外很多时候，会出现一种情况就是，明明charset是对的，但是使用decode(charset)的时候会报错。这是因为网页中含有一些这个编码不可以解析的字符，是什么原因我不知道，但是可以使用decode(charset, &#39;ignore&#39;)，只显示那些能编码的字符。
-14.虽然之前也遇到过supervisor装好了以后出现各种问题，今天尤其仔细地看了一下解决的方法，记录一下
-supervisord -c /etc/supervisor/supervisord.conf 报错：Unlinking stale socket /var/run/supervisor.sock find / -name supervisor.sock # 全盘搜索这个文件名 unlink /**/supervisor.sock supervisord -c /etc/supervisor/supervisord.conf # 再重启supervisord服务 15.Python设计和历史常见问题
-16.一个可以拿到访问者ip的接口
-17.what-cicd
-18.一些好用的网站？
-在线ps
-周读
-临时邮箱
-工具网</description>
+      <description>1.10:57 完成了人生中第一次服务器购买以及成功地翻出了墙.&#xA;2.解决了一个关于使用gunicorn打印不出日志的问题&#xA;3.破解了银保监的反爬，学到很多东西&#xA;4.将html转成pdf的简便方法，用chrome打开html，ctrl+p就可以转化成pdf了&#xA;5.mongodb创建联合索引create_index([(field, 1), (field2, -1)])&#xA;6.原来除了有os.system()直接执行command,还有os.popen()，原理是创建一个管道，然后可以这个管道里标准输出流里的东西拿出来，拿到return的对象，fp.read()即可，用完fp.close()&#xA;7.遇到了一个坑，使用phantomjs的时候，比较慢，所以我希望这玩意只有一个，就弄成了全局变量，结果，发现driver.quit()失效了，根本没关闭上，这就很恶心人了。 解决方法是弄成局部变量&#xA;8.假如问你：cookie和session的区别 你知道怎么回答吗 反正我是重新认识了cookie,而且最让我惊讶的是，问了好多同事，给我的回答竟然都是和我面试的时候是一样的回答。我有时候不禁会想，面试官在问我这个问题之前，自己是否也清楚cookie和session的区别呢&amp;hellip;..又放肆了，还是好好学习吧&#xA;9.markdown里面如果想使用空行的话，可以使用html里面的br标签，但是要在br标签的前后都给到一个空行，在github上面显示才比较好看。或者使用空格+空格+换行，也可以达到一样的效果&#xA;10.mysql5.6 的 最左前缀优先 和 mysql5.7 的 最左前缀优先不一样，比如说现在有一个联合索引(name, cid), 有一条查询语句：select * from tablename where cid=1;这条语句在5.6中就不会走索引，但是在5.7中会走索引&#xA;11.今天知道一个新的markdown语法，[TOC] 可以自动按照生成目录，但是github不支持&#xA;12.set里面允许放的是不可变对象, 什么是不可变对象(string, numbers, boolean), 同理dict的key也是。这个fluent-py里面有讲解。加入我现在有两堆对象，我想做一个交集。但是我不想用for循环一个一个去比对。这个对象的数据成员都是由基本类型组成的。对象显然是放不进set里面的，这时候只需要实现__hash__和__eq__，具体解释就不在这里写了，但是，但是，但是，你想要去比对，肯定是和__eq__有关系，所以在实现__eq__的时候，势必要结合具体的业务情况。这时候就可以愉快地做交集并集了。&#xA;13.之前研究了网页编码，一开始都是采用了resp.text，后来发现其实requests底层使用的是resp.encoding, 这个encoding的默认值取的是response.headers里的content-type中charset这个值，如果没有这个值呢，requests就会使用chardet进行编码判断(也就是get_encoding_from_headers)后来发现这个方法呢，其实并不好用，取出来的是个ISO-8859-1，这个东西解码字节数组以后也不对。又发现有一个get_encodings_from_content,这个是从html里面的meta里面取charset这个值。有些html会有多个meta标签，所以这个函数会取出多个charset，也就是一个列表。这个就要自己取取舍了。一般我认为如果是ISO-8859-1的话，就是用UTF进行编码，如果gb打头，就是用gb18030进行编码。因为gb2312&amp;lt;\gbk&amp;lt;\gb18030。另外很多时候，会出现一种情况就是，明明charset是对的，但是使用decode(charset)的时候会报错。这是因为网页中含有一些这个编码不可以解析的字符，是什么原因我不知道，但是可以使用decode(charset, &#39;ignore&#39;)，只显示那些能编码的字符。&#xA;14.虽然之前也遇到过supervisor装好了以后出现各种问题，今天尤其仔细地看了一下解决的方法，记录一下&#xA;supervisord -c /etc/supervisor/supervisord.conf 报错：Unlinking stale socket /var/run/supervisor.sock find / -name supervisor.sock # 全盘搜索这个文件名 unlink /**/supervisor.sock supervisord -c /etc/supervisor/supervisord.conf # 再重启supervisord服务 15.Python设计和历史常见问题&#xA;16.一个可以拿到访问者ip的接口&#xA;17.what-cicd&#xA;18.一些好用的网站？&#xA;在线ps&#xA;周读&#xA;临时邮箱&#xA;工具网</description>
     </item>
-    
     <item>
       <title>docker image的实现原理以及registry相关的一块知识</title>
       <link>https://lydiacai1203.github.io/post/analyse_image_layer/</link>
       <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://lydiacai1203.github.io/post/analyse_image_layer/</guid>
-      <description>part_one: 什么是文件挂载？ 1. Unix里面的文件目录是目录树结构的形式，所有的文件目录都是基于硬盘disk逻辑抽象出来的。比如现在有一个的一个目录。
-接1. 现在要把这些文件目录挂载到磁盘上面，在linux的文件系统里面，首先执行mount命令进行文件挂载，比如说将/(根目录)挂载到disk1里面，挂载完了以后，根目录下的进行创建操作或是写操作的时候，数据文件都会存储在disk1当中。
-重点来了。比如说现在在data目录下创建一个文件a.txt, 这时候将/data挂载到disk2下面，这时候disk2中是看不到a.txt的。
-part_two: 联合挂载 那么既然有要挂载以后再写才能看见的挂载，肯定有写完以后再挂载依旧能够看见之前已经写了的文件的挂载方式。docker layer就是属于这种。
-part_three: docker 的layer和image的关系就有点像联合目录以及挂载点 也就是说，一个image代表的就是layer中的一个挂载点，而所有的layers就像是一个联合目录。
-最先进行build的layer层就在栈底，同样最后build的layer层就在栈顶。比如说现在在layer1层进行touch a.txt和touch b.txt两个动作(要注意现在图中所示的所有layer层都是read-only)。layer2层进行touch a.txt。那么这个时候整个docker image build以后，使用这个image生成的实例以后，这个实例里面存在的是哪一层的a.txt。
-这就涉及到所谓的联合挂载了。也就是说当前的docker image 看得到之前的 docker image创建的全部的layers。现在请注意，接下来是重中之重，涉及image实现原理。课代表请记笔记。(我真的是个戏精)
-part_three: docker image 实际上是怎么实现的 上个部分说到docker image是由很多个layer组成的，且这些layer是read-only的。每当生成一个新的实例以后，就会在栈顶增加一个writable-layer层。实际上是复制了一份read-only-layer中的数据到writable-layer中, 在container中修改的是这一层writable-layer中的数据。
-好了，现在已经扯远了，回到问题上来，实际上一个docker image是由两部分组成的，分别是Manifest(layer_name list)和image_name(image_name: name:tag)
-layer list中的每一个item，都是一个由hash(layer_content)=sha-256的这样一个hash值组成的。这样的hash有三个优点：1. 分布均匀；2. 碰撞少；3. 容易出现雪崩效应(所谓的雪崩效应输入值稍微改动一点点，hash值就会产生巨大的变化，这也是导致分布均匀的原因之一)。ps:Manifest也可以理解为是文件清单的意思。register(docker中的仓库)中其实存放了很多很多很多很多无序的layers。
-part_four: 如何实现的layer不重复下载？ 当我们build Dockerfile的时候, 首先会根据Dockerfile生成一张Manifest的表。里面存的是一堆的hash值。会根据这张表从栈顶开始查，查到栈底，这个hash值实际上可以理解为是digest, 通过和本地layer的sha-256值进行比对判断有没有必要再创建一个。
-part_five: 回到一开始的问题，生成的contianer里面到底是那个layer的里的a.txt 再回到文件系统来说，启动一个容器的时候，可以看到容器里面是有一个完整的文件系统的，容器里面的所有文件都来自构成镜像的层。每个层里面都有文件。Docker通过aufs的技术，把所有的层都挂载到了同一个目录上(所以现在知道，所谓digest其实就是，把所有layer里面的文件打包压缩求hash)。 也就是这时候container会从栈顶往下开始找文件，走到layer2的时候找到了a.txt, 这时候就不会用到layer3中的a.txt, 而是加载b.txt。所以说container里面的其实是a,txt文件。</description>
+      <description>part_one: 什么是文件挂载？ 1. Unix里面的文件目录是目录树结构的形式，所有的文件目录都是基于硬盘disk逻辑抽象出来的。比如现在有一个的一个目录。&#xA;接1. 现在要把这些文件目录挂载到磁盘上面，在linux的文件系统里面，首先执行mount命令进行文件挂载，比如说将/(根目录)挂载到disk1里面，挂载完了以后，根目录下的进行创建操作或是写操作的时候，数据文件都会存储在disk1当中。&#xA;重点来了。比如说现在在data目录下创建一个文件a.txt, 这时候将/data挂载到disk2下面，这时候disk2中是看不到a.txt的。&#xA;part_two: 联合挂载 那么既然有要挂载以后再写才能看见的挂载，肯定有写完以后再挂载依旧能够看见之前已经写了的文件的挂载方式。docker layer就是属于这种。&#xA;part_three: docker 的layer和image的关系就有点像联合目录以及挂载点 也就是说，一个image代表的就是layer中的一个挂载点，而所有的layers就像是一个联合目录。&#xA;最先进行build的layer层就在栈底，同样最后build的layer层就在栈顶。比如说现在在layer1层进行touch a.txt和touch b.txt两个动作(要注意现在图中所示的所有layer层都是read-only)。layer2层进行touch a.txt。那么这个时候整个docker image build以后，使用这个image生成的实例以后，这个实例里面存在的是哪一层的a.txt。&#xA;这就涉及到所谓的联合挂载了。也就是说当前的docker image 看得到之前的 docker image创建的全部的layers。现在请注意，接下来是重中之重，涉及image实现原理。课代表请记笔记。(我真的是个戏精)&#xA;part_three: docker image 实际上是怎么实现的 上个部分说到docker image是由很多个layer组成的，且这些layer是read-only的。每当生成一个新的实例以后，就会在栈顶增加一个writable-layer层。实际上是复制了一份read-only-layer中的数据到writable-layer中, 在container中修改的是这一层writable-layer中的数据。&#xA;好了，现在已经扯远了，回到问题上来，实际上一个docker image是由两部分组成的，分别是Manifest(layer_name list)和image_name(image_name: name:tag)&#xA;layer list中的每一个item，都是一个由hash(layer_content)=sha-256的这样一个hash值组成的。这样的hash有三个优点：1. 分布均匀；2. 碰撞少；3. 容易出现雪崩效应(所谓的雪崩效应输入值稍微改动一点点，hash值就会产生巨大的变化，这也是导致分布均匀的原因之一)。ps:Manifest也可以理解为是文件清单的意思。register(docker中的仓库)中其实存放了很多很多很多很多无序的layers。&#xA;part_four: 如何实现的layer不重复下载？ 当我们build Dockerfile的时候, 首先会根据Dockerfile生成一张Manifest的表。里面存的是一堆的hash值。会根据这张表从栈顶开始查，查到栈底，这个hash值实际上可以理解为是digest, 通过和本地layer的sha-256值进行比对判断有没有必要再创建一个。&#xA;part_five: 回到一开始的问题，生成的contianer里面到底是那个layer的里的a.txt 再回到文件系统来说，启动一个容器的时候，可以看到容器里面是有一个完整的文件系统的，容器里面的所有文件都来自构成镜像的层。每个层里面都有文件。Docker通过aufs的技术，把所有的层都挂载到了同一个目录上(所以现在知道，所谓digest其实就是，把所有layer里面的文件打包压缩求hash)。 也就是这时候container会从栈顶往下开始找文件，走到layer2的时候找到了a.txt, 这时候就不会用到layer3中的a.txt, 而是加载b.txt。所以说container里面的其实是a,txt文件。</description>
     </item>
-    
     <item>
       <title>what is k8s?</title>
       <link>https://lydiacai1203.github.io/post/what_is_k8s/</link>
       <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://lydiacai1203.github.io/post/what_is_k8s/</guid>
-      <description>part_one: 基本结构介绍 Node可以理解为物理资源，在K8s里面可操作的最小单元就是Pod，我们可以通过配置Pod配置文件的template字段来控制一个Pod里面有哪几种Container，但是不能控制一个Pod里面有几种container。Pod配置里面的template说明了要启动的容器是怎么样的，最重要的就是image的信息。
-后来由于需要部署的服务越来越多，每个Pod都是人工手动启动或者是删除检查的。所以后来产生了ReplicaController，有了这个东西以后就可以指定每个服务所要启动的Pods。这里的selector就是现在RC管理的下，还有哪些Pod是存活的。然后template就是指的是要启动的Pod是什么样子的。
-但是后来又遇到了滚动升级的问题(滚动升级：比如现在一个服务要从v1升级到v2，当时人工的处理方法就是将v1的Replica:3-&amp;gt;Replica:2, 然后将v2的配置文件里面配上Replica:1，后续的动作依次类推)。这样也耗费了大量的人力。
-所以这时候Deployment就出现了，但是由于ReplicaController还有一些涉及的不好的地方，所以为了更好地与Deployment进行配合，于是就出现了ReplicaSet。
-所以Deployment就是控制ReplicaSet的，Deployment里面可以看见RS和Pod两个东西的内容。
-Pod在K8s里面，这是一个不稳定的东西，每次死掉以后再挂起来，Pod的IP都会发生变化。那怎么去准确地找到哪一个Pod呢？(这个和endpoint也有一点关系)但是一个服务起了多个Pod，这时候如果有流量过来应该分配给哪个Pod呢？于是就出现了Service，这个Service起到了一个所谓的负载均衡的作用。每一个Service在这个集群里都有唯一确定的IP，这样就可以找到一群Pods，然后每个Pod都由endpoint进行标识。
-但是Service还是在这个虚拟网络里面的，外面用户来的流量应该怎么对应到指定的Service上面呢。之前说到外网想要连到百度云的服务器所在的私网的时候，使用的是VPN。但是我们不可能让用户都装上一个VPN Client。都进行验证。都建立一个虚拟专用网络。所以就出现了IngressController。这个东西可以简单地理解为是Nginx，可以实现反向代理。
-外部的流量会直接访问域名通过ip查询会命中Nginx中配置当中的public ip，这时候会把流量导向Service。但是这个对应的实现就是，Ingress实际上就是一种映射机制，定义了映射规则。在IngressController里面存在这一份vhost,这个里面存在service_ip和port的映射。这样就可以实现外部网络访问内部对应的pod了。</description>
+      <description>part_one: 基本结构介绍 Node可以理解为物理资源，在K8s里面可操作的最小单元就是Pod，我们可以通过配置Pod配置文件的template字段来控制一个Pod里面有哪几种Container，但是不能控制一个Pod里面有几种container。Pod配置里面的template说明了要启动的容器是怎么样的，最重要的就是image的信息。&#xA;后来由于需要部署的服务越来越多，每个Pod都是人工手动启动或者是删除检查的。所以后来产生了ReplicaController，有了这个东西以后就可以指定每个服务所要启动的Pods。这里的selector就是现在RC管理的下，还有哪些Pod是存活的。然后template就是指的是要启动的Pod是什么样子的。&#xA;但是后来又遇到了滚动升级的问题(滚动升级：比如现在一个服务要从v1升级到v2，当时人工的处理方法就是将v1的Replica:3-&amp;gt;Replica:2, 然后将v2的配置文件里面配上Replica:1，后续的动作依次类推)。这样也耗费了大量的人力。&#xA;所以这时候Deployment就出现了，但是由于ReplicaController还有一些涉及的不好的地方，所以为了更好地与Deployment进行配合，于是就出现了ReplicaSet。&#xA;所以Deployment就是控制ReplicaSet的，Deployment里面可以看见RS和Pod两个东西的内容。&#xA;Pod在K8s里面，这是一个不稳定的东西，每次死掉以后再挂起来，Pod的IP都会发生变化。那怎么去准确地找到哪一个Pod呢？(这个和endpoint也有一点关系)但是一个服务起了多个Pod，这时候如果有流量过来应该分配给哪个Pod呢？于是就出现了Service，这个Service起到了一个所谓的负载均衡的作用。每一个Service在这个集群里都有唯一确定的IP，这样就可以找到一群Pods，然后每个Pod都由endpoint进行标识。&#xA;但是Service还是在这个虚拟网络里面的，外面用户来的流量应该怎么对应到指定的Service上面呢。之前说到外网想要连到百度云的服务器所在的私网的时候，使用的是VPN。但是我们不可能让用户都装上一个VPN Client。都进行验证。都建立一个虚拟专用网络。所以就出现了IngressController。这个东西可以简单地理解为是Nginx，可以实现反向代理。&#xA;外部的流量会直接访问域名通过ip查询会命中Nginx中配置当中的public ip，这时候会把流量导向Service。但是这个对应的实现就是，Ingress实际上就是一种映射机制，定义了映射规则。在IngressController里面存在这一份vhost,这个里面存在service_ip和port的映射。这样就可以实现外部网络访问内部对应的pod了。</description>
     </item>
-    
     <item>
       <title>what is NFS?</title>
       <link>https://lydiacai1203.github.io/post/whatis_nfs/</link>
       <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://lydiacai1203.github.io/post/whatis_nfs/</guid>
-      <description>part_one：一台物理机器上的文件存储 计算机里面有很多块磁盘，计算机里面的文件系统都是逻辑树状结构的，逻辑上的概念都是物理中不会出现的。一个一百兆的文件在计算机上有几种存储方法。简单地来说有两种:
-1. sequence 在disk中占有一段连续的存储空间。这样做的好处有几点：一是简单方便；二是命中率高，因为程序的局部性原理。命中率高会导致读的速度比较快。但是这样做也是有坏处的，坏处就是这样存储文件容易出现磁盘碎片。因为不太容易找到100M这么大的连续存储空间。
-2. Inode=index+data_node 这种方式会讲一个disk分成两个部分，一个部分是index表头，一个部分是很多很多的data node，这些data node的大小一都是可以设置的，一般的大小在4KB-&amp;gt;16KB。一个100M的文件会被分成好几个部分，被存储到不同的node里面去。然后在index表头里面做一个地址的记录。这样当把这个disk挂载到某个目录上面去的时候，文件系统要显示这个disk中的所有的文件，去找的时候就会根据这个index的表头去拼出一个完整的文件。
-part_two：什么是NFS？ NFS的Network FileSystem，中文意思是分布式网络文件系统。这个出现的原因是因为，当目录下的文件非常多的时候，有可能会出现一个物理机里的磁盘存不下的情况。所以这种时候就出现了NFS。
-拿一个例子来讲，所有远程registry里面的images的layers都是乱序的，且不可能只是存在于一台物理机上面。
-1. 首先layers很多很多，不够存。
-2. 其次就是必须看见的是一个文件系统，因为layer是被image各种交叉引用的。现在有一个NFS,做了一层隔离，一个文件可能分成几块存在不同的物理机的disk上面，然后这个NFS在显示文件目录下面的挂载情况的时候会将所有的物理机磁盘里的文件拼在一起展示在挂载的文件目录里面。造成一种假象。
-3. NFS只是一种协议规范，真正实现这种规范的有GFS, GlusterFS, MooseFS等等，其中MooseFS就是所说的MFS，也就是公司现在用的这种分布式网络文件系统。
-part_three: 磁盘阵列的好处 磁盘阵列会在你将数据写入一个磁盘的时候，同时同步到另一个磁盘上去。这样读写文件的速度就会变成两倍速。一个磁盘上从头开始读。另一个磁盘上从百分之五十的地方开始读数据。那可不可以说设置两个指针，一个在文件头，一个在文件尾进行读写呢，这样做会收到磁盘吞吐量的约束，所以也是一种有问题的做法。</description>
+      <description>part_one：一台物理机器上的文件存储 计算机里面有很多块磁盘，计算机里面的文件系统都是逻辑树状结构的，逻辑上的概念都是物理中不会出现的。一个一百兆的文件在计算机上有几种存储方法。简单地来说有两种:&#xA;1. sequence 在disk中占有一段连续的存储空间。这样做的好处有几点：一是简单方便；二是命中率高，因为程序的局部性原理。命中率高会导致读的速度比较快。但是这样做也是有坏处的，坏处就是这样存储文件容易出现磁盘碎片。因为不太容易找到100M这么大的连续存储空间。&#xA;2. Inode=index+data_node 这种方式会讲一个disk分成两个部分，一个部分是index表头，一个部分是很多很多的data node，这些data node的大小一都是可以设置的，一般的大小在4KB-&amp;gt;16KB。一个100M的文件会被分成好几个部分，被存储到不同的node里面去。然后在index表头里面做一个地址的记录。这样当把这个disk挂载到某个目录上面去的时候，文件系统要显示这个disk中的所有的文件，去找的时候就会根据这个index的表头去拼出一个完整的文件。&#xA;part_two：什么是NFS？ NFS的Network FileSystem，中文意思是分布式网络文件系统。这个出现的原因是因为，当目录下的文件非常多的时候，有可能会出现一个物理机里的磁盘存不下的情况。所以这种时候就出现了NFS。&#xA;拿一个例子来讲，所有远程registry里面的images的layers都是乱序的，且不可能只是存在于一台物理机上面。&#xA;1. 首先layers很多很多，不够存。&#xA;2. 其次就是必须看见的是一个文件系统，因为layer是被image各种交叉引用的。现在有一个NFS,做了一层隔离，一个文件可能分成几块存在不同的物理机的disk上面，然后这个NFS在显示文件目录下面的挂载情况的时候会将所有的物理机磁盘里的文件拼在一起展示在挂载的文件目录里面。造成一种假象。&#xA;3. NFS只是一种协议规范，真正实现这种规范的有GFS, GlusterFS, MooseFS等等，其中MooseFS就是所说的MFS，也就是公司现在用的这种分布式网络文件系统。&#xA;part_three: 磁盘阵列的好处 磁盘阵列会在你将数据写入一个磁盘的时候，同时同步到另一个磁盘上去。这样读写文件的速度就会变成两倍速。一个磁盘上从头开始读。另一个磁盘上从百分之五十的地方开始读数据。那可不可以说设置两个指针，一个在文件头，一个在文件尾进行读写呢，这样做会收到磁盘吞吐量的约束，所以也是一种有问题的做法。</description>
     </item>
-    
     <item>
       <title>看完 天龙八部 以后，有一点骚话想说</title>
       <link>https://lydiacai1203.github.io/post/movie_tlbb/</link>
       <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://lydiacai1203.github.io/post/movie_tlbb/</guid>
-      <description>我大概是疯了，从周日开始看到周一凌晨，终于把《天龙八部》给刷完了。
-虚竹的故事线一条下来，我也觉得尚能接受。分支故事线应该就是天山童姥和李秋水，为了无崖子，一个划花对方的脸，一个在对方修炼神功的时候搞偷袭，还都觉得无崖子喜欢自己，结果无崖子喜欢的是李家小妹。虚竹也是个挂比，也算积善缘得善果，珍珑棋局为了救段延之误下一子，然后得段延之相助破解了珍珑棋局，得到了无崖子七十多年来的深厚内力，最后又因为一颗救人积善之心，结缘童姥，学会天山折梅手和天山六阳掌。也是因为阻止童姥和李秋水掐架最后误打误撞得到两人的内力，最后成为灵鹫宫主人。这样一个挂比小和尚，金庸也要给他安排上一段香艳场景，虽然梦姑梦郎终成眷属，但我总觉得冰窖中的那段描写像是一种意淫。虚竹的身世似乎也必须离奇，原来是玄慈与叶二娘的儿子，一天之内与父母相认，又一天之内失去双亲。
-段誉也是一个名副其实的挂比+一个情商巨高的舔狗。先是因为救钟灵被灵鹫宫天使打落悬崖误打误撞习得凌波微步，接着又因为回头寻找小黑马主人而结识木婉清，去救木婉清的时候又把北冥神功给学会了，一不小心就吸了这个，吸了那个。跪舔王语嫣又别出心裁，不像宋青书那个蠢猪，当准备用六脉神剑下死招给慕容复的时候，还想到王姑娘会不会因此而不开心，可是宋青书这个蠢猪在张无忌身负重伤别人都不好意思上千补刀的时候，他还不自量力地想把张无忌干死。可谓是舔狗中的失败范例。同为舔狗的还有游坦之和阿紫，因为舔错了方式，而无法和自己心爱的人在一起。段誉还真的和段正淳一样，风流多情，原来三个爱人都是段正淳的女儿，正当我以为段誉要孤独一生的时候，故事又峰回路转，段誉竟然是段延之的儿子。我tm&amp;hellip;
-自带音响的男人乔峰（萧峰）在喝断义酒的时候我真的心里难过极了，就不说了，大英雄谁都喜欢。虽然我看不太懂他为什么会爱上阿朱。
-如果要我说我最喜欢谁，我应该最喜欢的是鸠摩智，典型的学霸，虽然有一丢丢急功近利，但是最后大彻大悟成为得道高僧也是相当有悟性有天赋的人，也是金庸没有给安排什么奇怪的感情线的人，所以我喜欢他。
-就这样吧，我感觉金庸的其它作品我短期内应该都不会再去看了。</description>
+      <description>我大概是疯了，从周日开始看到周一凌晨，终于把《天龙八部》给刷完了。&#xA;虚竹的故事线一条下来，我也觉得尚能接受。分支故事线应该就是天山童姥和李秋水，为了无崖子，一个划花对方的脸，一个在对方修炼神功的时候搞偷袭，还都觉得无崖子喜欢自己，结果无崖子喜欢的是李家小妹。虚竹也是个挂比，也算积善缘得善果，珍珑棋局为了救段延之误下一子，然后得段延之相助破解了珍珑棋局，得到了无崖子七十多年来的深厚内力，最后又因为一颗救人积善之心，结缘童姥，学会天山折梅手和天山六阳掌。也是因为阻止童姥和李秋水掐架最后误打误撞得到两人的内力，最后成为灵鹫宫主人。这样一个挂比小和尚，金庸也要给他安排上一段香艳场景，虽然梦姑梦郎终成眷属，但我总觉得冰窖中的那段描写像是一种意淫。虚竹的身世似乎也必须离奇，原来是玄慈与叶二娘的儿子，一天之内与父母相认，又一天之内失去双亲。&#xA;段誉也是一个名副其实的挂比+一个情商巨高的舔狗。先是因为救钟灵被灵鹫宫天使打落悬崖误打误撞习得凌波微步，接着又因为回头寻找小黑马主人而结识木婉清，去救木婉清的时候又把北冥神功给学会了，一不小心就吸了这个，吸了那个。跪舔王语嫣又别出心裁，不像宋青书那个蠢猪，当准备用六脉神剑下死招给慕容复的时候，还想到王姑娘会不会因此而不开心，可是宋青书这个蠢猪在张无忌身负重伤别人都不好意思上千补刀的时候，他还不自量力地想把张无忌干死。可谓是舔狗中的失败范例。同为舔狗的还有游坦之和阿紫，因为舔错了方式，而无法和自己心爱的人在一起。段誉还真的和段正淳一样，风流多情，原来三个爱人都是段正淳的女儿，正当我以为段誉要孤独一生的时候，故事又峰回路转，段誉竟然是段延之的儿子。我tm&amp;hellip;&#xA;自带音响的男人乔峰（萧峰）在喝断义酒的时候我真的心里难过极了，就不说了，大英雄谁都喜欢。虽然我看不太懂他为什么会爱上阿朱。&#xA;如果要我说我最喜欢谁，我应该最喜欢的是鸠摩智，典型的学霸，虽然有一丢丢急功近利，但是最后大彻大悟成为得道高僧也是相当有悟性有天赋的人，也是金庸没有给安排什么奇怪的感情线的人，所以我喜欢他。&#xA;就这样吧，我感觉金庸的其它作品我短期内应该都不会再去看了。</description>
     </item>
-    
   </channel>
 </rss>

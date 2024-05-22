@@ -4,91 +4,58 @@
     <title>2021 on Hugo Cactus Theme</title>
     <link>https://lydiacai1203.github.io/tags/2021/</link>
     <description>Recent content in 2021 on Hugo Cactus Theme</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 09 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lydiacai1203.github.io/tags/2021/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 09 Oct 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://lydiacai1203.github.io/tags/2021/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>安全开发指南（持续更新）</title>
       <link>https://lydiacai1203.github.io/post/sec_guide/</link>
       <pubDate>Sat, 09 Oct 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://lydiacai1203.github.io/post/sec_guide/</guid>
-      <description>开发规范
-腾讯 Python 安全指南
-1. 代码实现 1. 避免使用不安全的对称加密算法（避免 DES/3DES，建议 AES） 2. 确保重要行为都记录在日志上，且可靠保存 6 个月以上 3. 禁止将未经验证的用户输入直接记录日志（防止注入漏洞：恶意用户插入伪造的日志数据，从而让系统管理员以为是系统行为） 4. 避免在日志中保存敏感信息（明文密码、密文密码 等等） 2. 系统口令 1. 禁止使用 空口令、弱口令、已泄漏口令 2. 口令强度需满足 + 密码长度大于 14 位 + 包含：大小写英文字母、数字、特殊字符 + 不得使用默认的初始密码 + 不能与最近 6 次使用过的密码重复 + 不得与其它外部系统使用相同的密码 3. 口令存储安全 + 禁止明文存储口令 + 禁止使用弱密码学算法加密存储口令 + 使用 不可逆算法 和 随机 salt 对口令进行加密存储 + 禁止传递明文口令 + 禁止在不安全的信道中传输口令 3. 配置 / 环境 1. 建议使用 Python 3.6+ 版本，因为 Python3 在 2020 年就停止维护了，相关漏洞不能得到及时修复和维护 2.</description>
+      <description>开发规范&#xA;腾讯 Python 安全指南&#xA;1. 代码实现 1. 避免使用不安全的对称加密算法（避免 DES/3DES，建议 AES） 2. 确保重要行为都记录在日志上，且可靠保存 6 个月以上 3. 禁止将未经验证的用户输入直接记录日志（防止注入漏洞：恶意用户插入伪造的日志数据，从而让系统管理员以为是系统行为） 4. 避免在日志中保存敏感信息（明文密码、密文密码 等等） 2. 系统口令 1. 禁止使用 空口令、弱口令、已泄漏口令 2. 口令强度需满足 + 密码长度大于 14 位 + 包含：大小写英文字母、数字、特殊字符 + 不得使用默认的初始密码 + 不能与最近 6 次使用过的密码重复 + 不得与其它外部系统使用相同的密码 3. 口令存储安全 + 禁止明文存储口令 + 禁止使用弱密码学算法加密存储口令 + 使用 不可逆算法 和 随机 salt 对口令进行加密存储 + 禁止传递明文口令 + 禁止在不安全的信道中传输口令 3. 配置 / 环境 1. 建议使用 Python 3.6+ 版本，因为 Python3 在 2020 年就停止维护了，相关漏洞不能得到及时修复和维护 2.</description>
     </item>
-    
     <item>
       <title>Python 原生 SQL 如何预防 SQL 注入</title>
       <link>https://lydiacai1203.github.io/post/raw_sql_q/</link>
       <pubDate>Fri, 08 Oct 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://lydiacai1203.github.io/post/raw_sql_q/</guid>
-      <description>什么是 SQL 注入 腾讯云博客 SQL 注入攻击是一种常见的Web攻击方法，攻击者通过把 SQL 命令注入到 Web 后台数据库的查询字符串中，最终达到欺骗服务器执行恶意 SQL 命令的目的。例如可以从数据库获取敏感信息，或者利用数据库的特性执行添加用户、导出文件等一系列恶意操作，甚至有可能获取数据库乃至系统用户最高权限。 2. SQL 注入例子 SQL 注入只会发生在字符串拼接的例子中，常见的攻击有拖库、拖表、篡改网页内容、收集数据库信息为其它攻击做准备等等。
-假设代码中是这样一段代码 username = input(&amp;ldquo;enter in username&amp;rdquo;) sql = f&amp;quot;&amp;quot;&amp;quot; select * from content where create_user = &amp;ldquo;{username}&amp;rdquo; &amp;quot;&amp;quot;&amp;quot;
-用户输入 username = &amp;rsquo;testc&amp;quot; or 1 = &amp;ldquo;1&amp;rsquo;, SQL 就会变成 sql = f&amp;rdquo;&amp;quot;&amp;quot; select * from content where create_user = &amp;ldquo;testc&amp;rdquo; or 1 = &amp;ldquo;1&amp;rdquo; &amp;quot;&amp;quot;&amp;quot; 3. SQL 注入预防通用方法
-外部参数动态拼接 [&amp;quot;\&amp;quot;&amp;quot;, &amp;quot;\\&amp;quot;, &amp;quot;/&amp;quot;, &amp;quot;*&amp;quot;, &amp;quot;&#39;&amp;quot;, &amp;quot;=&amp;quot;, &amp;quot;-&amp;quot;, &amp;quot;#&amp;quot;, &amp;quot;;&amp;quot;, &amp;quot;&amp;lt;&amp;quot;, &amp;quot;&amp;gt;&amp;quot;, &amp;quot;+&amp;quot;, &amp;quot;&amp;amp;&amp;quot;, &amp;quot;$&amp;quot;, &amp;quot;(&amp;quot;, &amp;quot;)&amp;quot;, &amp;quot;%&amp;quot;, &amp;quot;@&amp;quot;, &amp;quot;,&amp;quot;] 过滤特殊符号 遇到固定格式的变量，在 SQL 执行前严格按照固定格式检查 特殊符号转义使用（SQL 中的转义字符是单引号） 参数化查询 绑定变量使用预编译语句（预防 SQL 注入的最佳方式） ORM 使用 ORM 避免 SQL 注入 存储 敏感信息加密存储 将 username = &amp;rsquo;testc&amp;quot; or 1 = &amp;ldquo;1&amp;rsquo; 中的特殊符号转译，除了左右两侧的单引号 这样 &amp;ldquo;testc&amp;rsquo;&amp;rdquo; or 1 = &amp;lsquo;&amp;ldquo;1&amp;rdquo; 就变成了一个值，而非表达式的一部分 sql = f&amp;rdquo;&amp;quot;&amp;quot; select * from content where create_user = &amp;ldquo;testc&amp;rsquo;&amp;rdquo; or 1 = &amp;lsquo;&amp;ldquo;1&amp;rdquo; &amp;quot;&amp;quot;&amp;quot; 4.</description>
+      <description>什么是 SQL 注入 腾讯云博客 SQL 注入攻击是一种常见的Web攻击方法，攻击者通过把 SQL 命令注入到 Web 后台数据库的查询字符串中，最终达到欺骗服务器执行恶意 SQL 命令的目的。例如可以从数据库获取敏感信息，或者利用数据库的特性执行添加用户、导出文件等一系列恶意操作，甚至有可能获取数据库乃至系统用户最高权限。 2. SQL 注入例子 SQL 注入只会发生在字符串拼接的例子中，常见的攻击有拖库、拖表、篡改网页内容、收集数据库信息为其它攻击做准备等等。&#xA;假设代码中是这样一段代码 username = input(&amp;ldquo;enter in username&amp;rdquo;) sql = f&amp;quot;&amp;quot;&amp;quot; select * from content where create_user = &amp;ldquo;{username}&amp;rdquo; &amp;quot;&amp;quot;&amp;quot;&#xA;用户输入 username = &amp;rsquo;testc&amp;quot; or 1 = &amp;ldquo;1&amp;rsquo;, SQL 就会变成 sql = f&amp;rdquo;&amp;quot;&amp;quot; select * from content where create_user = &amp;ldquo;testc&amp;rdquo; or 1 = &amp;ldquo;1&amp;rdquo; &amp;quot;&amp;quot;&amp;quot; 3. SQL 注入预防通用方法&#xA;外部参数动态拼接 [&amp;quot;\&amp;quot;&amp;quot;, &amp;quot;\\&amp;quot;, &amp;quot;/&amp;quot;, &amp;quot;*&amp;quot;, &amp;quot;&#39;&amp;quot;, &amp;quot;=&amp;quot;, &amp;quot;-&amp;quot;, &amp;quot;#&amp;quot;, &amp;quot;;&amp;quot;, &amp;quot;&amp;lt;&amp;quot;, &amp;quot;&amp;gt;&amp;quot;, &amp;quot;+&amp;quot;, &amp;quot;&amp;amp;&amp;quot;, &amp;quot;$&amp;quot;, &amp;quot;(&amp;quot;, &amp;quot;)&amp;quot;, &amp;quot;%&amp;quot;, &amp;quot;@&amp;quot;, &amp;quot;,&amp;quot;] 过滤特殊符号 遇到固定格式的变量，在 SQL 执行前严格按照固定格式检查 特殊符号转义使用（SQL 中的转义字符是单引号） 参数化查询 绑定变量使用预编译语句（预防 SQL 注入的最佳方式） ORM 使用 ORM 避免 SQL 注入 存储 敏感信息加密存储 将 username = &amp;rsquo;testc&amp;quot; or 1 = &amp;ldquo;1&amp;rsquo; 中的特殊符号转译，除了左右两侧的单引号 这样 &amp;ldquo;testc&amp;rsquo;&amp;rdquo; or 1 = &amp;lsquo;&amp;ldquo;1&amp;rdquo; 就变成了一个值，而非表达式的一部分 sql = f&amp;rdquo;&amp;quot;&amp;quot; select * from content where create_user = &amp;ldquo;testc&amp;rsquo;&amp;rdquo; or 1 = &amp;lsquo;&amp;ldquo;1&amp;rdquo; &amp;quot;&amp;quot;&amp;quot; 4.</description>
     </item>
-    
     <item>
       <title>骚渣一体 --《圆月弯刀》</title>
       <link>https://lydiacai1203.github.io/post/movie_szyt/</link>
       <pubDate>Mon, 16 Aug 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://lydiacai1203.github.io/post/movie_szyt/</guid>
-      <description>老实说是冲 古天乐 和 梁小冰 的脸才去看的。看之前没想到味儿会这么冲。
-看完这部电视剧我又去看了小说（不过没看完）。我想到以前还看过古龙的《陆小凤传奇》，貌似不是这么个味道啊。看的时候甚至一度让我以为古龙写这部小说的时候得了痔疮。直到后来去请教度娘，才知道古龙只写了 1/10，剩下的都是 司马紫烟 代笔的。淦，浪费我的感情。
-电视剧改编了很多。讲的是男主丁鹏从小就特别崇拜在镖局打工的爸爸，觉得自己老爸的武功天下第一，谁知道有一次和小伙伴出去玩，半路正好遇到老爹在押镖，好家伙，说时迟那时快来了几个强盗，老爹啪一下就给跪了，不光跪了还尿了。小伙伴都笑话丁鹏。小丁鹏又羞又气回家了，从此以后拿着他爹捡来的 天外流星 的剑谱，在深山里刻苦练习。
-要知道武侠小说里的男主要想出人头地，必须先父母双亡。丁鹏老爹坟头草都三米高的时候，丁鹏的 天外流星 也练的出神入化了。他决心要 出 人 投 地！于是就出山了，挑战这个挑战那个，都赢了。到了挑战万松山庄的 柳若松，谁知道这人是个阴险小人，派出自己的妻子秦可情去勾引丁鹏，用那一夜换取了那一页。柳若松得到天外流星的剑谱以后，破解了剑谱，打败了丁鹏。并说天外流星是自己自创的剑法，是丁鹏抄袭了。丁鹏百口莫辩，被逼的跳下了海。流落到了小岛，遇见了魔教公主，青青。两人互生情愫，丁鹏不仅入赘，还学习了魔教刀法 圆月弯刀，于是带着青青回中原找柳若松报仇。
-再说秦可情和柳若松越过越憋屈，越过越觉得丁鹏才是真男人。于是当她再次见到丁鹏，她马上投怀送抱，答应里应外合，协助丁鹏复仇，把六大门派的武功心法秘籍全都刻到柳若松的密室里面。那边青青化身为蓝蓝，接近柳若松。让他四处杀人，然后教了他一套小学生剑法，骗其一定能打败丁鹏。最后？最后柳若松被废全身武功，当乞丐去了。
-丁鹏心里一直想要雄霸天下，想要打败 剑神谢晓峰，成为天下第一。他把 姬无命 关了起来，假装自己是一直写诗给 谢小玉，勾搭上了谢小玉，继承了谢晓峰的武功，成为了神剑山庄的庄主。青青这边为了化解姬无命和丁鹏的矛盾，被柳若松害得瞎了眼睛。等她再见到丁鹏，已经是在丁鹏和谢小玉的婚礼上了。圣母心泛滥的女主当然是选择成全丁鹏啦。
-丁鹏顺理成章成为武林盟主以后，青青老爸魔教教主出现了，一系列套路把丁鹏的命门捏得死死的，上演了一出无间道。鹏鹏子失去了一切，不干了，他发现自己心里唯爱青青，于是又去找青青。两人开了一个客栈，叫无命客栈，从此过上了隐居的生活。
-本来写到这里真的可以了，但是魔教教主的结局还没写呀。说青青他爹来找丁鹏，让他交出弯刀。青青直到两人必有一死，于是易容成自己老爹去找丁鹏，被丁鹏干死了。丁鹏一看是自己老婆，不行啊，气的和他爹干了一架，俩人一起失踪了。留下一个儿子，丢给姬无命抚养。
-写在最后，看完这部剧我最大的收获就是，原来 平平无奇的梗 是出自这部剧。之前我还一直以为是神雕侠侣里的。如果不是馋古天乐的颜，真的很不建议看，除非你想洗眼睛。</description>
+      <description>老实说是冲 古天乐 和 梁小冰 的脸才去看的。看之前没想到味儿会这么冲。&#xA;看完这部电视剧我又去看了小说（不过没看完）。我想到以前还看过古龙的《陆小凤传奇》，貌似不是这么个味道啊。看的时候甚至一度让我以为古龙写这部小说的时候得了痔疮。直到后来去请教度娘，才知道古龙只写了 1/10，剩下的都是 司马紫烟 代笔的。淦，浪费我的感情。&#xA;电视剧改编了很多。讲的是男主丁鹏从小就特别崇拜在镖局打工的爸爸，觉得自己老爸的武功天下第一，谁知道有一次和小伙伴出去玩，半路正好遇到老爹在押镖，好家伙，说时迟那时快来了几个强盗，老爹啪一下就给跪了，不光跪了还尿了。小伙伴都笑话丁鹏。小丁鹏又羞又气回家了，从此以后拿着他爹捡来的 天外流星 的剑谱，在深山里刻苦练习。&#xA;要知道武侠小说里的男主要想出人头地，必须先父母双亡。丁鹏老爹坟头草都三米高的时候，丁鹏的 天外流星 也练的出神入化了。他决心要 出 人 投 地！于是就出山了，挑战这个挑战那个，都赢了。到了挑战万松山庄的 柳若松，谁知道这人是个阴险小人，派出自己的妻子秦可情去勾引丁鹏，用那一夜换取了那一页。柳若松得到天外流星的剑谱以后，破解了剑谱，打败了丁鹏。并说天外流星是自己自创的剑法，是丁鹏抄袭了。丁鹏百口莫辩，被逼的跳下了海。流落到了小岛，遇见了魔教公主，青青。两人互生情愫，丁鹏不仅入赘，还学习了魔教刀法 圆月弯刀，于是带着青青回中原找柳若松报仇。&#xA;再说秦可情和柳若松越过越憋屈，越过越觉得丁鹏才是真男人。于是当她再次见到丁鹏，她马上投怀送抱，答应里应外合，协助丁鹏复仇，把六大门派的武功心法秘籍全都刻到柳若松的密室里面。那边青青化身为蓝蓝，接近柳若松。让他四处杀人，然后教了他一套小学生剑法，骗其一定能打败丁鹏。最后？最后柳若松被废全身武功，当乞丐去了。&#xA;丁鹏心里一直想要雄霸天下，想要打败 剑神谢晓峰，成为天下第一。他把 姬无命 关了起来，假装自己是一直写诗给 谢小玉，勾搭上了谢小玉，继承了谢晓峰的武功，成为了神剑山庄的庄主。青青这边为了化解姬无命和丁鹏的矛盾，被柳若松害得瞎了眼睛。等她再见到丁鹏，已经是在丁鹏和谢小玉的婚礼上了。圣母心泛滥的女主当然是选择成全丁鹏啦。&#xA;丁鹏顺理成章成为武林盟主以后，青青老爸魔教教主出现了，一系列套路把丁鹏的命门捏得死死的，上演了一出无间道。鹏鹏子失去了一切，不干了，他发现自己心里唯爱青青，于是又去找青青。两人开了一个客栈，叫无命客栈，从此过上了隐居的生活。&#xA;本来写到这里真的可以了，但是魔教教主的结局还没写呀。说青青他爹来找丁鹏，让他交出弯刀。青青直到两人必有一死，于是易容成自己老爹去找丁鹏，被丁鹏干死了。丁鹏一看是自己老婆，不行啊，气的和他爹干了一架，俩人一起失踪了。留下一个儿子，丢给姬无命抚养。&#xA;写在最后，看完这部剧我最大的收获就是，原来 平平无奇的梗 是出自这部剧。之前我还一直以为是神雕侠侣里的。如果不是馋古天乐的颜，真的很不建议看，除非你想洗眼睛。</description>
     </item>
-    
     <item>
       <title>Linux lsof 命令使用</title>
       <link>https://lydiacai1203.github.io/post/linux_lsof_usage/</link>
       <pubDate>Wed, 21 Apr 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://lydiacai1203.github.io/post/linux_lsof_usage/</guid>
       <description>为了以后查阅方便所做。 ------- 菜大头 lsof 简介 `lsof` 是 `list open files` 的简称。意思是 列出系统中打开的文件。由于 Linux 中 `everything is file`。所有的对象都可以看作是文件，`lsof` 就可以知道用户和进程都操作了哪些文件，也可以查看系统中网络的使用情况、设备信息。 lsof | head -n 20 会列出系统中所有打开的前20个文件，每个文件一行 FD cwd: 当前工作目录 txt: 应用文本(代码、数据) mem: 内存映射文件 mmap: 内存映射设备 TYPE REG: 普通文件 DIR: 文件夹 lsof -p 1190 打开 1190 进程打开的所有文件 lsof -u caiqingjing or lsof -u ^caiqingjing 打开某个用户打开的文件 or 除了某个用户.. lsof file_path 查看某个 文件/目录 被哪些进程打开 lsof +d dir_path 列出访问某个目录的所有进程 lsof -c nginx 列出某个命令使用的文件信息 使用 lsof 查看网络信息 lsof -i 列出所有的网络连接信息 lsof -i TCP -i 后面跟协议类型，只显示 TCP 网络协议的连接信息 lsof -i :80 查看 80 端口被哪个进程使用 lsof -i @172.</description>
     </item>
-    
     <item>
       <title>Linux 内存管理</title>
       <link>https://lydiacai1203.github.io/post/linux_memory_manage/</link>
       <pubDate>Wed, 21 Apr 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://lydiacai1203.github.io/post/linux_memory_manage/</guid>
       <description>free usage (venv367) caiqingjing@ip-127.0.0.1:~$ free -h 总计 已用 空闲 共享 缓冲/缓存 可用 内存： 31G 7.1G 2.7G 105M 21G 23G交换： 0B 0B 0B 1. 关注 可用 列，估计有多少内存可用于启动新的程序而无须交换。 2. 理论上，used - buffers/cache 表示应用程序实际使用的内存？；free+buffers/cache 表示理论上可以被使用的内存。free 仅仅表示未被使用的内存大小。仅仅看 free 来判断是不够准确的。 3. 当可用内存接近 0 或 非常小时，已用内存接近总容量 时，意味这需要使用到交换磁盘了。可以使用 `grep -i kill /var/log/messages *` 或 `dmesg | grep oom-killer` 检查内存溢出日志消息。 缓存（cache） read_cache:读文件时，通常需要将硬盘里的数据读入内存，但是硬盘和内存的读取速度相差太多，因此 linux 会将数据读入 cache 中，然后从 cache 中读取需要的数据。当一个缓存中的数据被多次读取，实际上就减少了该数据从慢速设备中读取的次数。因此 cache 中的数据是随机访问的特性。write_cache:与 read_cache 对应，它的目标应该是减少写入慢速设备的次数。使用 cache 的话，可以多次写入 cache, 但是只写入一次硬盘。 缓冲（buffer） read_buffer: 每当 buffer 满或者主动 `flush` 时会触发一次读取，对于小数据可以减少读取次数，对于大数据可以控制单次读取的数据量。通常来说，先入 buffer 的数据会被先读取，所有的 buffer 数据几乎一定会被读取，拥有顺序访问的特性。write_buffer:同上，也是需要 buffer 满或者主动 `flush` 时才会触发写入。如果每次写入的数据量相对固定。因为如果一次写入 4k 对与某个设备来说效率最高的话，buffer 一定是 4k。小数据积攒到 4k 写入，大数据分割成 4k 的碎片写入，这是 write_buffer 的用处。 交换内存（swapping） 当主存(RAM) 不足以临时存储多个程序时，我们从 RAM 中取出一些程序，通过 swap out 的机制将它们存储到硬盘中。当 RAM 可用时，我们再次将程序从硬盘交换到 RAM, 这就是 swap in。Linux 中的交换空间是物理内存的两倍。优点： 1.</description>
     </item>
-    
     <item>
       <title>断点续传的原理</title>
       <link>https://lydiacai1203.github.io/post/download_file/</link>
       <pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://lydiacai1203.github.io/post/download_file/</guid>
-      <description>参考文档
-1. 什么是断点续传？ 可以让用户从上一次下载中断的位置接着下载的机制。 2. 断点续传的原理 1. `curl -I {url}` 查看响应头部是否有 `content-range` 字样，有则代表服务端支持断点续传功能。 2. HTTP HEADERS 1.1 Range(在有 If-Range 的时候才会生效) * Range: bytes=0-1023 请求资源的前 1024 个字节 * Range: bytes=-1023 请求资源的倒数 1023 个字节 * Range: bytes=1023- 请求资源第 1024 字节开始及以后的资源 * Range: bytes=0-50, 100-150 请求资源的多个部分 1.2 If-Range(必传两个中的一个，但不能同时传) 1.2.1 Etag * 675af34563dc-tr34 * 文件资源的唯一标示，一个字符串 1.2.2 Last-Modified * If-Range: Wed, 21 Oct 2015 07:28:00 GMT * 上一次文件资源修改时间 3. RESP HTTP STATUS CODE 3.1 206 - Partial Content（此次请求成功） 3.</description>
+      <description>参考文档&#xA;1. 什么是断点续传？ 可以让用户从上一次下载中断的位置接着下载的机制。 2. 断点续传的原理 1. `curl -I {url}` 查看响应头部是否有 `content-range` 字样，有则代表服务端支持断点续传功能。 2. HTTP HEADERS 1.1 Range(在有 If-Range 的时候才会生效) * Range: bytes=0-1023 请求资源的前 1024 个字节 * Range: bytes=-1023 请求资源的倒数 1023 个字节 * Range: bytes=1023- 请求资源第 1024 字节开始及以后的资源 * Range: bytes=0-50, 100-150 请求资源的多个部分 1.2 If-Range(必传两个中的一个，但不能同时传) 1.2.1 Etag * 675af34563dc-tr34 * 文件资源的唯一标示，一个字符串 1.2.2 Last-Modified * If-Range: Wed, 21 Oct 2015 07:28:00 GMT * 上一次文件资源修改时间 3. RESP HTTP STATUS CODE 3.1 206 - Partial Content（此次请求成功） 3.</description>
     </item>
-    
     <item>
       <title>Elasticsearch2.x 权威文档 （摘抄）</title>
       <link>https://lydiacai1203.github.io/post/es_doc_readingnote/</link>
       <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://lydiacai1203.github.io/post/es_doc_readingnote/</guid>
-      <description>Elasticsearch2.x 权威文档 （摘抄） 很多用法都已经过时，看完这个我打算再看一下 7.x。仅作为快速查阅的工具文档使用，可能不会和原文一致。希望尽量做到精简。 有一些模块因为暂时使用不到所以选择不看，毕竟没有应用的情况下是很容易忘记的。
-1. 面向文档 Elasticsearch 是 面向文档 的，意味着它存储整个对象或文档，Elasticsearch 不仅存储文档，而且 索引 每个文档的内容，使之可以被检索。在 Elasticsearch 中，我们对文档(而不是对行列数据)进行索引、检索、排序、过滤，这也是 Elasticsearch 能支持复杂全文检索的原因。
-2. JSON Elasticsearch 使用 JavaScript Object Notation (JSON) 作为文档的序列化格式。具体可以看 serialization 和 marshalling 两个处理模块。
-3. 几个名词 索引 .n 一个索引类似于一个数据库，是一个存储文档的地方。 索引 .v 索引一个文档就是存储一个文档到一个索引中以便于被检索或是被查询。类似于 insert, 当文档已存在时(_id已有) 会进行更新。 倒排索引 倒排索引被作用在文档上，以便于提升数据的检索速度。默认的，文档中的每一列都有倒排索引，没有倒排索引的属性是不可能被搜索到的。 4. 检索文档 GET - /index/mapping/id 即可检索出 ID 对应的对象
-GET - /index/mapping/_search 用于检索所有的对象(一个搜索默认返回十条结果, 放在 hits 中)
-GET - /index/mapping/_search?q=alst_name:Smith – URL 查询参数查询
-GET - /index/mapping/_search – 进行查询表达式搜索(部分匹配)</description>
+      <description>Elasticsearch2.x 权威文档 （摘抄） 很多用法都已经过时，看完这个我打算再看一下 7.x。仅作为快速查阅的工具文档使用，可能不会和原文一致。希望尽量做到精简。 有一些模块因为暂时使用不到所以选择不看，毕竟没有应用的情况下是很容易忘记的。&#xA;1. 面向文档 Elasticsearch 是 面向文档 的，意味着它存储整个对象或文档，Elasticsearch 不仅存储文档，而且 索引 每个文档的内容，使之可以被检索。在 Elasticsearch 中，我们对文档(而不是对行列数据)进行索引、检索、排序、过滤，这也是 Elasticsearch 能支持复杂全文检索的原因。&#xA;2. JSON Elasticsearch 使用 JavaScript Object Notation (JSON) 作为文档的序列化格式。具体可以看 serialization 和 marshalling 两个处理模块。&#xA;3. 几个名词 索引 .n 一个索引类似于一个数据库，是一个存储文档的地方。 索引 .v 索引一个文档就是存储一个文档到一个索引中以便于被检索或是被查询。类似于 insert, 当文档已存在时(_id已有) 会进行更新。 倒排索引 倒排索引被作用在文档上，以便于提升数据的检索速度。默认的，文档中的每一列都有倒排索引，没有倒排索引的属性是不可能被搜索到的。 4. 检索文档 GET - /index/mapping/id 即可检索出 ID 对应的对象&#xA;GET - /index/mapping/_search 用于检索所有的对象(一个搜索默认返回十条结果, 放在 hits 中)&#xA;GET - /index/mapping/_search?q=alst_name:Smith – URL 查询参数查询&#xA;GET - /index/mapping/_search – 进行查询表达式搜索(部分匹配)</description>
     </item>
-    
   </channel>
 </rss>
