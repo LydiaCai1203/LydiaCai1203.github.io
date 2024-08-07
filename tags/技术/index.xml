@@ -6,8 +6,15 @@
     <description>Recent content in 技术 on Hugo Cactus Theme</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 15 Jul 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 07 Aug 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://lydiacai1203.github.io/tags/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>聚类算法原理</title>
+      <link>https://lydiacai1203.github.io/post/clustering_algorithm/</link>
+      <pubDate>Wed, 07 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>https://lydiacai1203.github.io/post/clustering_algorithm/</guid>
+      <description>1. K-means（EM 算法） 1. 概念 存储用于定义聚类的 K 个质心。点离哪个质心最近，就被认为属于哪个类; K-means 通过交替进行以下两步找到质心： 1) 根据当前质心划分数据点; 2) 根据当前数据点计算聚类的质心; 2. 算法详解 1) 初始化质心，通常会随机选择 K 个数据点 2) 将每个点归类，离哪个质心最近，就属于哪一类 3) 计算当前簇类的平均值，找到新的质心 4) 重复 2、3 步 3. WCSS(Within-Cluster-Sum-Of-Squares) 每一个数据点到其所属质心的距离的平方和，就是 WCSS。 4. Elbow Curve x 轴就是 K 值，y 轴就是 WCSS, 画出曲线。将其中下降剧烈的点称为肘点，肘点对应的 K 值就是最佳 K 值。 5. 优点 1) 适合高斯分布数据集 2) 适合同质数据 3) 适合聚类之间界限清晰，不重叠的情况 4) 适合中等大小的数据集 6. 缺点 1) 不适合复杂分布的数据集 2) 需要提前预设 K 值，最优解查找不佳 3) 不适合大数据集，计算成本高昂 4) 对初始中心敏感，容易受到数据中的噪声和异常值的影响 5) 对噪声和异常值敏感 7.</description>
+    </item>
     <item>
       <title>FastAPI Depend 实现原理(个人猜测&#43;粗略代码实现)</title>
       <link>https://lydiacai1203.github.io/post/fastapi_depend/</link>
