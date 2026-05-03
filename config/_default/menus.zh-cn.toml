@@ -1,0 +1,9 @@
+############# 中文导航 ##############
+
+# main menu
+[[main]]
+name = "阿菜菜在路边边"
+url = "/"
+weight = 1
+
+# footer menu - removed about link

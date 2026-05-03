@@ -1,0 +1,24 @@
+{
+  "name": "lydiacai1203.github.io",
+  "version": "1.0.0",
+  "description": "阿菜的骚话天地",
+  "scripts": {
+    "dev": "concurrently \"node themes/hugoplate/scripts/themeGenerator.js --watch\" \"hugo server\"",
+    "build": "node themes/hugoplate/scripts/themeGenerator.js && hugo --gc --minify --templateMetrics --templateMetricsHints --forceSyncStatic",
+    "preview": "node themes/hugoplate/scripts/themeGenerator.js && hugo server --disableFastRender --navigateToChanged --templateMetrics --templateMetricsHints --watch --forceSyncStatic -e production --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.2.1",
+    "@tailwindcss/forms": "^0.5.11",
+    "@tailwindcss/typography": "^0.5.19",
+    "concurrently": "^9.2.1",
+    "prettier": "^3.8.1",
+    "prettier-plugin-go-template": "0.0.15",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwind-bootstrap-grid": "^7.0.0",
+    "tailwindcss": "^4.2.1"
+  },
+  "dependencies": {
+    "claude": "^0.1.1"
+  }
+}

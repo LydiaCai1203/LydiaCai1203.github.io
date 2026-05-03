@@ -1,0 +1,6 @@
+################ 中文语言 ##################
+[zh-cn]
+languageName = "中文"
+languageCode = "zh-cn"
+contentDir = "content"
+weight = 1

@@ -1,0 +1,38 @@
+{{ define "main" }}
+  <!-- Simple Hero Section -->
+  <section class="section flex items-center justify-center" style="min-height: calc(100vh - 200px);">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-6 md:col-8 text-center">
+          <!-- Avatar -->
+          <div class="mb-8 animate-fade-in-scale">
+            <img 
+              src="/avatar.jpeg" 
+              alt="阿菜" 
+              class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto border-4 border-primary dark:border-primary shadow-lg hover:scale-105 transition-transform duration-300 object-cover"
+              style="object-position: center 30%;"
+            />
+          </div>
+          
+          <!-- Name -->
+          <h1 class="mb-6 text-h2 lg:text-h1 font-bold animate-fade-in-up" style="animation-delay: 0.2s;">
+            阿菜
+          </h1>
+          
+          <!-- Slogan -->
+          <p class="text-xl md:text-2xl text-text-light dark:text-darkmode-text mb-8 animate-fade-in-up" style="animation-delay: 0.4s;">
+            我的梦想就是当一块有思想的垃圾
+          </p>
+          
+          <!-- Blog Link -->
+          <div class="animate-fade-in-up" style="animation-delay: 0.6s;">
+            <a class="btn btn-primary" href="/blog/">
+              查看文章
+              <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{{ end }}

@@ -1,0 +1,49 @@
+{{ $logo:= site.Params.logo }}
+{{ $logoWidth:= site.Params.logo_width }}
+{{ $logoHeight:= site.Params.logo_height }}
+{{ $logoWebp:= site.Params.logo_webp }}
+{{ $logoDarkmode:= site.Params.logo_darkmode }}
+{{ if $logo }}
+  {{ if $logoWebp }}
+    {{ $logoWebp = resources.Get $logo }}
+    {{ if $logoWebp }}
+      <picture>
+        <source
+          srcset="{{ $logoWebp.RelPermalink }}"
+          type="image/webp" />
+        <img
+          class="mx-auto max-h-full w-auto"
+          src="{{ $logoWebp.RelPermalink }}"
+          alt="{{ site.Title }}"
+          height="{{ $logoHeight }}"
+          width="{{ $logoWidth }}" />
+      </picture>
+    {{ end }}
+  {{ else }}
+    {{ $logo = resources.Get $logo }}
+    {{ if $logo }}
+      <img
+        class="mx-auto max-h-full w-auto"
+        src="{{ $logo.RelPermalink }}"
+        alt="{{ site.Title }}"
+        height="{{ $logoHeight }}"
+        width="{{ $logoWidth }}" />
+    {{ end }}
+  {{ end }}
+  {{ if $logoDarkmode }}
+    {{ $logoDarkmode = resources.Get $logoDarkmode }}
+    {{ if $logoDarkmode }}
+      <img
+        class="mx-auto max-h-full w-auto dark:hidden"
+        src="{{ $logoDarkmode.RelPermalink }}"
+        alt="{{ site.Title }}"
+        height="{{ $logoHeight }}"
+        width="{{ $logoWidth }}" />
+    {{ end }}
+  {{ end }}
+{{ else }}
+  <div class="flex flex-col">
+    <span class="text-xl font-bold">{{ site.Params.logo_text | default site.Title }}</span>
+    <p class="text-xs text-text-light dark:text-darkmode-text mt-0.5">一个 间歇性混吃等死 持续性踌躇满志的 激萌少女。</p>
+  </div>
+{{ end }}

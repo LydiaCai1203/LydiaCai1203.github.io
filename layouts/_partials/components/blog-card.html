@@ -1,0 +1,46 @@
+<div class="bg-body dark:bg-darkmode-body blog-card transition-all duration-300 hover:shadow-lg hover:-translate-y-1 rounded-lg p-6">
+  {{ $image:= .Params.image }}
+  {{ if $image }}
+    <div class="mb-6 overflow-hidden rounded">
+      {{ partial "image" (dict "Src" $image "Context" .Page "Alt" .Title "Class" "w-full rounded transition-transform duration-300 hover:scale-105") }}
+    </div>
+  {{ end }}
+  <h4 class="mb-3 transition-colors duration-300">
+    <a href="{{ .RelPermalink }}" class="hover:text-primary">
+      {{ .Title }}
+    </a>
+  </h4>
+  {{ $categories:= .Params.categories }}
+  {{ if $categories }}
+    <ul class="mb-4">
+      <li class="mr-4 inline-block">
+        <a href="{{ `authors/` | relLangURL }}{{ .Params.Author | urlize }}/" class="text-text-light hover:text-primary transition-colors">
+          <i class="fa-regular fa-circle-user mr-2"></i>{{ .Params.author | default "阿菜" }}
+        </a>
+      </li>
+      <li class="mr-4 inline-block">
+        <i class="fa-regular fa-folder mr-1"></i>
+        {{ range $i,$p:= $categories }}
+          <a
+            href="{{ `categories/` | relLangURL }}{{ . | urlize | lower }}/"
+            class="ms-1 hover:text-primary transition-colors"
+            >{{ . | humanize }}{{ if ne $i (sub (len $categories) 1) }}
+              {{ "," }}
+            {{ end }}
+          </a>
+        {{ end }}
+      </li>
+      {{ if .Date }}
+      <li class="mr-4 inline-block text-text-light">
+        <i class="fa-regular fa-calendar mr-1"></i>
+        <time>{{ .Date.Format "2006-01-02" }}</time>
+      </li>
+      {{ end }}
+    </ul>
+  {{ end }}
+  <p class="mb-6 text-text-light">{{ .Summary | plainify | truncate 150 }}</p>
+  <a class="btn btn-outline-primary btn-sm inline-flex items-center group" href="{{ .RelPermalink }}">
+    {{ T "read_more" | default "阅读更多" }}
+    <i class="fa fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+  </a>
+</div>

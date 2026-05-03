@@ -1,0 +1,73 @@
+# Site settings
+baseurl = "https://LydiaCai1203.github.io/"
+themesDir = "/Users/cqj/project/private/LydiaCai1203.github.io/themes"
+languageCode = "zh-cn"
+title = "阿菜的骚话天地"
+theme = "huey"
+# Enter your tracking code to enable Google Analytics
+googleAnalytics = ""
+
+[params]
+	name = "阿菜"
+	description = "阿菜的骚话天地"
+	bio = "我的梦想就是当一块有思想的垃圾"
+	author = "阿菜"
+	
+	# Huey theme specific settings
+	# Use content from _index.md on homepage
+	# useIndexContent = false  # default is false
+	
+	# Navigation, use Bulma options here
+	# navbarStyle = "is-transparent"  # Default is "is-transparent"
+	# navbarTitleStyle = "has-text-black"  # Default is "has-text-black"
+	
+	# Set static directory locations and favicon
+	favicon = "favicon.ico"
+	staticDir = ['static']
+
+# Page Layout for Index
+[pagination]
+  disableAliases = false
+  pagerSize = 3
+  path = 'page'
+
+# Top Navigation (Huey theme uses menu.nav)
+[[menu.nav]]
+  identifier = 'home'
+  name = '首页'
+  title = '首页'
+  url = '/'
+  weight = 10
+
+[[menu.nav]]
+  identifier = 'archive'
+  name = '文章'
+  title = "文章"
+  url = '/post/'
+  weight = 20
+
+[[menu.nav]]
+  identifier = 'about'
+  name = '关于'
+  title = "关于"
+  url = '/about/'
+  weight = 30
+
+# Social Media Links (Huey theme uses menu.social)
+[[menu.social]]
+  identifier = 'github'
+  name = 'Github'
+  pre = "<i class='fab fa-github fa-lg'></i>"
+  url = "https://github.com/LydiaCai1203"
+  weight = 10
+
+[[menu.social]]
+  identifier = 'twitter'
+  name = 'Twitter'
+  pre = "<i class='fab fa-twitter fa-lg'></i>"
+  url = "https://www.twitter.com/"
+  weight = 20
+
+[outputs]
+  home = ['HTML', 'RSS']
+  pages = ['HTML']
