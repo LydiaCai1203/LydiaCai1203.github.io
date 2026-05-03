@@ -1,0 +1,16 @@
+
+// modified Bulma default variables
+
+@import "../bulma/sass/utilities/initial-variables";
+@import "../bulma/sass/utilities/functions";
+
+// override colors using Hugo parameters for Huey theme
+$scheme-main: {{ .Site.Params.schemeMain | default "#fff" }}; // default scheme, background color
+$link: {{ .Site.Params.link | default "#000" }}; // link color
+$link-hover: {{ .Site.Params.linkHover | default "#888"}}; // link hover color
+$footer-color: {{ .Site.Params.footerBackground | default "true"}};  // removes background color in footer
+$footer-background-color: {{ .Site.Params.footerBackgroundColor | default "false;"}}; // specifies a footer color
+$navbar-item-hover-color: {{ .Site.Params.navbarItemHoverColor | default "#444;"}}; // navbar menu color hover
+$navbar-item-color: {{ .Site.Params.navbarItemColor | default "#888"}}; // navbar menu text color
+
+@import "../bulma/";

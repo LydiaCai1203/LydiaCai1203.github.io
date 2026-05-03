@@ -1,0 +1,26 @@
+<footer class="footer">
+  <div class="has-text-centered">
+    <layer>
+      {{ if .Site.Menus.social }}
+        {{ if .Site.Params.fontawesomeToken }}
+          {{ range .Site.Menus.social }}
+          <a class="footer-social" href="{{ .URL }}">{{ .Pre }}</a>
+          {{ end }}
+        {{ else }}
+          {{ range .Site.Menus.social }}
+          <a class="footer-social" href="{{ .URL }}">{{ .Name }}</a>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    </layer>
+    <layer>
+      <p>
+        <!-- I'd love for you to keep my name, but at least the link to the theme would be nice. Thanks! - Whitlock -->
+        Website theme is <a class="has-text-weight-semibold" href="https://github.com/alloydwhitlock/huey">Huey</a> by <a class="has-text-weight-semibold" href="https://adamwhitlock.com">Adam Whitlock</a>.
+      </p>
+      <p>
+         &copy; {{ now.Format "2006"}} {{ .Site.Params.author}}
+      </p>
+    </layer>
+  </div>
+</footer>

@@ -1,0 +1,12 @@
+name = "Huey"
+license = "MIT"
+licenselink = "https://github.com/alloydwhitlock/huey/blob/master/LICENSE"
+description = "Huey is a minimal blog theme which uses the Bulma CSS framework"
+homepage = "https://www.adamwhitlock.com/"
+tags = ["blog", "light", "minimalist", "bulma", "blog"]
+features = ["responsive", "blog", "archive", "social"]
+min_version = "0.154.2" 
+
+[author]
+  name = "Adam Whitlock"
+  homepage = "https://adamwhitlock.com"

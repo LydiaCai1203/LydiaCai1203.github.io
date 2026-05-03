@@ -1,0 +1,25 @@
+{{ define "main"}}
+<main aria-role="main">
+  <div class="section">
+    <div class="columns">
+      <div class="column">
+        <figure class="image ">
+          {{ with .Resources.GetMatch "header.*" }}
+            <img src="data:{{ .MediaType }};base64,{{ .Content | base64Encode }}">
+          {{ end }}
+        </figure>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column">
+        <div class="content">
+          <h1 class="title is-3">{{.Page.Title | title }}</h1>
+          <h2 class="subtitle is-5"><time>{{ .Date.Format "January 2, 2006" }}{{ if ne .Lastmod .PublishDate }} / Updated {{ .Lastmod.Format "January 2, 2006" }}{{ end }}</time></h2>
+          <p class="subtitle is-4">{{.Page.Description}}</p>
+          {{ .Content }}
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{{ end }}

@@ -1,0 +1,20 @@
+{{ $currentPage := . }}
+<div class="container">
+<nav class="navbar {{ .Site.Params.navbarStyle }} mb-4" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item title {{ .Site.Params.navbarTitleStyle | default "has-text-black" }}" href="{{ .Site.BaseURL }}">{{.Site.Title}}</a>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div id="navbar-menu" class="navbar-menu">
+    <div class="navbar-end">
+        {{ range .Site.Menus.nav }}
+        <a class="navbar-item{{if or ($currentPage.IsMenuCurrent "nav" .) ($currentPage.HasMenuCurrent "nav" .) }} is-active{{end}}" href="{{.URL}}"  >{{ .Name }}</a>
+        {{ end }}
+    </div>
+  </div>
+</nav>
+</div>

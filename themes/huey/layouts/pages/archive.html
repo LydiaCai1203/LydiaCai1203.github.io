@@ -1,0 +1,24 @@
+{{ define "main"}}
+<main aria-role="main">
+  <div class="section">
+    <div class="columns">
+      <div class="column">
+        <div class="content">
+          <p class="title is-3"><i class="fas fa-archive"></i>
+            {{.Page.Title | title}}
+          </p>
+          {{ .Content }}
+          <ul class="fa-ul">
+            {{ range .Pages.ByPublishDate.Reverse }}
+                <li>
+                    <span class="fa-li"><i class="fas fa fa-file"></i></span><a href="{{ .Permalink }}">{{ .Title | title }}{{ if .Description }}: {{ .Description}}{{ end }}</a>
+                    <p>Published on <time>{{ .Date.Format "January 2, 2006" }}</time></p>
+                </li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{{ end }}
