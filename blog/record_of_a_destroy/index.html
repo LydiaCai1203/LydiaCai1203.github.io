@@ -1,0 +1,979 @@
+<!doctype html>
+<html
+  itemscope
+  class=""
+  lang="zh-cn"
+  itemtype="http://schema.org/WebPage">
+  <head>
+    
+    <meta charset="utf-8" />
+
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, maximum-scale=5" />
+
+
+<meta name="theme-name" content="hugoplate" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="manifest" href="/manifest.webmanifest" />
+<meta
+  name="msapplication-TileColor"
+  content="#ddd" />
+<meta
+  name="theme-color"
+  content="#ffffff" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <base href="https://LydiaCai1203.github.io/blog/record_of_a_destroy/" />
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+<title>两种权限系统，主要是吐槽设计</title>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta
+    name="keywords"
+    content="博客, 技术, 读书笔记" />
+
+
+
+
+<meta name="description" content="丧" />
+
+
+
+  <meta name="author" content="阿菜" />
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+
+
+  
+  
+
+
+  
+
+
+
+
+
+<meta property="og:title" content="两种权限系统，主要是吐槽设计" />
+<meta property="og:description" content="丧" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://LydiaCai1203.github.io/blog/record_of_a_destroy/" />
+
+
+<meta name="twitter:title" content="两种权限系统，主要是吐槽设计" />
+<meta name="twitter:description" content="丧" />
+
+
+
+  <meta name="twitter:creator" content="@阿菜" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  let indexURL = "https://LydiaCai1203.github.io/searchindex.json";
+  let includeSectionsInSearch = ["blog"];
+  let search_no_results = "0 results for";
+  let search_initial_message = "";
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta http-equiv="x-dns-prefetch-control" content="on" />
+<link rel="preconnect" href="https://use.fontawesome.com" crossorigin />
+<link rel="preconnect" href="//cdnjs.cloudflare.com" />
+<link rel="preconnect" href="//www.googletagmanager.com" />
+<link rel="preconnect" href="//www.google-analytics.com" />
+<link rel="dns-prefetch" href="https://use.fontawesome.com" />
+<link rel="dns-prefetch" href="//ajax.googleapis.com" />
+<link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+<link rel="dns-prefetch" href="//www.googletagmanager.com" />
+<link rel="dns-prefetch" href="//www.google-analytics.com" />
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+<link rel="dns-prefetch" href="//connect.facebook.net" />
+<link rel="dns-prefetch" href="//platform.linkedin.com" />
+<link rel="dns-prefetch" href="//platform.twitter.com" />
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script>
+  (function () {
+    const googleFont = document.createElement("link");
+    googleFont.href = "https://fonts.googleapis.com/css2?family=Heebo:wght@400;600&family=Signika:wght@500;700&display=swap";
+    googleFont.type = "text/css";
+    googleFont.rel = "stylesheet";
+    document.head.appendChild(googleFont);
+  })();
+</script>
+
+
+
+
+
+
+  
+    
+    
+      
+        
+      
+    
+  
+
+  
+    
+    
+      
+        
+      
+    
+  
+
+  
+    
+    
+      
+        
+      
+    
+  
+
+  
+    
+    
+      
+        
+      
+    
+  
+
+  
+    
+    
+      
+        
+      
+    
+  
+
+
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+
+  
+  
+    
+  
+
+
+
+
+<link
+  href="/css/style.3127d48aca8834ef5df5495cf8686b8d746fb52843c1da597982237593a74329.css"
+  integrity="sha256-MSfUisqINO9d9Ulc&#43;GhrjXRvtShDwdpZeYIjdZOnQyk="
+  rel="stylesheet" />
+
+
+
+
+<link
+  rel="stylesheet"
+  href="/css/style-lazy.min.9e7e035d2f064fe004383f2ffc11a8f2966ef7b51c5fb2fac926e35c0061b5cf.css"
+  integrity="sha256-nn4DXS8GT&#43;AEOD8v/BGo8pZu97UcX7L6ySbjXABhtc8="
+  media="print"
+  onload="this.media='all'; this.onload=null;" />
+
+
+
+  </head>
+
+  <body class="flex flex-col min-h-screen">
+    
+    
+      
+
+
+
+      
+
+    
+
+
+    
+    
+
+
+
+
+
+    
+    <header
+  class="header sticky top-0 z-30">
+  <nav class="navbar container">
+    
+    <ul
+      id="nav-menu"
+      class="navbar-nav order-0 hidden lg:flex lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8 lg:mr-auto">
+      
+      
+        
+        
+        
+        
+          <li class="nav-item">
+            <a
+              class="nav-link "
+              
+              href="/"
+              >阿菜菜在路边边</a
+            >
+          </li>
+        
+      
+      
+        <li class="mt-4 inline-block lg:hidden">
+          <a
+            class="btn btn-outline-primary btn-sm"
+            href="https://github.com/LydiaCai1203"
+            
+              target="_blank" rel="noopener"
+            >
+            GitHub
+          </a>
+        </li>
+      
+    </ul>
+
+    
+    <input id="nav-toggle" type="checkbox" class="hidden" />
+    <label
+      for="nav-toggle"
+      class="order-3 cursor-pointer flex items-center lg:hidden text-text-dark dark:text-white lg:order-1">
+      <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
+        <title>Menu Open</title>
+        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+      </svg>
+      <svg id="hide-button" class="h-6 fill-current hidden" viewBox="0 0 20 20">
+        <title>Menu Close</title>
+        <polygon
+          points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+          transform="rotate(45 10 10)"></polygon>
+      </svg>
+    </label>
+    
+
+    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
+      
+        
+          <button
+            aria-label="search"
+            class="border-border text-text-dark hover:text-primary
+            dark:border-darkmode-border mr-5 inline-block border-r pr-5
+            text-xl dark:text-white cursor-pointer dark:hover:text-darkmode-primary
+            "
+            data-target="search-modal">
+            <i class="fa-solid fa-search"></i>
+          </button>
+        
+      
+
+      
+
+      
+
+
+  <div class="theme-switcher mr-5 invisible">
+    <input id="theme-switcher" data-theme-switcher type="checkbox" />
+    <label for="theme-switcher">
+      <span class="sr-only">theme switcher</span>
+      <span>
+        
+        <svg
+          class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 opacity-100 dark:opacity-0"
+          viewBox="0 0 56 56"
+          fill="#fff"
+          height="16"
+          width="16">
+          <path
+            d="M30 4.6c0-1-.9-2-2-2a2 2 0 0 0-2 2v5c0 1 .9 2 2 2s2-1 2-2Zm9.6 9a2 2 0 0 0 0 2.8c.8.8 2 .8 2.9 0L46 13a2 2 0 0 0 0-2.9 2 2 0 0 0-3 0Zm-26 2.8c.7.8 2 .8 2.8 0 .8-.7.8-2 0-2.9L13 10c-.7-.7-2-.8-2.9 0-.7.8-.7 2.1 0 3ZM28 16a12 12 0 0 0-12 12 12 12 0 0 0 12 12 12 12 0 0 0 12-12 12 12 0 0 0-12-12Zm23.3 14c1.1 0 2-.9 2-2s-.9-2-2-2h-4.9a2 2 0 0 0-2 2c0 1.1 1 2 2 2ZM4.7 26a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4.9c1 0 2-.9 2-2s-1-2-2-2Zm37.8 13.6a2 2 0 0 0-3 0 2 2 0 0 0 0 2.9l3.6 3.5a2 2 0 0 0 2.9 0c.8-.8.8-2.1 0-3ZM10 43.1a2 2 0 0 0 0 2.9c.8.7 2.1.8 3 0l3.4-3.5c.8-.8.8-2.1 0-2.9-.8-.8-2-.8-2.9 0Zm20 3.4c0-1.1-.9-2-2-2a2 2 0 0 0-2 2v4.9c0 1 .9 2 2 2s2-1 2-2Z" />
+        </svg>
+        
+        <svg
+          class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 opacity-0 dark:opacity-100"
+          viewBox="0 0 24 24"
+          fill="none"
+          height="16"
+          width="16">
+          <path
+            fill="#000"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M8.2 2.2c1-.4 2 .6 1.6 1.5-1 3-.4 6.4 1.8 8.7a8.4 8.4 0 0 0 8.7 1.8c1-.3 2 .5 1.5 1.5v.1a10.3 10.3 0 0 1-9.4 6.2A10.3 10.3 0 0 1 3.2 6.7c1-2 2.9-3.5 4.9-4.4Z" />
+        </svg>
+      </span>
+    </label>
+  </div>
+
+  
+  <script>
+    var darkMode = localStorage.getItem("theme") === "dark";
+
+    if (localStorage.getItem("theme") === null) {
+      darkMode = false;
+
+      
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        darkMode = true;
+      }
+      
+    }
+
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      var themeSwitch = document.querySelectorAll("[data-theme-switcher]");
+      var themeSwitcherContainer = document.querySelector('.theme-switcher');
+
+      [].forEach.call(themeSwitch, function (ts) {
+        ts.checked = darkMode;
+        ts.addEventListener("click", () => {
+          document.documentElement.classList.toggle("dark");
+          localStorage.setItem(
+            "theme",
+            document.documentElement.classList.contains("dark") ? "dark" : "light"
+          );
+        });
+      });
+
+      
+      themeSwitcherContainer.classList.remove("invisible");
+    });
+  </script>
+
+
+
+
+      
+      
+        <a
+          href="https://github.com/LydiaCai1203"
+          class="btn btn-outline-primary btn-sm hidden lg:inline-block"
+          target="_blank" rel="noopener">
+          GitHub
+        </a>
+      
+    </div>
+  </nav>
+</header>
+
+    
+
+
+
+
+  
+    <div
+      class="search-modal "
+      aria-hidden="true"
+      style="--color-primary: #121212">
+      <div data-target="close-search-modal" class="search-modal-overlay"></div>
+      <div
+        class="search-wrapper"
+        data-image="true"
+        data-description="true"
+        data-tags="true"
+        data-categories="true">
+        <div class="search-wrapper-header">
+          <label for="search-modal-input" style="margin-top:-1px">
+            <span class="sr-only">search icon</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+              height="18"
+              width="18"
+              class="search-icon"
+              data-type="search">
+              <path
+                fill="currentColor"
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+              height="18"
+              width="18"
+              class="search-reset"
+              data-type="reset">
+              <path
+                fill="currentColor"
+                d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z" />
+            </svg>
+          </label>
+          <input
+            id="search-modal-input"
+            type="text"
+            data-search-input
+            autocomplete="off"
+            aria-label="Search"
+            placeholder="" />
+        </div>
+        <div class="search-wrapper-body">
+          <div class="search-result" data-search-result></div>
+          <span class="search-result-empty">
+            
+          </span>
+        </div>
+        <div class="search-wrapper-footer">
+          <span>
+            <kbd>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                fill="currentColor"
+                viewBox="0 0 16 16">
+                <path
+                  d="M3.204 11h9.592L8 5.519 3.204 11zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z" />
+              </svg>
+            </kbd>
+            <kbd>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                fill="currentColor"
+                style="margin-top:1px;"
+                viewBox="0 0 16 16">
+                <path
+                  d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
+              </svg>
+            </kbd>
+            to navigate
+          </span>
+          <span>
+            <kbd>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                fill="currentColor"
+                style="display:inline-block;"
+                viewBox="0 0 16 16">
+                <path
+                  fill-rule="evenodd"
+                  d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z" />
+              </svg>
+            </kbd>
+            to select
+          </span>
+          <span class="search-result-info"></span>
+          <span data-target="close-search-modal">
+            <kbd>ESC</kbd> to close
+          </span>
+        </div>
+      </div>
+    </div>
+  
+
+
+
+
+    <main class="flex-grow">
+      
+  <section class="section-sm">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10">
+          <div class="content">
+            <p>  过年那段时间真的太难受了。这期间遭受了很多事情。 但是我现在记不住太多东西了。朋友圈里多了很多人，三家公司，三家公司的同事。我不能和以前一样在里面抱怨什么了。赖哥的骚操作积累的太多，我都写不完。</p>
+<p>        安全运营平台当时设计权限系统的时候，权限上分了两部分，一个是功能权限，一个是数据权限。功能权限控制是否能访问接口，数据权限控制返回的数据，不具有完全的数据权限的只会返回部分数据。考虑到用户配置的方便性，还有工时等限制，最后采用了参数控制的方式。这样说不是很直观，下面简单说明一下权限表的设计。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">id</th>
+          <th style="text-align: center">perm_name</th>
+          <th style="text-align: center">perm_key</th>
+          <th>perm_args</th>
+          <th>created</th>
+          <th>updated</th>
+          <th>status</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">地址标签库 - 黑地址标签 - 读</td>
+          <td style="text-align: center">black_address_tags_read</td>
+          <td>category=1, 2, 3&amp;status=1</td>
+          <td>2020-01-01 00:00:00</td>
+          <td>2020-01-01 00:00:00</td>
+          <td>1</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">id</th>
+          <th style="text-align: center">role_name</th>
+          <th style="text-align: center">created</th>
+          <th style="text-align: center">updated</th>
+          <th>status</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">super_user</td>
+          <td style="text-align: center">2020-01-01 00:00:00</td>
+          <td style="text-align: center">2020-01-01 00:00:00</td>
+          <td>1</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">id</th>
+          <th style="text-align: center">role_id</th>
+          <th style="text-align: center">perm_id</th>
+          <th style="text-align: center">created</th>
+          <th style="text-align: center">updated</th>
+          <th>status</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">2020-01-01 00:00:00</td>
+          <td style="text-align: center">2020-01-01 00:00:00</td>
+          <td>1</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">id</th>
+          <th style="text-align: center">user_name</th>
+          <th style="text-align: center">created</th>
+          <th style="text-align: center">updated</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">caiqingjing</td>
+          <td style="text-align: center">2020-01-01 00:00:00</td>
+          <td style="text-align: center">2020-01-01 00:00:00</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">id</th>
+          <th style="text-align: center">user_id</th>
+          <th style="text-align: center">role_id</th>
+          <th style="text-align: center">created</th>
+          <th style="text-align: center">updated</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">2020-01-01 00:00:00</td>
+          <td style="text-align: center">2020-01-01 00:00:00</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">id</th>
+          <th style="text-align: center">user_id</th>
+          <th style="text-align: center">perm_id</th>
+          <th style="text-align: center">created</th>
+          <th style="text-align: center">updated</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">2020-01-01 00:00:00</td>
+          <td style="text-align: center">2020-01-01 00:00:00</td>
+      </tr>
+  </tbody>
+</table>
+<p>应用场景：</p>
+<p>        上面6张表里我们可以看出，caiqingjing 是 super_user, super_user 现在有 地址标签库-黑地址标签-读 的权限，虽然 caiqingjing 有读权限，但是只能访问 &lsquo;category in (1, 2) and</p>
+<p>status=1&rsquo; 条件的数据。</p>
+<p>        这个权限系统几乎可以解决所有的权限需求的问题了，但是要达到控制数据权限级别的，不可避免地就要去在接口里面写具体的权限逻辑。另外还有一个问题就是，由于现在配置的权限不是原子化的，配置权限的时候不够灵活。如果要加在考虑之外的权限，权限就会变得多，且乱。所谓的不是原子化，就是 category=1, 2, 3&amp;status=1 如果原子化表示的话，应该是写成四条权限，(black_address_tags_read, category=1), (black_address_tags_read, category=2), (black_address_tags_read, category=3), (black_address_tags_read, status=1) 这样存。</p>
+<p>        但是要灵活，就要牺牲掉一些便利性。并且在整理权限的时候也会麻烦很多。当一个用户拥有很多权限的时候，配置权限也就变成了一个麻烦的工作。</p>
+<p>        这是两种配置方式，有各自的优缺点。</p>
+<p>三哥的优化方案：</p>
+<p>       抛弃掉 perm_args, 只保留 key, 也就是说, 将所有的权限拆分成最小权限，原本key=&lsquo;black_address_tags_read&rsquo;, perm_args=&lsquo;category=1&rsquo;。然后被他合并成 key=&lsquo;black_address_tags_read:category=1&rsquo;。写一个自动按照数据库字段生成权限的脚本来实现权限自动化，推广权限系统，让公司其他部门的同事都用上我们这套系统，增加我们团队的核心竞争力。</p>
+<h6 id="接下来是我的疯狂输出不一定对">接下来是我的疯狂输出。不一定对。</h6>
+<p>        <strong>从需求上来看</strong>，安全运营平台目前只有两个模块涉及到数据权限。领导的需求也只是想要在某一个模块上加数据权限的需求，这个需求原本是只需要花半天就可以修改完，上线了。三哥为了用上他的新方案，和我们犟了三天。我们仨轮翻上阵，对他设计的新系统提出疑问。</p>
+<p>        <strong>对于能解决的问题</strong>，他采用了极其迂回的道路解决。比如说某一个判断，如果从正向判断，你就需要加 20 条权限，但是如果你反向判断，你只需要加一条权限。但是代价就是你可能无法用统一的代码，需要在程序里面做特殊的处理。可是那又怎么样呢，哪有这么通用的权限系统呢，要是真的有的话，这样的模型早就有人搞出来了。</p>
+<p>        <strong>对于不能解决的问题</strong>，他就开始打太极，装听不懂你在说什么，或这就直接拿&quot;你说的这种情况根本不会出现，你不要过度设计，系统设计的越简单就越稳定，越复杂就越不稳定&quot;类似这样的话来堵你。<strong>我举个例子</strong>：假如给一个人分配了 admin 和 superuser 的权限，这个人是不是该有 admin 的权限？</p>
+<p>       <strong>从他设计的权限上来看</strong>，假如这个系统现在开设的账号有 20 个，就要在数据库里面存 20 条权限。假如说现在有一个字段 business(业务类型, value=1, 2, 3, 4, 5) 和 一个字段 type(告警类型 value=1, 2, 3, 4, 5)，假如说权限需要细分到这俩参数，三哥要我们把权限写成 business 和 type 的全排列，也就是说要写成 perm_name: business=1&amp;type=1 这样的形式，那么就要存 25 条权限。</p>
+<p>        我们说你这样配权限的人太麻烦了，他说，那我写个脚本搞成权限生成自动化。你这样生成权限是可以了，可是给什么人分配什么权限，给什么角色分配什么权限，这个怎么自动化脚本做？</p>
+<p>        我们说你这样设计不太行啊，不要把数据库的值直接和权限值耦合在一起，万一你这时候又新增一个用户，不就又要新增一条权限，还要新增一条用户权限/角色权限关系。他说，没关系啊，我写个 crontab, 每五分钟跑自动生成权限的脚本不行吗？我问，那就是说，如果新增了一个用户，给他分配了相应的权限，他还要五分钟以后才能看见数据是么？他说，不用五分钟啊，我一分钟跑一次不就完了吗？</p>
+<p>        他统一了权限 key 的名字，所有的模块都只有四种 key, 分别是 module_name_read/add/change/delete。比如说现在一个人有这个模块的 change 权限，一个是在审批上，一个是在更新上。审批的话这人是个法务，他可以审批所有申请。一个是更新上，他只能修改自己的申请。那么现在就要给 module_name_change 这个 key 配上权限, 一种是 module_name_change: create_user=self, 一种是 module_name_change: create_user=all （这里只是表达意思，create_user=all 这种， 配成权限的话要看当前系统的用户有几个），上述情况不就冲突了吗？是该用那个呢？</p>
+<p>        三哥说，这种情况我们不考虑！如果你非要解决的话就放一个无关的字段到参数里面，比如说普通更新的话就加一个 type 进来，写成 module_name_change: create_user=all&amp;type=1 这样用来区分。</p>
+<p>        我们就说，你无关的字段你不应该放到权限里面来，这样时间久了，文档又没有，你还记得当初这个 type 放进来的目的是什么吗？人家不听。</p>
+<p>       <strong>从推广角度来说</strong>，假如说我今天是要准备用他权限的人，我还要去理解他设计的系统，我要熟悉脚本的使用，我还要理解他写的那个三四百行的装饰器。我自己实现一个简单的权限系统也不难，我的成本也不大，我为什么要用他那个贼麻烦，而且也不能做到完全通用的脚本。</p>
+<p>        无语了&hellip;. 反正就是觉得烦的很。</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    </main>
+
+    
+    <footer class="bg-light dark:bg-darkmode-light mt-auto">
+  <div class="container">
+    <div class="row items-center py-10">
+      <div class="lg:col-3 mb-8 text-center lg:mb-0 lg:text-left">
+        
+        <a
+          class="navbar-brand inline-block"
+          href="/">
+          
+          
+
+
+
+
+
+  
+    
+    
+  
+  
+    
+    
+  
+
+
+        </a>
+      </div>
+      <div class="lg:col-6 mb-8 text-center lg:mb-0">
+        <ul>
+          
+        </ul>
+      </div>
+      <div class="lg:col-3 mb-8 text-center lg:mb-0 lg:mt-0 lg:text-right">
+        <ul class="social-icons">
+          
+            <li>
+              <a
+                target="_blank"
+                aria-label="github"
+                rel="nofollow noopener"
+                href="https://github.com/LydiaCai1203">
+                <i class="fab fa-github"></i>
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="border-border dark:border-darkmode-border border-t py-7">
+    <div
+      class="text-text-light dark:text-darkmode-text-light container text-center">
+      <p>
+        Designed &amp; Developed by 阿菜
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+
+    
+    
+
+
+
+  
+    
+      
+    
+  
+
+  
+    
+      
+    
+  
+
+  
+    
+      
+    
+  
+
+  
+    
+      
+    
+  
+
+  
+    
+      
+    
+  
+
+  
+    
+      
+    
+  
+
+  
+    
+      
+    
+  
+
+  
+    
+      
+    
+  
+
+  
+    
+      
+    
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+<script
+  crossorigin="anonymous"
+  integrity="sha256-fq2IWQj0EO6HybIU5Gh5TC459bLu9aqHAfqz1BythHk="
+  src="/js/script.min.7ead885908f410ee87c9b214e468794c2e39f5b2eef5aa8701fab3d41cad8479.js"></script>
+
+
+<script
+  defer
+  async
+  crossorigin="anonymous"
+  integrity="sha256-ERVlJv0r9BVw&#43;veEd5&#43;D3oOJuHI8UEMwuPAD0a8FNhY="
+  src="/js/script-lazy.min.11156526fd2bf41570faf784779f83de8389b8723c504330b8f003d1af053616.js"></script>
+
+
+
+
+<script>
+  if ('serviceWorker' in navigator){navigator.serviceWorker.register("/service-worker.js");}
+</script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2019 on 三观已坏</title>
+    <link>https://LydiaCai1203.github.io/tags/2019/</link>
+    <description>Recent content in 2019 on 三观已坏</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 04 May 2019 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://LydiaCai1203.github.io/tags/2019/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>docker image的实现原理以及registry相关的一块知识</title>
+      <link>https://LydiaCai1203.github.io/blog/analyse_image_layer/</link>
+      <pubDate>Sat, 04 May 2019 00:00:00 +0800</pubDate>
+      <guid>https://LydiaCai1203.github.io/blog/analyse_image_layer/</guid>
+      <description>&lt;h3 id=&#34;part_one-什么是文件挂载&#34;&gt;part_one: 什么是文件挂载？&lt;/h3&gt;&#xA;&lt;p&gt;  1. Unix里面的文件目录是目录树结构的形式，所有的文件目录都是基于硬盘disk逻辑抽象出来的。比如现在有一个的一个目录。&lt;br&gt;&#xA;&lt;img src=&#34;https://LydiaCai1203.github.io/images/dir_tree.png&#34; alt=&#34;&#34;&gt;&lt;br&gt;&#xA;  接1. 现在要把这些文件目录挂载到磁盘上面，在linux的文件系统里面，首先执行mount命令进行文件挂载，比如说将/(根目录)挂载到disk1里面，挂载完了以后，根目录下的进行创建操作或是写操作的时候，数据文件都会存储在disk1当中。&lt;br&gt;&#xA;  重点来了。比如说现在在data目录下创建一个文件a.txt, 这时候将/data挂载到disk2下面，这时候disk2中是看不到a.txt的。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>what is k8s?</title>
+      <link>https://LydiaCai1203.github.io/blog/what_is_k8s/</link>
+      <pubDate>Sat, 04 May 2019 00:00:00 +0800</pubDate>
+      <guid>https://LydiaCai1203.github.io/blog/what_is_k8s/</guid>
+      <description>&lt;h3 id=&#34;part_one-基本结构介绍&#34;&gt;part_one: 基本结构介绍&lt;/h3&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://LydiaCai1203.github.io/images/k8s_structure.png&#34; alt=&#34;&#34;&gt;&#xA;  Node可以理解为物理资源，在K8s里面可操作的最小单元就是Pod，我们可以通过配置Pod配置文件的template字段来控制一个Pod里面有哪几种Container，但是不能控制一个Pod里面有几种container。Pod配置里面的template说明了要启动的容器是怎么样的，最重要的就是image的信息。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>what is NFS?</title>
+      <link>https://LydiaCai1203.github.io/blog/whatis_nfs/</link>
+      <pubDate>Sat, 04 May 2019 00:00:00 +0800</pubDate>
+      <guid>https://LydiaCai1203.github.io/blog/whatis_nfs/</guid>
+      <description>&lt;h3 id=&#34;part_one一台物理机器上的文件存储&#34;&gt;part_one：一台物理机器上的文件存储&lt;/h3&gt;&#xA;&lt;p&gt;  计算机里面有很多块磁盘，计算机里面的文件系统都是逻辑树状结构的，逻辑上的概念都是物理中不会出现的。一个一百兆的文件在计算机上有几种存储方法。简单地来说有两种:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>看完 天龙八部 以后，有一点骚话想说</title>
+      <link>https://LydiaCai1203.github.io/blog/movie_tlbb/</link>
+      <pubDate>Sat, 04 May 2019 00:00:00 +0800</pubDate>
+      <guid>https://LydiaCai1203.github.io/blog/movie_tlbb/</guid>
+      <description>&lt;p&gt;  我大概是疯了，从周日开始看到周一凌晨，终于把《天龙八部》给刷完了。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
